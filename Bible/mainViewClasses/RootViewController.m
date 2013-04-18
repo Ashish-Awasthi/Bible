@@ -50,14 +50,17 @@
 loadPreviousTwowebView:(BOOL )isItPrevTwoView
                 withIndex:(NSInteger)index{
   
- NSArray    *arrData = [NSArray arrayWithObjects:PageArr];
- AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
- PageViewController * viewController  =  (PageViewController *)[appDelegate.pageViewArr objectAtIndex:findPageIndex];
-  
-    NSString    *chapterNameStr = [arrData objectAtIndex:index];
-   // NSLog(@"chapterNameStr %@ Tag Value %d",chapterNameStr, viewController.view.tag);
+    NSArray    *arrData = [NSArray arrayWithObjects:PageArr];
     
-   if (isItLoadNextView) {
+    // *****************  Here check in arr last element*****************
+    if (index<=[arrData count]-1 && index>=0) {
+        
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    PageViewController * viewController  =  (PageViewController *)[appDelegate.pageViewArr objectAtIndex:findPageIndex];
+    NSString    *chapterNameStr = [arrData objectAtIndex:index];
+    NSLog(@"chapterNameStr %@ Tag Value %d",chapterNameStr, viewController.view.tag);
+    
+    if (isItLoadNextView) {
        [viewController loadHtml:chapterNameStr];
        findPageIndex++;
        if (findPageIndex>=4) {
@@ -68,6 +71,7 @@ loadPreviousTwowebView:(BOOL )isItPrevTwoView
         
     }
     
+    }
 }
 - (void)viewDidLoad
 {

@@ -100,7 +100,8 @@
     
     currentIndex++;
     findPageIndex++;
-    if (currentIndex == [self.webViewpageData count]-1) {
+    if (currentIndex >= [self.webViewpageData count]) {
+        currentIndex = [self.webViewpageData count];
         return nil;
     }
     
@@ -110,8 +111,6 @@
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     PageViewController *startingViewController = [appDelegate.pageViewArr objectAtIndex:findPageIndex];
-    
-    NSLog(@"====== find Controller %d",startingViewController.view.tag);
     
     if (findPageIndex >= 4) {
         findPageIndex = -1;
