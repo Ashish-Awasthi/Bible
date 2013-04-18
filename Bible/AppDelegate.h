@@ -8,12 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@class ViewController;
+@class RootViewController;
+#import "RootViewController.h"
+@interface AppDelegate : UIResponder <UIApplicationDelegate>{
+   
+}
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property(nonatomic,assign)BOOL            isFirstTime;
+
+@property(nonatomic,retain)NSMutableArray     *pageViewArr;
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) ViewController *viewController;
+@property (strong, nonatomic) RootViewController *viewController;
 
 @end
