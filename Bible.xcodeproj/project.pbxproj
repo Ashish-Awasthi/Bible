@@ -114,6 +114,7 @@
 		BC7B6B14171D25DD004AA9A6 /* Page_008.htm in Resources */ = {isa = PBXBuildFile; fileRef = BC7B6AAE171D25DD004AA9A6 /* Page_008.htm */; };
 		BC7B6B15171D25DD004AA9A6 /* Page_009.htm in Resources */ = {isa = PBXBuildFile; fileRef = BC7B6AAF171D25DD004AA9A6 /* Page_009.htm */; };
 		BC7B6B16171D25DD004AA9A6 /* Page_010.htm in Resources */ = {isa = PBXBuildFile; fileRef = BC7B6AB0171D25DD004AA9A6 /* Page_010.htm */; };
+		BC7CBFD7172504800013CAC9 /* Empty.htm in Resources */ = {isa = PBXBuildFile; fileRef = BC7CBFD6172504800013CAC9 /* Empty.htm */; };
 		BC848C62171C26A2008F14E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC848C61171C26A2008F14E6 /* UIKit.framework */; };
 		BC848C64171C26A2008F14E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC848C63171C26A2008F14E6 /* Foundation.framework */; };
 		BC848C66171C26A2008F14E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC848C65171C26A2008F14E6 /* CoreGraphics.framework */; };
@@ -236,6 +237,7 @@
 		BC7B6AAE171D25DD004AA9A6 /* Page_008.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Page_008.htm; sourceTree = "<group>"; };
 		BC7B6AAF171D25DD004AA9A6 /* Page_009.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Page_009.htm; sourceTree = "<group>"; };
 		BC7B6AB0171D25DD004AA9A6 /* Page_010.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Page_010.htm; sourceTree = "<group>"; };
+		BC7CBFD6172504800013CAC9 /* Empty.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = Empty.htm; path = ../mainViewClasses/Empty.htm; sourceTree = "<group>"; };
 		BC848C5E171C26A2008F14E6 /* Bible.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bible.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC848C61171C26A2008F14E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BC848C63171C26A2008F14E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -409,6 +411,7 @@
 		BC848C87171C2734008F14E6 /* IconAndHTML */ = {
 			isa = PBXGroup;
 			children = (
+				BC7CBFD6172504800013CAC9 /* Empty.htm */,
 				BC7B6AA7171D25DD004AA9A6 /* Page_001.htm */,
 				BC7B6AA8171D25DD004AA9A6 /* Page_002.htm */,
 				BC7B6AA9171D25DD004AA9A6 /* Page_003.htm */,
@@ -612,6 +615,7 @@
 				BC7B6B16171D25DD004AA9A6 /* Page_010.htm in Resources */,
 				BCFAD0BC171D5D81006A9D4B /* Default.png in Resources */,
 				BCFAD0BD171D5D81006A9D4B /* Default@2x.png in Resources */,
+				BC7CBFD7172504800013CAC9 /* Empty.htm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,7 +710,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bible/Bible-Prefix.pch";
 				INFOPLIST_FILE = "Bible/Bible-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -718,7 +722,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bible/Bible-Prefix.pch";
 				INFOPLIST_FILE = "Bible/Bible-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

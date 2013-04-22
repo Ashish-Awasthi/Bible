@@ -11,13 +11,15 @@
 @interface PageViewController : UIViewController<UIWebViewDelegate>{
 
     UIImageView         *imageView;
-    NSArray             *pageViewControllerObjArr;
 }
 
 @property (strong, nonatomic) id dataObject;
 @property(nonatomic,retain) UIWebView    *webView;
+@property(nonatomic,retain)UILabel     *dataLabel;
+
 -(void)loadHtml:(NSString *)htmlName;
 - (id)initWithNibName:(NSString *)nibNameOrNil
                bundle:(NSBundle *)nibBundleOrNil
-         withHtmlName:(NSString *)htmlName;
+            withTitle:(NSString *)titleStr
+          withHtmlStr:(NSString *)htmlName;
 @end

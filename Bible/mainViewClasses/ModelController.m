@@ -9,8 +9,7 @@
 
 
 #import "ModelController.h"
-
-#import "DataViewController.h"
+#import "PageViewController.h"
 
 /*
  A controller object that manages a simple model -- a collection of month names.
@@ -23,15 +22,143 @@
 #import "PageViewController.h"
 
 @interface ModelController()
+
+
+-(void)reLoadDataOnNextView:(NSString *) changeTitleStr
+                  withHtmlName:(NSString *)htmlNameStr;
+-(void)reLoadDataOnPrevView:(NSString *) changeTitleStr
+                  withHtmlName:(NSString *)htmlNameStr;
 //@property (readonly, strong, nonatomic) NSArray *pageData;
-@property (readonly, strong, nonatomic) NSArray *webViewpageData;
+@property (nonatomic, retain) NSArray *webViewpageData;
+@property(nonatomic,retain)NSArray     *htmlPageIndexArr;
 @end
 
 @implementation ModelController
 
-@synthesize webViewpageData;
+@synthesize webViewpageData = webViewpageData;
 
 @synthesize viewController;
+@synthesize htmlPageIndexArr = _htmlPageIndexArr;
+
+
+-(PageViewController *)getViewControllerFrameArr:(PreLoadView )viewNumber{
+    
+    AppDelegate    *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    PageViewController   *pageViewController;
+    
+    for (int i = 0; i<[appDelegate.preLoadViewArr count]; i++) {
+        pageViewController = [appDelegate.preLoadViewArr objectAtIndex:i];
+        if (pageViewController.view.tag == viewNumber) {
+            break;
+        }
+    }
+    
+    return pageViewController;
+    
+}
+
+
+-(void)reLoadDataOnNextView:(NSString *) changeTitleStr
+                 withHtmlName:(NSString *)htmlNameStr{
+    
+    AppDelegate    *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSArray   *objectArr = [appDelegate.preLoadViewArr copy];
+    [appDelegate.preLoadViewArr removeAllObjects];
+    
+    PageViewController   *pageViewController;
+    
+    for (int i = 0; i<[objectArr count]; i++) {
+        
+        pageViewController = [objectArr objectAtIndex:i];
+        
+        switch (pageViewController.view.tag) {
+                
+            case ExtremLeftView:
+                pageViewController.view.tag = ExtremRightView;
+                [pageViewController loadHtml:htmlNameStr];
+                [pageViewController.dataLabel setText:changeTitleStr];
+                [appDelegate.preLoadViewArr addObject:pageViewController];
+                break;
+            case LeftView:
+                pageViewController.view.tag = ExtremLeftView;
+                [appDelegate.preLoadViewArr addObject:pageViewController];
+                break;
+                
+            case CurrentView:
+                pageViewController.view.tag = LeftView;
+                [appDelegate.preLoadViewArr addObject:pageViewController];
+                break;
+            case RightView:
+                pageViewController.view.tag = CurrentView;
+                [appDelegate.preLoadViewArr addObject:pageViewController];
+                break;
+                
+            case ExtremRightView:
+                pageViewController.view.tag = RightView;
+                [appDelegate.preLoadViewArr addObject:pageViewController];
+                break;
+                
+            default:
+                break;
+        }
+        
+    }
+    
+    [objectArr release];
+}
+
+-(void)reLoadDataOnPrevView:(NSString *) changeTitleStr
+                  withHtmlName:(NSString *)htmlNameStr{
+    
+    AppDelegate    *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSArray   *objectArr = [appDelegate.preLoadViewArr copy];
+    [appDelegate.preLoadViewArr removeAllObjects];
+    
+    PageViewController   *pageViewController;
+    
+    for (int i = 0; i<[objectArr count]; i++) {
+        
+        pageViewController = [objectArr objectAtIndex:i];
+        
+        switch (pageViewController.view.tag) {
+                
+            case ExtremLeftView:
+                pageViewController.view.tag = LeftView;
+                [appDelegate.preLoadViewArr addObject:pageViewController];
+                break;
+            case LeftView:
+                pageViewController.view.tag = CurrentView;
+                [appDelegate.preLoadViewArr addObject:pageViewController];
+                
+                break;
+                
+            case CurrentView:
+                pageViewController.view.tag = RightView;
+                [appDelegate.preLoadViewArr addObject:pageViewController];
+                break;
+            case RightView:
+                pageViewController.view.tag = ExtremRightView;
+                [appDelegate.preLoadViewArr addObject:pageViewController];
+                break;
+                
+            case ExtremRightView:
+                pageViewController.view.tag = ExtremLeftView;
+                 [pageViewController loadHtml:htmlNameStr];
+                [pageViewController.dataLabel setText:changeTitleStr];
+                [appDelegate.preLoadViewArr addObject:pageViewController];
+                break;
+                
+            default:
+                break;
+        }
+        
+    }
+    
+    [objectArr release];
+}
 
 - (void)dealloc
 {
@@ -44,78 +171,69 @@
     self = [super init];
     if (self) {
         // Create the data model.
-        currentIndex = 0;
-        findPageIndex = 0;
-        webViewpageData = [[NSArray arrayWithObjects:PageArr] retain];
+        
+        self.htmlPageIndexArr = [[NSArray arrayWithObjects:KDataArr] retain];
+        self.webViewpageData  = [[NSArray arrayWithObjects:HtmlArrName] retain];
         
     }
     return self;
 }
 
-- (PageViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard
-{   
-    // Return the data view controller for the given index.
-    if (([self.webViewpageData count] == 0) || (index >= [self.webViewpageData count])) {
-        return nil;
-    }
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    PageViewController *startingViewController = [appDelegate.pageViewArr objectAtIndex:0];
-    startingViewController.dataObject = [webViewpageData objectAtIndex:index];
-    
-    return startingViewController;
-}
-
-- (NSUInteger)indexOfViewController:(DataViewController *)viewController
-{   
-     // Return the index of the given data view controller.
-     // For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
-    
-    return [self.webViewpageData indexOfObject:viewController.dataObject];
-}
 
 #pragma mark - Page View Controller Data Source
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    //NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
+     NSLog(@"Right flip");
+    PageViewController    *precurrentViewController = [self getViewControllerFrameArr:CurrentView];
+    NSString    *findPrevValueStr = precurrentViewController.dataLabel.text;
     
-    if ((currentIndex == 0) || (currentIndex == NSNotFound)) {
-        return nil;
+    if ([findPrevValueStr integerValue] == 2 || [findPrevValueStr integerValue] == 3) {
+        [self reLoadDataOnPrevView:@"" withHtmlName:@"Empty.htm"];
+        PageViewController    *pageViewControlle = [self getViewControllerFrameArr:CurrentView];
+        return pageViewControlle;
     }
     
-    currentIndex--;
-    
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    PageViewController *startingViewController = [appDelegate.pageViewArr objectAtIndex:currentIndex];
-    
-    return startingViewController;
+    if ([findPrevValueStr intValue] == 1) {
+        return nil;
+    }else{
+        NSInteger    finPrevIndex;
+        finPrevIndex = [findPrevValueStr integerValue]-4;
+       // NSLog(@"====== %@",[self.htmlPageIndexArr objectAtIndex:finPrevIndex]);
+        
+        [self reLoadDataOnPrevView:[self.htmlPageIndexArr objectAtIndex:finPrevIndex] withHtmlName:[self.webViewpageData objectAtIndex:finPrevIndex]];
+        
+        PageViewController    *pageViewControlle = [self getViewControllerFrameArr:CurrentView];
+        return pageViewControlle;
+    }
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-   // NSUInteger index = [self indexOfViewController:(DataViewController *)viewController];
-    if (currentIndex == NSNotFound) {
-        return nil;
-    }
+    NSLog(@"Left flip");
+    firstTimeRightFlip = NO;
     
-    currentIndex++;
-    findPageIndex++;
-    if (currentIndex >= [self.webViewpageData count]) {
-        currentIndex = [self.webViewpageData count];
-        return nil;
-    }
+    PageViewController    *previousViewController = (PageViewController *)[self getViewControllerFrameArr:CurrentView];
     
-    if (currentIndex >=3) {
-        [self.viewController loadNextTwoWebView:YES loadPreviousTwowebView:NO  withIndex:currentIndex+2];
-    }
+    NSString    *nextValueStr = previousViewController.dataLabel.text;
+    NSInteger    findIndex = [nextValueStr integerValue]+2;
     
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    PageViewController *startingViewController = [appDelegate.pageViewArr objectAtIndex:findPageIndex];
+   // NSLog(@" nextValueStr %d",[nextValueStr integerValue]+2);
     
-    if (findPageIndex >= 4) {
-        findPageIndex = -1;
+    if (findIndex<[self.webViewpageData count]) {
+        [self reLoadDataOnNextView:[self.htmlPageIndexArr objectAtIndex:findIndex]
+                         withHtmlName:[self.webViewpageData objectAtIndex:findIndex]];
+    }else{
+        if (findIndex == [self.htmlPageIndexArr count] || findIndex == [self.htmlPageIndexArr count]+1 ) {
+            [self reLoadDataOnNextView:@"" withHtmlName:@"Empty.htm"];
+        }else{
+            return nil;
+        }
     }
-    return startingViewController;
+    PageViewController    *pageViewControlle = [self getViewControllerFrameArr:CurrentView];
+    
+    return pageViewControlle;
 }
+
 
 @end

@@ -16,6 +16,9 @@
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 -(void)loadNextTwoWebView:(BOOL )isItLoadNextView
-   loadPreviousTwowebView:(BOOL )isItPrevTwoView
                 withIndex:(NSInteger)index;
+
+-(void)loadPrevView:(NSInteger )withViewControllerIndex
+          withIndex:(NSInteger)htmlIndex;
+    
 @end

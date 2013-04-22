@@ -15,7 +15,7 @@
 
 @implementation AppDelegate
 
-@synthesize pageViewArr;
+@synthesize preLoadViewArr;
 
 
 @synthesize isFirstTime;
@@ -31,7 +31,7 @@
 {
     
     isFirstTime = YES;
-    pageViewArr = [[NSMutableArray alloc] init];
+    preLoadViewArr = [[NSMutableArray alloc] init];
 
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];

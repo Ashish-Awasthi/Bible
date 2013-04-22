@@ -13,10 +13,7 @@
 
 
 @interface ModelController : NSObject <UIPageViewControllerDataSource>{
-   
-    NSInteger    currentIndex;
-    NSInteger         findPageIndex;
-
+    BOOL     firstTimeRightFlip;
 }
 
 @property(nonatomic,retain) id viewController;

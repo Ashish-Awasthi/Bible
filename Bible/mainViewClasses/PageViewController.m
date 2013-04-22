@@ -19,20 +19,36 @@
 @synthesize dataObject;
 
 @synthesize webView = _webView;
+@synthesize dataLabel = _dataLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil
-        bundle:(NSBundle *)nibBundleOrNil withHtmlName:(NSString *)htmlName;
-
-{
+               bundle:(NSBundle *)nibBundleOrNil
+            withTitle:(NSString *)titleStr
+          withHtmlStr:(NSString *)htmlName{
+    
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
+        //NSLog(@"HTMLName = %@",htmlName);
         
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         CGRect   frameSize;
+        
+        frameSize = CGRectMake(0, 0, 768, 1024);
+        
+        self.dataLabel = [[UILabel alloc] init];
+        [self.dataLabel setTextAlignment:NSTextAlignmentCenter];
+        [self.dataLabel setText:titleStr];
+        [self.dataLabel setTextColor:[UIColor clearColor]];
+        [self.dataLabel setFont:[UIFont boldSystemFontOfSize:100.0 ]];
+        [self.dataLabel setBackgroundColor:[UIColor clearColor]];
+        [self.dataLabel setFrame:frameSize];
+        [self.view addSubview:self.dataLabel];
+        
         frameSize = CGRectMake(0, 0, 768, 1024);
         
         self.webView = [[UIWebView alloc] init];
+       [ self.webView setUserInteractionEnabled:NO];
         [self.webView.scrollView setScrollEnabled:NO];
         if (appDelegate.isFirstTime) {
             [self.webView setDelegate:self];

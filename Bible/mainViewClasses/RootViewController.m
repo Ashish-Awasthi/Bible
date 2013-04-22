@@ -7,12 +7,12 @@
 //
 
 #import "RootViewController.h"
-#import "PageViewController.h"
 #import "ModelController.h"
 #import "PageViewController.h"
 
 @interface RootViewController ()
 @property (readonly, strong, nonatomic) ModelController *modelController;
+-(void)addPreLoadView;
 @end
 
 @implementation RootViewController
@@ -26,58 +26,64 @@
     [super dealloc];
 }
 
-
--(void)allocFivePageViewController{
-    findPageIndex = 0;
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    NSArray    *arrData = [NSArray arrayWithObjects:PageArr];
-    NSString    *chapterNameStr = nil;
-   
-    for (int i = 0 ; i<5; i++) {
-        chapterNameStr = [arrData objectAtIndex:i];
-         NSLog(@"chapterNameStr %@",chapterNameStr);
-        CGRect   frameSize;
-        frameSize = CGRectMake(0, 0, 768, 1024);
-        
-        PageViewController * viewController = [[PageViewController alloc] initWithNibName:nil bundle:nil withHtmlName:chapterNameStr];
-        [viewController.view setTag:i+1];
-        [appDelegate.pageViewArr addObject:viewController];
-        
-    }
+-(void)addPreLoadView{
+    
+    
+    AppDelegate    *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    
+    PageViewController *viewController1 = [[PageViewController alloc]
+                                           initWithNibName:nil bundle:nil withTitle:@"" withHtmlStr:@"Empty.htm"];
+    [viewController1.view setTag:ExtremLeftView];
+    [appDelegate.preLoadViewArr  addObject:viewController1];
+    
+    PageViewController *viewController2 = [[PageViewController alloc]
+                                           initWithNibName:nil bundle:nil withTitle:@"" withHtmlStr:@"Empty.htm"];
+    [viewController2.view setTag:LeftView];
+    [appDelegate.preLoadViewArr  addObject:viewController2];
+    
+    PageViewController *viewController3 = [[PageViewController alloc]
+                                           initWithNibName:nil bundle:nil withTitle:@"1" withHtmlStr:@"Page_001.htm"];
+    
+    [viewController3.view setTag:CurrentView];
+    [appDelegate.preLoadViewArr  addObject:viewController3];
+    
+    PageViewController *viewController4 = [[PageViewController alloc]
+                                           initWithNibName:nil bundle:nil withTitle:@"2" withHtmlStr:@"Page_002.htm"];
+    [viewController4.view setTag:RightView];
+    [appDelegate.preLoadViewArr  addObject:viewController4];
+    
+    PageViewController *viewController5 = [[PageViewController alloc]
+                                           initWithNibName:nil bundle:nil withTitle:@"3" withHtmlStr:@"Page_003.htm"];
+    
+    [viewController5.view setTag:ExtremRightView];
+    [appDelegate.preLoadViewArr  addObject:viewController5];
+    
+    
+    
 }
 
--(void)loadNextTwoWebView:(BOOL )isItLoadNextView
-loadPreviousTwowebView:(BOOL )isItPrevTwoView
-                withIndex:(NSInteger)index{
-  
-    NSArray    *arrData = [NSArray arrayWithObjects:PageArr];
+-(PageViewController *)getViewControllerFrameArr:(PreLoadView )viewNumber{
     
-    // *****************  Here check in arr last element*****************
-    if (index<=[arrData count]-1 && index>=0) {
-        
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    PageViewController * viewController  =  (PageViewController *)[appDelegate.pageViewArr objectAtIndex:findPageIndex];
-    NSString    *chapterNameStr = [arrData objectAtIndex:index];
-    NSLog(@"chapterNameStr %@ Tag Value %d",chapterNameStr, viewController.view.tag);
+    AppDelegate    *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-    if (isItLoadNextView) {
-       [viewController loadHtml:chapterNameStr];
-       findPageIndex++;
-       if (findPageIndex>=4) {
-           findPageIndex = 0;
-       }
-    }
-    if(isItPrevTwoView){
-        
+    PageViewController   *viewController;
+    
+    for (int i = 0; i<[appDelegate.preLoadViewArr count]; i++) {
+        viewController = [appDelegate.preLoadViewArr objectAtIndex:i];
+        if (viewController.view.tag == viewNumber) {
+            break;
+        }
     }
     
-    }
+    return viewController;
+    
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [self allocFivePageViewController];
+    [self addPreLoadView];
      
     
 	// Do any additional setup after loading the view, typically from a nib.
@@ -85,9 +91,9 @@ loadPreviousTwowebView:(BOOL )isItPrevTwoView
     self.pageViewController = [[[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil] autorelease];
     self.pageViewController.delegate = self;
 
-    PageViewController *startingViewController = [appDelegate.pageViewArr objectAtIndex:0];
+    PageViewController *viewController = [self getViewControllerFrameArr:CurrentView];
     
-    NSArray *viewControllers = @[startingViewController];
+    NSArray *viewControllers = @[viewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
 
     self.pageViewController.dataSource = self.modelController;
@@ -105,7 +111,7 @@ loadPreviousTwowebView:(BOOL )isItPrevTwoView
     [self.pageViewController didMoveToParentViewController:self];
 
     // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
-    
+     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
 }
 
 - (void)didReceiveMemoryWarning
