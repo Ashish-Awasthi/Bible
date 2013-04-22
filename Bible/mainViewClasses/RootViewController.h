@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RootViewController : UIViewController <UIPageViewControllerDelegate,UIWebViewDelegate>{
+@interface RootViewController : UIViewController <UIPageViewControllerDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate>{
     
     NSInteger    findPageIndex;
-
+   BOOL pageAnimationFinished;
+    NSInteger m_currentIndex;
 }
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;

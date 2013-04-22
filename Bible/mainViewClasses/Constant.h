@@ -10,6 +10,16 @@
 //
 
 
+#define   ExtreamLeftViewKey @"ExtremLeft"
+
+#define   LeftViewKey     @"Left"
+
+#define   CurrentViewKey  @"Current"
+
+#define    RightViewKey   @"ExtremRight"
+
+#define   ExtreamRightViewKey @"ExtremRight"
+
 #define  KDataArr \
 @"1",\
 @"2",\
@@ -35,6 +45,7 @@ nil
 @"Page_009.htm",\
 @"Page_010.htm",\
 nil
+
 
 typedef enum{
  ExtremLeftView = 0,

@@ -59,6 +59,7 @@
 }
 
 
+
 -(void)reLoadDataOnNextView:(NSString *) changeTitleStr
                  withHtmlName:(NSString *)htmlNameStr{
     
@@ -185,8 +186,12 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
      NSLog(@"Right flip");
+    
     PageViewController    *precurrentViewController = [self getViewControllerFrameArr:CurrentView];
     NSString    *findPrevValueStr = precurrentViewController.dataLabel.text;
+    
+    NSLog(@"%@",findPrevValueStr);
+
     
     if ([findPrevValueStr integerValue] == 2 || [findPrevValueStr integerValue] == 3) {
         [self reLoadDataOnPrevView:@"" withHtmlName:@"Empty.htm"];
@@ -218,6 +223,9 @@
     NSString    *nextValueStr = previousViewController.dataLabel.text;
     NSInteger    findIndex = [nextValueStr integerValue]+2;
     
+    
+   // NSLog(@"%@",nextValueStr);
+
    // NSLog(@" nextValueStr %d",[nextValueStr integerValue]+2);
     
     if (findIndex<[self.webViewpageData count]) {
@@ -230,8 +238,8 @@
             return nil;
         }
     }
-    PageViewController    *pageViewControlle = [self getViewControllerFrameArr:CurrentView];
     
+   PageViewController    *pageViewControlle = [self getViewControllerFrameArr:CurrentView];
     return pageViewControlle;
 }
 

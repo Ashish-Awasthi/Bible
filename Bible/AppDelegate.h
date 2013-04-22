@@ -18,7 +18,6 @@
 @property(nonatomic,assign)BOOL            isFirstTime;
 
 @property(nonatomic,retain)NSMutableArray     *preLoadViewArr;
-
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) RootViewController *viewController;

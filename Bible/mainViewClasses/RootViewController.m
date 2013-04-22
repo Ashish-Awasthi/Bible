@@ -28,6 +28,7 @@
 
 -(void)addPreLoadView{
     
+    m_currentIndex = 1;
     
     AppDelegate    *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
@@ -83,8 +84,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    pageAnimationFinished = YES;
     [self addPreLoadView];
-     
+    m_currentIndex = 0;
     
 	// Do any additional setup after loading the view, typically from a nib.
     // Configure the page view controller and add it as a child view controller.
@@ -112,8 +114,56 @@
 
     // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
      self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+    
+    for (UIGestureRecognizer * gesRecog in self.pageViewController.gestureRecognizers)
+    {
+        if ([gesRecog isKindOfClass:[UITapGestureRecognizer class]])
+            gesRecog.enabled = NO;
+        else if ([gesRecog isKindOfClass:[UIPanGestureRecognizer class]])
+            gesRecog.delegate = self;
+    }
 }
 
+-(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
+{
+  
+    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
+    {
+        UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
+        CGPoint distance = [panGes translationInView:self.view];
+        
+        if (distance.x > 0) { // right
+            NSLog(@"user swiped right");
+            m_currentIndex--;
+            if (m_currentIndex<=0) {
+                m_currentIndex = 0;
+            }
+                        
+        } else if (distance.x < 0) { //left
+             m_currentIndex++;
+            if (m_currentIndex>=10) {
+                m_currentIndex = 10;
+            }
+        }
+        
+        NSLog(@"=====%d",m_currentIndex);
+        
+        if((m_currentIndex)<= 0 || m_currentIndex >= 10){
+            return NO;
+        }
+        if(pageAnimationFinished == NO){
+            return NO;
+            
+        }
+        
+        pageAnimationFinished = NO;
+    }
+    return YES;
+}
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
+{
+    pageAnimationFinished = YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

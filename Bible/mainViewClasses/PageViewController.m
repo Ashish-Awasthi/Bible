@@ -30,7 +30,7 @@
     if (self) {
         
         //NSLog(@"HTMLName = %@",htmlName);
-        
+       
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         CGRect   frameSize;
         
