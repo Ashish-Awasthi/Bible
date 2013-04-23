@@ -51,3 +51,7 @@ typedef enum{
  RightView,
  ExtremRightView,
 }PreLoadView;
+
+//*************************************************Query part ***************************************
+
+#define KPageDataQuery @"Select * from PageTable"

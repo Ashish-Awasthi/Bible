@@ -15,19 +15,23 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-@implementation LocalityIndex
+@implementation PageData
 
-@synthesize _imgId;
-@synthesize _imageData;
-@synthesize _imageName;
+@synthesize _pageId;
+@synthesize _auidoId;
+@synthesize _pageHtmlName;
+@synthesize _audioStartTime;
+@synthesize _audioEndTime;
 
 
 - (void) dealloc {
 	
-    _imgId = -1;
+    _pageId = -1;
+    _auidoId = -1;
+    _audioStartTime = -1;
+    _audioEndTime = -1;
+    RELEASE(_pageHtmlName);
     
-    RELEASE(_imageData);
-     RELEASE(_imageName);
     
 	[super dealloc];
 }

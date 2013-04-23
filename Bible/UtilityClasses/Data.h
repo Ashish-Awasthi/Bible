@@ -19,12 +19,15 @@
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-@interface LocalityIndex : NSObject {
+@interface PageData : NSObject {
 
 }
-@property(nonatomic,assign)NSInteger _imgId;
-@property (nonatomic, copy) NSString *_imageName;
-@property (nonatomic, copy) NSString *_imageData;
+@property(nonatomic,assign) NSInteger _pageId;
+@property(nonatomic,assign) NSInteger _auidoId;
+@property (nonatomic, copy) NSString *_pageHtmlName;
+@property(nonatomic,assign) NSInteger _audioStartTime;
+@property(nonatomic,assign) NSInteger _audioEndTime;
+
 @end
 
 //  ************************* State Data Object *************************

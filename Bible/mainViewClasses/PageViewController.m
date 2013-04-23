@@ -7,8 +7,10 @@
 //
 
 
+#define MenuOptionAnimationDuration  0.7
 
 #import "PageViewController.h"
+
 
 @interface PageViewController ()
 
@@ -33,6 +35,8 @@
        
         CGRect   frameSize;
         
+        UIImage    *image;
+        
         frameSize = CGRectMake(0, 0, 768, 1024);
         
         self.dataLabel = [[UILabel alloc] init];
@@ -47,12 +51,12 @@
         frameSize = CGRectMake(0, 0, 768, 1024);
         
         self.webView = [[UIWebView alloc] init];
-       [ self.webView setUserInteractionEnabled:NO];
+        //[self.webView setUserInteractionEnabled:NO];
         [self.webView.scrollView setScrollEnabled:NO];
-        if ([BibleSingletonManager sharedManager].isFirstTime) {
+        //if ([BibleSingletonManager sharedManager].isFirstTime) {
            
             [self.webView setDelegate:self];
-        }
+        //}
         [self.webView setScalesPageToFit:YES];
         [self.webView setBackgroundColor:[UIColor clearColor]];
         [self.webView setFrame:frameSize];
@@ -70,15 +74,19 @@
             frameSize = CGRectMake(0, 0, 768, 1024);
             imageView = [[UIImageView alloc] init];
             //[imageView setBackgroundColor:[UIColor redColor]];
-            [imageView setImage:[UIImage imageNamed:@"Page_001.jpg"]];
+            [imageView setImage:[UIImage imageNamed:@"Default.png"]];
             [imageView setFrame:frameSize];
             [self.view addSubview:imageView];
         }
-       
         
+        image = [UIImage imageNamed:@"Ribbon.png"];
+        frameSize =  CGRectMake(self.view.frame.size.width - image.size.width -25, 0, image.size.width, image.size.height);
+        menuOptionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [menuOptionBtn setImage:image forState:UIControlStateNormal];
+        [menuOptionBtn setFrame:frameSize];
+        [menuOptionBtn addTarget:self action:@selector(tabOnMenuOption:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:menuOptionBtn];
         
-        
-
         // Custom initialization
     }
     return self;
@@ -87,10 +95,36 @@
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     
    [BibleSingletonManager sharedManager].isFirstTime = NO;
-    [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplaashView) withDuration:.2 withDelegate:self];
+   [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplashView) withDuration:.2 withDelegate:self];
     
 }
 
+-(void)tabOnMenuOption:(id)sender{
+    
+    CGRect   frameSize ;
+    UIImage *image;
+    image = [UIImage imageNamed:@"menu_bg.png"];
+    
+    frameSize = CGRectMake(538, 0, image.size.width, 0);
+    
+    menuView = [[MenView alloc] initWithFrame:frameSize withDelegate:self];
+   [self.view addSubview:menuView];
+    
+    
+    frameSize = CGRectMake(self.view.frame.size.width - image.size.width, 0, image.size.width, 973);
+    
+    [[BibleSingletonManager sharedManager] animationWithFrame:frameSize withView:menuView withSelector:nil withDuration:MenuOptionAnimationDuration withDelegate:nil];
+    
+}
+
+#pragma maks
+#pragma MenuViewDelegate
+
+-(void)hideMenuView{
+    CGRect   frameSize ;
+    frameSize = CGRectMake(538, 0, 230, 0);
+ [[BibleSingletonManager sharedManager] animationWithFrame:frameSize withView:menuView withSelector:nil withDuration:MenuOptionAnimationDuration withDelegate:nil];
+}
 -(void)removeSplaashView{
     [imageView removeFromSuperview];
 }
@@ -110,6 +144,15 @@
     [self.webView loadHTMLString:text baseURL:baseURL];
     
     
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+   // NSString    *requestStr = request.URL;
+    
+    
+
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning

@@ -222,30 +222,44 @@ static sqlite3 *m_database = nil;
 			
             while(sqlite3_step(statement) == SQLITE_ROW)
             {
-                LocalityIndex *thisObj = [[LocalityIndex alloc] init];
+                PageData *thisObj = [[PageData alloc] init];
                 
                 if(sqlite3_column_text(statement,0))
                 {
-                    thisObj._imageName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 0)];
+                    thisObj._pageId = sqlite3_column_int(statement, 0);
                 }
                 else{
-                    thisObj._imageName = @"";
+                    thisObj._pageId = -1;
                 }
                 if(sqlite3_column_text(statement,1))
                 {
-                    thisObj._imageData = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 1)];
+                    thisObj._auidoId = sqlite3_column_int(statement, 1);
                 }
                 else{
-                    thisObj._imageData=@"";
+                    thisObj._auidoId = -1;
                 }
                 if(sqlite3_column_text(statement,2))
                 {
-                    thisObj._imgId = sqlite3_column_int(statement, 2);
+                    thisObj._pageHtmlName = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 2)];
                 }
                 else{
-                    thisObj._imgId = -1;
+                    thisObj._pageHtmlName = @"";
                 }
                 
+                if(sqlite3_column_text(statement,3))
+                {
+                    thisObj._audioStartTime = sqlite3_column_int(statement, 3);
+                }
+                else{
+                    thisObj._audioStartTime = -1;
+                }
+                if(sqlite3_column_text(statement,4))
+                {
+                    thisObj._audioEndTime = sqlite3_column_int(statement, 4);
+                }
+                else{
+                    thisObj._audioEndTime = -1;
+                }
                 [tempArray addObject:thisObj];
                 [thisObj release];
             }

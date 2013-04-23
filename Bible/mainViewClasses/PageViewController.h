@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MenView.h"
 
 @interface PageViewController : UIViewController<UIWebViewDelegate>{
 
     UIImageView         *imageView;
+    UIButton     *menuOptionBtn;
+    MenView     *menuView;
 }
 
 @property (strong, nonatomic) id dataObject;

@@ -80,6 +80,11 @@
     [self addPreLoadView];
     [super viewDidLoad];
     
+    NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
+   
+    NSString    *htmlName = ((PageData *)[pageData objectAtIndex:0])._pageHtmlName;
+     NSLog(@"%@====",htmlName);
+    
     pageAnimationFinished = YES;
     [BibleSingletonManager sharedManager].pageIndexArr = [NSArray arrayWithObjects:KDataArr, nil];
     
