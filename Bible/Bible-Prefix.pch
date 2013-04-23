@@ -11,6 +11,8 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-    #import "AppDelegate.h"
-    #import"Constant.h"
+    #import "BibleSingletonManager.h"
+    #import"BilbleConstant.h"
+    #import"DBConnectionManager.h"
+    #import "Data.h"
 #endif

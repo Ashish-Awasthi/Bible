@@ -28,37 +28,33 @@
 
 -(void)addPreLoadView{
     
-    m_currentIndex = 1;
-    
-    AppDelegate    *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    
-    PageViewController *viewController1 = [[PageViewController alloc]
-                                           initWithNibName:nil bundle:nil withTitle:@"" withHtmlStr:@"Empty.htm"];
-    [viewController1.view setTag:ExtremLeftView];
-    [appDelegate.preLoadViewArr  addObject:viewController1];
-    
-    PageViewController *viewController2 = [[PageViewController alloc]
-                                           initWithNibName:nil bundle:nil withTitle:@"" withHtmlStr:@"Empty.htm"];
-    [viewController2.view setTag:LeftView];
-    [appDelegate.preLoadViewArr  addObject:viewController2];
-    
+
     PageViewController *viewController3 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"1" withHtmlStr:@"Page_001.htm"];
     
     [viewController3.view setTag:CurrentView];
-    [appDelegate.preLoadViewArr  addObject:viewController3];
+    [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController3];
+    
+    PageViewController *viewController1 = [[PageViewController alloc]
+                                           initWithNibName:nil bundle:nil withTitle:@"" withHtmlStr:@"Empty.htm"];
+    [viewController1.view setTag:ExtremLeftView];
+    [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController1];
+    
+    PageViewController *viewController2 = [[PageViewController alloc]
+                                           initWithNibName:nil bundle:nil withTitle:@"" withHtmlStr:@"Empty.htm"];
+    [viewController2.view setTag:LeftView];
+    [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController2];
     
     PageViewController *viewController4 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"2" withHtmlStr:@"Page_002.htm"];
     [viewController4.view setTag:RightView];
-    [appDelegate.preLoadViewArr  addObject:viewController4];
+    [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController4];
     
     PageViewController *viewController5 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"3" withHtmlStr:@"Page_003.htm"];
     
     [viewController5.view setTag:ExtremRightView];
-    [appDelegate.preLoadViewArr  addObject:viewController5];
+    [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController5];
     
     
     
@@ -66,12 +62,10 @@
 
 -(PageViewController *)getViewControllerFrameArr:(PreLoadView )viewNumber{
     
-    AppDelegate    *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
     PageViewController   *viewController;
     
-    for (int i = 0; i<[appDelegate.preLoadViewArr count]; i++) {
-        viewController = [appDelegate.preLoadViewArr objectAtIndex:i];
+    for (int i = 0; i<[[BibleSingletonManager sharedManager].preLoadViewArr count]; i++) {
+        viewController = [[BibleSingletonManager sharedManager].preLoadViewArr objectAtIndex:i];
         if (viewController.view.tag == viewNumber) {
             break;
         }
@@ -83,10 +77,11 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    pageAnimationFinished = YES;
     [self addPreLoadView];
-    m_currentIndex = 0;
+    [super viewDidLoad];
+    
+    pageAnimationFinished = YES;
+    [BibleSingletonManager sharedManager].pageIndexArr = [NSArray arrayWithObjects:KDataArr, nil];
     
 	// Do any additional setup after loading the view, typically from a nib.
     // Configure the page view controller and add it as a child view controller.
@@ -127,35 +122,43 @@
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
   
+   NSArray * indexArr = [BibleSingletonManager sharedManager].pageIndexArr;
+    
+   PageViewController  *pageViewController = [self getViewControllerFrameArr:CurrentView];
+    NSInteger   currentIndex = [pageViewController.dataLabel.text integerValue];
+    
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
     {
         UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
         CGPoint distance = [panGes translationInView:self.view];
         
+        
         if (distance.x > 0) { // right
             NSLog(@"user swiped right");
-            m_currentIndex--;
-            if (m_currentIndex<=0) {
-                m_currentIndex = 0;
+            currentIndex--;
+            if (currentIndex<=0) {
+                currentIndex = 0;
             }
                         
         } else if (distance.x < 0) { //left
-             m_currentIndex++;
-            if (m_currentIndex>=10) {
-                m_currentIndex = 10;
+             currentIndex++;
+            if (currentIndex>=[indexArr count]+1) {
+                currentIndex = [indexArr count]+1;
+                
             }
         }
         
-        NSLog(@"=====%d",m_currentIndex);
-        
-        if((m_currentIndex)<= 0 || m_currentIndex >= 10){
-            return NO;
-        }
         if(pageAnimationFinished == NO){
+            pageAnimationFinished = YES;
             return NO;
-            
         }
+
+        NSLog(@"=====%d",currentIndex);
         
+        if((currentIndex)<= 0 || currentIndex >= [indexArr count]+1){
+            return NO;
+        }
+               
         pageAnimationFinished = NO;
     }
     return YES;

@@ -43,12 +43,10 @@
 
 -(PageViewController *)getViewControllerFrameArr:(PreLoadView )viewNumber{
     
-    AppDelegate    *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
     PageViewController   *pageViewController;
     
-    for (int i = 0; i<[appDelegate.preLoadViewArr count]; i++) {
-        pageViewController = [appDelegate.preLoadViewArr objectAtIndex:i];
+    for (int i = 0; i<[[BibleSingletonManager sharedManager].preLoadViewArr count]; i++) {
+        pageViewController = [[BibleSingletonManager sharedManager].preLoadViewArr objectAtIndex:i];
         if (pageViewController.view.tag == viewNumber) {
             break;
         }
@@ -63,10 +61,8 @@
 -(void)reLoadDataOnNextView:(NSString *) changeTitleStr
                  withHtmlName:(NSString *)htmlNameStr{
     
-    AppDelegate    *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    NSArray   *objectArr = [appDelegate.preLoadViewArr copy];
-    [appDelegate.preLoadViewArr removeAllObjects];
+    NSArray   *objectArr = [[BibleSingletonManager sharedManager].preLoadViewArr copy];
+    [[BibleSingletonManager sharedManager].preLoadViewArr removeAllObjects];
     
     PageViewController   *pageViewController;
     
@@ -80,25 +76,25 @@
                 pageViewController.view.tag = ExtremRightView;
                 [pageViewController loadHtml:htmlNameStr];
                 [pageViewController.dataLabel setText:changeTitleStr];
-                [appDelegate.preLoadViewArr addObject:pageViewController];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
             case LeftView:
                 pageViewController.view.tag = ExtremLeftView;
-                [appDelegate.preLoadViewArr addObject:pageViewController];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
                 
             case CurrentView:
                 pageViewController.view.tag = LeftView;
-                [appDelegate.preLoadViewArr addObject:pageViewController];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
             case RightView:
                 pageViewController.view.tag = CurrentView;
-                [appDelegate.preLoadViewArr addObject:pageViewController];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
                 
             case ExtremRightView:
                 pageViewController.view.tag = RightView;
-                [appDelegate.preLoadViewArr addObject:pageViewController];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
                 
             default:
@@ -113,10 +109,8 @@
 -(void)reLoadDataOnPrevView:(NSString *) changeTitleStr
                   withHtmlName:(NSString *)htmlNameStr{
     
-    AppDelegate    *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    NSArray   *objectArr = [appDelegate.preLoadViewArr copy];
-    [appDelegate.preLoadViewArr removeAllObjects];
+    NSArray   *objectArr = [[BibleSingletonManager sharedManager].preLoadViewArr copy];
+    [[BibleSingletonManager sharedManager].preLoadViewArr removeAllObjects];
     
     PageViewController   *pageViewController;
     
@@ -128,28 +122,28 @@
                 
             case ExtremLeftView:
                 pageViewController.view.tag = LeftView;
-                [appDelegate.preLoadViewArr addObject:pageViewController];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
             case LeftView:
                 pageViewController.view.tag = CurrentView;
-                [appDelegate.preLoadViewArr addObject:pageViewController];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 
                 break;
                 
             case CurrentView:
                 pageViewController.view.tag = RightView;
-                [appDelegate.preLoadViewArr addObject:pageViewController];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
             case RightView:
                 pageViewController.view.tag = ExtremRightView;
-                [appDelegate.preLoadViewArr addObject:pageViewController];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
                 
             case ExtremRightView:
                 pageViewController.view.tag = ExtremLeftView;
                  [pageViewController loadHtml:htmlNameStr];
                 [pageViewController.dataLabel setText:changeTitleStr];
-                [appDelegate.preLoadViewArr addObject:pageViewController];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
                 
             default:
@@ -172,9 +166,8 @@
     self = [super init];
     if (self) {
         // Create the data model.
-        
-        self.htmlPageIndexArr = [[NSArray arrayWithObjects:KDataArr] retain];
-        self.webViewpageData  = [[NSArray arrayWithObjects:HtmlArrName] retain];
+        self.htmlPageIndexArr = [[BibleSingletonManager sharedManager].pageIndexArr retain];
+        self.webViewpageData  = [[NSArray arrayWithObjects:HtmlArrName,nil] retain];
         
     }
     return self;

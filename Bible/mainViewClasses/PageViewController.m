@@ -29,9 +29,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        //NSLog(@"HTMLName = %@",htmlName);
+        NSLog(@"HTMLName = %@",htmlName);
        
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         CGRect   frameSize;
         
         frameSize = CGRectMake(0, 0, 768, 1024);
@@ -50,7 +49,8 @@
         self.webView = [[UIWebView alloc] init];
        [ self.webView setUserInteractionEnabled:NO];
         [self.webView.scrollView setScrollEnabled:NO];
-        if (appDelegate.isFirstTime) {
+        if ([BibleSingletonManager sharedManager].isFirstTime) {
+           
             [self.webView setDelegate:self];
         }
         [self.webView setScalesPageToFit:YES];
@@ -66,7 +66,7 @@
         NSURL *baseURL = [NSURL fileURLWithPath:path];
         [self.webView loadHTMLString:text baseURL:baseURL];
        
-        if (appDelegate.isFirstTime) {
+        if ([BibleSingletonManager sharedManager].isFirstTime) {
             frameSize = CGRectMake(0, 0, 768, 1024);
             imageView = [[UIImageView alloc] init];
             //[imageView setBackgroundColor:[UIColor redColor]];
@@ -86,12 +86,13 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     
-[UIView beginAnimations:nil context:nil];
-[UIView setAnimationDuration:0.2];
-[UIView setAnimationDelegate:self];
-[imageView setAlpha:0];
-//[imageView removeFromSuperview];
- [UIView commitAnimations];
+   [BibleSingletonManager sharedManager].isFirstTime = NO;
+    [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplaashView) withDuration:.2 withDelegate:self];
+    
+}
+
+-(void)removeSplaashView{
+    [imageView removeFromSuperview];
 }
 - (void)viewDidLoad
 {

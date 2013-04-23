@@ -12,7 +12,7 @@
     
     NSInteger    findPageIndex;
    BOOL pageAnimationFinished;
-    NSInteger m_currentIndex;
+   
 }
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;

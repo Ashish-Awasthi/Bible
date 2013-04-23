@@ -10,9 +10,6 @@
 
 #import "PageViewController.h"
 
-
-
-
 @implementation AppDelegate
 
 @synthesize preLoadViewArr;
@@ -29,10 +26,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //***************** Here true condition application lunch first time****************
+    [BibleSingletonManager sharedManager].isFirstTime = YES;
     
-    isFirstTime = YES;
-    preLoadViewArr = [[NSMutableArray alloc] init];
-
+    //*********Copy database file, if file not exist in cacheDirectory ****************
+    [DBConnectionManager createDatabaseCopyIfNotExist];
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
