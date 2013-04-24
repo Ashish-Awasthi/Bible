@@ -56,6 +56,9 @@
 		BC8071CE1727D627003D0AB5 /* Page_002.htm in Resources */ = {isa = PBXBuildFile; fileRef = BC8071CA1727D627003D0AB5 /* Page_002.htm */; };
 		BC8071CF1727D627003D0AB5 /* Page_003.htm in Resources */ = {isa = PBXBuildFile; fileRef = BC8071CB1727D627003D0AB5 /* Page_003.htm */; };
 		BC8071D01727D627003D0AB5 /* Page_005.htm in Resources */ = {isa = PBXBuildFile; fileRef = BC8071CC1727D627003D0AB5 /* Page_005.htm */; };
+		BC8071D41728096F003D0AB5 /* MenuSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8071D21728096D003D0AB5 /* MenuSliderViewController.m */; };
+		BC8071D51728096F003D0AB5 /* MenuSliderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8071D31728096E003D0AB5 /* MenuSliderViewController.xib */; };
+		BC8071D8172809A5003D0AB5 /* Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8071D7172809A4003D0AB5 /* Animator.m */; };
 		BC848C62171C26A2008F14E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC848C61171C26A2008F14E6 /* UIKit.framework */; };
 		BC848C64171C26A2008F14E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC848C63171C26A2008F14E6 /* Foundation.framework */; };
 		BC848C66171C26A2008F14E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC848C65171C26A2008F14E6 /* CoreGraphics.framework */; };
@@ -143,6 +146,11 @@
 		BC8071CA1727D627003D0AB5 /* Page_002.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Page_002.htm; sourceTree = "<group>"; };
 		BC8071CB1727D627003D0AB5 /* Page_003.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Page_003.htm; sourceTree = "<group>"; };
 		BC8071CC1727D627003D0AB5 /* Page_005.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Page_005.htm; sourceTree = "<group>"; };
+		BC8071D11728096D003D0AB5 /* MenuSliderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuSliderViewController.h; sourceTree = "<group>"; };
+		BC8071D21728096D003D0AB5 /* MenuSliderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuSliderViewController.m; sourceTree = "<group>"; };
+		BC8071D31728096E003D0AB5 /* MenuSliderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuSliderViewController.xib; sourceTree = "<group>"; };
+		BC8071D6172809A4003D0AB5 /* Animator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animator.h; sourceTree = "<group>"; };
+		BC8071D7172809A4003D0AB5 /* Animator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animator.m; sourceTree = "<group>"; };
 		BC848C5E171C26A2008F14E6 /* Bible.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bible.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC848C61171C26A2008F14E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BC848C63171C26A2008F14E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -250,6 +258,11 @@
 		BC1941D0171EB5FD002FF0E0 /* mainViewClasses */ = {
 			isa = PBXGroup;
 			children = (
+				BC8071D6172809A4003D0AB5 /* Animator.h */,
+				BC8071D7172809A4003D0AB5 /* Animator.m */,
+				BC8071D11728096D003D0AB5 /* MenuSliderViewController.h */,
+				BC8071D21728096D003D0AB5 /* MenuSliderViewController.m */,
+				BC8071D31728096E003D0AB5 /* MenuSliderViewController.xib */,
 				BC1941E3171EBC1A002FF0E0 /* ModelController.h */,
 				BC1941E4171EBC1A002FF0E0 /* ModelController.m */,
 				BC1941E5171EBC1A002FF0E0 /* RootViewController.h */,
@@ -540,6 +553,7 @@
 				BC8071CE1727D627003D0AB5 /* Page_002.htm in Resources */,
 				BC8071CF1727D627003D0AB5 /* Page_003.htm in Resources */,
 				BC8071D01727D627003D0AB5 /* Page_005.htm in Resources */,
+				BC8071D51728096F003D0AB5 /* MenuSliderViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +578,8 @@
 				BC80719B1727B953003D0AB5 /* selectedElement.js in Sources */,
 				BC80719E1727BA6C003D0AB5 /* jquery1_7_1.js in Sources */,
 				BC8071A71727BFC5003D0AB5 /* AudioClass.m in Sources */,
+				BC8071D41728096F003D0AB5 /* MenuSliderViewController.m in Sources */,
+				BC8071D8172809A5003D0AB5 /* Animator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "MenView.h"
+#import "MenuSliderViewController.h"
 @interface RootViewController : UIViewController <UIPageViewControllerDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate,MenViewDelegate>{
     
     NSInteger    findPageIndex;
    BOOL pageAnimationFinished;
     MenView *menuView;
+    MenuSliderViewController     *menuViewController;
+    
 }
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;

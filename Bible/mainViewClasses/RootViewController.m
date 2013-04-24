@@ -133,9 +133,12 @@
     
    CGRect frameSize = CGRectMake(538, -826, image.size.width, 973);
     
-    menuView = [[MenView alloc] initWithFrame:frameSize withDelegate:self];
-    [menuView setIsItShow:YES];
-    [self.view addSubview:menuView];
+    menuViewController = [[MenuSliderViewController alloc]initWithNibName:@"MenuSliderViewController" bundle:nil];
+    //[menuViewController.view setFrame:frameSize];
+    
+//    menuView = [[MenView alloc] initWithFrame:frameSize withDelegate:self];
+//    [menuView setIsItShow:YES];
+    [self.view addSubview:menuViewController.view];
 }
 
 
@@ -146,24 +149,32 @@
 
 -(void)showMenuView:(float ) dragheight{
     
-    if (dragheight<=0) {
-        dragheight = 0;
+    NSInteger   yPostion;
+    yPostion = menuView.frame.origin.y + dragheight;
+    
+   if (yPostion>=0) {
+        yPostion = 0;
     }
     [menuView setIsItShow:NO];
     CGRect   frameSize ;
     UIImage *image;
     image = [UIImage imageNamed:@"menu_bg.png"];
-    frameSize = CGRectMake(self.view.frame.size.width - image.size.width, dragheight, image.size.width, 973);
+    frameSize = CGRectMake(self.view.frame.size.width - image.size.width, yPostion, image.size.width, 973);
+    [menuView setFrame:frameSize];
+   
     
-    [[BibleSingletonManager sharedManager] animationWithFrame:frameSize withView:menuView withSelector:nil withDuration:MenuOptionAnimationDuration withDelegate:nil];
+    //[[BibleSingletonManager sharedManager] animationWithFrame:frameSize withView:menuView withSelector:nil withDuration:MenuOptionAnimationDuration withDelegate:nil];
     
 }
 
 -(void)hideMenuView:(float ) dragheight{
     
+    NSInteger   yPostion;
+    yPostion = menuView.frame.origin.y + dragheight;
+    
     [menuView setIsItShow:YES];
     CGRect   frameSize ;
-    frameSize = CGRectMake(538, -826, 230, 973);
+    frameSize = CGRectMake(538, yPostion, 230, 973);
     [[BibleSingletonManager sharedManager] animationWithFrame:frameSize withView:menuView withSelector:nil withDuration:MenuOptionAnimationDuration withDelegate:nil];
 }
 

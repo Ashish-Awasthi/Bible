@@ -128,11 +128,23 @@ nil
         [self addSubview:shareBtn];
        
 
-               
+        UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveView:)];
+        
+        panGesture.delegate = self;
+        
+        panGesture.maximumNumberOfTouches = 1;
+        
+        panGesture.minimumNumberOfTouches = 1;
+        
+        [self addGestureRecognizer:panGesture];
+        
+        [panGesture release];
+        
         
     }
     return self;
 }
+
 
 -(void)tabObHearItNowButton:(id)sender{
     NSLog(@"tabObHearItNowButton");
@@ -187,57 +199,64 @@ nil
     
 }
 
+-(void)moveView:(id)sender
+{
+    
+    [self bringSubviewToFront:[(UIPanGestureRecognizer*)sender view]];
+    
+	CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.superview];
+    // firstY = [[sender superview] frame].origin.y;
+    NSLog(@"firstX  %f",translatedPoint.y);
+	
+	if (translatedPoint.y<0)
+	{
+		if ([self.delegate respondsToSelector:@selector(hideMenuView:)]) {
+            [self.delegate hideMenuView:translatedPoint.y];
+        }
+	}
+	else if(translatedPoint.y>0)
+	{
+		if ([self.delegate respondsToSelector:@selector(showMenuView:)]) {
+            [self.delegate showMenuView:translatedPoint.y];
+        }
+	}
+}
+
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint location = [touch locationInView:self];
+    distance = location.y;
+    
+    if (self.isItShow) {
+        if (location.y >805) {
+            if ([self.delegate respondsToSelector:@selector(showMenuView:)]) {
+                //[self.delegate showMenuView:826.0];
+           }
+        }
+    }else{
+        if (location.y >805) {
+            if ([self.delegate respondsToSelector:@selector(hideMenuView:)]) {
+                //[self.delegate hideMenuView:-826.0];
+            }
+        }
+    }
+}
+
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     
     UITouch *touch = [[event allTouches] anyObject];
-    CGPoint location = [touch locationInView:touch.view];
-  
-    NSLog(@"%f",location.y);
-   /*
-    if (self.isItShow) {
-        if (location.y >805) {
-            if ([self.delegate performSelector:@selector(showMenuView:)]) {
-                [self.delegate showMenuView:0];
-            }
-        }
-    }else{
-        if (location.y >805) {
-            if ([self.delegate performSelector:@selector(hideMenuView:)]) {
-                [self.delegate hideMenuView:-803];
-            }
-        }
+    CGPoint touchLocation = [touch locationInView:self.superview];
+    
+    distance = touchLocation.y - distance;
+    
+    if ([self.delegate respondsToSelector:@selector(showMenuView:)]) {
+        //[self.delegate showMenuView:touchLocation.y];
     }
-   */
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
 
     
 }
--(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    UITouch *touch = [[event allTouches] anyObject];
-    CGPoint location = [touch locationInView:touch.view];
-    
-    
-    if (self.isItShow) {
-        if (location.y >805) {
-            if ([self.delegate performSelector:@selector(showMenuView:)]) {
-                [self.delegate showMenuView:0];
-            }
-        }
-    }else{
-        if (location.y >805) {
-            if ([self.delegate performSelector:@selector(hideMenuView:)]) {
-                [self.delegate hideMenuView:826.0];
-            }
-        }
-    }
-}
-
-
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

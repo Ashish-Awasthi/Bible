@@ -15,10 +15,10 @@
 
 @end
 @interface MenView : UIView{
-   
+    float     distance;
 }
 
-@property(nonatomic,assign) id <NSObject,MenViewDelegate> delegate;
+@property(nonatomic,assign) id <NSObject,MenViewDelegate,UIGestureRecognizerDelegate> delegate;
 @property(nonatomic,assign) BOOL       isItShow;
 - (id)initWithFrame:(CGRect)frame
        withDelegate:(id)delegate;
