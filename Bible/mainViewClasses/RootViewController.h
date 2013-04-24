@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface RootViewController : UIViewController <UIPageViewControllerDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate>{
+#import "MenView.h"
+@interface RootViewController : UIViewController <UIPageViewControllerDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate,MenViewDelegate>{
     
     NSInteger    findPageIndex;
    BOOL pageAnimationFinished;
-   
+    MenView *menuView;
 }
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;

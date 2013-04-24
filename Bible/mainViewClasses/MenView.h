@@ -10,12 +10,16 @@
 
 @protocol MenViewDelegate <NSObject>
 
--(void)hideMenuView;
+-(void)hideMenuView:(float ) dragheight;
+-(void)showMenuView:(float ) dragheight;
 
 @end
-@interface MenView : UIView
+@interface MenView : UIView{
+   
+}
 
 @property(nonatomic,assign) id <NSObject,MenViewDelegate> delegate;
+@property(nonatomic,assign) BOOL       isItShow;
 - (id)initWithFrame:(CGRect)frame
        withDelegate:(id)delegate;
 @end

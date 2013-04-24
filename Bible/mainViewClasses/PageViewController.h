@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenView.h"
-
-@interface PageViewController : UIViewController<UIWebViewDelegate>{
+#import <AVFoundation/AVFoundation.h>
+@interface PageViewController : UIViewController<UIWebViewDelegate,AVAudioPlayerDelegate>{
 
     UIImageView         *imageView;
     UIButton     *menuOptionBtn;
-    MenView     *menuView;
+    AVAudioPlayer     *audioPlayer;
+    BOOL           letItRead;
 }
 
 @property (strong, nonatomic) id dataObject;

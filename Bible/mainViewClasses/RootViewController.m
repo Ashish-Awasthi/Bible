@@ -29,32 +29,38 @@
 -(void)addPreLoadView{
     
 
-    PageViewController *viewController3 = [[PageViewController alloc]
-                                           initWithNibName:nil bundle:nil withTitle:@"1" withHtmlStr:@"Page_001.htm"];
-    
-    [viewController3.view setTag:CurrentView];
-    [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController3];
     
     PageViewController *viewController1 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"" withHtmlStr:@"Empty.htm"];
     [viewController1.view setTag:ExtremLeftView];
     [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController1];
+    RELEASE(viewController1);
     
     PageViewController *viewController2 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"" withHtmlStr:@"Empty.htm"];
     [viewController2.view setTag:LeftView];
     [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController2];
+    RELEASE(viewController2);
+    
+    PageViewController *viewController3 = [[PageViewController alloc]
+                                           initWithNibName:nil bundle:nil withTitle:@"1" withHtmlStr:@"Page_001.htm"];
+    
+    [viewController3.view setTag:CurrentView];
+    [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController3];
+      RELEASE(viewController3);
     
     PageViewController *viewController4 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"2" withHtmlStr:@"Page_002.htm"];
     [viewController4.view setTag:RightView];
     [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController4];
+    RELEASE(viewController4);
     
     PageViewController *viewController5 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"3" withHtmlStr:@"Page_003.htm"];
     
     [viewController5.view setTag:ExtremRightView];
     [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController5];
+    RELEASE(viewController5);
     
     
     
@@ -83,7 +89,7 @@
     NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
    
     NSString    *htmlName = ((PageData *)[pageData objectAtIndex:0])._pageHtmlName;
-     NSLog(@"%@====",htmlName);
+    // NSLog(@"%@====",htmlName);
     
     pageAnimationFinished = YES;
     [BibleSingletonManager sharedManager].pageIndexArr = [NSArray arrayWithObjects:KDataArr, nil];
@@ -122,7 +128,45 @@
         else if ([gesRecog isKindOfClass:[UIPanGestureRecognizer class]])
             gesRecog.delegate = self;
     }
+    
+   UIImage *image = [UIImage imageNamed:@"menu_bg.png"];
+    
+   CGRect frameSize = CGRectMake(538, -826, image.size.width, 973);
+    
+    menuView = [[MenView alloc] initWithFrame:frameSize withDelegate:self];
+    [menuView setIsItShow:YES];
+    [self.view addSubview:menuView];
 }
+
+
+
+
+#pragma maks
+#pragma MenuViewDelegate
+
+-(void)showMenuView:(float ) dragheight{
+    
+    if (dragheight<=0) {
+        dragheight = 0;
+    }
+    [menuView setIsItShow:NO];
+    CGRect   frameSize ;
+    UIImage *image;
+    image = [UIImage imageNamed:@"menu_bg.png"];
+    frameSize = CGRectMake(self.view.frame.size.width - image.size.width, dragheight, image.size.width, 973);
+    
+    [[BibleSingletonManager sharedManager] animationWithFrame:frameSize withView:menuView withSelector:nil withDuration:MenuOptionAnimationDuration withDelegate:nil];
+    
+}
+
+-(void)hideMenuView:(float ) dragheight{
+    
+    [menuView setIsItShow:YES];
+    CGRect   frameSize ;
+    frameSize = CGRectMake(538, -826, 230, 973);
+    [[BibleSingletonManager sharedManager] animationWithFrame:frameSize withView:menuView withSelector:nil withDuration:MenuOptionAnimationDuration withDelegate:nil];
+}
+
 
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
@@ -170,6 +214,7 @@
 }
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
+    
     pageAnimationFinished = YES;
 }
 - (void)didReceiveMemoryWarning

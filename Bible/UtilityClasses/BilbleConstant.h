@@ -10,6 +10,8 @@
 //
 
 
+#define MenuOptionAnimationDuration  0.7
+
 #define kCaches_DIR		[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 
 #define RELEASE(obj) if(obj != nil) { [obj release];}
