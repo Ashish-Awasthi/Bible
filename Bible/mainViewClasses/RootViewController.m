@@ -18,6 +18,7 @@
 @implementation RootViewController
 
 @synthesize modelController = _modelController;
+@synthesize pageAnimationFinished = _pageAnimationFinished;
 
 - (void)dealloc
 {
@@ -89,7 +90,7 @@
   //  NSString    *htmlName = ((PageData *)[pageData objectAtIndex:0])._pageHtmlName;
     // NSLog(@"%@====",htmlName);
     
-    pageAnimationFinished = YES;
+    self.pageAnimationFinished = YES;
     [BibleSingletonManager sharedManager].pageIndexArr = [NSArray arrayWithObjects:KDataArr, nil];
     
 	// Do any additional setup after loading the view, typically from a nib.
@@ -128,7 +129,8 @@
     }
     
     menuViewController = [[MenuSliderViewController alloc]initWithNibName:@"MenuSliderViewController" bundle:nil];
-    [self.view addSubview:menuViewController.view];
+    [menuViewController setDelegate:self];
+   [self.view addSubview:menuViewController.view];
 }
 
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
@@ -159,7 +161,7 @@
                 
             }
         }
-        if(pageAnimationFinished == NO){
+        if(self.pageAnimationFinished == NO){
             return NO;
         }
 
@@ -168,15 +170,16 @@
             return NO;
         }
                
-        pageAnimationFinished = NO;
+        self.pageAnimationFinished = NO;
     }
     return YES;
 }
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
     
-    pageAnimationFinished = YES;
+    self.pageAnimationFinished = YES;
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -234,4 +237,9 @@
     return UIPageViewControllerSpineLocationMid;
 }
 
+#pragma marks
+#pragma MenuSliderViewControllerDelegate-
+-(void)setPageFlip:(BOOL)isFlip{
+    self.pageAnimationFinished = isFlip;
+}
 @end

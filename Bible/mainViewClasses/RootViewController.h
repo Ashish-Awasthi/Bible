@@ -9,15 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "MenView.h"
 #import "MenuSliderViewController.h"
-@interface RootViewController : UIViewController <UIPageViewControllerDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate,MenViewDelegate>{
+@interface RootViewController : UIViewController <UIPageViewControllerDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate,MenViewDelegate,MenuSliderDelegate>{
     
     NSInteger    findPageIndex;
-   BOOL pageAnimationFinished;
     MenView *menuView;
     MenuSliderViewController     *menuViewController;
     
 }
-
+@property(nonatomic,assign) BOOL pageAnimationFinished;
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 -(void)loadNextTwoWebView:(BOOL )isItLoadNextView
                 withIndex:(NSInteger)index;

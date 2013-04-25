@@ -11,7 +11,7 @@
 
 #define kIPadPortraitScreenWidth 768
 #define kIPadPortraitScreenHeight 1004
-#define kCollapseMargin 24
+#define kCollapseMargin 140
 #define kRightMenuMargin 0
 #define kHorizontalMargin 50
 #define animationRepeatCount 1
@@ -19,6 +19,11 @@
 #define PageSwipedForwardNotification @"PageSwipedForwardNotification"
 #define PageSwipedBackwardNotification @"PageSwipedBackwardNotification"
 #define DeviceDisturbedNotification @"DeviceDisturbedNotification" 
+
+@protocol MenuSliderDelegate <NSObject>
+@optional
+-(void)setPageFlip:(BOOL)isFlip;
+@end
 
 @interface MenuSliderViewController : UIViewController <UIGestureRecognizerDelegate, AnimatorDelegate>
 {
@@ -28,20 +33,6 @@
 	
 	IBOutlet UIImageView *ribbonImage;
 	
-   	IBOutlet UILabel *galleryLabel;
-    
-    IBOutlet UILabel *authorsInterviewLabel1;
-    
-	IBOutlet UILabel *authorsInterviewLabel2;
-	
-    IBOutlet UILabel *shareLabel;
-    
-    IBOutlet UILabel *historyLabel;
-    
-    IBOutlet UILabel *breadCrumb;
-    
-    IBOutlet UITextField *breadCrumbCurrentPage;
-    
     id delegate;
     
     CGPoint touchStart;
@@ -51,8 +42,7 @@
     Animator *animatorObj;
 }
 
-@property(nonatomic,retain) IBOutlet UILabel *breadCrumb;
-@property(nonatomic,retain) IBOutlet UITextField *breadCrumbCurrentPage;
+@property(nonatomic, assign) id <NSObject,MenuSliderDelegate>delegate;
 
 -(IBAction)tabObHearItNowButton:(id)sender;
 -(IBAction)tabOnAudioButton:(id)sender;
@@ -70,13 +60,7 @@
 -(void)initializeAnimation;
 -(void)registerForNotification;
 -(void)UnregisterForNotification;
--(BOOL)shouldMakeBreadCrumbEditableOn:(UITouch *)touch;
--(void)makeBreadCrumbEditable;
--(void)makeBreadCrumbNonEditable;
 @property(nonatomic)BOOL isExpanded;
 @property(nonatomic)BOOL isRibbonAnimating;
-@property(nonatomic, retain) id delegate;
-@end
-@protocol MenuSliderDelegate <NSObject>
--(BOOL)removeNotesAndShareMenu;
+
 @end

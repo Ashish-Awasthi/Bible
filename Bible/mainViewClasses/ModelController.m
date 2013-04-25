@@ -168,8 +168,8 @@
         // Create the data model.
         self.htmlPageIndexArr = [[BibleSingletonManager sharedManager].pageIndexArr retain];
         self.webViewpageData  = [[NSArray arrayWithObjects:HtmlArrName,nil] retain];
-        NSLog(@"===%@",self.htmlPageIndexArr);
-        NSLog(@"===%@",self.webViewpageData);
+     //   NSLog(@"===%@",self.htmlPageIndexArr);
+        //NSLog(@"===%@",self.webViewpageData);
     }
     return self;
 }
