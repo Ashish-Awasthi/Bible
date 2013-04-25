@@ -28,8 +28,6 @@
 
 -(void)addPreLoadView{
     
-
-    
     PageViewController *viewController1 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"" withHtmlStr:@"Empty.htm"];
     [viewController1.view setTag:ExtremLeftView];
@@ -86,9 +84,9 @@
     [self addPreLoadView];
     [super viewDidLoad];
     
-    NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
+    //NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
    
-    NSString    *htmlName = ((PageData *)[pageData objectAtIndex:0])._pageHtmlName;
+  //  NSString    *htmlName = ((PageData *)[pageData objectAtIndex:0])._pageHtmlName;
     // NSLog(@"%@====",htmlName);
     
     pageAnimationFinished = YES;
@@ -129,55 +127,9 @@
             gesRecog.delegate = self;
     }
     
-   UIImage *image = [UIImage imageNamed:@"menu_bg.png"];
-    
-   CGRect frameSize = CGRectMake(538, -826, image.size.width, 973);
-    
     menuViewController = [[MenuSliderViewController alloc]initWithNibName:@"MenuSliderViewController" bundle:nil];
-    //[menuViewController.view setFrame:frameSize];
-    
-//    menuView = [[MenView alloc] initWithFrame:frameSize withDelegate:self];
-//    [menuView setIsItShow:YES];
     [self.view addSubview:menuViewController.view];
 }
-
-
-
-
-#pragma maks
-#pragma MenuViewDelegate
-
--(void)showMenuView:(float ) dragheight{
-    
-    NSInteger   yPostion;
-    yPostion = menuView.frame.origin.y + dragheight;
-    
-   if (yPostion>=0) {
-        yPostion = 0;
-    }
-    [menuView setIsItShow:NO];
-    CGRect   frameSize ;
-    UIImage *image;
-    image = [UIImage imageNamed:@"menu_bg.png"];
-    frameSize = CGRectMake(self.view.frame.size.width - image.size.width, yPostion, image.size.width, 973);
-    [menuView setFrame:frameSize];
-   
-    
-    //[[BibleSingletonManager sharedManager] animationWithFrame:frameSize withView:menuView withSelector:nil withDuration:MenuOptionAnimationDuration withDelegate:nil];
-    
-}
-
--(void)hideMenuView:(float ) dragheight{
-    
-    NSInteger   yPostion;
-    yPostion = menuView.frame.origin.y + dragheight;
-    
-    [menuView setIsItShow:YES];
-    CGRect   frameSize ;
-    frameSize = CGRectMake(538, yPostion, 230, 973);
-    [[BibleSingletonManager sharedManager] animationWithFrame:frameSize withView:menuView withSelector:nil withDuration:MenuOptionAnimationDuration withDelegate:nil];
-}
-
 
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
@@ -200,21 +152,18 @@
                 currentIndex = 0;
             }
                         
-        } else if (distance.x < 0) { //left
+         } else if (distance.x < 0) { //left
              currentIndex++;
             if (currentIndex>=[indexArr count]+1) {
                 currentIndex = [indexArr count]+1;
                 
             }
         }
-        
         if(pageAnimationFinished == NO){
-            pageAnimationFinished = YES;
             return NO;
         }
 
         NSLog(@"=====%d",currentIndex);
-        
         if((currentIndex)<= 0 || currentIndex >= [indexArr count]+1){
             return NO;
         }

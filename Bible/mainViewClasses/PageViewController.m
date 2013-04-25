@@ -31,13 +31,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        //[audioPlayer play];
-        
-        NSLog(@"HTMLName = %@",htmlName);
-       
         CGRect   frameSize;
         
-        UIImage    *image;
+       // UIImage    *image;
         
         frameSize = CGRectMake(0, 0, 768, 1024);
         
@@ -53,8 +49,12 @@
         frameSize = CGRectMake(0, 0, 768, 1024);
         
         self.webView = [[UIWebView alloc] init];
-        //[self.webView setUserInteractionEnabled:NO];
-        [self.webView.scrollView setScrollEnabled:NO];
+        for (UIView   *subViews in [self.webView subviews]) {
+            if ([subViews isKindOfClass:[UIScrollView class]]) {
+               UIScrollView    *scrollView = (UIScrollView *)subViews;
+                [scrollView setScrollEnabled:NO];
+            }
+        }
         [self.webView setDelegate:self];
         [self.webView setScalesPageToFit:YES];
         [self.webView setBackgroundColor:[UIColor clearColor]];
