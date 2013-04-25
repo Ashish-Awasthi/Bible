@@ -23,13 +23,14 @@
 
 @interface BibleSingletonManager : NSObject<UIPopoverControllerDelegate>{
     
-   }
+}
 
 
 @property(nonatomic,retain) NSMutableArray     *preLoadViewArr;
 @property(nonatomic,retain) NSArray             *pageIndexArr;
-@property(nonatomic,assign)BOOL  isFirstTime;
-
+@property(nonatomic,assign)BOOL                isFirstTime;
+@property(nonatomic,assign)BOOL                 rightToLeft;
+@property(nonatomic,assign)BOOL                 leftToRight;
 @property(nonatomic,assign) id delegate;
 
 //@property(nonatomic,retain)Controller    *_parseDataController;

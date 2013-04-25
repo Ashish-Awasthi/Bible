@@ -100,7 +100,7 @@
 
 -(void)loadHtml:(NSString *)htmlName{
     
-    NSLog(@"%@",htmlName);
+   // NSLog(@"%@",htmlName);
     
     NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
                                                                                pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
@@ -143,19 +143,19 @@
     
     if(navigationType ==UIWebViewNavigationTypeLinkClicked)
 	{
-        
-         NSInteger   firstSentenceStartTime = 0;
-         NSInteger   firstSentencEndTime = 2;
-        
-        NSInteger   secondSentenceStartTime = 4;
-        NSInteger   secondSentencEndTime = 6;
-        
-        NSInteger   thirdSentenceStartTime = 8;
-        NSInteger   thirdSentencEndTime = 14;
+//        
+//         NSInteger   firstSentenceStartTime = 0;
+//         NSInteger   firstSentencEndTime = 2;
+//        
+//        NSInteger   secondSentenceStartTime = 4;
+//        NSInteger   secondSentencEndTime = 6;
+//        
+//        NSInteger   thirdSentenceStartTime = 8;
+//        NSInteger   thirdSentencEndTime = 14;
         
         NSString *selectedId   = [NSString stringWithFormat:@"selectedId"];
         NSString * selectedIdString = [webView stringByEvaluatingJavaScriptFromString:selectedId];
-        NSInteger   audioNumber = [[selectedIdString componentsSeparatedByString:@"_"] lastObject];
+        //NSInteger   audioNumber = [[selectedIdString componentsSeparatedByString:@"_"] lastObject];
         
         [self audioPlay:@"p3_120312.wav"];
         //[self performSelector:@selector(audioStop) withObject:nil afterDelay:2];

@@ -19,6 +19,9 @@
 
 @synthesize isFirstTime;
 @synthesize delegate;
+@synthesize rightToLeft;
+@synthesize leftToRight;
+
 //@synthesize _parseDataController;
 static BibleSingletonManager* _sharedManager; // self
 

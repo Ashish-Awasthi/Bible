@@ -146,30 +146,28 @@
         UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
         CGPoint distance = [panGes translationInView:self.view];
         
-        
-        if (distance.x > 0) { // right
+        if (distance.x > 0) { // Here we check user swaped left to right
             NSLog(@"user swiped right");
+            [BibleSingletonManager sharedManager].leftToRight = YES;
+            [BibleSingletonManager sharedManager].rightToLeft = NO;
             currentIndex--;
-            if (currentIndex<=0) {
-                currentIndex = 0;
+            if (currentIndex<=0) {// Here check this is first page>>>>>>>>>>
+               return NO;
             }
                         
-         } else if (distance.x < 0) { //left
+          } else if (distance.x < 0) { //Here we check user swaped right to left 
+               NSLog(@"user swiped Left");
+             [BibleSingletonManager sharedManager].leftToRight =  NO;
+             [BibleSingletonManager sharedManager].rightToLeft = YES;
              currentIndex++;
-            if (currentIndex>=[indexArr count]+1) {
-                currentIndex = [indexArr count]+1;
-                
+            if (currentIndex>=[indexArr count]+1) {//Here check this is last page>>>>>>>>>>
+                 return NO;
             }
-        }
+          }
         if(self.pageAnimationFinished == NO){
             return NO;
         }
 
-        NSLog(@"=====%d",currentIndex);
-        if((currentIndex)<= 0 || currentIndex >= [indexArr count]+1){
-            return NO;
-        }
-               
         self.pageAnimationFinished = NO;
     }
     return YES;

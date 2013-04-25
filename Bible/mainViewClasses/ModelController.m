@@ -179,12 +179,15 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-     NSLog(@"Right flip");
-    
+   
+if ([BibleSingletonManager sharedManager].leftToRight) {
+        
+        NSLog(@"Right flip");
+        
     PageViewController    *precurrentViewController = [self getViewControllerFrameArr:CurrentView];
     NSString    *findPrevValueStr = precurrentViewController.dataLabel.text;
     
-    NSLog(@"%@",findPrevValueStr);
+    //NSLog(@"%@",findPrevValueStr);
 
     
     if ([findPrevValueStr integerValue] == 2 || [findPrevValueStr integerValue] == 3) {
@@ -204,11 +207,16 @@
         
         PageViewController    *pageViewControlle = [self getViewControllerFrameArr:CurrentView];
         return pageViewControlle;
-    }
+      }
+  }else{
+    return NO;
+  }
+
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
+    if ([BibleSingletonManager sharedManager].rightToLeft) {
     NSLog(@"Left flip");
     firstTimeRightFlip = NO;
     
@@ -233,8 +241,11 @@
         }
     }
     
-   PageViewController    *pageViewControlle = [self getViewControllerFrameArr:CurrentView];
-    return pageViewControlle;
+   PageViewController    *pageViewController = [self getViewControllerFrameArr:CurrentView];
+    return pageViewController;
+    }else{
+        return NO;
+    }
 }
 
 
