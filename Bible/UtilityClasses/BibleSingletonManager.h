@@ -25,13 +25,14 @@
     
 }
 
-
+@property(nonatomic,assign)NSInteger   currentIndex;
 @property(nonatomic,retain) NSMutableArray     *preLoadViewArr;
 @property(nonatomic,retain) NSArray             *pageIndexArr;
 @property(nonatomic,assign)BOOL                isFirstTime;
 @property(nonatomic,assign)BOOL                 rightToLeft;
 @property(nonatomic,assign)BOOL                 leftToRight;
 @property(nonatomic,assign) id delegate;
+@property(nonatomic,retain) id modelViewController;
 
 //@property(nonatomic,retain)Controller    *_parseDataController;
 

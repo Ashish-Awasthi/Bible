@@ -13,6 +13,7 @@
 @interface RootViewController ()
 @property (readonly, strong, nonatomic) ModelController *modelController;
 -(void)addPreLoadView;
+-(void)setMenuSliderViewHidden:(BOOL) isHidden;
 @end
 
 @implementation RootViewController
@@ -130,7 +131,8 @@
     
     menuViewController = [[MenuSliderViewController alloc]initWithNibName:@"MenuSliderViewController" bundle:nil];
     [menuViewController setDelegate:self];
-   [self.view addSubview:menuViewController.view];
+    [self.view addSubview:menuViewController.view];
+    [self setMenuSliderViewHidden:YES];
 }
 
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
@@ -151,6 +153,7 @@
             [BibleSingletonManager sharedManager].leftToRight = YES;
             [BibleSingletonManager sharedManager].rightToLeft = NO;
             currentIndex--;
+            
             if (currentIndex<=0) {// Here check this is first page>>>>>>>>>>
                return NO;
             }
@@ -159,22 +162,53 @@
                NSLog(@"user swiped Left");
              [BibleSingletonManager sharedManager].leftToRight =  NO;
              [BibleSingletonManager sharedManager].rightToLeft = YES;
-             currentIndex++;
+              currentIndex++;
+                           
             if (currentIndex>=[indexArr count]+1) {//Here check this is last page>>>>>>>>>>
                  return NO;
-            }
-          }
-        if(self.pageAnimationFinished == NO){
+              }
+             }
+        
+          if(self.pageAnimationFinished == NO){
+              
+               swipeCountIfAnimationNo++;//TODO:- This Hang Application 
+              if (swipeCountIfAnimationNo>2) {
+                  self.pageAnimationFinished = YES;
+                  swipeCountIfAnimationNo = 0;
+              }
             return NO;
-        }
+           }
 
-        self.pageAnimationFinished = NO;
+         self.pageAnimationFinished = NO;
     }
     return YES;
 }
+
+
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
+    if (completed) {
+        NSLog(@"YES");
+        if ([BibleSingletonManager sharedManager].rightToLeft) {
+            [BibleSingletonManager sharedManager].currentIndex++;
+            [[BibleSingletonManager sharedManager].modelViewController loadNextView];
+        }
+        if ([BibleSingletonManager sharedManager].leftToRight) {
+            [BibleSingletonManager sharedManager].currentIndex--;
+            [[BibleSingletonManager sharedManager].modelViewController loadPrevView];
+            
+        }
+        
+    }else {
+        NSLog(@"NO");
+    }
+    NSLog(@"[BibleSingletonManager sharedManager].currentIndex %d",[BibleSingletonManager sharedManager].currentIndex);
     
+    if ([BibleSingletonManager sharedManager].currentIndex>=2) {
+        [self setMenuSliderViewHidden:NO];
+    }else{
+      [self setMenuSliderViewHidden:YES];
+    }
     self.pageAnimationFinished = YES;
 }
 
@@ -233,6 +267,15 @@
 
 
     return UIPageViewControllerSpineLocationMid;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
+{
+    return viewController;
+    
+}
+-(void)setMenuSliderViewHidden:(BOOL) isHidden{
+    [menuViewController.view setHidden:isHidden];
 }
 
 #pragma marks

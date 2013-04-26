@@ -16,11 +16,13 @@
 
 @synthesize preLoadViewArr;
 @synthesize  pageIndexArr;
-
 @synthesize isFirstTime;
 @synthesize delegate;
 @synthesize rightToLeft;
 @synthesize leftToRight;
+@synthesize currentIndex;
+@synthesize modelViewController;
+
 
 //@synthesize _parseDataController;
 static BibleSingletonManager* _sharedManager; // self
@@ -51,6 +53,8 @@ static BibleSingletonManager* _sharedManager; // self
     {
        
         preLoadViewArr = [[NSMutableArray alloc] init];
+       
+        
         pageIndexArr = [[NSArray alloc] init];
         
        // _parseDataController = [[Controller alloc] init];

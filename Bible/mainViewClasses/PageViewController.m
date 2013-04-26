@@ -53,6 +53,7 @@
             if ([subViews isKindOfClass:[UIScrollView class]]) {
                UIScrollView    *scrollView = (UIScrollView *)subViews;
                 [scrollView setScrollEnabled:NO];
+                [scrollView setDelegate:self];
             }
         }
         [self.webView setDelegate:self];
@@ -83,9 +84,10 @@
     return self;
 }
 
-
-- (void)dragMoving:(UIControl *)c withEvent:ev {
-    NSLog(@"dragMoving......");
+#pragma marks
+#pragma UIScrollView Delegate-
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return nil;
 }
 
 -(void)removeSplaashView{

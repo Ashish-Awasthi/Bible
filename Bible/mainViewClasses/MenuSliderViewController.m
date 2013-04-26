@@ -154,6 +154,10 @@
 
 -(void)move:(id)sender 
 {
+    
+    if ([self.delegate respondsToSelector:@selector(setPageFlip:)]) {
+        [self.delegate setPageFlip:YES];
+    }
     [self.view bringSubviewToFront:[(UIPanGestureRecognizer*)sender view]];
 
 	CGPoint translatedPoint = [(UIPanGestureRecognizer*)sender translationInView:self.view.superview];

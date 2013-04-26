@@ -166,6 +166,7 @@
     self = [super init];
     if (self) {
         // Create the data model.
+        [BibleSingletonManager sharedManager].modelViewController = self;
         self.htmlPageIndexArr = [[BibleSingletonManager sharedManager].pageIndexArr retain];
         self.webViewpageData  = [[NSArray arrayWithObjects:HtmlArrName,nil] retain];
      //   NSLog(@"===%@",self.htmlPageIndexArr);
@@ -180,73 +181,70 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
    
-if ([BibleSingletonManager sharedManager].leftToRight) {
-        
-        NSLog(@"Right flip");
-        
-    PageViewController    *precurrentViewController = [self getViewControllerFrameArr:CurrentView];
-    NSString    *findPrevValueStr = precurrentViewController.dataLabel.text;
+    if ([BibleSingletonManager sharedManager].leftToRight) {
+    PageViewController    *leftPageViewController = [self getViewControllerFrameArr:LeftView];
     
-    //NSLog(@"%@",findPrevValueStr);
-
-    
-    if ([findPrevValueStr integerValue] == 2 || [findPrevValueStr integerValue] == 3) {
-        [self reLoadDataOnPrevView:@"" withHtmlName:@"Empty.htm"];
-        PageViewController    *pageViewControlle = [self getViewControllerFrameArr:CurrentView];
-        return pageViewControlle;
-    }
-    
-    if ([findPrevValueStr intValue] == 1) {
-        return nil;
+    if (leftPageViewController) {
+        return leftPageViewController;
     }else{
-        NSInteger    finPrevIndex;
-        finPrevIndex = [findPrevValueStr integerValue]-4;
-       // NSLog(@"====== %@",[self.htmlPageIndexArr objectAtIndex:finPrevIndex]);
-        
-        [self reLoadDataOnPrevView:[self.htmlPageIndexArr objectAtIndex:finPrevIndex] withHtmlName:[self.webViewpageData objectAtIndex:finPrevIndex]];
-        
-        PageViewController    *pageViewControlle = [self getViewControllerFrameArr:CurrentView];
-        return pageViewControlle;
-      }
-  }else{
+        return NO;
+    }
+   }
     return NO;
-  }
-
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
+        
     if ([BibleSingletonManager sharedManager].rightToLeft) {
-    NSLog(@"Left flip");
+    //NSLog(@"Left flip");
     firstTimeRightFlip = NO;
+
+    PageViewController    *pageViewController = [self getViewControllerFrameArr:RightView];
+        if (pageViewController) {
+             return pageViewController;
+        }else{
+           return NO;
+        }
+   
+    }else{
+        return NO;
+    }
+}
+
+-(void)loadPrevView{
+    
+    PageViewController    *precurrentViewController = [self getViewControllerFrameArr:CurrentView];
+    NSString    *findPrevValueStr = precurrentViewController.dataLabel.text;
+    
+    if ([findPrevValueStr integerValue] == 2 || [findPrevValueStr integerValue] == 3) {
+        [self reLoadDataOnPrevView:@"" withHtmlName:@"Empty.htm"];
+        return;
+    }
+     NSInteger    finPrevIndex;
+    finPrevIndex = [findPrevValueStr integerValue]-4;
+        
+    [self reLoadDataOnPrevView:[self.htmlPageIndexArr objectAtIndex:finPrevIndex] withHtmlName:[self.webViewpageData objectAtIndex:finPrevIndex]];
+        
+    
+}
+
+-(void)loadNextView{
     
     PageViewController    *previousViewController = (PageViewController *)[self getViewControllerFrameArr:CurrentView];
     
     NSString    *nextValueStr = previousViewController.dataLabel.text;
     NSInteger    findIndex = [nextValueStr integerValue]+2;
     
-    
-   // NSLog(@"%@",nextValueStr);
-
-   // NSLog(@" nextValueStr %d",[nextValueStr integerValue]+2);
-    
     if (findIndex<[self.webViewpageData count]) {
-        [self reLoadDataOnNextView:[self.htmlPageIndexArr objectAtIndex:findIndex]
-                         withHtmlName:[self.webViewpageData objectAtIndex:findIndex]];
+            [self reLoadDataOnNextView:[self.htmlPageIndexArr objectAtIndex:findIndex]
+                             withHtmlName:[self.webViewpageData objectAtIndex:findIndex]];
     }else{
         if (findIndex == [self.htmlPageIndexArr count] || findIndex == [self.htmlPageIndexArr count]+1 ) {
-            [self reLoadDataOnNextView:@"" withHtmlName:@"Empty.htm"];
+                [self reLoadDataOnNextView:@"" withHtmlName:@"Empty.htm"];
         }else{
-            return nil;
+              
         }
-    }
-    
-   PageViewController    *pageViewController = [self getViewControllerFrameArr:CurrentView];
-    return pageViewController;
-    }else{
-        return NO;
-    }
+        }
 }
-
-
 @end

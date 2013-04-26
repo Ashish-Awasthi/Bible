@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-@interface PageViewController : UIViewController<UIWebViewDelegate,AVAudioPlayerDelegate>{
+@interface PageViewController : UIViewController<UIWebViewDelegate,
+AVAudioPlayerDelegate,UIScrollViewDelegate>{
 
     UIImageView         *imageView;
     UIButton     *menuOptionBtn;
