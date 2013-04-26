@@ -118,6 +118,8 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     [BibleSingletonManager sharedManager].isFirstTime = NO;
+    
+    [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
     if (imageView) {
          [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplashView) withDuration:.2 withDelegate:self];
     }

@@ -104,6 +104,8 @@
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
+   
+    
     if ([self.delegate respondsToSelector:@selector(setPageFlip:)]) {
         [self.delegate setPageFlip:YES];
     }

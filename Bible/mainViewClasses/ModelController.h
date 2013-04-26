@@ -20,5 +20,6 @@
 @property(nonatomic,retain) id viewController;
 - (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard;
 - (NSUInteger)indexOfViewController:(DataViewController *)viewController;
-
+-(void)loadNextView;
+-(void)loadPrevView;
 @end

@@ -221,12 +221,15 @@
         [self reLoadDataOnPrevView:@"" withHtmlName:@"Empty.htm"];
         return;
     }
+    
      NSInteger    finPrevIndex;
     finPrevIndex = [findPrevValueStr integerValue]-4;
-        
-    [self reLoadDataOnPrevView:[self.htmlPageIndexArr objectAtIndex:finPrevIndex] withHtmlName:[self.webViewpageData objectAtIndex:finPrevIndex]];
-        
     
+    if (finPrevIndex>=0) {
+    [self reLoadDataOnPrevView:[self.htmlPageIndexArr objectAtIndex:finPrevIndex] withHtmlName:[self.webViewpageData objectAtIndex:finPrevIndex]];
+    }
+  
+
 }
 
 -(void)loadNextView{

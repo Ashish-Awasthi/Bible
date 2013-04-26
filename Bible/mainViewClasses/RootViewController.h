@@ -14,7 +14,7 @@
     NSInteger    findPageIndex;
     MenView *menuView;
     MenuSliderViewController     *menuViewController;
-    NSInteger    swipeCountIfAnimationNo;
+    BOOL           isItTouchInMenuView;
 }
 @property(nonatomic,assign) BOOL pageAnimationFinished;
 @property (strong, nonatomic) UIPageViewController *pageViewController;

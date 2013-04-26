@@ -1,86 +1,90 @@
 @font-face{
 	font-family: "american_typewriter";
-	src: url(fonts/american_typewriter.ttf);
+	src: url(american_typewriter.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
+.american_typewriter
+{
+	font-family: "american_typewriter";
 
+}
 
 @font-face{
 	font-family: "FuturaStd-Medium";
-	src: url(fonts/FuturaStd-Medium.otf);
+	src: url(FuturaStd-Medium.otf);
 	font-style: normal;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-Black";
-	src: url(fonts/Gotham-Black.ttf);
+	src: url(Gotham-Black.ttf);
 	font-style: black;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-BlackItalic";
-	src: url(fonts/Gotham-BlackItalic.ttf);
+	src: url(Gotham-BlackItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-Bold";
-	src: url(fonts/Gotham-Bold.ttf);
+	src: url(Gotham-Bold.ttf);
 	font-style: normal;
 	font-weight:bold;
 }
 @font-face{
 	font-family: "Gotham-BoldItalic";
-	src: url(fonts/Gotham-BoldItalic.ttf);
+	src: url(Gotham-BoldItalic.ttf);
 	font-style: italic;
 	font-weight:bold;
 }
 @font-face{
 	font-family: "Gotham-Book";
-	src: url(fonts/Gotham-Book.ttf);
+	src: url(Gotham-Book.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-BookItalic";
-	src: url(fonts/Gotham-BookItalic.ttf);
+	src: url(Gotham-BookItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-Light";
-	src: url(fonts/Gotham-Light.ttf);
+	src: url(Gotham-Light.ttf);
 	font-style: normal;
 	font-weight:light;
 }
 @font-face{
 	font-family: "Gotham-LightItalic";
-	src: url(fonts/Gotham-LightItalic.ttf);
+	src: url(Gotham-LightItalic.ttf);
 	font-style: italic;
 	font-weight:light;
 }
 @font-face{
 	font-family: "Gotham-Medium";
-	src: url(fonts/Gotham-Medium.ttf);
+	src: url(Gotham-Medium.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-MediumItalic";
-	src: url(fonts/Gotham-MediumItalic.ttf);
+	src: url(Gotham-MediumItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-Thin";
-	src: url(fonts/Gotham-Thin.ttf);
+	src: url(Gotham-Thin.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-ThinItalic";
-	src: url(fonts/Gotham-ThinItalic.ttf);
+	src: url(Gotham-ThinItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
