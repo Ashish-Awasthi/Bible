@@ -11,6 +11,7 @@
 
 
 #define MenuOptionAnimationDuration  0.7
+#define  ShowMenuOptionNumberPage  2
 
 #define kCaches_DIR		[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 

@@ -7,13 +7,11 @@
 //
 
 #import "RootViewController.h"
-#import "ModelController.h"
 #import "PageViewController.h"
 
 @interface RootViewController ()
 @property (readonly, strong, nonatomic) ModelController *modelController;
 -(void)addPreLoadView;
--(void)setMenuSliderViewHidden:(BOOL) isHidden;
 @end
 
 @implementation RootViewController
@@ -86,6 +84,7 @@
     [self addPreLoadView];
     [super viewDidLoad];
     
+    
     //NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
    
   //  NSString    *htmlName = ((PageData *)[pageData objectAtIndex:0])._pageHtmlName;
@@ -137,7 +136,10 @@
 
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
-
+    [self.view.window setUserInteractionEnabled:NO];
+    
+    [self  performSelector:@selector(setWindowUserinteractionEnable) withObject:nil afterDelay:.7];
+    
     NSArray * indexArr = [BibleSingletonManager sharedManager].pageIndexArr;
     
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
@@ -145,96 +147,80 @@
         UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
         CGPoint distance = [panGes translationInView:self.view];
         
+        PageViewController    *currentViewController = (PageViewController *)[self getViewControllerFrameArr:CurrentView];
+        NSString    *currentPagePostion = currentViewController.dataLabel.text;
+        currentPosition = [currentPagePostion intValue];
+        
+        [self setMenuSliderViewHidden:NO];
         if (distance.x > 0) {
+            //NSLog(@"currentPagePostion %@", currentPagePostion);
              [self setMenuSliderViewHidden:YES];// Here we check user swaped left to right
-           // NSLog(@"user swiped right");
             [BibleSingletonManager sharedManager].leftToRight = YES;
             [BibleSingletonManager sharedManager].rightToLeft = NO;
-            if ([BibleSingletonManager sharedManager].currentIndex<=0) {// Here check this is first page>>>>>>>>>>
-             [BibleSingletonManager sharedManager].currentIndex = 0;
+
+            if ([currentPagePostion intValue] <= 1) {
+                // NSLog(@"No swape remaing left");// Here check this is first page>>>>>>>>>>
                return NO;
-            }
-                        
-          } else if (distance.x < 0) { //Here we check user swaped right to left
+             }
+            } else if (distance.x < 0) { //Here we check user swaped right to left
            // NSLog(@"user swiped Left");
-              if (isItTouchInMenuView) {
-                   [self setMenuSliderViewHidden:NO];
-                  isItTouchInMenuView = NO;
-              }else{
-                   [self setMenuSliderViewHidden:YES];
-              }
-           
+                 NSLog(@"======= touch swape view left.....");
              [BibleSingletonManager sharedManager].leftToRight =  NO;
              [BibleSingletonManager sharedManager].rightToLeft = YES;
-                           
-            if ([BibleSingletonManager sharedManager].currentIndex>=[indexArr count]-1) {//Here check this is last page>>>>>>>>>>
+              
+            if ([currentPagePostion intValue] == [indexArr count]) {//Here check this is last page>>>>>>>>>>
                 [self setMenuSliderViewHidden:NO];
                  return NO;
               }
-          }else{
-              if ([BibleSingletonManager sharedManager].currentIndex<=0) {// Here check this is first page>>>>>>>>>>
-                  [BibleSingletonManager sharedManager].currentIndex = 0;
-                  return NO;
-              }
-
-          }
-        
-          if(self.pageAnimationFinished == NO){
-               if ([BibleSingletonManager sharedManager].currentIndex>=[indexArr count]-1 || [BibleSingletonManager sharedManager].currentIndex<=0) {
-                    self.pageAnimationFinished = NO;
-                }else{
-                 self.pageAnimationFinished = YES;
-                }
-            return NO;
+            }else{// This condition used for user niether swipt left or right
+                return NO;
             }
-
-         self.pageAnimationFinished = NO;
-    }
+        
+          if (self.pageAnimationFinished == NO) {
+              self.pageAnimationFinished = YES;
+              return NO;
+           }
+           self.pageAnimationFinished = NO;
+        }
+    
     return YES;
 }
 
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
-     NSArray * indexArr = [BibleSingletonManager sharedManager].pageIndexArr;
+    // NSArray * indexArr = [BibleSingletonManager sharedManager].pageIndexArr;
+    
+    self.pageAnimationFinished = YES;
+    
     if (completed) {
-        NSLog(@"YES");
-        self.pageAnimationFinished = YES;
-        if ([BibleSingletonManager sharedManager].rightToLeft) {
-            [BibleSingletonManager sharedManager].currentIndex++;
-            if ([BibleSingletonManager sharedManager].currentIndex >= [indexArr count]-1) {
-                [BibleSingletonManager sharedManager].currentIndex = [indexArr count];
-            }
+       // NSLog(@"flip complete page");
+         if ([BibleSingletonManager sharedManager].rightToLeft) {
             [[BibleSingletonManager sharedManager].modelViewController loadNextView];
-        }
-        if ([BibleSingletonManager sharedManager].leftToRight) {
-
-          [BibleSingletonManager sharedManager].currentIndex--;
-           
-         PageViewController    *precurrentViewController = [self getViewControllerFrameArr:CurrentView];
-          NSString    *findPrevValueStr = precurrentViewController.dataLabel.text;
-            if ([findPrevValueStr integerValue] == 2 && [BibleSingletonManager sharedManager].currentIndex == 1) {
-                [BibleSingletonManager sharedManager].currentIndex = 0;
-            }
-            
-          [[BibleSingletonManager sharedManager].modelViewController loadPrevView];
-            
-        }
+          }
         
-    }else {
-        NSLog(@"NO");
+         if ([BibleSingletonManager sharedManager].leftToRight) {
+          [[BibleSingletonManager sharedManager].modelViewController loadPrevView];
+         }
+        
+     }else{
+        // NSLog(@"NOT flip complete page");
+     }
+    if ([BibleSingletonManager sharedManager].rightToLeft) {
+        if (currentPosition >= ShowMenuOptionNumberPage) {
+            [self setMenuSliderViewHidden:NO];
+        }else{
+            [self setMenuSliderViewHidden:YES];
+        }
+    }else if([BibleSingletonManager sharedManager].leftToRight){
+        
+        if (currentPosition >3) {
+            [self setMenuSliderViewHidden:NO];
+        }else{
+            [self setMenuSliderViewHidden:YES];
+        }
     }
-    
-    if ([BibleSingletonManager sharedManager].currentIndex>=2) {// hide and show menu view
-        [self setMenuSliderViewHidden:NO];
-    }else{
-        [self setMenuSliderViewHidden:YES];
-    }
-
-    NSLog(@"[BibleSingletonManager sharedManager].currentIndex %d",[BibleSingletonManager sharedManager].currentIndex);
-    
-       
-    
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -249,7 +235,7 @@
      // In more complex implementations, the model controller may be passed to the view controller.
     if (!_modelController) {
         _modelController = [[ModelController alloc] init];
-        [_modelController setViewController:self];
+        [_modelController setDelegate:self];
     }
     return _modelController;
 }
@@ -310,6 +296,11 @@
     return viewController;
     
 }
+
+-(void)setWindowUserinteractionEnable{
+   [self.view.window setUserInteractionEnabled:YES];
+}
+
 -(void)setMenuSliderViewHidden:(BOOL) isHidden{
     [menuViewController.view setHidden:isHidden];
 }

@@ -20,7 +20,6 @@
 @synthesize delegate;
 @synthesize rightToLeft;
 @synthesize leftToRight;
-@synthesize currentIndex;
 @synthesize modelViewController;
 
 

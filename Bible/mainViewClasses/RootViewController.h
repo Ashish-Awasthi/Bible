@@ -7,21 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MenView.h"
 #import "MenuSliderViewController.h"
-@interface RootViewController : UIViewController <UIPageViewControllerDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate,MenViewDelegate,MenuSliderDelegate>{
+#import "ModelController.h"
+
+@interface RootViewController : UIViewController <UIPageViewControllerDelegate,UIWebViewDelegate,UIGestureRecognizerDelegate,MenuSliderDelegate,ModelControllerDelegate>{
     
     NSInteger    findPageIndex;
-    MenView *menuView;
     MenuSliderViewController     *menuViewController;
     BOOL           isItTouchInMenuView;
+    NSInteger     currentPosition;
+    
 }
 @property(nonatomic,assign) BOOL pageAnimationFinished;
 @property (strong, nonatomic) UIPageViewController *pageViewController;
--(void)loadNextTwoWebView:(BOOL )isItLoadNextView
-                withIndex:(NSInteger)index;
-
--(void)loadPrevView:(NSInteger )withViewControllerIndex
-          withIndex:(NSInteger)htmlIndex;
-    
+-(void)setMenuSliderViewHidden:(BOOL) isHidden;    
 @end

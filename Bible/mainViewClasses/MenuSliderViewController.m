@@ -104,10 +104,11 @@
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
-   
-    
     if ([self.delegate respondsToSelector:@selector(setPageFlip:)]) {
         [self.delegate setPageFlip:YES];
+    }
+    if ([self.delegate respondsToSelector:@selector(setMenuSliderViewHidden:)]) {
+        [self.delegate setMenuSliderViewHidden:NO];
     }
 	return YES;
 }
@@ -115,6 +116,10 @@
 
 -(void)slideUpDown:(UIGestureRecognizer *)gesture
 {
+    CGPoint point = [gesture locationInView:self.view];
+   // NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
+        NSLog(@"======= touch Menu view.....");
+    if (point.x>185) {// get touch only ribin
 	if (!self.isExpanded)
 	{
 		[self slideDown];
@@ -124,7 +129,12 @@
 		[self slideUp];
 	}
 	[self pageSwiped];
-	isExpanded = !isExpanded;
+	 isExpanded = !isExpanded;
+    } else{
+        if ([self.delegate respondsToSelector:@selector(setMenuSliderViewHidden:)]) {
+            [self.delegate setMenuSliderViewHidden:NO];
+        }
+    }
 }
 
 -(void)slideUp

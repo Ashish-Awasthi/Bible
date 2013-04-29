@@ -28,7 +28,6 @@
                   withHtmlName:(NSString *)htmlNameStr;
 -(void)reLoadDataOnPrevView:(NSString *) changeTitleStr
                   withHtmlName:(NSString *)htmlNameStr;
-//@property (readonly, strong, nonatomic) NSArray *pageData;
 @property (nonatomic, retain) NSArray *webViewpageData;
 @property(nonatomic,retain)NSArray     *htmlPageIndexArr;
 @end
@@ -36,8 +35,7 @@
 @implementation ModelController
 
 @synthesize webViewpageData = webViewpageData;
-
-@synthesize viewController;
+@synthesize delegate;
 @synthesize htmlPageIndexArr = _htmlPageIndexArr;
 
 
@@ -140,8 +138,8 @@
                 break;
                 
             case ExtremRightView:
-                pageViewController.view.tag = ExtremLeftView;
                  [pageViewController loadHtml:htmlNameStr];
+                 pageViewController.view.tag = ExtremLeftView;
                 [pageViewController.dataLabel setText:changeTitleStr];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
@@ -180,36 +178,21 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-   
-    if ([BibleSingletonManager sharedManager].leftToRight) {
-    PageViewController    *leftPageViewController = [self getViewControllerFrameArr:LeftView];
-    
-    if (leftPageViewController) {
-        return leftPageViewController;
-    }else{
-        return NO;
-    }
-   }
-    return NO;
+  
+ PageViewController    *leftPageViewController = [self getViewControllerFrameArr:LeftView];
+ return leftPageViewController;
+  
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-        
-    if ([BibleSingletonManager sharedManager].rightToLeft) {
-    //NSLog(@"Left flip");
-    firstTimeRightFlip = NO;
+    if ([self.delegate performSelector:@selector(setMenuSliderViewHidden:)]) {
+        [self.delegate setMenuSliderViewHidden:YES];
 
-    PageViewController    *pageViewController = [self getViewControllerFrameArr:RightView];
-        if (pageViewController) {
-             return pageViewController;
-        }else{
-           return NO;
-        }
-   
-    }else{
-        return NO;
     }
+    PageViewController    *rightPageViewController = [self getViewControllerFrameArr:RightView];
+    
+    return rightPageViewController;
 }
 
 -(void)loadPrevView{
@@ -243,11 +226,9 @@
             [self reLoadDataOnNextView:[self.htmlPageIndexArr objectAtIndex:findIndex]
                              withHtmlName:[self.webViewpageData objectAtIndex:findIndex]];
     }else{
-        if (findIndex == [self.htmlPageIndexArr count] || findIndex == [self.htmlPageIndexArr count]+1 ) {
+          if (findIndex == [self.htmlPageIndexArr count] || findIndex == [self.htmlPageIndexArr count]+1 ) {
                 [self reLoadDataOnNextView:@"" withHtmlName:@"Empty.htm"];
-        }else{
-              
-        }
-        }
+          }
+    }
 }
 @end

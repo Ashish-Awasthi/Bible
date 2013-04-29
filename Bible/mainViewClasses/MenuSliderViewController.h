@@ -23,6 +23,7 @@
 @protocol MenuSliderDelegate <NSObject>
 @optional
 -(void)setPageFlip:(BOOL)isFlip;
+-(void)setMenuSliderViewHidden:(BOOL) isHidden;
 @end
 
 @interface MenuSliderViewController : UIViewController <UIGestureRecognizerDelegate, AnimatorDelegate>

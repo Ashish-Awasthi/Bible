@@ -49,6 +49,9 @@
         frameSize = CGRectMake(0, 0, 768, 1024);
         
         self.webView = [[UIWebView alloc] init];
+        [self.webView setOpaque:YES];
+        [self.webView setBackgroundColor:[UIColor blackColor]];
+        
         for (UIView   *subViews in [self.webView subviews]) {
             if ([subViews isKindOfClass:[UIScrollView class]]) {
                UIScrollView    *scrollView = (UIScrollView *)subViews;
@@ -73,6 +76,8 @@
         if ([BibleSingletonManager sharedManager].isFirstTime) {
             frameSize = CGRectMake(0, 0, 768, 1024);
             imageView = [[UIImageView alloc] init];
+            [imageView setBackgroundColor:[UIColor blackColor]];
+            [imageView setUserInteractionEnabled:YES];
             //[imageView setBackgroundColor:[UIColor redColor]];
             [imageView setImage:[UIImage imageNamed:@"Default.png"]];
             [imageView setFrame:frameSize];
@@ -118,12 +123,14 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     [BibleSingletonManager sharedManager].isFirstTime = NO;
-    
-    [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
     if (imageView) {
-         [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplashView) withDuration:.2 withDelegate:self];
+        
+         [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplashView) withDuration:.8 withDelegate:self];
     }
 
+    //  not show copy paste option in webview
+    [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
+    
     // * if you wanna find audio span id from webView, when user tab on sentence. must we add these javascript file in our resuorce bundle********************
     
     NSString *jqueryFilePath      = [[NSBundle mainBundle] pathForResource:@"jquery1_7_1"

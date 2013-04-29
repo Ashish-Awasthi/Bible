@@ -26,6 +26,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
+    
     //***************** Here true condition application lunch first time****************
     [BibleSingletonManager sharedManager].isFirstTime = YES;
     

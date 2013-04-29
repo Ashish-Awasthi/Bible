@@ -8,18 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-
 @class DataViewController;
 
+@protocol ModelControllerDelegate <NSObject>
+@optional
+-(void)setMenuSliderViewHidden:(BOOL) isHidden;
+@end
 
 @interface ModelController : NSObject <UIPageViewControllerDataSource>{
     BOOL     firstTimeRightFlip;
 }
 
--(void)reloadView;
-@property(nonatomic,retain) id viewController;
-- (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard;
-- (NSUInteger)indexOfViewController:(DataViewController *)viewController;
+@property(nonatomic,retain) id <NSObject,ModelControllerDelegate>delegate;
 -(void)loadNextView;
 -(void)loadPrevView;
 @end
