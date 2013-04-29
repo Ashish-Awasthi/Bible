@@ -164,7 +164,36 @@
 	[UIView commitAnimations];
 }
 
--(void)move:(id)sender 
+
+-(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    BOOL   isItGetTouchUpDown;
+    
+    UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
+    CGPoint point = [panGes locationInView:self.view];
+    NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
+    
+    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+        return YES;
+    }
+    
+    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.view]))
+    {
+    CGPoint distance = [panGes translationInView:self.view];
+    if (distance.x>0 || distance.x<0) {// disable gesture on left to right swipe and right to left swipe
+        isItGetTouchUpDown = NO;
+    }else{
+        isItGetTouchUpDown = YES;//enable gesture on up to bottom swipe and bottom to up swipe
+     }
+        
+        
+    }else{
+       isItGetTouchUpDown = NO;// Avoid tab On touch
+    }
+    return isItGetTouchUpDown;
+}
+
+-(void)move:(id)sender
 {
     
     if ([self.delegate respondsToSelector:@selector(setPageFlip:)]) {
