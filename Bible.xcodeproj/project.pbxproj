@@ -52,7 +52,6 @@
 		BC848C78171C26A2008F14E6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC848C77171C26A2008F14E6 /* Default-568h@2x.png */; };
 		BC853078172E623500E35A0C /* OBShapedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BC853075172E623500E35A0C /* OBShapedButton.m */; };
 		BC853079172E623500E35A0C /* UIImage+ColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = BC853077172E623500E35A0C /* UIImage+ColorAtPixel.m */; };
-		BCD05A3E1726A86A00C23A36 /* MenView.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD05A3D1726A86A00C23A36 /* MenView.m */; };
 		BCD05A451726A8BC00C23A36 /* Ribbon.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD05A421726A8BC00C23A36 /* Ribbon.png */; };
 		BCD05B8F1726B98D00C23A36 /* audio_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD05B861726B98D00C23A36 /* audio_btn@2x.png */; };
 		BCD05B901726B98D00C23A36 /* fineprint_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD05B871726B98D00C23A36 /* fineprint_text@2x.png */; };
@@ -183,8 +182,6 @@
 		BC853075172E623500E35A0C /* OBShapedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBShapedButton.m; sourceTree = "<group>"; };
 		BC853076172E623500E35A0C /* UIImage+ColorAtPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorAtPixel.h"; sourceTree = "<group>"; };
 		BC853077172E623500E35A0C /* UIImage+ColorAtPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorAtPixel.m"; sourceTree = "<group>"; };
-		BCD05A3C1726A86A00C23A36 /* MenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenView.h; sourceTree = "<group>"; };
-		BCD05A3D1726A86A00C23A36 /* MenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenView.m; sourceTree = "<group>"; };
 		BCD05A421726A8BC00C23A36 /* Ribbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ribbon.png; sourceTree = "<group>"; };
 		BCD05B861726B98D00C23A36 /* audio_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio_btn@2x.png"; sourceTree = "<group>"; };
 		BCD05B871726B98D00C23A36 /* fineprint_text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fineprint_text@2x.png"; sourceTree = "<group>"; };
@@ -337,8 +334,6 @@
 				BC1941E8171EBC49002FF0E0 /* RootViewController.m */,
 				BC1941DB171EB6AF002FF0E0 /* PageViewController.h */,
 				BC1941DC171EB6AF002FF0E0 /* PageViewController.m */,
-				BCD05A3C1726A86A00C23A36 /* MenView.h */,
-				BCD05A3D1726A86A00C23A36 /* MenView.m */,
 				BC8071A51727BFC4003D0AB5 /* AudioClass.h */,
 				BC8071A61727BFC5003D0AB5 /* AudioClass.m */,
 			);
@@ -716,7 +711,6 @@
 				BC139A7917265AE200FAB313 /* Reachability.m in Sources */,
 				BC139AA317266ABF00FAB313 /* DBConnectionManager.m in Sources */,
 				BC139AA617266ADF00FAB313 /* Data.m in Sources */,
-				BCD05A3E1726A86A00C23A36 /* MenView.m in Sources */,
 				BC80719B1727B953003D0AB5 /* selectedElement.js in Sources */,
 				BC80719E1727BA6C003D0AB5 /* jquery1_7_1.js in Sources */,
 				BC8071A71727BFC5003D0AB5 /* AudioClass.m in Sources */,

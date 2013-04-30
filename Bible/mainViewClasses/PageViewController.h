@@ -20,7 +20,7 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
 @property (strong, nonatomic) id dataObject;
 @property(nonatomic,retain) UIWebView    *webView;
 @property(nonatomic,retain)UILabel     *dataLabel;
-
+@property(nonatomic,copy) NSString         *lastSpanIdStr;
 -(void)loadHtml:(NSString *)htmlName;
 - (id)initWithNibName:(NSString *)nibNameOrNil
                bundle:(NSBundle *)nibBundleOrNil
