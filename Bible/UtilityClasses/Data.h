@@ -23,45 +23,20 @@
 
 }
 @property(nonatomic,assign) NSInteger _pageId;
-@property(nonatomic,assign) NSInteger _auidoId;
-@property (nonatomic, copy) NSString *_pageHtmlName;
+@property (nonatomic, copy) NSString *_pageHtmlNameStr;
+@end
+
+//************************* Audio Data Object *************************
+
+@interface AudioData : NSObject {
+    
+}
+
+@property(nonatomic,assign) NSInteger _pageId;
+@property(nonatomic,copy)  NSString * _spanIdStr;
+@property (nonatomic, copy) NSString *_audioFileNameStr;
 @property(nonatomic,assign) NSInteger _audioStartTime;
 @property(nonatomic,assign) NSInteger _audioEndTime;
 
 @end
 
-//  ************************* State Data Object *************************
-
-@interface StateData : NSObject {
-    
-}
-@property(nonatomic,assign)NSInteger  _stateId;
-@property (nonatomic, copy) NSString *_stateName;
-@property(nonatomic,assign)NSInteger  _regionId;
-@property (nonatomic, copy) NSString *_stateImageName;
-@property(nonatomic,assign)NSInteger _stateXcor;
-@property(nonatomic,assign)NSInteger _stateYcor;
-@end
-
-//  ************************* Region Data Object *************************
-
-@interface RegionData : NSObject {
-    
-}
-@property(nonatomic,assign)NSInteger _regionId;
-@property(nonatomic,assign)NSInteger _regionXCord;
-@property(nonatomic,assign)NSInteger _regionYCord;
-@end
-
-//  ************************* StateRegion Objects *************************
-
-@interface StateRegionData : NSObject {
-    
-}
-@property(nonatomic,assign)NSInteger _stateId;
-@property(nonatomic,assign)NSInteger _regionId;
-@property(nonatomic,copy)NSString    *_regionName;
-@property(nonatomic,copy)NSString    *_regionImage;
-@property(nonatomic,assign)NSInteger _regionXCord;
-@property(nonatomic,assign)NSInteger _regionYCord;
-@end

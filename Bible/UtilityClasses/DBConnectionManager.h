@@ -16,9 +16,8 @@
 
 +(void)createDatabaseCopyIfNotExist;
 
-+(NSMutableArray *)getDataFromStateTable:(NSString *)query;
 +(NSMutableArray *)getDataFromDataBase:(NSString *)query;
-+(NSMutableArray *)getSeletedRegionsStateTable:(NSString *)query;
-+(NSMutableArray *)getStateRegionData:(NSString *)query;
+
++(NSMutableArray *)getDataFromAudioTable:(NSString *)query;
 
 @end

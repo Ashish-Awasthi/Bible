@@ -18,21 +18,12 @@
 @implementation PageData
 
 @synthesize _pageId;
-@synthesize _auidoId;
-@synthesize _pageHtmlName;
-@synthesize _audioStartTime;
-@synthesize _audioEndTime;
-
+@synthesize _pageHtmlNameStr;
 
 - (void) dealloc {
 	
     _pageId = -1;
-    _auidoId = -1;
-    _audioStartTime = -1;
-    _audioEndTime = -1;
-    RELEASE(_pageHtmlName);
-    
-    
+    RELEASE(_pageHtmlNameStr);
 	[super dealloc];
 }
 
@@ -40,66 +31,25 @@
 
 //  ************************* State Data Object *************************
 
-@implementation StateData
+@implementation AudioData
 
-@synthesize _stateId;
-@synthesize _stateName;
-@synthesize _regionId;
-@synthesize _stateImageName;
-@synthesize _stateXcor;
-@synthesize _stateYcor;
+@synthesize _pageId;
+@synthesize _spanIdStr;
+@synthesize _audioFileNameStr;
+@synthesize _audioStartTime;
+@synthesize _audioEndTime;
 
 - (void) dealloc {
-	_regionId = -1;
-    _stateId = -1;
-    _stateXcor = -1;
-    _stateYcor = -1;
-    RELEASE(_stateImageName);
-    RELEASE(_stateName);
     
-	[super dealloc];
-}
-
-@end
-//  ************************* Region EndData Object *************************
-
-@implementation RegionData
-
-@synthesize _regionId;
-@synthesize _regionXCord;
-@synthesize _regionYCord;
-
-- (void) dealloc {
-	
-    _regionId = -1;
-    _regionXCord = -1;
-    _regionYCord = -1;
+	_pageId = -1;
+    _audioStartTime = -1;
+    _audioEndTime = -1;
+    RELEASE(_spanIdStr);
+    RELEASE(_audioFileNameStr);
     
 	[super dealloc];
 }
 
 @end
 
-//  ************************* Region EndData Object *************************
 
-@implementation StateRegionData
-
-@synthesize _stateId;
-@synthesize _regionId;
-@synthesize _regionName;
-@synthesize _regionImage;
-@synthesize _regionXCord;
-@synthesize _regionYCord;
-
-- (void) dealloc {
-	
-    _regionId = -1;
-    _stateId = -1;
-    _regionXCord = -1;
-    _regionYCord = -1;
-    RELEASE(_regionImage);
-     RELEASE(_regionName);
-	[super dealloc];
-}
-
-@end

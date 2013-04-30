@@ -85,10 +85,10 @@
     [super viewDidLoad];
     
     
-    //NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
+    NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
    
-  //  NSString    *htmlName = ((PageData *)[pageData objectAtIndex:0])._pageHtmlName;
-    // NSLog(@"%@====",htmlName);
+    NSString    *htmlName = ((PageData *)[pageData objectAtIndex:0])._pageHtmlNameStr;
+     NSLog(@"%@====",htmlName);
     
     self.pageAnimationFinished = YES;
     [BibleSingletonManager sharedManager].pageIndexArr = [NSArray arrayWithObjects:KDataArr, nil];
@@ -203,24 +203,44 @@
           [[BibleSingletonManager sharedManager].modelViewController loadPrevView];
          }
         
+        if ([BibleSingletonManager sharedManager].rightToLeft) {
+            if (currentPosition >=ShowMenuOptionNumberPage) {
+                [self setMenuSliderViewHidden:NO];
+            }else{
+                [self setMenuSliderViewHidden:YES];
+            }
+        }else if([BibleSingletonManager sharedManager].leftToRight){
+            
+            if (currentPosition >3) {
+                [self setMenuSliderViewHidden:NO];
+            }else{
+                [self setMenuSliderViewHidden:YES];
+            }
+        }
+
      }else{
+         
+         if ([BibleSingletonManager sharedManager].rightToLeft) {
+             if (currentPosition >ShowMenuOptionNumberPage) {
+                 [self setMenuSliderViewHidden:NO];
+             }else{
+                 [self setMenuSliderViewHidden:YES];
+             }
+         }else if([BibleSingletonManager sharedManager].leftToRight){
+             
+             if (currentPosition >3) {
+                 [self setMenuSliderViewHidden:NO];
+             }else{
+                 [self setMenuSliderViewHidden:YES];
+             }
+         }
+
         // NSLog(@"NOT flip complete page");
      }
-    if ([BibleSingletonManager sharedManager].rightToLeft) {
-        if (currentPosition >= ShowMenuOptionNumberPage) {
-            [self setMenuSliderViewHidden:NO];
-        }else{
-            [self setMenuSliderViewHidden:YES];
-        }
-    }else if([BibleSingletonManager sharedManager].leftToRight){
-        
-        if (currentPosition >3) {
-            [self setMenuSliderViewHidden:NO];
-        }else{
-            [self setMenuSliderViewHidden:YES];
-        }
-    }
-   
+    
+    NSLog(@"currentPosition  %d",currentPosition);
+    
+      
 }
 
 - (void)didReceiveMemoryWarning
