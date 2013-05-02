@@ -115,38 +115,47 @@ static sqlite3 *m_database = nil;
                 
                 if(sqlite3_column_text(statement,0))
                 {
-                    thisObj._pageId = sqlite3_column_int(statement, 0);
+                    thisObj._colorCodeStr = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 0)];
+                }
+                else{
+                    thisObj._colorCodeStr = @"";
+                }
+
+                if(sqlite3_column_text(statement,1))
+                {
+                    thisObj._pageId = sqlite3_column_int(statement, 1);
                 }
                 else{
                     thisObj._pageId = -1;
                 }
                 
-                if(sqlite3_column_text(statement,1))
+                if(sqlite3_column_text(statement,2))
                 {
-                    thisObj._spanIdStr = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 1)];
+                    thisObj._spanIdStr = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 2)];
                 }
                 else{
                     thisObj._spanIdStr = @"";
                 }
-                if(sqlite3_column_text(statement,2))
+                if(sqlite3_column_text(statement,3))
                 {
-                    thisObj._audioFileNameStr = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 2)];
+                    thisObj._audioFileNameStr = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 3)];
                 }
                 else{
                     thisObj._audioFileNameStr = @"";
                 }
                 
-                if(sqlite3_column_text(statement,3))
+                if(sqlite3_column_text(statement,4))
                 {
-                    thisObj._audioStartTime = sqlite3_column_int(statement, 3);
+                    thisObj._audioStartTime = sqlite3_column_double(statement, 4);
+                    
                 }
                 else{
                     thisObj._audioStartTime = -1;
                 }
                 
-                if(sqlite3_column_text(statement,4))
+                if(sqlite3_column_text(statement,5))
                 {
-                    thisObj._audioEndTime = sqlite3_column_int(statement, 5);
+                    thisObj._audioEndTime =sqlite3_column_double(statement, 5);
                 }
                 else{
                     thisObj._audioEndTime = -1;

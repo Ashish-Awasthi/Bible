@@ -5,7 +5,6 @@
 //  Created by KiwiTech on 7/24/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-
 #import "MenuSliderViewController.h"
 #import "Animator.h"
 @implementation MenuSliderViewController
@@ -75,6 +74,44 @@
     
     [panGesture release];
 }
+
+#pragma maks
+#pragma swipe gesture Delegate method-
+
+-(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    BOOL   isItGetTouchUpDown;
+    
+    UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
+    CGPoint point = [panGes locationInView:self.view];
+    NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
+    // NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
+    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+        NSInteger   pageId = [BibleSingletonManager sharedManager].currentPageId;
+        if (point.x<185 && pageId == 3) {
+        [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner];
+         return NO;
+           
+        }
+        return YES;
+    }
+    
+    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.view]))
+    {
+        CGPoint distance = [panGes translationInView:self.view];
+        if (distance.x>0 || distance.x<0) {// disable gesture on left to right swipe and right to left swipe
+            isItGetTouchUpDown = NO;
+        }else{
+            isItGetTouchUpDown = YES;//enable gesture on up to bottom swipe and bottom to up swipe
+        }
+        
+        
+    }else{
+        isItGetTouchUpDown = NO;// Avoid tab On touch
+    }
+    return isItGetTouchUpDown;
+}
+
 
 -(void)initializeAnimation
 {
@@ -162,35 +199,6 @@
 								  self.view.frame.size.height);
 	
 	[UIView commitAnimations];
-}
-
-
--(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
-{
-    BOOL   isItGetTouchUpDown;
-    
-    UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
-    CGPoint point = [panGes locationInView:self.view];
-    NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
-    
-    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
-        return YES;
-    }
-    
-    if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.view]))
-    {
-    CGPoint distance = [panGes translationInView:self.view];
-    if (distance.x>0 || distance.x<0) {// disable gesture on left to right swipe and right to left swipe
-        isItGetTouchUpDown = NO;
-    }else{
-        isItGetTouchUpDown = YES;//enable gesture on up to bottom swipe and bottom to up swipe
-     }
-        
-        
-    }else{
-       isItGetTouchUpDown = NO;// Avoid tab On touch
-    }
-    return isItGetTouchUpDown;
 }
 
 -(void)move:(id)sender

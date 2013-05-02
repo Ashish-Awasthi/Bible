@@ -13,10 +13,16 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
 
     UIImageView         *imageView;
     UIButton     *menuOptionBtn;
-    AVAudioPlayer     *audioPlayer;
-    BOOL           letItRead;
+   
+    
+    NSArray           *audioInfoPageArr;
+    NSInteger        hieghtLightRemoveTime;
+    NSInteger        hieghLightNumber;
+    BOOL             isAudioEnable;
+    BOOL             isAduioObjectAlive;
+    BOOL             letItReadEnable;
 }
-
+@property(nonatomic,retain) AVAudioPlayer     *audioPlayer;
 @property (strong, nonatomic) id dataObject;
 @property(nonatomic,retain) UIWebView    *webView;
 @property(nonatomic,retain)UILabel     *dataLabel;
@@ -26,4 +32,6 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
                bundle:(NSBundle *)nibBundleOrNil
             withTitle:(NSString *)titleStr
           withHtmlStr:(NSString *)htmlName;
+-(void)releaseAudioObjcet;
+-(void)hieghtTextWhenSwipeUpperCorner;
 @end

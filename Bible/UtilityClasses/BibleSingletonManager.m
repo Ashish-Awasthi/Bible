@@ -21,6 +21,8 @@
 @synthesize rightToLeft;
 @synthesize leftToRight;
 @synthesize modelViewController;
+@synthesize pageViewController;
+@synthesize currentPageId;
 
 
 //@synthesize _parseDataController;

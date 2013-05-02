@@ -31,7 +31,7 @@
 	IBOutlet UIView *menuView;
 
 	IBOutlet UIImageView *sliderImage;
-	
+	IBOutlet UILabel       *tabLbl;
 	IBOutlet UIImageView *ribbonImage;
 	
     id delegate;
@@ -63,5 +63,5 @@
 -(void)UnregisterForNotification;
 @property(nonatomic)BOOL isExpanded;
 @property(nonatomic)BOOL isRibbonAnimating;
-
+-(void)hieghtTextWhenSwipeUpperCorner;
 @end

@@ -31,7 +31,8 @@
 @property(nonatomic,assign)BOOL                 leftToRight;
 @property(nonatomic,assign) id delegate;
 @property(nonatomic,retain) id modelViewController;
-
+@property(nonatomic,retain) id pageViewController;
+@property(nonatomic,assign) NSInteger      currentPageId;
 + (BibleSingletonManager*)sharedManager;
 
 - (void)showAlert:(NSString*)a_titleStr 

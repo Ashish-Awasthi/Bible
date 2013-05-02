@@ -33,6 +33,7 @@
 
 @implementation AudioData
 
+@synthesize _colorCodeStr;
 @synthesize _pageId;
 @synthesize _spanIdStr;
 @synthesize _audioFileNameStr;
@@ -44,6 +45,7 @@
 	_pageId = -1;
     _audioStartTime = -1;
     _audioEndTime = -1;
+    RELEASE(_colorCodeStr);
     RELEASE(_spanIdStr);
     RELEASE(_audioFileNameStr);
     

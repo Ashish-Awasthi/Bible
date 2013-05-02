@@ -23,10 +23,11 @@
 
 @interface ModelController()
 
-
+-(PageViewController *)getViewControllerFormArr:(PreLoadView )viewNumber;
 -(void)reLoadDataOnNextView:(NSString *) changeTitleStr
                   withHtmlName:(NSString *)htmlNameStr;
 -(void)reLoadDataOnPrevView:(NSString *) changeTitleStr
+
                   withHtmlName:(NSString *)htmlNameStr;
 @property (nonatomic, retain) NSArray *webViewpageData;
 @property(nonatomic,retain)NSArray     *htmlPageIndexArr;
@@ -39,7 +40,7 @@
 @synthesize htmlPageIndexArr = _htmlPageIndexArr;
 
 
--(PageViewController *)getViewControllerFrameArr:(PreLoadView )viewNumber{
+-(PageViewController *)getViewControllerFormArr:(PreLoadView )viewNumber{
     
     PageViewController   *pageViewController;
     
@@ -177,27 +178,30 @@
 #pragma mark - Page View Controller Data Source
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
-{
-  
- PageViewController    *leftPageViewController = [self getViewControllerFrameArr:LeftView];
+{  // Stop Audio When you flip page
+  [[BibleSingletonManager sharedManager].pageViewController releaseAudioObjcet];
+    
+ PageViewController    *leftPageViewController = [self getViewControllerFormArr:LeftView];
  return leftPageViewController;
   
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
+    // Stop Audio When you flip page.
+    [[BibleSingletonManager sharedManager].pageViewController releaseAudioObjcet];
+    // Hide menu View when you flip page.
     if ([self.delegate performSelector:@selector(setMenuSliderViewHidden:)]) {
         [self.delegate setMenuSliderViewHidden:YES];
-
     }
-    PageViewController    *rightPageViewController = [self getViewControllerFrameArr:RightView];
+    PageViewController    *rightPageViewController = [self getViewControllerFormArr:RightView];
     
     return rightPageViewController;
 }
 
 -(void)loadPrevView{
     
-    PageViewController    *precurrentViewController = [self getViewControllerFrameArr:CurrentView];
+    PageViewController    *precurrentViewController = [self getViewControllerFormArr:CurrentView];
     NSString    *findPrevValueStr = precurrentViewController.dataLabel.text;
     
     if ([findPrevValueStr integerValue] == 2 || [findPrevValueStr integerValue] == 3) {
@@ -217,7 +221,7 @@
 
 -(void)loadNextView{
     
-    PageViewController    *previousViewController = (PageViewController *)[self getViewControllerFrameArr:CurrentView];
+    PageViewController    *previousViewController = (PageViewController *)[self getViewControllerFormArr:CurrentView];
     
     NSString    *nextValueStr = previousViewController.dataLabel.text;
     NSInteger    findIndex = [nextValueStr integerValue]+2;

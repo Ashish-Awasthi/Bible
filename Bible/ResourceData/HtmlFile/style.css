@@ -1,15 +1,13 @@
+*{
+ -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
 @font-face{
 	font-family: "american_typewriter";
 	src: url(american_typewriter.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
-.american_typewriter
-{
-	font-family: "american_typewriter";
-
-}
-
 @font-face{
 	font-family: "FuturaStd-Medium";
 	src: url(FuturaStd-Medium.otf);
@@ -18,73 +16,73 @@
 }
 @font-face{
 	font-family: "Gotham-Black";
-	src: url(Gotham-Black.ttf);
+	src: url(fonts/Gotham-Black.ttf);
 	font-style: black;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-BlackItalic";
-	src: url(Gotham-BlackItalic.ttf);
+	src: url(fonts/Gotham-BlackItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-Bold";
-	src: url(Gotham-Bold.ttf);
+	src: url(fonts/Gotham-Bold.ttf);
 	font-style: normal;
 	font-weight:bold;
 }
 @font-face{
 	font-family: "Gotham-BoldItalic";
-	src: url(Gotham-BoldItalic.ttf);
+	src: url(fonts/Gotham-BoldItalic.ttf);
 	font-style: italic;
 	font-weight:bold;
 }
 @font-face{
 	font-family: "Gotham-Book";
-	src: url(Gotham-Book.ttf);
+	src: url(fonts/Gotham-Book.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-BookItalic";
-	src: url(Gotham-BookItalic.ttf);
+	src: url(fonts/Gotham-BookItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-Light";
-	src: url(Gotham-Light.ttf);
+	src: url(fonts/Gotham-Light.ttf);
 	font-style: normal;
 	font-weight:light;
 }
 @font-face{
 	font-family: "Gotham-LightItalic";
-	src: url(Gotham-LightItalic.ttf);
+	src: url(fonts/Gotham-LightItalic.ttf);
 	font-style: italic;
 	font-weight:light;
 }
 @font-face{
 	font-family: "Gotham-Medium";
-	src: url(Gotham-Medium.ttf);
+	src: url(fonts/Gotham-Medium.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-MediumItalic";
-	src: url(Gotham-MediumItalic.ttf);
+	src: url(fonts/Gotham-MediumItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-Thin";
-	src: url(Gotham-Thin.ttf);
+	src: url(fonts/Gotham-Thin.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-ThinItalic";
-	src: url(Gotham-ThinItalic.ttf);
+	src: url(fonts/Gotham-ThinItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
@@ -116,6 +114,7 @@
 img{z-index:-1;}
 
 body {
+	font-family: "american_typewriter";
 	width: 768px;
 	height: 1024px;
 	margin: 0;
@@ -231,33 +230,23 @@ font-weight: bold;
 	margin-left: 00%;
 }
 .page_2a {
-	text-align: center;
+	text-align: left;
 	position: relative;
-    font-size: 22pt;
+    font-size: 20pt;
 	line-height: 24px;
-	margin-left: 00%;
-	margin-top: 39%;
+	margin-left: 27%;
+    margin-top: 39%;
 	color:white;
 }
 .page_2aa {
-	text-align: center;
+	text-align: left;
 	position: relative;
-    font-size: 19pt;
-	line-height: 24px;
-	margin-left: 00%;
-	margin-top: 48%;
+    font-size: 18pt;
+	line-height: 27px;
+	margin-left: 32%;
+	margin-top: 47.2%;
 	color:white;
 }
-.page_2aaa {
-	text-align: center;
-	position: relative;
-    font-size: 19pt;
-	line-height: 24px;
-	margin-left: 00px;
-	margin-top: 00%;
-	color:white;
-}
-
 .page3 {
 	text-align: left;
 	position: relative;
@@ -265,80 +254,80 @@ font-weight: bold;
 	margin-left: 00%;
 }
 .page_3a {
-	text-align: center;
+	text-align: left;
 	position: relative;
-    font-size: 19pt;
+    font-size: 18pt;
 	line-height: 34px;
-	margin-left: -1%;
+	margin-left: 34%;
 	margin-top: 00px;
 	color:white;
 }
 .page_3aa {
-	text-align: center;
+	text-align: left;
 	position: relative;
-    font-size: 16pt;
-	line-height: 27px;
-	margin-left: -01%;
-	margin-top: 4%;
-	color:#0F4E60;
+    font-size: 15pt;
+	line-height: 28px;
+	margin-left: 20%;
+	margin-top: 3.4%;
+	color:#27e0ff;
 }
 .page_3aaa {
-	text-align: center;
+	text-align: left;
 	position: relative;
-    font-size: 16pt;
-	line-height: 26px;
-	margin-left:-02%;
+    font-size: 15pt;
+	line-height: 28px;
+	margin-left:21.5%;
 	margin-top: 77%;
-	color:#0F4E60;
+	color:#27e0ff;
 }
 .page_3aaaa {
-	text-align: center;
+	text-align: left;
 	position: relative;
-    font-size: 16pt;
-	line-height: 28px;
-  	margin-left: -03%;
-	margin-top: 04%;
-	color:#0F4E60;
+    font-size: 15pt;
+	line-height: 27px;
+  	margin-left: 20.2%;
+	margin-top: 03.8%;
+	color:#27e0ff;
 }
 
 .page4 {
 	text-align: left;
 	position: relative;
 	margin-top: 06%;
-	margin-left: 112px;
+	margin-left: 00px;
 }
 
 .page_4a {
 	text-align: left;
 	position: relative;
-    font-size: 16pt;
-	line-height: 24px;
-	margin-left: -04%;
-	margin-top: 11%;
+    font-size: 15pt;
+	line-height: 28px;
+	margin-left: 11%;
+	margin-top: 09.3%;
 	color:white;
 }
 
 .page_4aa {
 	text-align: left;
 	position: relative;
-    font-size: 16pt;
-	line-height: 24px;
-	margin-left: 08%;
-	margin-top: 03%;
+    font-size: 15pt;
+	line-height: 41px;
+	margin-left: 21.5%;
+	margin-top: 01.3%;
 	color:white;
 }
 .page_4ssss {
 	text-align: left;
 	position: relative;
     font-size: 25pt;
-	line-height: 24px;
-	margin-left: 49%;
-	margin-top: 03%;
-	color:#6D9435;
+	line-height: 29px;
+	margin-left: 56.6%;
+	margin-top: 04%;
+	color:#6ffd5e;
 }
 .images2{
-    margin-left: 72%;
-	margin-top: 09%;
+    margin-left: 77%;
+	margin-top: 07%;
 }
 .page_4aaa {
 	text-align: left;
@@ -362,7 +351,7 @@ font-weight: bold;
 .page5 {
 	text-align: left;
 	position: relative;
-	margin-top: 18%;
+	margin-top: 17.4%;
 	margin-left: 00px;
    
 }
@@ -370,9 +359,9 @@ font-weight: bold;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
+	line-height: 40px;
 	margin-left: 51%;
-	margin-top: 04%;
+	margin-top: 03%;
 	color:white;
 }
 .page_5aa {
@@ -390,16 +379,17 @@ font-weight: bold;
     font-size: 16pt;
 	line-height: 24px;
 	margin-left: 58%;
-	margin-top: 05%;
+	margin-top: 04%;
 	color:white;
 }
 .page_5aaaa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
+	word-spacing:1pt;
+	line-height: 40px;
 	margin-left: 13%;
-	margin-top: 24%;
+	margin-top: 23.1%;
 	color:white;
 }
 .page_5aaaaa {
@@ -424,9 +414,10 @@ font-weight: bold;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 57%;
-	margin-top: 26%;
+	line-height: 41px;
+	word-spacing:1pt;
+	margin-left: 56.5%;
+	margin-top: 24.1%;
 	color:white;
 }
 .page_5aaaaaaaa {
@@ -455,7 +446,7 @@ font-weight: bold;
 .page6 {
 	text-align: left;
 	position: relative;
-	margin-top: 07%;
+	margin-top: 06.4%;
 	margin-left: 00%;
 }
 .page_6a {
@@ -463,8 +454,8 @@ font-weight: bold;
 	position: relative;
     font-size: 16pt;
 	line-height: 26px;
-	margin-left: 23%;
-	margin-top: 04%;
+	margin-left: 22.5%;
+	margin-top: 02%;
 	color:white;
 }
 .page_6aa {
@@ -473,16 +464,16 @@ font-weight: bold;
     font-size: 16pt;
 	line-height: 24px;
 	margin-left: 05%;
-	margin-top: 42%;
+	margin-top: 42.5%;
 	color:white;
 }
 .page_6aaa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
+	line-height: 42px;
 	margin-left: 19%;
-	margin-top: 02%;
+	margin-top: 01.2%;
 	color:white;
 }
 .page_6aaaa {
@@ -500,16 +491,16 @@ font-weight: bold;
     font-size: 16pt;
 	line-height: 24px;
 	margin-left: 20%;
-	margin-top: 27%;
+	margin-top: 25.6%;
 	color:white;
 }
 .page_6aaaaaa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 11%;
-	margin-top: 06%;
+	line-height: 41px;
+	margin-left: 11.5%;
+	margin-top: 05%;
 	color:white;
 }
 .page_6aaaaaaa {
@@ -540,8 +531,8 @@ font-weight: bold;
 	color:white;
 }
 .images6{
-    margin-left: 27%;
-	margin-top: 05%;
+    margin-left: 27.4%;
+	margin-top: -17.2%;
 }
 .images7{
     margin-left: 24%;
@@ -550,7 +541,7 @@ font-weight: bold;
 .page7 {
 	text-align: left;
 	position: relative;
-	margin-top: 06%;
+	margin-top: 06.5%;
 	margin-left: 00%;
 }
 .page_7a {
@@ -558,24 +549,23 @@ font-weight: bold;
 	position: relative;
     font-size: 24pt;
 	line-height: 24px;
-	margin-left: 09%;
-	margin-top: 05%;
-	color:#F9FD22;
+	margin-left: 08.6%;
+	margin-top: 00%;
+	color:#ffff06;
 }
 .page_7aa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 18%;
-	margin-top: 05%;
+	margin-left: 12.3%;
+    margin-top:03.5%;
 	color:white;
+    position:relative;
 }
 .page_7aaa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
 	margin-left: 13%;
 	margin-top: 03%;
 	color:white;
@@ -611,9 +601,9 @@ font-weight: bold;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
+	line-height: 42px;
 	margin-left: 17%;
-	margin-top: 08%;
+	margin-top: 05.8%;
 	color:white;
 }
 .page_7aaaaaaaa {
@@ -629,9 +619,9 @@ font-weight: bold;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
+	line-height: 42px;
 	margin-left: 46%;
-	margin-top: 11%;
+	margin-top: 08.5%;
 	color:white;
 }
 .page_7aaaaaaaaaa {
@@ -649,13 +639,13 @@ font-weight: bold;
     font-size: 16pt;
 	line-height: 24px;
 	margin-left: 53%;
-	margin-top: 12%;
+	margin-top: 10.8%;
 	color:white;
 }
 
 .images8{
     margin-left: 67%;
-	margin-top: 03%;
+	margin-top: 00%;
 }
 .page8 {
 	text-align: left;
@@ -667,16 +657,16 @@ font-weight: bold;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 19%;
-	margin-top: 09%;
+	line-height: 42px;
+	margin-left: 18.5%;
+	margin-top: 08%;
 	color:white;
 }
 .page_8aa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
+	line-height: 22px;
 	margin-left: 35%;
 	margin-top: 02%;
 	color:white;
@@ -724,7 +714,7 @@ font-weight: bold;
     font-size: 16pt;
     line-height: 24px;
     margin-left: 54%;
-    margin-top: 00%;
+    margin-top: 01%;
     color:white;
 }	
 
@@ -753,18 +743,18 @@ font-weight: bold;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 35px;
-	margin-left: 14%;
-	margin-top: 10%;
+	line-height: 39px;
+	margin-left: 13%;
+	margin-top: 09%;
 	color:white;
 }
 .page_10aa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
+	line-height: 40px;
 	margin-left: 59%;
-    margin-top: 21%;
+    margin-top: 20%;
 	color:white;
 }
 
@@ -790,9 +780,9 @@ font-weight: bold;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 20%;
-    margin-top: 58%;
+	line-height: 41px;
+	margin-left: 11.5%;
+    margin-top: 56%;
 	color:white;
 }
 .page_10aaaaaa {
@@ -815,7 +805,7 @@ font-weight: bold;
 }
 .images10{
     margin-left: 79%;
-	margin-top: -06%;
+	margin-top: -06.8%;
 }
 .images09{
     margin-left: 46%;
@@ -2014,6 +2004,220 @@ font-weight: bold;
     margin-left: 68%;
 	margin-top: 12%;
 }
+.images21{
+    margin-left: 65%;
+	margin-top: 03%;
+}
+.images22{
+    margin-left: 13%;
+	margin-top: 01%;
+}
+.images23{
+    margin-left: 32%;
+	margin-top: 06%;
+}
+.images24{
+    margin-left: 80%;
+	margin-top: 06%;
+}
+.images25{
+    margin-left: 86%;
+	margin-top: -38%;
+}
+.images26{
+    margin-left: 75%;
+	margin-top: -15%;
+}
+.images27{
+    margin-left: 49%;
+	margin-top: 04%;
+}
+.images28{
+    margin-left: 36%;
+	margin-top: -73%;
+}
+.images29{
+    margin-left: 70%;
+	margin-top: -14%;
+}
+.images30{
+    margin-left: 40%;
+	margin-top: -82%;
+}
+.images31{
+    margin-left: 20%;
+	margin-top: -111%;
+}
+.images32{
+    margin-left: 51%;
+	margin-top: -79%;
+}
+.images33{
+    margin-left: 77%;
+	margin-top: 45%;
+}
+.images34{
+    margin-left: 20%;
+	margin-top: 24%;
+}
+.images35{
+    margin-left: 12%;
+	margin-top: 77%;
+}
+.images36{
+    margin-left: 80%;
+	margin-top: -92%;
+}
+.images37{
+    margin-left: 17%;
+	margin-top: -23%;
+}
+.images38{
+    margin-left: 51%;
+	margin-top: -14%;
+}
+.images39{
+    margin-left: 71%;
+	margin-top: -119%;
+}
+.images40{
+    margin-left: 72%;
+	margin-top: -44%;
+}
+.images41{
+    margin-left: 62%;
+	margin-top: -116%;
+}
+.images42{
+    margin-left: 24%;
+	margin-top: -49%;
+}
+.images43{
+    margin-left: 28.5%;
+	margin-top: -119.5%;
+}
+.images44{
+    margin-left: 79.5%;
+	margin-top: -64%;
+}
+.images45{
+    margin-left: 20%;
+	margin-top: -15.5%;
+}
+.images46{
+    margin-left: 23%;
+	margin-top: -84%;
+}
+.images47{
+    margin-left: 77%;
+	margin-top: -14%;
+}
+.images48{
+    margin-left: 47%;
+	margin-top: 06.5%;
+}
+.images49{
+    margin-left: 72%;
+	margin-top: -89.5%;
+}
+.images50{
+    margin-left: 83.5%;
+	margin-top: -59.5%;
+}
+.images51{
+    margin-left: 13%;
+	margin-top: -54.5%;
+}
+.images52{
+    margin-left: 81%;
+	margin-top: -81%;
+}
+.images53{
+    margin-left: 33.5%;
+	margin-top: -54%;
+}
+.images54{
+    margin-left: 50.5%;
+	margin-top: -55%;
+}
+.images55{
+    margin-left: 60%;
+	margin-top: -27.5%;
+}
+.images56{
+    margin-left: 79%;
+	margin-top: -27.5%;
+}
+.images57{
+    margin-left: 13%;
+	margin-top: -11%;
+}
+.images58{
+    margin-left: 76%;
+	margin-top: -105%;
+}
+.images59{
+    margin-left: 83%;
+	margin-top: -46%;
+}
+.images60{
+    margin-left: 73.5%;
+	margin-top: -112.5%;
+}
+.images61{
+    margin-left: 74.5%;
+	margin-top: -13.5%;
+}
+.images62{
+    margin-left: 44%;
+	margin-top: -85.5%;
+}
+.images63{
+    margin-left: 20%;
+	margin-top: -55%;
+}
+.images64{
+    margin-left: 51.5%;
+	margin-top: -72%;
+}
+.images65{
+    margin-left: 79%;
+	margin-top: -59.5%;
+}
+.images66{
+    margin-left: 29.5%;
+	margin-top: -66%;
+}
+.images67{
+    margin-left: 22.5%;
+	margin-top: -18%;
+}
+.images68{
+    margin-left: 58.5%;
+	margin-top: -44%;
+}
+.images69{
+    margin-left: 26.5%;
+	margin-top: -48%;
+}
+.images70{
+    margin-left: 40%;
+	margin-top: -71%;
+}
+.images71{
+    margin-left: 72%;
+	margin-top: -89%;
+}
+.images72{
+    margin-left: 68.5%;
+	margin-top: -114%;
+}
+.images73{
+    margin-left: 47%;
+	margin-top: -14%;
+}
+
+**************
 .page20 {
 	text-align: left;
 	position: relative;
@@ -2240,7 +2444,7 @@ font-weight: bold;
     font-size: 16pt;
 	line-height: 24px;
 	margin-left: 54%;
-	margin-top: 13%;
+	margin-top: 03%;
 	color:white;
 }
 
@@ -2274,7 +2478,7 @@ font-weight: bold;
     font-size: 16pt;
 	line-height: 24px;
 	margin-left: 60%;
-	margin-top: 06%;
+	margin-top: -02%;
 	color:white;
 }
 .page_22aaaa {
@@ -2503,7 +2707,7 @@ font-weight: bold;
     font-size: 16pt;
 	line-height: 24px;
 	margin-left: 40%;
-	margin-top: 35%;
+	margin-top: 22%;
 	color:white;
 }
 
@@ -3328,7 +3532,7 @@ font-weight: bold;
     font-size: 16pt;
 	line-height: 24px;
 	margin-left: 14%;
-	margin-top: 48%;
+	margin-top: 17%;
 	color:white;
 }
 .page_34aa {
@@ -7921,6 +8125,175 @@ font-weight: bold;
 	margin-top: 04%;
 	color:white;
 }
+------------------------------
+.page71 {
+	text-align: left;
+	position: relative;
+	margin-top: 00%;
+	margin-left: 00%;
+}
+.page_71a {
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 10.5%;
+	margin-top: 09%;
+	color:white;
+}
+.page_71aa {
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 19.5%;
+	margin-top: 02.5%;
+	color:white;
+}
+.page_71aaa {
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 18%;
+	margin-top: 4.8%;
+	color:white;
+}
+.page_71aaaa {
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 13.3%;
+	margin-top: 02.2%;
+	color:white;
+}
+.page_71aaaaa {
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 19%;
+	margin-top: 02.4%;
+	color:white;
+}
+.page_71aaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left:23.5%;
+	margin-top: 02.3%;
+	color:white;
+}
+.page_71aaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 53.6%;
+	margin-top: 58%;
+	color:white;
+}
+.page_71aaaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 59%;
+	margin-top: 02.3%;
+	color:white;
+}
+.page_71aaaaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 61%;
+	margin-top: 02.3%;
+	color:white;
+}
+.page_71aaaaaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 58.5%;
+	margin-top: 02.3%;
+	color:white;
+}
+.page_71aaaaaaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 52%;
+	margin-top: 02.4%;
+	color:white;
+}
+.page_71aaaaaaaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 72%;
+	margin-top: 02%;
+	color:white;
+}
+.page_71aaaaaaaaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 68%;
+	margin-top: 08%;
+	color:white;
+}
+.page_71aaaaaaaaaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 64%;
+	margin-top: 03%;
+	color:white;
+}
+.page_71aaaaaaaaaaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 61%;
+	margin-top: 02%;
+	color:white;
+}
+.page_71aaaaaaaaaaaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 19%;
+	margin-top: 06%;
+	color:white;
+}
+.page_71aaaaaaaaaaaaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 26%;
+	margin-top: 02%;
+	color:white;
+}
+.page_71aaaaaaaaaaaaaaaaaa{
+	text-align: left;
+	position: relative;
+    font-size: 16pt;
+	line-height: 24px;
+	margin-left: 20%;
+	margin-top: 04%;
+	color:white;
+}
 .page72 {
 	text-align: left;
 	position: relative;
@@ -8122,7 +8495,7 @@ font-weight: bold;
 	margin-top: 02%;
 	color:white;
 }
-.redd1{
+.whited1{
 color:#C61B22;
 }
 .page_74aaaa {
@@ -8228,10 +8601,10 @@ a{
 text-decoration:none;
 color:white;
 }
-.red2{
+.white2{
 color:#4150A1;
 }
-.red3{
+.white3{
 color:#ECED2A;
 }
 .red4{
@@ -8284,8 +8657,8 @@ color:#1FA8D0;
 	position: relative;
     font-size: 25pt;
 	line-height: 24px;
-	margin-left: 30%;
-	margin-top: 67%;
+	margin-left: 30.5%;
+	margin-top: 67.4%;
 	color:#7F94EE;
 }
 
@@ -25795,3 +26168,6 @@ font-family: american_typewriter;
 .space010{
 	word-spacing:-10px;
 	}
+.br{
+margin-top:50px;
+}

@@ -41,16 +41,6 @@
 @"8",\
 @"9",\
 @"10",\
-@"11",\
-@"12",\
-@"13",\
-@"14",\
-@"15",\
-@"16",\
-@"17",\
-@"18",\
-@"19",\
-@"20",\
 nil
 
 #define HtmlArrName \
@@ -64,16 +54,6 @@ nil
 @"Page_008.htm",\
 @"Page_009.htm",\
 @"Page_010.htm",\
-@"Page_011.htm",\
-@"Page_012.htm",\
-@"Page_013.htm",\
-@"Page_014.htm",\
-@"Page_015.htm",\
-@"Page_016.htm",\
-@"Page_017.htm",\
-@"Page_018.htm",\
-@"Page_019.htm",\
-@"Page_020.htm",\
 nil
 
 
@@ -89,6 +69,6 @@ typedef enum{
 
 #define KPageDataQuery @"Select * from PageTable"
 
-#define KAudioDataQuery @"Select * from AudioTable"
+#define KAudioDataQueryWherePageId @"Select * from AudioTable where PageId = %d"
 
 #define KAudioDataQueryWhereSpanID @"Select * from AudioTable where spanId = '%@'"

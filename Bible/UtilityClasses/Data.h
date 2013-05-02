@@ -31,12 +31,12 @@
 @interface AudioData : NSObject {
     
 }
-
+@property (nonatomic, copy) NSString *_colorCodeStr;
 @property(nonatomic,assign) NSInteger _pageId;
 @property(nonatomic,copy)  NSString * _spanIdStr;
 @property (nonatomic, copy) NSString *_audioFileNameStr;
-@property(nonatomic,assign) NSInteger _audioStartTime;
-@property(nonatomic,assign) NSInteger _audioEndTime;
+@property(nonatomic,assign) float _audioStartTime;
+@property(nonatomic,assign) float _audioEndTime;
 
 @end
 
