@@ -11,7 +11,7 @@
 #import <MessageUI/MessageUI.h>
 #import <ifaddrs.h>
 #import <arpa/inet.h>
-//#import "Controller.h"
+#import"AudioClass.h"
 @protocol BibleSingletonManagerDelegate <NSObject>
 
 @optional
@@ -25,14 +25,17 @@
     
 }
 @property(nonatomic,retain) NSMutableArray     *preLoadViewArr;
-@property(nonatomic,retain) NSArray             *pageIndexArr;
+@property(nonatomic,retain) NSMutableArray     *pageIndexArr;
 @property(nonatomic,assign)BOOL                isFirstTime;
 @property(nonatomic,assign)BOOL                 rightToLeft;
 @property(nonatomic,assign)BOOL                 leftToRight;
 @property(nonatomic,assign) id delegate;
 @property(nonatomic,retain) id modelViewController;
 @property(nonatomic,retain) id pageViewController;
+@property(nonatomic,assign) BOOL    isItGoforNextPage;
+
 @property(nonatomic,assign) NSInteger      currentPageId;
+
 + (BibleSingletonManager*)sharedManager;
 
 - (void)showAlert:(NSString*)a_titleStr 

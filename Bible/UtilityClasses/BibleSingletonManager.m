@@ -23,7 +23,7 @@
 @synthesize modelViewController;
 @synthesize pageViewController;
 @synthesize currentPageId;
-
+@synthesize isItGoforNextPage;
 
 //@synthesize _parseDataController;
 static BibleSingletonManager* _sharedManager; // self
@@ -52,11 +52,10 @@ static BibleSingletonManager* _sharedManager; // self
     
     if (self) 
     {
-       
+    
         preLoadViewArr = [[NSMutableArray alloc] init];
        
-        
-        pageIndexArr = [[NSArray alloc] init];
+        pageIndexArr = [[NSMutableArray alloc] init];
         
        // _parseDataController = [[Controller alloc] init];
         //m_signedInFromMSO = NO;

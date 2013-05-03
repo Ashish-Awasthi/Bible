@@ -29,7 +29,7 @@
 -(void)reLoadDataOnPrevView:(NSString *) changeTitleStr
 
                   withHtmlName:(NSString *)htmlNameStr;
-@property (nonatomic, retain) NSArray *webViewpageData;
+@property (nonatomic, retain) NSMutableArray *webViewpageData;
 @property(nonatomic,retain)NSArray     *htmlPageIndexArr;
 @end
 
@@ -165,12 +165,21 @@
 {
     self = [super init];
     if (self) {
+        
         // Create the data model.
         [BibleSingletonManager sharedManager].modelViewController = self;
         self.htmlPageIndexArr = [[BibleSingletonManager sharedManager].pageIndexArr retain];
-        self.webViewpageData  = [[NSArray arrayWithObjects:HtmlArrName,nil] retain];
-     //   NSLog(@"===%@",self.htmlPageIndexArr);
-        //NSLog(@"===%@",self.webViewpageData);
+        self.webViewpageData = [[NSMutableArray alloc] init];
+        
+        NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
+        
+         for (int i = 0; i<[pageData count]; i++) {
+            NSString    *htmlName = ((PageData *)[pageData objectAtIndex:i])._pageHtmlNameStr;
+             [self.webViewpageData addObject:htmlName];
+         }
+        
+       // NSLog(@"self.htmlPageIndexArr  count %d\n  self.webViewpageData %d",[self.htmlPageIndexArr count],[self.webViewpageData count]);
+        
     }
     return self;
 }
@@ -179,10 +188,14 @@
 #pragma mark - Page View Controller Data Source
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
-{  // Stop Audio When you flip page
-  [[BibleSingletonManager sharedManager].pageViewController releaseAudioObjcet];
+{
+    // Stop Audio When you flip page
+    [BibleSingletonManager sharedManager].isItGoforNextPage = YES;
+    PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
+    [currentViewController releaseAudioObjcet];
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
- PageViewController    *leftPageViewController = [self getViewControllerFormArr:LeftView];
+    PageViewController    *leftPageViewController = [self getViewControllerFormArr:LeftView];
  return leftPageViewController;
   
 }
@@ -190,7 +203,10 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
     // Stop Audio When you flip page.
-    [[BibleSingletonManager sharedManager].pageViewController releaseAudioObjcet];
+    [BibleSingletonManager sharedManager].isItGoforNextPage = YES;
+     PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
+      [currentViewController releaseAudioObjcet];
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     // Hide menu View when you flip page.
     if ([self.delegate performSelector:@selector(setMenuSliderViewHidden:)]) {
         [self.delegate setMenuSliderViewHidden:YES];

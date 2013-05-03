@@ -34,6 +34,7 @@
 @synthesize audioPlayer = _audioPlayer;
 @synthesize webView = _webView;
 @synthesize dataLabel = _dataLabel;
+@synthesize lastAudioPlayerObj;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil
                bundle:(NSBundle *)nibBundleOrNil
@@ -124,7 +125,6 @@
 
 -(void)loadHtml:(NSString *)htmlName{
   
-
     NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
                                                                                pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
     NSString *path = [[NSBundle mainBundle] bundlePath];
@@ -170,33 +170,15 @@
     
 }
 
--(void)hieghtTextWhenSwipeUpperCorner{
-    
-    NSString * selectedSpanIdStr= @"#4_1";
-    
-    NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWhereSpanID,selectedSpanIdStr];
-    
-    NSArray    *pageData =  [DBConnectionManager getDataFromAudioTable:queryStr];
-    
-    float    startTime = ((AudioData *)[pageData objectAtIndex:0])._audioStartTime;
-    float    endTime = ((AudioData *)[pageData objectAtIndex:0])._audioEndTime;
-    NSString     *audioFileNameStr = ((AudioData *)[pageData objectAtIndex:hieghLightNumber])._audioFileNameStr;
-    
-    NSString     *colorCodeStr = ((AudioData *)[pageData objectAtIndex:hieghLightNumber])._colorCodeStr;
-    //  NSLog(@"Start Time is %f    endTime is %f  audioFileName is:- %@",startTime,endTime,audioFileNameStr);
-    [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:selectedSpanIdStr];
-
-    // NSLog(@"Start Time is %f    endTime is %f  audioFileName is:- %@, spanIDStr %@",startTime,endTime,audioFileName,spanIdStr);
-   
-    [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:selectedSpanIdStr];
-   
-}
 
 -(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId{
+
+     [BibleSingletonManager sharedManager].isItGoforNextPage = NO;
+     _currentPageId = pageId;
+    //if (pageId == 4) {
+      letItReadEnable = YES;
+     //}
     
-    if (pageId == 4) {
-      letItReadEnable = YES;  
-    }
     hieghLightNumber = 0;
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self removeHightLightWithId:nil];
@@ -208,6 +190,7 @@
         RELEASE(audioInfoPageArr);
     }
     audioInfoPageArr =  [[DBConnectionManager getDataFromAudioTable:queryStr] retain];
+    
     float    startTime = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioStartTime;
     float    endTime = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioEndTime;
     NSString     *spanIdStr =  ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._spanIdStr;
@@ -224,14 +207,18 @@
 }
 
 -(void)tabOnAudioIcon:(NSInteger )pageId{
-
+    
+     [BibleSingletonManager sharedManager].isItGoforNextPage = NO;
+    
+    _currentPageId = pageId;
+    
     hieghLightNumber = 0;
     letItReadEnable = YES;
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self removeHightLightWithId:nil];
     [self releaseAudioObjcet];
     
-    NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWherePageId,pageId];
+     NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWherePageId,pageId];
         
         if (audioInfoPageArr) {
             RELEASE(audioInfoPageArr);
@@ -269,7 +256,7 @@
         NSString     *spanIdStr =  ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._spanIdStr;
         NSString     *audioFileNameStr = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioFileNameStr;
             NSString     *colorCodeStr = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._colorCodeStr;
-        NSLog(@"Start Time is %f    endTime is %f  audioFileName is:- %@, spanIDStr %@",startTime,endTime,audioFileNameStr,spanIdStr);
+       // NSLog(@"Start Time is %f    endTime is %f  audioFileName is:- %@, spanIDStr %@",startTime,endTime,audioFileNameStr,spanIdStr);
         
          [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:spanIdStr];
         
@@ -284,12 +271,11 @@
 
 -(void)removeHightLightWithId:(NSString  *)spanIdStr{
     
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(removeHightLightWithId:) object:nil];
+   [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(removeHightLightWithId:) object:nil];
     
     NSString    *fuctionStr = [NSString stringWithFormat:@"removeHighlight('%@')",self.lastSpanIdStr];
     [self.webView stringByEvaluatingJavaScriptFromString:fuctionStr];
-    
-    
+   [self releaseAudioObjcet];
 }
 
 -(void)removeHightLightTabOnSentenceWithId:(NSString  *)spanIdStr{
@@ -298,7 +284,7 @@
     
     NSString    *fuctionStr = [NSString stringWithFormat:@"removeHighlight('%@')",self.lastSpanIdStr];
     [self.webView stringByEvaluatingJavaScriptFromString:fuctionStr];
-    [self.audioPlayer pause];
+    [self releaseAudioObjcet];
 }
 
 
@@ -313,24 +299,22 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
-     letItReadEnable = NO;
      hieghLightNumber = 0;
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
-        
     if(navigationType == UIWebViewNavigationTypeLinkClicked)
 	{
         NSString *selectedId   = [NSString stringWithFormat:@"selectedId"];
-        NSString * pageIdStr = [webView stringByEvaluatingJavaScriptFromString:selectedId];
-       NSString     *chapeterIdStr     = [[pageIdStr componentsSeparatedByString:@"Audio_#"] lastObject];
+        NSString * spanIdStr = [webView stringByEvaluatingJavaScriptFromString:selectedId];
+        NSString     *chapeterIdStr     = [[spanIdStr componentsSeparatedByString:@"Audio_#"] lastObject];
         
         if ([chapeterIdStr integerValue]>=3) {
            letItReadEnable = YES;
-            [self tabOnAudioIcon:[chapeterIdStr integerValue]];            return YES;
+          [self tabOnAudioIcon:[chapeterIdStr integerValue]];
+          return YES;
         }
 
-       
-        NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWhereSpanID,pageIdStr];
+        NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWhereSpanID,spanIdStr];
         
         NSArray    *pageData =  [DBConnectionManager getDataFromAudioTable:queryStr];
         
@@ -340,10 +324,7 @@
         
         NSString     *colorCodeStr = ((AudioData *)[pageData objectAtIndex:hieghLightNumber])._colorCodeStr;
         //  NSLog(@"Start Time is %f    endTime is %f  audioFileName is:- %@",startTime,endTime,audioFileNameStr);
-        [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:pageIdStr];
-        
-        
-        
+        [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:spanIdStr];
     }
     
     
@@ -356,10 +337,11 @@
     withEndTime:(float)endTime
     withHighLightColor:(NSString *)hightColorStr
              withSpanId:(NSString *)spanIdStr{
-
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
     NSString*    hightNumberIdStr = [[spanIdStr componentsSeparatedByString:@"_"] lastObject];
     self.lastSpanIdStr = spanIdStr;
-    
     float     removeHightTime = endTime - startTime;
     
     [self releaseAudioObjcet];
@@ -370,18 +352,27 @@
     [self addHightLightWithId:spanIdStr withColor:hightColorStr];
     
     if (letItReadEnable) {
-        NSInteger   pageId = [BibleSingletonManager sharedManager].currentPageId;
-        
-        NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWherePageId,pageId+1];
-        
-        if (audioInfoPageArr) {
+        NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWherePageId,_currentPageId];
+         if (audioInfoPageArr) {
             RELEASE(audioInfoPageArr);
+          }
+         audioInfoPageArr =  [[DBConnectionManager getDataFromAudioTable:queryStr] retain];
+         hieghLightNumber = [hightNumberIdStr integerValue]-1;
+        
+        if ([BibleSingletonManager sharedManager].isItGoforNextPage) {
+            // use all condition for stop audio when you go in next page*******************
+            [BibleSingletonManager sharedManager].isItGoforNextPage = NO;
+            [self.audioPlayer stop];
+            [self releaseAudioObjcet];
+            [self stopLastAudio];
+            hieghLightNumber = [audioInfoPageArr count]+10;
+            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            return;
+        }else{
+            [self audioPlay];
+         [self performSelector:@selector(removeLastHieghtLightStartNext) withObject:nil afterDelay:removeHightTime];
         }
-        
-        audioInfoPageArr =  [[DBConnectionManager getDataFromAudioTable:queryStr] retain];
-        
-        hieghLightNumber = [hightNumberIdStr integerValue]-1;
-        [self performSelector:@selector(removeLastHieghtLightStartNext) withObject:nil afterDelay:removeHightTime];
+       
     }else{
         [self performSelector:@selector(removeHightLightTabOnSentenceWithId:) withObject:nil afterDelay:removeHightTime];
     }
@@ -390,6 +381,7 @@
 
 -(void)audioPlay:(NSString  *)audioFileName
        withStart:(NSTimeInterval)seekTime{
+   
     isAduioObjectAlive = YES;
     NSString *soundPath =[[NSBundle mainBundle]pathForAuxiliaryExecutable:audioFileName];
     NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
@@ -401,25 +393,30 @@
     [self.audioPlayer setDelegate:self];
     [self.audioPlayer setNumberOfLoops:0];
     [self.audioPlayer play];
-    
+    self.lastAudioPlayerObj = self.audioPlayer;
 }
 
 -(void)releaseAudioObjcet{
+    
     if (isAduioObjectAlive) {
         isAduioObjectAlive = NO;
-        [self.audioPlayer stop];
+       [self.audioPlayer stop];
         RELEASE(self.audioPlayer);
+        [self removeHightLightWithId:nil];
     }
 }
 
+-(void)stopLastAudio{
+    [self.lastAudioPlayerObj stop];
+}
 
 -(void)audioPlay{
     [self.audioPlayer play];
 }
 
 -(void)audioStop{
-    [self.audioPlayer stop];
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(audioStop) object:nil];
+    [self.audioPlayer stop];
 }
 
 -(void)audioPause{

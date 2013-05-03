@@ -84,15 +84,14 @@
     [self addPreLoadView];
     [super viewDidLoad];
     
-    
     NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
-   
-    NSString    *htmlName = ((PageData *)[pageData objectAtIndex:0])._pageHtmlNameStr;
-     NSLog(@"%@====",htmlName);
+    
+    for (int i = 0; i<[pageData count]; i++) {
+      NSString   *indexIdStr = [NSString stringWithFormat:@"%d",((PageData *)[pageData objectAtIndex:i])._pageId];
+      [[BibleSingletonManager sharedManager].pageIndexArr addObject:indexIdStr];
+     }
     
     self.pageAnimationFinished = YES;
-    [BibleSingletonManager sharedManager].pageIndexArr = [NSArray arrayWithObjects:KDataArr, nil];
-    
 	// Do any additional setup after loading the view, typically from a nib.
     // Configure the page view controller and add it as a child view controller.
     self.pageViewController = [[[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil] autorelease];
@@ -151,8 +150,6 @@
          NSString    *currentPagePostion = currentViewController.dataLabel.text;
         currentPosition = [currentPagePostion intValue];
         [BibleSingletonManager sharedManager].currentPageId = currentPosition;
-        
-        [self setMenuSliderViewHidden:NO];
         if (distance.x > 0) {
             //NSLog(@"currentPagePostion %@", currentPagePostion);
              [self setMenuSliderViewHidden:YES];// Here we check user swaped left to right
@@ -165,7 +162,7 @@
              }
             } else if (distance.x < 0) { //Here we check user swaped right to left
            // NSLog(@"user swiped Left");
-                 NSLog(@"======= touch swape view left.....");
+                // NSLog(@"======= touch swape view left.....");
              [BibleSingletonManager sharedManager].leftToRight =  NO;
              [BibleSingletonManager sharedManager].rightToLeft = YES;
               
@@ -239,7 +236,7 @@
         // NSLog(@"NOT flip complete page");
      }
     
-    NSLog(@"currentPosition  %d",currentPosition);
+   // NSLog(@"currentPosition  %d",currentPosition);
     
       
 }

@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface AudioClass : NSObject{
+@interface AudioClass : NSObject<AVAudioPlayerDelegate>{
    
 }
+-(void)audioPlay:(NSString  *)audioFileNameStr
+       withStart:(NSTimeInterval)seekTime;
 
+@property(nonatomic,retain) AVAudioPlayer     *audioPlayer;
 @end

@@ -85,21 +85,35 @@
     
     UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
     CGPoint point = [panGes locationInView:self.view];
-    NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
     // NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
-        
+        // This condition use for if u tab Upper right corner.....
         PageViewController    *currentpageViewController = (PageViewController *)[BibleSingletonManager sharedManager].pageViewController;
-                                                                                  
+                                                                                
         int  pageId =  [currentpageViewController.dataLabel.text integerValue];
         
         if (point.x<187) {
             switch (pageId) {
                 case 4:
-                [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:pageId];
+                [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:4];
                 break;
                 case 5:
-                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:pageId];
+                [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:5];
+                break;
+                case 11:
+                [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:11];
+                break;
+                case 12:
+                [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:12];
+                break;
+                case 17:
+                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:17];
+                    break;
+                case 20:
+                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:20];
+                    break;
+                case 26:
+                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:26];
                     break;
                     
                 default:

@@ -12,7 +12,7 @@
 AVAudioPlayerDelegate,UIScrollViewDelegate>{
 
     UIImageView         *imageView;
-    UIButton     *menuOptionBtn;
+    UIButton       *menuOptionBtn;
    
     
     NSArray           *audioInfoPageArr;
@@ -21,9 +21,13 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
     BOOL             isAudioEnable;
     BOOL             isAduioObjectAlive;
     BOOL             letItReadEnable;
-   // UIActivityIndicatorView*  pinner;
+    BOOL             wantAudioCompletelyOff;
+    NSInteger        _currentPageId;
+    UIActivityIndicatorView*  pinner;
+    NSMutableArray*        audioObjectArr;
 }
 @property(nonatomic,retain) AVAudioPlayer     *audioPlayer;
+@property(nonatomic,retain)AVAudioPlayer     *lastAudioPlayerObj;
 @property (strong, nonatomic) id dataObject;
 @property(nonatomic,retain) UIWebView    *webView;
 @property(nonatomic,retain)UILabel     *dataLabel;
