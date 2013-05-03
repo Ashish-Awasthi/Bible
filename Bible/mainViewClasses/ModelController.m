@@ -89,6 +89,7 @@
             case RightView:
                 pageViewController.view.tag = CurrentView;
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
+                 [BibleSingletonManager sharedManager].pageViewController = (id)pageViewController;
                 break;
                 
             case ExtremRightView:
@@ -124,9 +125,9 @@
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
             case LeftView:
-                pageViewController.view.tag = CurrentView;
+                 pageViewController.view.tag = CurrentView;
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
-                
+                [BibleSingletonManager sharedManager].pageViewController = (id)pageViewController;
                 break;
                 
             case CurrentView:
@@ -139,8 +140,8 @@
                 break;
                 
             case ExtremRightView:
-                 [pageViewController loadHtml:htmlNameStr];
-                 pageViewController.view.tag = ExtremLeftView;
+                [pageViewController loadHtml:htmlNameStr];
+                pageViewController.view.tag = ExtremLeftView;
                 [pageViewController.dataLabel setText:changeTitleStr];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;

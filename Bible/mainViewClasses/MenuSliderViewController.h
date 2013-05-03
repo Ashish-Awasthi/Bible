@@ -33,7 +33,7 @@
 	IBOutlet UIImageView *sliderImage;
 	IBOutlet UILabel       *tabLbl;
 	IBOutlet UIImageView *ribbonImage;
-	
+	IBOutlet UILabel     *lbel;
     id delegate;
     
     CGPoint touchStart;
@@ -63,5 +63,7 @@
 -(void)UnregisterForNotification;
 @property(nonatomic)BOOL isExpanded;
 @property(nonatomic)BOOL isRibbonAnimating;
--(void)hieghtTextWhenSwipeUpperCorner;
+
+//PageViewController delegate Method
+-(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId;
 @end

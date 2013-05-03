@@ -130,8 +130,8 @@
     
     menuViewController = [[MenuSliderViewController alloc]initWithNibName:@"MenuSliderViewController" bundle:nil];
     [menuViewController setDelegate:self];
-   //[self.view addSubview:menuViewController.view];
-   [self setMenuSliderViewHidden:YES];
+    [self.view addSubview:menuViewController.view];
+    [self setMenuSliderViewHidden:YES];
 }
 
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
@@ -148,8 +148,7 @@
         CGPoint distance = [panGes translationInView:self.view];
         
         PageViewController    *currentViewController = (PageViewController *)[self getViewControllerFrameArr:CurrentView];
-          [BibleSingletonManager sharedManager].pageViewController = (id)currentViewController;
-        NSString    *currentPagePostion = currentViewController.dataLabel.text;
+         NSString    *currentPagePostion = currentViewController.dataLabel.text;
         currentPosition = [currentPagePostion intValue];
         [BibleSingletonManager sharedManager].currentPageId = currentPosition;
         

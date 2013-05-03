@@ -57,6 +57,7 @@
         
         frameSize = CGRectMake(0, 0, 768, 1024);
         
+
         self.webView = [[UIWebView alloc] init];
         [self.webView setOpaque:YES];
         [self.webView setBackgroundColor:[UIColor blackColor]];
@@ -73,6 +74,12 @@
         [self.webView setBackgroundColor:[UIColor clearColor]];
         [self.webView setFrame:frameSize];
         [self.view  addSubview:self.webView];
+        
+        
+//        pinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//        [pinner setBackgroundColor:[UIColor redColor]];
+//        [pinner setCenter:CGPointMake(self.view.frame.size.width/2.0, self.view.frame.size.height/2.0)]; // I do this because I'm in landscape mode
+//        [self.webView addSubview:pinner];
         
         NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
                                                                                    pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
@@ -129,9 +136,12 @@
 
 #pragma marks
 #pragma UIWebView  Delegate Method-
-
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    //[pinner startAnimating];
+}
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     
+     //[pinner stopAnimating];
     [BibleSingletonManager sharedManager].isFirstTime = NO;
     if (imageView) {
         
@@ -182,11 +192,41 @@
    
 }
 
--(void)tabOnAudioButton:(NSInteger )pageId{
+-(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId{
     
-    isAudioEnable = YES;
+    if (pageId == 4) {
+      letItReadEnable = YES;  
+    }
     hieghLightNumber = 0;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self removeHightLightWithId:nil];
+    [self releaseAudioObjcet];
     
+    NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWherePageId,pageId];
+    
+    if (audioInfoPageArr) {
+        RELEASE(audioInfoPageArr);
+    }
+    audioInfoPageArr =  [[DBConnectionManager getDataFromAudioTable:queryStr] retain];
+    float    startTime = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioStartTime;
+    float    endTime = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioEndTime;
+    NSString     *spanIdStr =  ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._spanIdStr;
+    NSString     *audioFileNameStr = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioFileNameStr;
+    
+    
+    NSString     *colorCodeStr = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._colorCodeStr;
+    
+    // NSLog(@"Start Time is %f    endTime is %f  audioFileName is:- %@, spanIDStr %@",startTime,endTime,audioFileName,spanIdStr);
+    
+    [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:spanIdStr];
+    
+
+}
+
+-(void)tabOnAudioIcon:(NSInteger )pageId{
+
+    hieghLightNumber = 0;
+    letItReadEnable = YES;
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self removeHightLightWithId:nil];
     [self releaseAudioObjcet];
@@ -228,7 +268,7 @@
         float    endTime = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioEndTime;
         NSString     *spanIdStr =  ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._spanIdStr;
         NSString     *audioFileNameStr = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioFileNameStr;
-            NSString     *colorCodeStr = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioFileNameStr;
+            NSString     *colorCodeStr = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._colorCodeStr;
         NSLog(@"Start Time is %f    endTime is %f  audioFileName is:- %@, spanIDStr %@",startTime,endTime,audioFileNameStr,spanIdStr);
         
          [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:spanIdStr];
@@ -275,23 +315,22 @@
     
      letItReadEnable = NO;
      hieghLightNumber = 0;
-    //[NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
         
     if(navigationType == UIWebViewNavigationTypeLinkClicked)
 	{
-        NSString     *pageIdStr =  [request.URL absoluteString];
-        NSString     *chapeterIdStr     = [[pageIdStr componentsSeparatedByString:@"#"] lastObject];
+        NSString *selectedId   = [NSString stringWithFormat:@"selectedId"];
+        NSString * pageIdStr = [webView stringByEvaluatingJavaScriptFromString:selectedId];
+       NSString     *chapeterIdStr     = [[pageIdStr componentsSeparatedByString:@"Audio_#"] lastObject];
+        
         if ([chapeterIdStr integerValue]>=3) {
-            letItReadEnable = YES;
-            [self tabOnAudioButton:[chapeterIdStr integerValue]];
-            return YES;
+           letItReadEnable = YES;
+            [self tabOnAudioIcon:[chapeterIdStr integerValue]];            return YES;
         }
 
-        NSString *selectedId   = [NSString stringWithFormat:@"selectedId"];
-        NSString * selectedSpanIdStr= [webView stringByEvaluatingJavaScriptFromString:selectedId];
        
-        NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWhereSpanID,selectedSpanIdStr];
+        NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWhereSpanID,pageIdStr];
         
         NSArray    *pageData =  [DBConnectionManager getDataFromAudioTable:queryStr];
         
@@ -301,7 +340,7 @@
         
         NSString     *colorCodeStr = ((AudioData *)[pageData objectAtIndex:hieghLightNumber])._colorCodeStr;
         //  NSLog(@"Start Time is %f    endTime is %f  audioFileName is:- %@",startTime,endTime,audioFileNameStr);
-        [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:selectedSpanIdStr];
+        [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:pageIdStr];
         
         
         
@@ -331,13 +370,13 @@
     [self addHightLightWithId:spanIdStr withColor:hightColorStr];
     
     if (letItReadEnable) {
-        if (audioInfoPageArr) {
-            RELEASE(audioInfoPageArr);
-        }
-        
         NSInteger   pageId = [BibleSingletonManager sharedManager].currentPageId;
         
         NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWherePageId,pageId+1];
+        
+        if (audioInfoPageArr) {
+            RELEASE(audioInfoPageArr);
+        }
         
         audioInfoPageArr =  [[DBConnectionManager getDataFromAudioTable:queryStr] retain];
         

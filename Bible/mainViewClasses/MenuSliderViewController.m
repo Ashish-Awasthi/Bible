@@ -7,6 +7,7 @@
 //
 #import "MenuSliderViewController.h"
 #import "Animator.h"
+#import "PageViewController.h"
 @implementation MenuSliderViewController
 @synthesize isExpanded;
 @synthesize delegate;
@@ -87,14 +88,28 @@
     NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
     // NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
-        NSInteger   pageId = [BibleSingletonManager sharedManager].currentPageId;
-        if (point.x<185 && pageId == 3) {
-        [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner];
-         return NO;
-           
+        
+        PageViewController    *currentpageViewController = (PageViewController *)[BibleSingletonManager sharedManager].pageViewController;
+                                                                                  
+        int  pageId =  [currentpageViewController.dataLabel.text integerValue];
+        
+        if (point.x<187) {
+            switch (pageId) {
+                case 4:
+                [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:pageId];
+                break;
+                case 5:
+                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:pageId];
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+          return NO;
         }
         return YES;
-    }
+     }
     
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.view]))
     {
@@ -141,6 +156,8 @@
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
+
+    
     if ([self.delegate respondsToSelector:@selector(setPageFlip:)]) {
         [self.delegate setPageFlip:YES];
     }

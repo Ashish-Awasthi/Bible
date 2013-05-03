@@ -21,6 +21,7 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
     BOOL             isAudioEnable;
     BOOL             isAduioObjectAlive;
     BOOL             letItReadEnable;
+   // UIActivityIndicatorView*  pinner;
 }
 @property(nonatomic,retain) AVAudioPlayer     *audioPlayer;
 @property (strong, nonatomic) id dataObject;
@@ -33,5 +34,6 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
             withTitle:(NSString *)titleStr
           withHtmlStr:(NSString *)htmlName;
 -(void)releaseAudioObjcet;
--(void)hieghtTextWhenSwipeUpperCorner;
+-(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId;
+-(void)tabOnAudioIcon:(NSInteger )pageId;
 @end

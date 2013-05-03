@@ -18,7 +18,7 @@ function addHighlight(id,color)
     });
     var typeWriterCollection = document.getElementById(id).querySelectorAll(".american_typewriter");
     [].forEach.call(typeWriterCollection,function(item2,index2){
-                    item2.style.backgroundColor = 'green';
+                    item2.style.backgroundColor = color;
     })
     //elem.style.backgroundColor = color;
     //id.style.classList.add("color2");
