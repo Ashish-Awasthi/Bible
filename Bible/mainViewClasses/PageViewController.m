@@ -31,10 +31,10 @@
 @implementation PageViewController
 
 @synthesize dataObject;
-@synthesize audioPlayer = _audioPlayer;
+//@synthesize audioPlayer = _audioPlayer;
 @synthesize webView = _webView;
 @synthesize dataLabel = _dataLabel;
-@synthesize lastAudioPlayerObj;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil
                bundle:(NSBundle *)nibBundleOrNil
@@ -75,12 +75,7 @@
         [self.webView setBackgroundColor:[UIColor clearColor]];
         [self.webView setFrame:frameSize];
         [self.view  addSubview:self.webView];
-        
-        
-//        pinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-//        [pinner setBackgroundColor:[UIColor redColor]];
-//        [pinner setCenter:CGPointMake(self.view.frame.size.width/2.0, self.view.frame.size.height/2.0)]; // I do this because I'm in landscape mode
-//        [self.webView addSubview:pinner];
+    
         
         NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
                                                                                    pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
@@ -89,7 +84,7 @@
         NSString *path = [[NSBundle mainBundle] bundlePath];
         NSURL *baseURL = [NSURL fileURLWithPath:path];
         [self.webView loadHTMLString:text baseURL:baseURL];
-       
+        
         if ([BibleSingletonManager sharedManager].isFirstTime) {
             frameSize = CGRectMake(0, 0, 768, 1024);
             imageView = [[UIImageView alloc] init];
@@ -99,6 +94,19 @@
             [imageView setImage:[UIImage imageNamed:@"Default.png"]];
             [imageView setFrame:frameSize];
             [self.view addSubview:imageView];
+
+            UIImage   *image = [UIImage imageNamed:@"loaderBg.png"];
+            increaseProgess = 0.1;
+            loadingProgessView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+            loadingProgessView.trackImage = [UIImage imageNamed:@"loaderBg.png"] ;
+            loadingProgessView.progressImage = [UIImage imageNamed:@"selectedPg.png"];
+            [loadingProgessView setFrame:CGRectMake(235,230, image.size.width, image.size.height)];
+            [loadingProgessView setProgress: increaseProgess];
+            [imageView addSubview:loadingProgessView];
+            
+           progessTimer  = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(progessIncrease:) userInfo:nil repeats:YES];
+            
+
         }
        
         // Custom initialization
@@ -106,6 +114,15 @@
     return self;
 }
 
+-(void)progessIncrease:(id)sender{
+    
+    increaseProgess = increaseProgess+.1;
+    [loadingProgessView setProgress:increaseProgess animated:YES];
+    if (increaseProgess>=1) {
+        [progessTimer invalidate];
+        RELEASE(loadingProgessView);
+    }
+}
 #pragma marks
 #pragma UIScrollView Delegate-
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
@@ -124,7 +141,8 @@
 }
 
 -(void)loadHtml:(NSString *)htmlName{
-  
+    isAudioEnable = NO;
+    [BibleSingletonManager sharedManager].pageLoadingComplete = NO;
     NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
                                                                                pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
     NSString *path = [[NSBundle mainBundle] bundlePath];
@@ -137,15 +155,13 @@
 #pragma marks
 #pragma UIWebView  Delegate Method-
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    //[pinner startAnimating];
+   
 }
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
-    
      //[pinner stopAnimating];
     [BibleSingletonManager sharedManager].isFirstTime = NO;
     if (imageView) {
-        
-         [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplashView) withDuration:.8 withDelegate:self];
+    [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplashView) withDuration:.8 withDelegate:self];
     }
 
     //  not show copy paste option in webview
@@ -166,19 +182,33 @@
     NSString *jsString      = [[NSMutableString alloc] initWithData:fileData
                                                            encoding:NSUTF8StringEncoding];
     [webView stringByEvaluatingJavaScriptFromString:jsString];
+    
+   [self performSelector:@selector(pageLoadingComplete) withObject:nil afterDelay:.3];
+
     //*****************************close**************************************************************************
     
 }
 
+-(void)pageLoadingComplete{
+     [BibleSingletonManager sharedManager].pageLoadingComplete = YES;
+}
+
 
 -(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId{
-
-     [BibleSingletonManager sharedManager].isItGoforNextPage = NO;
+    if (isAudioEnable == NO) {
+        isAudioEnable = YES;
+    }else{
+      isAudioEnable = NO;
+      letItReadEnable = NO;
+      [NSObject cancelPreviousPerformRequestsWithTarget:self];
+      [self.lastAudioPlayerObj stop];
+      [self removeHightLightTabOnSentenceWithId:nil];
+      self.lastSpanIdStr = @"";
+      return;
+    }
+    [BibleSingletonManager sharedManager].isItGoforNextPage = NO;
      _currentPageId = pageId;
-    //if (pageId == 4) {
-      letItReadEnable = YES;
-     //}
-    
+    letItReadEnable = YES;
     hieghLightNumber = 0;
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self removeHightLightWithId:nil];
@@ -208,13 +238,26 @@
 
 -(void)tabOnAudioIcon:(NSInteger )pageId{
     
-     [BibleSingletonManager sharedManager].isItGoforNextPage = NO;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
+    // Here we check user want stop audio 
+    if (isAudioEnable == NO) {
+        isAudioEnable = YES;
+    }else{
+        isAudioEnable = NO;
+        letItReadEnable = NO;
+        [self releaseAudioObjcet];
+        [self.lastAudioPlayerObj stop];
+        [self removeHightLightTabOnSentenceWithId:nil];
+         self.lastSpanIdStr = nil;
+        return;
+    }
+    
+    [BibleSingletonManager sharedManager].isItGoforNextPage = NO;
     _currentPageId = pageId;
     
     hieghLightNumber = 0;
     letItReadEnable = YES;
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self removeHightLightWithId:nil];
     [self releaseAudioObjcet];
     
@@ -234,22 +277,29 @@
         
         // NSLog(@"Start Time is %f    endTime is %f  audioFileName is:- %@, spanIDStr %@",startTime,endTime,audioFileName,spanIdStr);
         
-         [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:spanIdStr];
-        
-       
-    
+      [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:spanIdStr];
 }
 
 
 -(void)removeLastHieghtLightStartNext{
     
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(removeHightLightWithId:) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    
     hieghLightNumber++;
     //  NSLog(@"hieghLightNumber======%d arro element%@ ",hieghLightNumber,audioInfoPageArr);
     
     [self removeHightLightWithId:nil];
     [self releaseAudioObjcet];
     
+    if ([BibleSingletonManager sharedManager].isItGoforNextPage) {
+        // use all condition for stop audio when you go in next page*******************
+        [audioPlayer stop];
+        [self releaseAudioObjcet];
+        [self stopLastAudio];
+        hieghLightNumber = [audioInfoPageArr count]+10;
+        //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        return;
+    }
     if (hieghLightNumber <=[audioInfoPageArr count]-1) {//last of page
         float    startTime = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioStartTime;
         float    endTime = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioEndTime;
@@ -261,7 +311,7 @@
          [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:spanIdStr];
         
     }else{
-        //letItReadEnable = NO;
+         isAudioEnable = NO;
     }
     
 }
@@ -275,7 +325,7 @@
     
     NSString    *fuctionStr = [NSString stringWithFormat:@"removeHighlight('%@')",self.lastSpanIdStr];
     [self.webView stringByEvaluatingJavaScriptFromString:fuctionStr];
-   [self releaseAudioObjcet];
+    [self releaseAudioObjcet];
 }
 
 -(void)removeHightLightTabOnSentenceWithId:(NSString  *)spanIdStr{
@@ -298,9 +348,9 @@
 
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    hieghLightNumber = 0;
     
-     hieghLightNumber = 0;
-     [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
     if(navigationType == UIWebViewNavigationTypeLinkClicked)
 	{
@@ -309,11 +359,21 @@
         NSString     *chapeterIdStr     = [[spanIdStr componentsSeparatedByString:@"Audio_#"] lastObject];
         
         if ([chapeterIdStr integerValue]>=3) {
-           letItReadEnable = YES;
-          [self tabOnAudioIcon:[chapeterIdStr integerValue]];
-          return YES;
+            [self tabOnAudioIcon:[chapeterIdStr integerValue]];  
+            return YES;
         }
-
+        // Here we check user again tab on same sentence,show stop last audio and remove last hieghtlight--------
+        if ([self.lastSpanIdStr caseInsensitiveCompare:spanIdStr] == NSOrderedSame) {
+            [self.lastAudioPlayerObj stop];
+            [self releaseAudioObjcet];
+            [self removeHightLightTabOnSentenceWithId:nil];
+             self.lastSpanIdStr = @"";
+             isAudioEnable = NO;
+            return YES;
+        }
+        
+        if (letItReadEnable) {
+            
         NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWhereSpanID,spanIdStr];
         
         NSArray    *pageData =  [DBConnectionManager getDataFromAudioTable:queryStr];
@@ -325,9 +385,9 @@
         NSString     *colorCodeStr = ((AudioData *)[pageData objectAtIndex:hieghLightNumber])._colorCodeStr;
         //  NSLog(@"Start Time is %f    endTime is %f  audioFileName is:- %@",startTime,endTime,audioFileNameStr);
         [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:spanIdStr];
+         }
     }
-    
-    
+ 
     return YES;
 }
 
@@ -358,22 +418,11 @@
           }
          audioInfoPageArr =  [[DBConnectionManager getDataFromAudioTable:queryStr] retain];
          hieghLightNumber = [hightNumberIdStr integerValue]-1;
-        
-        if ([BibleSingletonManager sharedManager].isItGoforNextPage) {
-            // use all condition for stop audio when you go in next page*******************
-            [BibleSingletonManager sharedManager].isItGoforNextPage = NO;
-            [self.audioPlayer stop];
-            [self releaseAudioObjcet];
-            [self stopLastAudio];
-            hieghLightNumber = [audioInfoPageArr count]+10;
-            //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-            return;
-        }else{
-            [self audioPlay];
+         [self audioPlay];
          [self performSelector:@selector(removeLastHieghtLightStartNext) withObject:nil afterDelay:removeHightTime];
-        }
+        
        
-    }else{
+       }else{
         [self performSelector:@selector(removeHightLightTabOnSentenceWithId:) withObject:nil afterDelay:removeHightTime];
     }
 
@@ -381,29 +430,33 @@
 
 -(void)audioPlay:(NSString  *)audioFileName
        withStart:(NSTimeInterval)seekTime{
-   
     isAduioObjectAlive = YES;
     NSString *soundPath =[[NSBundle mainBundle]pathForAuxiliaryExecutable:audioFileName];
     NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
     NSError *error;
     
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
-    self.audioPlayer.currentTime = seekTime;
-    [self.audioPlayer prepareToPlay];
-    [self.audioPlayer setDelegate:self];
-    [self.audioPlayer setNumberOfLoops:0];
-    [self.audioPlayer play];
-    self.lastAudioPlayerObj = self.audioPlayer;
+    audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:soundURL error:&error];
+   audioPlayer.currentTime = seekTime;
+    [audioPlayer prepareToPlay];
+    [audioPlayer setDelegate:self];
+    [audioPlayer setNumberOfLoops:0];
+    [audioPlayer play];
+    self.lastAudioPlayerObj = audioPlayer;
 }
 
 -(void)releaseAudioObjcet{
     
     if (isAduioObjectAlive) {
         isAduioObjectAlive = NO;
-       [self.audioPlayer stop];
-        RELEASE(self.audioPlayer);
-        [self removeHightLightWithId:nil];
+       [audioPlayer stop];
+        RELEASE(audioPlayer);
+       [self removeHightLightWithId:nil];
     }
+}
+
+-(void)reStoreLastAudioState{
+     hieghLightNumber = [audioInfoPageArr count]+10;
+    isAudioEnable = NO;
 }
 
 -(void)stopLastAudio{
@@ -411,16 +464,16 @@
 }
 
 -(void)audioPlay{
-    [self.audioPlayer play];
+    [audioPlayer play];
 }
 
 -(void)audioStop{
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(audioStop) object:nil];
-    [self.audioPlayer stop];
+    [audioPlayer stop];
 }
 
 -(void)audioPause{
-    [self.audioPlayer pause];
+    [audioPlayer pause];
 }
 
 - (void)didReceiveMemoryWarning

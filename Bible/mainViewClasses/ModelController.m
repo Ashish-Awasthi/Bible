@@ -193,6 +193,7 @@
     [BibleSingletonManager sharedManager].isItGoforNextPage = YES;
     PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
     [currentViewController releaseAudioObjcet];
+    [currentViewController reStoreLastAudioState];
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     PageViewController    *leftPageViewController = [self getViewControllerFormArr:LeftView];
@@ -205,7 +206,8 @@
     // Stop Audio When you flip page.
     [BibleSingletonManager sharedManager].isItGoforNextPage = YES;
      PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
-      [currentViewController releaseAudioObjcet];
+     [currentViewController releaseAudioObjcet];
+    [currentViewController reStoreLastAudioState];
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     // Hide menu View when you flip page.
     if ([self.delegate performSelector:@selector(setMenuSliderViewHidden:)]) {
@@ -228,7 +230,6 @@
     
      NSInteger    finPrevIndex;
     finPrevIndex = [findPrevValueStr integerValue]-4;
-    
     if (finPrevIndex>=0) {
     [self reLoadDataOnPrevView:[self.htmlPageIndexArr objectAtIndex:finPrevIndex] withHtmlName:[self.webViewpageData objectAtIndex:finPrevIndex]];
     }
@@ -239,7 +240,6 @@
 -(void)loadNextView{
     
     PageViewController    *previousViewController = (PageViewController *)[self getViewControllerFormArr:CurrentView];
-    
     NSString    *nextValueStr = previousViewController.dataLabel.text;
     NSInteger    findIndex = [nextValueStr integerValue]+2;
     

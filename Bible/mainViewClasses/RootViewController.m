@@ -84,6 +84,8 @@
     [self addPreLoadView];
     [super viewDidLoad];
     
+    [BibleSingletonManager sharedManager].pageLoadingComplete = YES;
+    
     NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
     
     for (int i = 0; i<[pageData count]; i++) {
@@ -121,10 +123,15 @@
     
     for (UIGestureRecognizer * gesRecog in self.pageViewController.gestureRecognizers)
     {
-        if ([gesRecog isKindOfClass:[UITapGestureRecognizer class]])
+        if ([gesRecog isKindOfClass:[UITapGestureRecognizer class]]){
             gesRecog.enabled = NO;
-        else if ([gesRecog isKindOfClass:[UIPanGestureRecognizer class]])
+        }
+        else if ([gesRecog isKindOfClass:[UIPanGestureRecognizer class]]){
+            gesRecog.enabled = NO;
             gesRecog.delegate = self;
+            [self  performSelector:@selector(enablePanGesture) withObject:nil afterDelay:1.6];
+           }
+        
     }
     
     menuViewController = [[MenuSliderViewController alloc]initWithNibName:@"MenuSliderViewController" bundle:nil];
@@ -135,6 +142,10 @@
 
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
+    // Here check next and prev page loading complete
+    if ([BibleSingletonManager sharedManager].pageLoadingComplete == NO) {
+        return NO;
+    }
     [self.view.window setUserInteractionEnabled:NO];
     
     [self  performSelector:@selector(setWindowUserinteractionEnable) withObject:nil afterDelay:.7];
@@ -315,6 +326,15 @@
     
 }
 
+-(void)enablePanGesture{
+    self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+    for (UIGestureRecognizer * gesRecog in self.pageViewController.gestureRecognizers)
+    {
+        if ([gesRecog isKindOfClass:[UIPanGestureRecognizer class]]){
+            gesRecog.enabled = YES;
+        }
+    }
+}
 -(void)setWindowUserinteractionEnable{
    [self.view.window setUserInteractionEnabled:YES];
 }

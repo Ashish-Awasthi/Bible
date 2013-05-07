@@ -24,6 +24,7 @@
 @synthesize pageViewController;
 @synthesize currentPageId;
 @synthesize isItGoforNextPage;
+@synthesize pageLoadingComplete;
 
 //@synthesize _parseDataController;
 static BibleSingletonManager* _sharedManager; // self

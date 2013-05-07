@@ -811,6 +811,14 @@ color:#f9fe23;
     margin-top: 02%;
 	color:white;
 }
+#book09{ 
+margin-top:68px;
+margin-left:42%;
+width: 102px;
+height: 102px;
+position:absolute;
+repeat:no-repeat;
+}
 .images10{
     margin-left: 79%;
 	margin-top: -06.8%;
@@ -2094,7 +2102,7 @@ color:#FD6E02;
 }
 .images34{
     margin-left: 20%;
-	margin-top: 24%;
+	margin-top: 23.5%;
 }
 .images35{
     margin-left: 12%;
@@ -2106,15 +2114,15 @@ color:#FD6E02;
 }
 .images37{
     margin-left: 17%;
-	margin-top: -23%;
+	margin-top: -17%;
 }
 .images38{
     margin-left: 51%;
-	margin-top: -14%;
+	margin-top: 22%;
 }
 .images39{
     margin-left: 71%;
-	margin-top: -119%;
+	margin-top: -119.8%;
 }
 .images40{
     margin-left: 72%;
@@ -3285,7 +3293,7 @@ color:#FE068D;
 	margin-top: 02%;
 	color:white;
 }
-
+******
 .page31 {
 	text-align: left;
 	position: relative;
@@ -3391,7 +3399,6 @@ color:#FE068D;
 	margin-top: 02%;
 	color:white;
 }
-
 .page32 {
 	text-align: left;
 	position: relative;
@@ -3402,9 +3409,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 12%;
-	margin-top: 53%;
+	line-height: 42px;
+	margin-left: 11.7%;
+	margin-top: 51.9%;
 	color:white;
 }
 .page_32aa {
@@ -3438,9 +3445,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 50%;
-	margin-top: 12%;
+	line-height: 42px;
+	margin-left: 50.3%;
+	margin-top: 9.2%;
 	color:white;
 }
 .page_32aaaaaa {
@@ -3494,10 +3501,9 @@ color:#FE068D;
     font-size: 16pt;
     line-height: 24px;
     margin-left: 18%;
-    margin-top: 06%;
+    margin-top: 04.9%;
     color:white;
 }
-
 .page33 {
 	text-align: left;
 	position: relative;
@@ -3510,16 +3516,20 @@ color:#FE068D;
     font-size: 25pt;
 	line-height: 24px;
 	margin-left: 09%;
-	margin-top: 07%;
+	margin-top: 7.5%;
 	color:#5EABF1;
 }
+.col-1 {
+	color:#5EABF1;
+}
+
 .page_33aa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 13%;
-	margin-top: 06%;
+	line-height: 42px;
+	margin-left: 12.9%;
+	margin-top: 04.1%;
 	color:white;
 }
 .page_33aaa {
@@ -3535,9 +3545,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 13%;
-	margin-top: 04%;
+	line-height: 41px;
+	margin-left: 12.7%;
+	margin-top: 2.3%;
 	color:white;
 }
 .page_33aaaaa {
@@ -3558,7 +3568,6 @@ color:#FE068D;
 	margin-top: 03%;
 	color:white;
 }
-
 .page34 {
 	text-align: left;
 	position: relative;
@@ -3570,17 +3579,17 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 14%;
-	margin-top: 17%;
+	margin-left: 13.5%;
+	margin-top: 17.3%;
 	color:white;
 }
 .page_34aa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 59%;
-	margin-top: 09%;
+	line-height: 42px;
+	margin-left: 57.7%;
+	margin-top: 07.6%;
 	color:white;
 }
 .page_34aaa {
@@ -3623,9 +3632,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 63%;
-	margin-top: 08%;
+	line-height: 42px;
+	margin-left: 62.4%;
+	margin-top: 5%;
 	color:white;
 }
 .page_34aaaaaaaa {
@@ -3660,8 +3669,8 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 62%;
-	margin-top: 07%;
+	margin-left: 62.3%;
+	margin-top: 05.5%;
 	color:white;
 }
 .page_34b {
@@ -3736,7 +3745,6 @@ color:#FE068D;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_34c {
 	text-align: left;
 	position: relative;
@@ -3764,7 +3772,6 @@ color:#FE068D;
 	margin-top: -01px;
 	color:#7C5394;
 }
-
 .page_34d {
 	text-align: left;
 	position: relative;
@@ -3801,7 +3808,6 @@ color:#FE068D;
 	margin-top: 05px;
 	color:black;
 }
-
 .page34a {
 	text-align: left;
 	position: relative;
@@ -3818,9 +3824,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 15%;
-	margin-top: 15%;
+	line-height: 42px;
+	margin-left: 11%;
+	margin-top: 13.7%;
 	color:white;
 }
 .page_35aa {
@@ -3850,7 +3856,6 @@ color:#FE068D;
 	margin-top: 02%;
 	color:white;
 }
-
 .page36 {
 	text-align: left;
 	position: relative;
@@ -3862,17 +3867,17 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 33%;
-	margin-top: 11%;
+	margin-left: 32.7%;
+	margin-top: 10.6%;
 	color:white;
 }
 .page_36aa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 42%;
-	margin-top: 11%;
+	line-height: 42px;
+	margin-left: 41.5%;
+	margin-top: 10.1%;
 	color:white;
 }
 .page_36aaa {
@@ -3888,9 +3893,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 57%;
-	margin-top: 11%;
+	line-height: 42px;
+	margin-left: 56.6%;
+	margin-top: 8.7%;
 	color:white;
 }
 .page_36aaaaa {
@@ -3924,12 +3929,11 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 25%;
-	margin-top: 51%;
+	line-height: 42px;
+	margin-left: 18.6%;
+	margin-top: 48.4%;
 	color:white;
 }
-
 .page_36aaaaaaaaa{
 	text-align: left;
 	position: relative;
@@ -3949,10 +3953,13 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 38%;
-	margin-top: 41%;
-	color:black;
+	line-height: 42px;
+	margin-left: 38.2%;
+	margin-top: 39.4%;
+
+}
+.black{
+color:black;
 }
 .page_37aa {
 	text-align: left;
@@ -3976,9 +3983,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 38%;
-	margin-top: 05%;
+	line-height: 42px;
+	margin-left: 37.7%;
+	margin-top: 02.7%;
 	color:black;
 }
 .page_37aaaaa {
@@ -4014,10 +4021,9 @@ color:#FE068D;
     font-size: 49pt;
 	line-height: 24px;
 	margin-left: 35%;
-	margin-top: 06%;
-	color:#75ECF3;
+	margin-top: 04.3%;
+	color:white;
 }
-
 .page_37aaaaaaaaa{
 	text-align: left;
 	position: relative;
@@ -4027,7 +4033,6 @@ color:#FE068D;
 	margin-top: 02%;
 	color:white;
 }
-
 .page38 {
 	text-align: left;
 	position: relative;
@@ -4038,9 +4043,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 12%;
-	margin-top: 51%;
+	line-height: 42px;
+	margin-left: 11.9%;
+	margin-top: 50.2%;
 	color:black;
 }
 .page_38aa {
@@ -4106,7 +4111,6 @@ color:#FE068D;
 	margin-top: 06%;
 	color:#75ECF3;
 }
-
 .page_38aaaaaaaaa{
 	text-align: left;
 	position: relative;
@@ -4126,9 +4130,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 13%;
-	margin-top: 20%;
+	line-height: 42px;
+	margin-left: 12.4%;
+	margin-top: 19%;
 	color:white;
 }
 .page_39aa {
@@ -4171,9 +4175,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left:17%;
-	margin-top: 15%;
+	line-height: 42px;
+	margin-left:16.6%;
+	margin-top: 12.5%;
 	color:white;
 }
 .page_39aaaaaaa{
@@ -4194,7 +4198,6 @@ color:#FE068D;
 	margin-top: 06%;
 	color:white;
 }
-
 .page_39aaaaaaaaa{
 	text-align: left;
 	position: relative;
@@ -4208,12 +4211,11 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 21%;
-	margin-top: 38%;
+	line-height: 42px;
+	margin-left: 21.3%;
+	margin-top: 3.9%;
 	color:white;
 }
-
 .page92 {
 	text-align: left;
 	position: relative;
@@ -4293,9 +4295,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 12%;
-	margin-top: 09%;
+	line-height: 42px;
+	margin-left: 11.7%;
+	margin-top: 08.2%;
 	color:white;
 }
 .page_40aa {
@@ -4320,9 +4322,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 49%;
-	margin-top: 22%;
+	line-height: 20px;
+	margin-left: 20.3%;
+	margin-top: 20.2%;
 	color:white;
 }
 .page_40aaaaa {
@@ -4356,12 +4358,11 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 12%;
-	margin-top: 07%;
+	line-height: 42px;
+	margin-left: 11.5%;
+	margin-top: 06.9%;
 	color:white;
 }
-
 .page_40aaaaaaaaa{
 	text-align: left;
 	position: relative;
@@ -4400,17 +4401,21 @@ color:#FE068D;
 	position: relative;
     font-size: 25pt;
 	line-height: 24px;
-	margin-left: 10%;
-	margin-top: 08%;
+	margin-left: 9.5%;
+	margin-top: 07.2%;
 	color:#CB4C09;
 }
+.col-2 {
+	color:#CB4C09;
+}
+
 .page_41aa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 39%;
-	margin-top: 40%;
+	line-height: 42px;
+	margin-left: 38.4%;
+	margin-top: 39.5%;
 	color:white;
 }
 .page_41aaa {
@@ -4436,17 +4441,17 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 15%;
-	margin-top: 20%;
+	margin-left: 14.5%;
+	margin-top: 18.3%;
 	color:white;
 }
 .page_41aaaaaa{
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left:39%;
-	margin-top: 28%;
+	line-height: 42px;
+	margin-left:12.3%;
+	margin-top: 27.8%;
 	color:white;
 }
 .page_41aaaaaaa{
@@ -4469,17 +4474,17 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 10%;
-	margin-top: 09%;
+	margin-left: 9.4%;
+	margin-top: 9.2%;
 	color:white;
 }
 .page_42aa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 15%;
-	margin-top: 08%;
+	line-height: 41px;
+	margin-left: 12.8%;
+	margin-top: 07.1%;
 	color:white;
 }
 .page_42aaa {
@@ -4504,9 +4509,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 53%;
-	margin-top: 32%;
+	line-height: 42px;
+	margin-left: 49.9%;
+	margin-top: 29.2%;
 	color:white;
 }
 .page_42aaaaaa{
@@ -4545,7 +4550,6 @@ color:#FE068D;
 	margin-top: 02%;
 	color:white;
 }
-
 .page43 {
 	text-align: left;
 	position: relative;
@@ -4556,9 +4560,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 62%;
-	margin-top: 11%;
+	line-height: 42px;
+	margin-left: 55.5%;
+	margin-top: 9.4%;
 	color:white;
 }
 .page_43aa {
@@ -4592,9 +4596,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 51%;
-	margin-top: 07%;
+	line-height: 42px;
+	margin-left: 11.2%;
+	margin-top: 04.3%;
 	color:white;
 }
 .page_43aaaaaa{
@@ -4610,9 +4614,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 19%;
-	margin-top: 06%;
+	line-height: 42px;
+	margin-left: 19.1%;
+	margin-top: 04%;
 	color:white;
 }
 .page_43aaaaaaaa{
@@ -4628,9 +4632,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 12%;
-	margin-top: 07%;
+	line-height: 42px;
+	margin-left: 12.4%;
+	margin-top: 04.4%;
 	color:white;
 }
 .page_43aaaaaaaaaa{
@@ -4646,9 +4650,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 14%;
-	margin-top: 08%;
+	line-height: 42px;
+	margin-left: 8.5%;
+	margin-top: 05.9%;
 	color:white;
 }
 .page_43aaaaaaaaaaaa{
@@ -4673,9 +4677,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 16%;
-	margin-top: 19%;
+	line-height: 42px;
+	margin-left: 16.3%;
+	margin-top: 16.4%;
 	color:white;
 }
 .page_43aaaaaaaaaaaaaaa{
@@ -4698,17 +4702,17 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 32%;
-	margin-top: 08%;
+	margin-left: 31.5%;
+	margin-top: 08.4%;
 	color:white;
 }
 .page_44aa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 57%;
-	margin-top: 06%;
+	line-height: 42px;
+	margin-left: 57.2%;
+	margin-top: 04.5%;
 	color:white;
 }
 .page_44aaa {
@@ -4742,9 +4746,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left:41%;
-	margin-top: 06%;
+	line-height: 42px;
+	margin-left:41.5%;
+	margin-top: 3.7%;
 	color:white;
 }
 .page_44aaaaaaa{
@@ -4761,17 +4765,17 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 37%;
-	margin-top: 05%;
+	margin-left: 36.9%;
+	margin-top: 03.9%;
 	color:white;
 }
 .page_44aaaaaaaaa{
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 47%;
-	margin-top: 07%;
+	line-height: 42px;
+	margin-left: 38.5%;
+	margin-top: 05.5%;
 	color:white;
 }
 .page_44aaaaaaaaaa{
@@ -4797,17 +4801,17 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 47%;
-	margin-top: 02%;
+	margin-left: 47.1%;
+	margin-top: 01.1%;
 	color:white;
 }
 .page_44aaaaaaaaaaaaa{
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 57%;
-	margin-top: 04%;
+	line-height: 41px;
+	margin-left: 56.9%;
+	margin-top: 4%;
 	color:white;
 }
 .page_44aaaaaaaaaaaaaa{
@@ -4841,9 +4845,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 09%;
-	margin-top: 07%;
+	line-height: 42px;
+	margin-left: 08.8%;
+	margin-top: 05.3%;
 	color:white;
 }
 .page_44aaaaaaaaaaaaaaaaaa{
@@ -4874,9 +4878,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 12%;
-	margin-top: 09%;
+	line-height: 42px;
+	margin-left: 11.7%;
+	margin-top: 08%;
 	color:white;
 }
 .page_45aa {
@@ -4892,9 +4896,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 22%;
-	margin-top: 02%;
+	line-height: 42px;
+	margin-left: 12.8%;
+	margin-top: -0.3%;
 	color:white;
 }
 .page_45aaaa {
@@ -4910,9 +4914,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 10%;
-	margin-top: 02%;
+	line-height: 42px;
+	margin-left: 9.8%;
+	margin-top: -0.2%;
 	color:white;
 }
 .page_45aaaaaa{
@@ -4938,17 +4942,17 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 33%;
-	margin-top: 05%;
+	margin-left: 32.6%;
+	margin-top: 03.7%;
 	color:white;
 }
 .page_45aaaaaaaaa{
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 34%;
-	margin-top: 05%;
+	line-height: 42px;
+	margin-left: 33.9%;
+	margin-top: 04.2%;
 	color:white;
 }
 .page_45aaaaaaaaaa{
@@ -4964,9 +4968,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 43%;
-	margin-top: 02%;
+	line-height: 42px;
+	margin-left: 42.6%;
+	margin-top: -0.3%;
 	color:white;
 }
 .page_45aaaaaaaaaaaa{
@@ -4991,9 +4995,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 13%;
-	margin-top: 07%;
+	line-height: 42px;
+	margin-left: 13.2%;
+	margin-top: 04.8%;
 	color:white;
 }
 .page_45aaaaaaaaaaaaaaa{
@@ -5018,9 +5022,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 37%;
-	margin-top: 06%;
+	line-height: 42px;
+	margin-left: 14.3%;
+	margin-top: 04.5%;
 	color:white;
 }
 .page_45aaaaaaaaaaaaaaaaaa{
@@ -5051,9 +5055,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 10%;
-	margin-top: 11%;
+	line-height: 41px;
+	margin-left: 10.2%;
+	margin-top: 10%;
 	color:white;
 }
 .page_46aa {
@@ -5070,8 +5074,8 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 16%;
-	margin-top: 05%;
+	margin-left: 15.5%;
+	margin-top: 4%;
 	color:white;
 }
 .page_46aaaa {
@@ -5079,8 +5083,8 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 25%;
-	margin-top: 83%;
+	margin-left: 25.1%;
+	margin-top: 83.3%;
 	color:white;
 }
 .page_46aaaaa {
@@ -5088,8 +5092,8 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 15%;
-	margin-top: 05%;
+	margin-left: 14.9%;
+	margin-top: 05.2%;
 	color:white;
 }
 .page_46aaaaaa{
@@ -5138,9 +5142,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 19%;
-	margin-top: 11%;
+	line-height: 42px;
+	margin-left: 19.1%;
+	margin-top: 9.8%;
 	color:white;
 }
 .page_47aa {
@@ -5156,9 +5160,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 29%;
-	margin-top: 05%;
+	line-height: 41px;
+	margin-left: 19.4%;
+	margin-top: 02.7%;
 	color:white;
 }
 .page_47aaaa {
@@ -5174,9 +5178,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 40%;
-	margin-top: 70%;
+	line-height: 41px;
+	margin-left: 40.5%;
+	margin-top: 67.8%;
 	color:white;
 }
 .page_47aaaaaa{
@@ -5193,8 +5197,8 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 31%;
-	margin-top: 08%;
+	margin-left: 30.7%;
+	margin-top: 06.6%;
 	color:white;
 }
 .page_47aaaaaaaa{
@@ -5226,17 +5230,21 @@ color:#FE068D;
 	position: relative;
     font-size: 25pt;
 	line-height: 24px;
-	margin-left: 28%;
-	margin-top: 11%;
+	margin-left: 27.3%;
+	margin-top: 10.4%;
 	color:#4F80D1;
 }
+.col-3 {
+	color:#4F80D1;
+}
+
 .page_48aa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 17%;
-	margin-top: 92%;
+	margin-left: 16.5%;
+	margin-top: 92.1%;
 	color:white;
 }
 .page49 {
@@ -5249,9 +5257,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 15%;
-	margin-top: 11%;
+	line-height: 42px;
+	margin-left: 15.2%;
+	margin-top: 10.5%;
 	color:white;
 }
 .page_49aa {
@@ -5268,17 +5276,17 @@ color:#FE068D;
 	position: relative;
     font-size: 16pt;
 	line-height: 24px;
-	margin-left: 29%;
-	margin-top: 05%;
+	margin-left: 28.5%;
+	margin-top: 03.7%;
 	color:white;
 }
 .page_49aaaa {
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 63%;
-	margin-top: 15%;
+	line-height: 42px;
+	margin-left: 62.6%;
+	margin-top: 14.5%;
 	color:white;
 }
 .page_49aaaaa {
@@ -5312,9 +5320,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 64%;
-	margin-top: 10%;
+	line-height: 42px;
+	margin-left: 63.6%;
+	margin-top: 8%;
 	color:white;
 }
 .page_49aaaaaaaaa{
@@ -5357,9 +5365,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 33%;
-	margin-top: 15%;
+	line-height: 42px;
+	margin-left: 29%;
+	margin-top: 12.8%;
 	color:white;
 }
 .page_49aaaaaaaaaaaaaa{
@@ -5381,9 +5389,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
+	line-height: 42px;
 	margin-left: 54%;
-	margin-top: 10%;
+	margin-top: 9%;
 	color:white;
 }
 .page_50aa {
@@ -5426,9 +5434,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left:60%;
-	margin-top: 10%;
+	line-height: 42px;
+	margin-left:56.4%;
+	margin-top: 7.9%;
 	color:white;
 }
 .page_50aaaaaaa{
@@ -5453,9 +5461,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 15%;
-	margin-top: 09%;
+	line-height: 42px;
+	margin-left: 10.1%;
+	margin-top: 07.5%;
 	color:white;
 }
 .page_50aaaaaaaaaa{
@@ -5489,9 +5497,9 @@ color:#FE068D;
 	text-align: left;
 	position: relative;
     font-size: 16pt;
-	line-height: 24px;
-	margin-left: 34%;
-	margin-top: 22%;
+	line-height: 42px;
+	margin-left: 34.4%;
+	margin-top: 19.5%;
 	color:white;
 }
 .page_50aaaaaaaaaaaaaa{
@@ -6472,7 +6480,6 @@ color:#FE068D;
 	margin-top: 02%;
 	color:white;
 }
-
 .page61 {
 	text-align: left;
 	position: relative;
@@ -6596,7 +6603,6 @@ color:#FE068D;
 	margin-top: 02%;
 	color:white;
 }
-
 .page62 {
 	text-align: left;
 	position: relative;
@@ -7827,7 +7833,6 @@ color:#FE068D;
 	margin-top: 02%;
 	color:white;
 }
-
 .page69 {
 	text-align: left;
 	position: relative;
@@ -8700,7 +8705,6 @@ color:#1FA8D0;
 	margin-top: 67.4%;
 	color:#7F94EE;
 }
-
 .page_92bb {
 	text-align: left;
 	position: relative;
@@ -8764,7 +8768,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_92c {
 	text-align: left;
 	position: relative;
@@ -8792,7 +8795,6 @@ color:#1FA8D0;
 	margin-top: -01px;
 	color:#7C5394;
 }
-
 .page_92d {
 	text-align: left;
 	position: relative;
@@ -8829,7 +8831,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page92a {
 	text-align: left;
 	position: relative;
@@ -8977,7 +8978,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_93c {
 	text-align: left;
 	position: relative;
@@ -9005,7 +9005,6 @@ color:#1FA8D0;
 	margin-top: -01px;
 	color:black;
 }
-
 .page_93d {
 	text-align: left;
 	position: relative;
@@ -9042,7 +9041,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page93a {
 	text-align: left;
 	position: relative;
@@ -9145,7 +9143,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_94bbb {
 	text-align: left;
 	position: relative;
@@ -9200,7 +9197,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_94c {
 	text-align: left;
 	position: relative;
@@ -9228,7 +9224,6 @@ color:#1FA8D0;
 	margin-top: -01px;
 	color:black;
 }
-
 .page_94d {
 	text-align: left;
 	position: relative;
@@ -9265,7 +9260,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page94a {
 	text-align: left;
 	position: relative;
@@ -9368,7 +9362,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_95bbb {
 	text-align: left;
 	position: relative;
@@ -9423,7 +9416,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_95c {
 	text-align: left;
 	position: relative;
@@ -9469,7 +9461,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_95d {
 	text-align: left;
 	position: relative;
@@ -9506,7 +9497,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page95a {
 	text-align: left;
 	position: relative;
@@ -9609,7 +9599,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_96bbb {
 	text-align: left;
 	position: relative;
@@ -9664,7 +9653,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_96c {
 	text-align: left;
 	position: relative;
@@ -9701,7 +9689,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_96d {
 	text-align: left;
 	position: relative;
@@ -9738,7 +9725,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page96a {
 	text-align: left;
 	position: relative;
@@ -9847,7 +9833,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_97bbb {
 	text-align: left;
 	position: relative;
@@ -9902,7 +9887,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_97c {
 	text-align: left;
 	position: relative;
@@ -9939,7 +9923,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_97d {
 	text-align: left;
 	position: relative;
@@ -9976,7 +9959,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page97a {
 	text-align: left;
 	position: relative;
@@ -10085,7 +10067,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_98bbb {
 	text-align: left;
 	position: relative;
@@ -10140,7 +10121,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_98c {
 	text-align: left;
 	position: relative;
@@ -10177,7 +10157,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_98d {
 	text-align: left;
 	position: relative;
@@ -10214,7 +10193,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page98a {
 	text-align: left;
 	position: relative;
@@ -10323,7 +10301,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_99bbb {
 	text-align: left;
 	position: relative;
@@ -10378,7 +10355,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_99c {
 	text-align: left;
 	position: relative;
@@ -10415,7 +10391,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_99d {
 	text-align: left;
 	position: relative;
@@ -10452,7 +10427,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page99a {
 	text-align: left;
 	position: relative;
@@ -10561,7 +10535,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_100bbb {
 	text-align: left;
 	position: relative;
@@ -10616,7 +10589,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_100c {
 	text-align: left;
 	position: relative;
@@ -10653,7 +10625,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_100d {
 	text-align: left;
 	position: relative;
@@ -10690,7 +10661,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page100a {
 	text-align: left;
 	position: relative;
@@ -10805,7 +10775,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_101bbb {
 	text-align: left;
 	position: relative;
@@ -10860,7 +10829,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_101c {
 	text-align: left;
 	position: relative;
@@ -10897,7 +10865,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_101d {
 	text-align: left;
 	position: relative;
@@ -10934,7 +10901,6 @@ color:#1FA8D0;
 	margin-top: 25px;
 	color:white;
 }
-
 .page101a {
 	text-align: left;
 	position: relative;
@@ -11040,7 +11006,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_102bb {
 	text-align: left;
 	position: relative;
@@ -11059,7 +11024,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_102bbb {
 	text-align: left;
 	position: relative;
@@ -11114,7 +11078,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_102c {
 	text-align: left;
 	position: relative;
@@ -11151,7 +11114,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_102d {
 	text-align: left;
 	position: relative;
@@ -11188,7 +11150,6 @@ color:#1FA8D0;
 	margin-top: 25px;
 	color:white;
 }
-
 .page102a {
 	text-align: left;
 	position: relative;
@@ -11294,7 +11255,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_103bb {
 	text-align: left;
 	position: relative;
@@ -11313,7 +11273,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_103bbb {
 	text-align: left;
 	position: relative;
@@ -11368,7 +11327,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_103c {
 	text-align: left;
 	position: relative;
@@ -11405,7 +11363,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_103d {
 	text-align: left;
 	position: relative;
@@ -11442,7 +11399,6 @@ color:#1FA8D0;
 	margin-top: 25px;
 	color:white;
 }
-
 .page103a {
 	text-align: left;
 	position: relative;
@@ -11503,7 +11459,6 @@ color:#1FA8D0;
 	margin-top: 324px;
 	color:black;
 }
-
 .page_104aaaa {
 	text-align: left;
 	position: relative;
@@ -11558,7 +11513,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_104bb {
 	text-align: left;
 	position: relative;
@@ -11577,7 +11531,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_104bbb {
 	text-align: left;
 	position: relative;
@@ -11632,7 +11585,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_104c {
 	text-align: left;
 	position: relative;
@@ -11669,7 +11621,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_104d {
 	text-align: left;
 	position: relative;
@@ -11706,7 +11657,6 @@ color:#1FA8D0;
 	margin-top: 54px;
 	color:white;
 }
-
 .page104a {
 	text-align: left;
 	position: relative;
@@ -11767,7 +11717,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page_105aaaa {
 	text-align: left;
 	position: relative;
@@ -11822,7 +11771,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_105bb {
 	text-align: left;
 	position: relative;
@@ -11841,7 +11789,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_105bbb {
 	text-align: left;
 	position: relative;
@@ -11896,7 +11843,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_105c {
 	text-align: left;
 	position: relative;
@@ -11933,7 +11879,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_105d {
 	text-align: left;
 	position: relative;
@@ -11970,7 +11915,6 @@ color:#1FA8D0;
 	margin-top: 54px;
 	color:white;
 }
-
 .page105a {
 	text-align: left;
 	position: relative;
@@ -12031,7 +11975,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page_133aaaa {
 	text-align: left;
 	position: relative;
@@ -12086,7 +12029,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_133bb {
 	text-align: left;
 	position: relative;
@@ -12105,7 +12047,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_133bbb {
 	text-align: left;
 	position: relative;
@@ -12160,7 +12101,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_133c {
 	text-align: left;
 	position: relative;
@@ -12197,7 +12137,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_133d {
 	text-align: left;
 	position: relative;
@@ -12234,7 +12173,6 @@ color:#1FA8D0;
 	margin-top: 08px;
 	color:white;
 }
-
 .page133a {
 	text-align: left;
 	position: relative;
@@ -12295,7 +12233,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page_134aaaa {
 	text-align: left;
 	position: relative;
@@ -12350,7 +12287,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_134bb {
 	text-align: left;
 	position: relative;
@@ -12369,7 +12305,6 @@ color:#1FA8D0;
 	margin-top: 21px;
 	color:#7C459A;
 }
-
 .page_134bbb {
 	text-align: left;
 	position: relative;
@@ -12424,7 +12359,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_134c {
 	text-align: left;
 	position: relative;
@@ -12461,7 +12395,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_134d {
 	text-align: left;
 	position: relative;
@@ -12498,7 +12431,6 @@ color:#1FA8D0;
 	margin-top: 08px;
 	color:white;
 }
-
 .page134a {
 	text-align: left;
 	position: relative;
@@ -12559,7 +12491,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page_135aaaa {
 	text-align: left;
 	position: relative;
@@ -12614,7 +12545,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_135bb {
 	text-align: left;
 	position: relative;
@@ -12633,7 +12563,6 @@ color:#1FA8D0;
 	margin-top: 20px;
 	color:#7C459A;
 }
-
 .page_135bbb {
 	text-align: left;
 	position: relative;
@@ -12688,7 +12617,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_135c {
 	text-align: left;
 	position: relative;
@@ -12725,7 +12653,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_135d {
 	text-align: left;
 	position: relative;
@@ -12762,7 +12689,6 @@ color:#1FA8D0;
 	margin-top: 02px;
 	color:white;
 }
-
 .page135a {
 	text-align: left;
 	position: relative;
@@ -12823,7 +12749,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:black;
 }
-
 .page_136aaaa {
 	text-align: left;
 	position: relative;
@@ -12878,7 +12803,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_136bb {
 	text-align: left;
 	position: relative;
@@ -12897,7 +12821,6 @@ color:#1FA8D0;
 	margin-top: 20px;
 	color:#7C459A;
 }
-
 .page_136bbb {
 	text-align: left;
 	position: relative;
@@ -12952,7 +12875,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_136c {
 	text-align: left;
 	position: relative;
@@ -12989,7 +12911,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_136d {
 	text-align: left;
 	position: relative;
@@ -13026,7 +12947,6 @@ color:#1FA8D0;
 	margin-top: 02px;
 	color:white;
 }
-
 .page136a {
 	text-align: left;
 	position: relative;
@@ -13087,7 +13007,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:black;
 }
-
 .page_137aaaa {
 	text-align: left;
 	position: relative;
@@ -13142,7 +13061,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_137bb {
 	text-align: left;
 	position: relative;
@@ -13161,7 +13079,6 @@ color:#1FA8D0;
 	margin-top: 20px;
 	color:#7C459A;
 }
-
 .page_137bbb {
 	text-align: left;
 	position: relative;
@@ -13216,7 +13133,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_137c {
 	text-align: left;
 	position: relative;
@@ -13253,7 +13169,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_137d {
 	text-align: left;
 	position: relative;
@@ -13290,7 +13205,6 @@ color:#1FA8D0;
 	margin-top: 02px;
 	color:white;
 }
-
 .page137a {
 	text-align: left;
 	position: relative;
@@ -13351,7 +13265,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:black;
 }
-
 .page_138aaaa {
 	text-align: left;
 	position: relative;
@@ -13406,7 +13319,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_138bb {
 	text-align: left;
 	position: relative;
@@ -13425,7 +13337,6 @@ color:#1FA8D0;
 	margin-top: 20px;
 	color:#7C459A;
 }
-
 .page_138bbb {
 	text-align: left;
 	position: relative;
@@ -13480,7 +13391,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_138c {
 	text-align: left;
 	position: relative;
@@ -13517,7 +13427,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_138d {
 	text-align: left;
 	position: relative;
@@ -13554,7 +13463,6 @@ color:#1FA8D0;
 	margin-top: 02px;
 	color:white;
 }
-
 .page138a {
 	text-align: left;
 	position: relative;
@@ -13615,7 +13523,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:black;
 }
-
 .page_139aaaa {
 	text-align: left;
 	position: relative;
@@ -13670,7 +13577,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_139bb {
 	text-align: left;
 	position: relative;
@@ -13689,7 +13595,6 @@ color:#1FA8D0;
 	margin-top: 20px;
 	color:#7C459A;
 }
-
 .page_139bbb {
 	text-align: left;
 	position: relative;
@@ -13744,7 +13649,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_139c {
 	text-align: left;
 	position: relative;
@@ -13781,7 +13685,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_139d {
 	text-align: left;
 	position: relative;
@@ -13818,7 +13721,6 @@ color:#1FA8D0;
 	margin-top: 02px;
 	color:white;
 }
-
 .page139a {
 	text-align: left;
 	position: relative;
@@ -13879,7 +13781,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:black;
 }
-
 .page_140aaaa {
 	text-align: left;
 	position: relative;
@@ -13934,7 +13835,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_140bb {
 	text-align: left;
 	position: relative;
@@ -13953,7 +13853,6 @@ color:#1FA8D0;
 	margin-top: 20px;
 	color:#7C459A;
 }
-
 .page_140bbb {
 	text-align: left;
 	position: relative;
@@ -14008,7 +13907,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_140c {
 	text-align: left;
 	position: relative;
@@ -14045,7 +13943,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_140d {
 	text-align: left;
 	position: relative;
@@ -14082,7 +13979,6 @@ color:#1FA8D0;
 	margin-top: 02px;
 	color:white;
 }
-
 .page140a {
 	text-align: left;
 	position: relative;
@@ -14143,7 +14039,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:black;
 }
-
 .page_141aaaa {
 	text-align: left;
 	position: relative;
@@ -14198,7 +14093,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_141bb {
 	text-align: left;
 	position: relative;
@@ -14217,7 +14111,6 @@ color:#1FA8D0;
 	margin-top: 20px;
 	color:#7C459A;
 }
-
 .page_141bbb {
 	text-align: left;
 	position: relative;
@@ -14272,7 +14165,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_141c {
 	text-align: left;
 	position: relative;
@@ -14309,7 +14201,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_141d {
 	text-align: left;
 	position: relative;
@@ -14346,7 +14237,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page141a {
 	text-align: left;
 	position: relative;
@@ -14407,7 +14297,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:black;
 }
-
 .page_142aaaa {
 	text-align: left;
 	position: relative;
@@ -14462,7 +14351,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_142bb {
 	text-align: left;
 	position: relative;
@@ -14490,7 +14378,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_142bbb {
 	text-align: left;
 	position: relative;
@@ -14545,7 +14432,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_142c {
 	text-align: left;
 	position: relative;
@@ -14582,7 +14468,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_142d {
 	text-align: left;
 	position: relative;
@@ -14619,7 +14504,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page142a {
 	text-align: left;
 	position: relative;
@@ -14680,7 +14564,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:black;
 }
-
 .page_143aaaa {
 	text-align: left;
 	position: relative;
@@ -14735,7 +14618,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_143bb {
 	text-align: left;
 	position: relative;
@@ -14763,7 +14645,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_143bbb {
 	text-align: left;
 	position: relative;
@@ -14818,7 +14699,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_143c {
 	text-align: left;
 	position: relative;
@@ -14855,7 +14735,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_143d {
 	text-align: left;
 	position: relative;
@@ -14892,7 +14771,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page143a {
 	text-align: left;
 	position: relative;
@@ -14953,7 +14831,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:black;
 }
-
 .page_144aaaa {
 	text-align: left;
 	position: relative;
@@ -15008,7 +14885,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_144bb {
 	text-align: left;
 	position: relative;
@@ -15036,7 +14912,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_144bbb {
 	text-align: left;
 	position: relative;
@@ -15091,7 +14966,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_144c {
 	text-align: left;
 	position: relative;
@@ -15128,7 +15002,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_144d {
 	text-align: left;
 	position: relative;
@@ -15165,7 +15038,6 @@ color:#1FA8D0;
 	margin-top: 28px;
 	color:white;
 }
-
 .page144a {
 	text-align: left;
 	position: relative;
@@ -15226,7 +15098,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:black;
 }
-
 .page_145aaaa {
 	text-align: left;
 	position: relative;
@@ -15281,7 +15152,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_145bb {
 	text-align: left;
 	position: relative;
@@ -15309,7 +15179,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_145bbb {
 	text-align: left;
 	position: relative;
@@ -15364,7 +15233,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_145c {
 	text-align: left;
 	position: relative;
@@ -15401,7 +15269,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_145d {
 	text-align: left;
 	position: relative;
@@ -15438,7 +15305,6 @@ color:#1FA8D0;
 	margin-top: 28px;
 	color:white;
 }
-
 .page145a {
 	text-align: left;
 	position: relative;
@@ -15499,7 +15365,6 @@ color:#1FA8D0;
 	margin-top: 320px;
 	color:black;
 }
-
 .page_146aaaa {
 	text-align: left;
 	position: relative;
@@ -15554,7 +15419,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_146bb {
 	text-align: left;
 	position: relative;
@@ -15582,7 +15446,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_146bbb {
 	text-align: left;
 	position: relative;
@@ -15637,7 +15500,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_146c {
 	text-align: left;
 	position: relative;
@@ -15674,7 +15536,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_146d {
 	text-align: left;
 	position: relative;
@@ -15711,7 +15572,6 @@ color:#1FA8D0;
 	margin-top: 28px;
 	color:white;
 }
-
 .page146a {
 	text-align: left;
 	position: relative;
@@ -15772,7 +15632,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_147aaaa {
 	text-align: left;
 	position: relative;
@@ -15827,7 +15686,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_147bb {
 	text-align: left;
 	position: relative;
@@ -15855,7 +15713,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_147bbb {
 	text-align: left;
 	position: relative;
@@ -15910,7 +15767,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_147c {
 	text-align: left;
 	position: relative;
@@ -15947,7 +15803,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_147d {
 	text-align: left;
 	position: relative;
@@ -15984,7 +15839,6 @@ color:#1FA8D0;
 	margin-top: 28px;
 	color:white;
 }
-
 .page147a {
 	text-align: left;
 	position: relative;
@@ -16045,7 +15899,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_148aaaa {
 	text-align: left;
 	position: relative;
@@ -16100,7 +15953,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_148bb {
 	text-align: left;
 	position: relative;
@@ -16128,7 +15980,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_148bbb {
 	text-align: left;
 	position: relative;
@@ -16183,7 +16034,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_148c {
 	text-align: left;
 	position: relative;
@@ -16220,7 +16070,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_148d {
 	text-align: left;
 	position: relative;
@@ -16257,7 +16106,6 @@ color:#1FA8D0;
 	margin-top: 28px;
 	color:white;
 }
-
 .page148a {
 	text-align: left;
 	position: relative;
@@ -16318,7 +16166,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_149aaaa {
 	text-align: left;
 	position: relative;
@@ -16373,7 +16220,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_149bb {
 	text-align: left;
 	position: relative;
@@ -16401,7 +16247,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_149bbb {
 	text-align: left;
 	position: relative;
@@ -16456,7 +16301,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_149c {
 	text-align: left;
 	position: relative;
@@ -16493,7 +16337,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_149d {
 	text-align: left;
 	position: relative;
@@ -16530,7 +16373,6 @@ color:#1FA8D0;
 	margin-top: 28px;
 	color:white;
 }
-
 .page149a {
 	text-align: left;
 	position: relative;
@@ -16591,7 +16433,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_150aaaa {
 	text-align: left;
 	position: relative;
@@ -16646,7 +16487,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_150bb {
 	text-align: left;
 	position: relative;
@@ -16674,7 +16514,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_150bbb {
 	text-align: left;
 	position: relative;
@@ -16729,7 +16568,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_150c {
 	text-align: left;
 	position: relative;
@@ -16766,7 +16604,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_150d {
 	text-align: left;
 	position: relative;
@@ -16803,7 +16640,6 @@ color:#1FA8D0;
 	margin-top: 28px;
 	color:white;
 }
-
 .page150a {
 	text-align: left;
 	position: relative;
@@ -16864,7 +16700,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_151aaaa {
 	text-align: left;
 	position: relative;
@@ -16919,7 +16754,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_151bb {
 	text-align: left;
 	position: relative;
@@ -16947,7 +16781,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_151bbb {
 	text-align: left;
 	position: relative;
@@ -17002,7 +16835,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_151c {
 	text-align: left;
 	position: relative;
@@ -17039,7 +16871,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_151d {
 	text-align: left;
 	position: relative;
@@ -17076,7 +16907,6 @@ color:#1FA8D0;
 	margin-top: 28px;
 	color:white;
 }
-
 .page151a {
 	text-align: left;
 	position: relative;
@@ -17137,7 +16967,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_152aaaa {
 	text-align: left;
 	position: relative;
@@ -17192,7 +17021,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_152bb {
 	text-align: left;
 	position: relative;
@@ -17220,7 +17048,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_152bbb {
 	text-align: left;
 	position: relative;
@@ -17275,7 +17102,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_152c {
 	text-align: left;
 	position: relative;
@@ -17312,7 +17138,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_152d {
 	text-align: left;
 	position: relative;
@@ -17349,7 +17174,6 @@ color:#1FA8D0;
 	margin-top: 28px;
 	color:white;
 }
-
 .page152a {
 	text-align: left;
 	position: relative;
@@ -17410,7 +17234,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_153aaaa {
 	text-align: left;
 	position: relative;
@@ -17465,7 +17288,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_153bb {
 	text-align: left;
 	position: relative;
@@ -17493,7 +17315,6 @@ color:#1FA8D0;
 	margin-top: 595px;
 	color:#7C459A;
 }
-
 .page_153bbb {
 	text-align: left;
 	position: relative;
@@ -17548,7 +17369,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_153c {
 	text-align: left;
 	position: relative;
@@ -17585,7 +17405,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_153d {
 	text-align: left;
 	position: relative;
@@ -17622,7 +17441,6 @@ color:#1FA8D0;
 	margin-top: 30px;
 	color:white;
 }
-
 .page153a {
 	text-align: left;
 	position: relative;
@@ -17683,7 +17501,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_154aaaa {
 	text-align: left;
 	position: relative;
@@ -17738,7 +17555,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_154bb {
 	text-align: left;
 	position: relative;
@@ -17766,7 +17582,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_154bbb {
 	text-align: left;
 	position: relative;
@@ -17821,7 +17636,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_154c {
 	text-align: left;
 	position: relative;
@@ -17858,7 +17672,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_154d {
 	text-align: left;
 	position: relative;
@@ -17895,7 +17708,6 @@ color:#1FA8D0;
 	margin-top: 30px;
 	color:white;
 }
-
 .page154a {
 	text-align: left;
 	position: relative;
@@ -17956,7 +17768,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_155aaaa {
 	text-align: left;
 	position: relative;
@@ -18011,7 +17822,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_155bb {
 	text-align: left;
 	position: relative;
@@ -18039,7 +17849,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_155bbb {
 	text-align: left;
 	position: relative;
@@ -18094,7 +17903,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_155c {
 	text-align: left;
 	position: relative;
@@ -18131,7 +17939,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_155d {
 	text-align: left;
 	position: relative;
@@ -18168,7 +17975,6 @@ color:#1FA8D0;
 	margin-top: 30px;
 	color:white;
 }
-
 .page155a {
 	text-align: left;
 	position: relative;
@@ -18229,7 +18035,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_156aaaa {
 	text-align: left;
 	position: relative;
@@ -18284,7 +18089,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_156bb {
 	text-align: left;
 	position: relative;
@@ -18312,7 +18116,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_156bbb {
 	text-align: left;
 	position: relative;
@@ -18367,7 +18170,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_156c {
 	text-align: left;
 	position: relative;
@@ -18404,7 +18206,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_156d {
 	text-align: left;
 	position: relative;
@@ -18441,7 +18242,6 @@ color:#1FA8D0;
 	margin-top: 30px;
 	color:white;
 }
-
 .page156a {
 	text-align: left;
 	position: relative;
@@ -18502,7 +18302,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_157aaaa {
 	text-align: left;
 	position: relative;
@@ -18557,7 +18356,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_157bb {
 	text-align: left;
 	position: relative;
@@ -18585,7 +18383,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_157bbb {
 	text-align: left;
 	position: relative;
@@ -18640,7 +18437,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_157c {
 	text-align: left;
 	position: relative;
@@ -18677,7 +18473,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_157d {
 	text-align: left;
 	position: relative;
@@ -18723,7 +18518,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page157a {
 	text-align: left;
 	position: relative;
@@ -18784,7 +18578,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_158aaaa {
 	text-align: left;
 	position: relative;
@@ -18839,7 +18632,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_158bb {
 	text-align: left;
 	position: relative;
@@ -18867,7 +18659,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_158bbb {
 	text-align: left;
 	position: relative;
@@ -18922,7 +18713,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_158c {
 	text-align: left;
 	position: relative;
@@ -18959,7 +18749,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_158d {
 	text-align: left;
 	position: relative;
@@ -19005,7 +18794,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page158a {
 	text-align: left;
 	position: relative;
@@ -19066,7 +18854,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_159aaaa {
 	text-align: left;
 	position: relative;
@@ -19121,7 +18908,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_159bb {
 	text-align: left;
 	position: relative;
@@ -19149,7 +18935,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_159bbb {
 	text-align: left;
 	position: relative;
@@ -19204,7 +18989,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_159c {
 	text-align: left;
 	position: relative;
@@ -19241,7 +19025,6 @@ color:#1FA8D0;
 	margin-top: 286px;
 	color:black;
 }
-
 .page_159d {
 	text-align: left;
 	position: relative;
@@ -19287,7 +19070,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page159a {
 	text-align: left;
 	position: relative;
@@ -19348,7 +19130,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_160aaaa {
 	text-align: left;
 	position: relative;
@@ -19403,7 +19184,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_160bb {
 	text-align: left;
 	position: relative;
@@ -19431,7 +19211,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_160bbb {
 	text-align: left;
 	position: relative;
@@ -19486,7 +19265,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_160c {
 	text-align: left;
 	position: relative;
@@ -19532,7 +19310,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_160d {
 	text-align: left;
 	position: relative;
@@ -19578,7 +19355,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page160a {
 	text-align: left;
 	position: relative;
@@ -19639,7 +19415,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_161aaaa {
 	text-align: left;
 	position: relative;
@@ -19694,7 +19469,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_161bb {
 	text-align: left;
 	position: relative;
@@ -19722,7 +19496,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_161bbb {
 	text-align: left;
 	position: relative;
@@ -19777,7 +19550,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_161c {
 	text-align: left;
 	position: relative;
@@ -19823,7 +19595,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_161d {
 	text-align: left;
 	position: relative;
@@ -19869,7 +19640,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page161a {
 	text-align: left;
 	position: relative;
@@ -19930,7 +19700,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_162aaaa {
 	text-align: left;
 	position: relative;
@@ -19985,7 +19754,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_162bb {
 	text-align: left;
 	position: relative;
@@ -20013,7 +19781,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_162bbb {
 	text-align: left;
 	position: relative;
@@ -20068,7 +19835,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_162c {
 	text-align: left;
 	position: relative;
@@ -20114,7 +19880,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_162d {
 	text-align: left;
 	position: relative;
@@ -20160,7 +19925,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page162a {
 	text-align: left;
 	position: relative;
@@ -20221,7 +19985,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_163aaaa {
 	text-align: left;
 	position: relative;
@@ -20276,7 +20039,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_163bb {
 	text-align: left;
 	position: relative;
@@ -20304,7 +20066,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_163bbb {
 	text-align: left;
 	position: relative;
@@ -20359,7 +20120,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_163c {
 	text-align: left;
 	position: relative;
@@ -20405,7 +20165,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_163d {
 	text-align: left;
 	position: relative;
@@ -20451,7 +20210,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page163a {
 	text-align: left;
 	position: relative;
@@ -20512,7 +20270,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_164aaaa {
 	text-align: left;
 	position: relative;
@@ -20567,7 +20324,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_164bb {
 	text-align: left;
 	position: relative;
@@ -20595,7 +20351,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_164bbb {
 	text-align: left;
 	position: relative;
@@ -20650,7 +20405,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_164c {
 	text-align: left;
 	position: relative;
@@ -20696,7 +20450,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_164d {
 	text-align: left;
 	position: relative;
@@ -20742,7 +20495,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page164a {
 	text-align: left;
 	position: relative;
@@ -20803,7 +20555,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_175aaaa {
 	text-align: left;
 	position: relative;
@@ -20858,7 +20609,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_175bb {
 	text-align: left;
 	position: relative;
@@ -20886,7 +20636,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_175bbb {
 	text-align: left;
 	position: relative;
@@ -20941,7 +20690,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_175c {
 	text-align: left;
 	position: relative;
@@ -20987,7 +20735,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_175d {
 	text-align: left;
 	position: relative;
@@ -21033,7 +20780,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page175a {
 	text-align: left;
 	position: relative;
@@ -21094,7 +20840,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_176aaaa {
 	text-align: left;
 	position: relative;
@@ -21149,7 +20894,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_176bb {
 	text-align: left;
 	position: relative;
@@ -21177,7 +20921,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_176bbb {
 	text-align: left;
 	position: relative;
@@ -21232,7 +20975,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_176c {
 	text-align: left;
 	position: relative;
@@ -21278,7 +21020,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_176d {
 	text-align: left;
 	position: relative;
@@ -21324,7 +21065,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page176a {
 	text-align: left;
 	position: relative;
@@ -21385,7 +21125,6 @@ color:#1FA8D0;
 	margin-top: 217px;
 	color:black;
 }
-
 .page_177aaaa {
 	text-align: left;
 	position: relative;
@@ -21440,7 +21179,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_177bb {
 	text-align: left;
 	position: relative;
@@ -21468,7 +21206,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_177bbb {
 	text-align: left;
 	position: relative;
@@ -21523,7 +21260,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_177c {
 	text-align: left;
 	position: relative;
@@ -21569,7 +21305,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_177d {
 	text-align: left;
 	position: relative;
@@ -21615,7 +21350,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page177a {
 	text-align: left;
 	position: relative;
@@ -21676,7 +21410,6 @@ color:#1FA8D0;
 	margin-top: 322px;
 	color:black;
 }
-
 .page_178aaaa {
 	text-align: left;
 	position: relative;
@@ -21731,7 +21464,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_178bb {
 	text-align: left;
 	position: relative;
@@ -21759,7 +21491,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_178bbb {
 	text-align: left;
 	position: relative;
@@ -21814,7 +21545,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_178c {
 	text-align: left;
 	position: relative;
@@ -21860,7 +21590,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_178d {
 	text-align: left;
 	position: relative;
@@ -21906,7 +21635,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page178a {
 	text-align: left;
 	position: relative;
@@ -21967,7 +21695,6 @@ color:#1FA8D0;
 	margin-top: 225px;
 	color:black;
 }
-
 .page_179aaaa {
 	text-align: left;
 	position: relative;
@@ -22022,7 +21749,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_179bb {
 	text-align: left;
 	position: relative;
@@ -22050,7 +21776,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_179bbb {
 	text-align: left;
 	position: relative;
@@ -22105,7 +21830,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_179c {
 	text-align: left;
 	position: relative;
@@ -22151,7 +21875,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_179d {
 	text-align: left;
 	position: relative;
@@ -22197,7 +21920,6 @@ color:#1FA8D0;
 	margin-top: 10px;
 	color:white;
 }
-
 .page179a {
 	text-align: left;
 	position: relative;
@@ -22258,7 +21980,6 @@ color:#1FA8D0;
 	margin-top: 225px;
 	color:black;
 }
-
 .page_180aaaa {
 	text-align: left;
 	position: relative;
@@ -22313,7 +22034,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_180bb {
 	text-align: left;
 	position: relative;
@@ -22341,7 +22061,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_180bbb {
 	text-align: left;
 	position: relative;
@@ -22396,7 +22115,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_180c {
 	text-align: left;
 	position: relative;
@@ -22442,7 +22160,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_180d {
 	text-align: left;
 	position: relative;
@@ -22488,7 +22205,6 @@ color:#1FA8D0;
 	margin-top: 18px;
 	color:white;
 }
-
 .page180a {
 	text-align: left;
 	position: relative;
@@ -22549,7 +22265,6 @@ color:#1FA8D0;
 	margin-top: 225px;
 	color:black;
 }
-
 .page_181aaaa {
 	text-align: left;
 	position: relative;
@@ -22604,7 +22319,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_181bb {
 	text-align: left;
 	position: relative;
@@ -22632,7 +22346,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_181bbb {
 	text-align: left;
 	position: relative;
@@ -22687,7 +22400,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_181c {
 	text-align: left;
 	position: relative;
@@ -22733,7 +22445,6 @@ color:#1FA8D0;
 	margin-top: 05px;
 	color:white;
 }
-
 .page_181d {
 	text-align: left;
 	position: relative;
@@ -22779,7 +22490,6 @@ color:#1FA8D0;
 	margin-top: 18px;
 	color:white;
 }
-
 .page181a {
 	text-align: left;
 	position: relative;
@@ -22840,7 +22550,6 @@ color:#1FA8D0;
 	margin-top: 225px;
 	color:black;
 }
-
 .page_182aaaa {
 	text-align: left;
 	position: relative;
@@ -22895,7 +22604,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_182bb {
 	text-align: left;
 	position: relative;
@@ -22923,7 +22631,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_182bbb {
 	text-align: left;
 	position: relative;
@@ -22978,7 +22685,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_182c {
 	text-align: left;
 	position: relative;
@@ -23033,7 +22739,6 @@ color:#1FA8D0;
 	margin-top: 63px;
 	color:white;
 }
-
 .page_182d {
 	text-align: left;
 	position: relative;
@@ -23079,7 +22784,6 @@ color:#1FA8D0;
 	margin-top: 18px;
 	color:white;
 }
-
 .page182a {
 	text-align: left;
 	position: relative;
@@ -23140,7 +22844,6 @@ color:#1FA8D0;
 	margin-top: 225px;
 	color:black;
 }
-
 .page_183aaaa {
 	text-align: left;
 	position: relative;
@@ -23195,7 +22898,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_183bb {
 	text-align: left;
 	position: relative;
@@ -23223,7 +22925,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_183bbb {
 	text-align: left;
 	position: relative;
@@ -23278,7 +22979,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_183c {
 	text-align: left;
 	position: relative;
@@ -23333,7 +23033,6 @@ color:#1FA8D0;
 	margin-top: 63px;
 	color:white;
 }
-
 .page_183d {
 	text-align: left;
 	position: relative;
@@ -23379,7 +23078,6 @@ color:#1FA8D0;
 	margin-top: 18px;
 	color:white;
 }
-
 .page183a {
 	text-align: left;
 	position: relative;
@@ -23440,7 +23138,6 @@ color:#1FA8D0;
 	margin-top: 225px;
 	color:black;
 }
-
 .page_184aaaa {
 	text-align: left;
 	position: relative;
@@ -23495,7 +23192,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_184bb {
 	text-align: left;
 	position: relative;
@@ -23523,7 +23219,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_184bbb {
 	text-align: left;
 	position: relative;
@@ -23578,7 +23273,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_184c {
 	text-align: left;
 	position: relative;
@@ -23633,7 +23327,6 @@ color:#1FA8D0;
 	margin-top: 63px;
 	color:white;
 }
-
 .page_184d {
 	text-align: left;
 	position: relative;
@@ -23679,7 +23372,6 @@ color:#1FA8D0;
 	margin-top: 18px;
 	color:white;
 }
-
 .page184a {
 	text-align: left;
 	position: relative;
@@ -23740,7 +23432,6 @@ color:#1FA8D0;
 	margin-top: 225px;
 	color:black;
 }
-
 .page_185aaaa {
 	text-align: left;
 	position: relative;
@@ -23795,7 +23486,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_185bb {
 	text-align: left;
 	position: relative;
@@ -23823,7 +23513,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_185bbb {
 	text-align: left;
 	position: relative;
@@ -23878,7 +23567,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_185c {
 	text-align: left;
 	position: relative;
@@ -23933,7 +23621,6 @@ color:#1FA8D0;
 	margin-top: 63px;
 	color:white;
 }
-
 .page_185d {
 	text-align: left;
 	position: relative;
@@ -23979,7 +23666,6 @@ color:#1FA8D0;
 	margin-top: 18px;
 	color:white;
 }
-
 .page185a {
 	text-align: left;
 	position: relative;
@@ -24040,7 +23726,6 @@ color:#1FA8D0;
 	margin-top: 225px;
 	color:black;
 }
-
 .page_186aaaa {
 	text-align: left;
 	position: relative;
@@ -24095,7 +23780,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_186bb {
 	text-align: left;
 	position: relative;
@@ -24123,7 +23807,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_186bbb {
 	text-align: left;
 	position: relative;
@@ -24178,7 +23861,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_186c {
 	text-align: left;
 	position: relative;
@@ -24233,7 +23915,6 @@ color:#1FA8D0;
 	margin-top: 63px;
 	color:white;
 }
-
 .page_186d {
 	text-align: left;
 	position: relative;
@@ -24279,7 +23960,6 @@ color:#1FA8D0;
 	margin-top: 18px;
 	color:white;
 }
-
 .page186a {
 	text-align: left;
 	position: relative;
@@ -24340,7 +24020,6 @@ color:#1FA8D0;
 	margin-top: 225px;
 	color:black;
 }
-
 .page_187aaaa {
 	text-align: left;
 	position: relative;
@@ -24395,7 +24074,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_187bb {
 	text-align: left;
 	position: relative;
@@ -24423,7 +24101,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_187bbb {
 	text-align: left;
 	position: relative;
@@ -24478,7 +24155,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_187c {
 	text-align: left;
 	position: relative;
@@ -24533,7 +24209,6 @@ color:#1FA8D0;
 	margin-top: 63px;
 	color:white;
 }
-
 .page_187d {
 	text-align: left;
 	position: relative;
@@ -24579,7 +24254,6 @@ color:#1FA8D0;
 	margin-top: 18px;
 	color:white;
 }
-
 .page187a {
 	text-align: left;
 	position: relative;
@@ -24640,7 +24314,6 @@ color:#1FA8D0;
 	margin-top: 225px;
 	color:black;
 }
-
 .page_188aaaa {
 	text-align: left;
 	position: relative;
@@ -24695,7 +24368,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_188bb {
 	text-align: left;
 	position: relative;
@@ -24723,7 +24395,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_188bbb {
 	text-align: left;
 	position: relative;
@@ -24778,7 +24449,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_188c {
 	text-align: left;
 	position: relative;
@@ -24833,7 +24503,6 @@ color:#1FA8D0;
 	margin-top: 63px;
 	color:white;
 }
-
 .page_188d {
 	text-align: left;
 	position: relative;
@@ -24879,7 +24548,6 @@ color:#1FA8D0;
 	margin-top: 18px;
 	color:white;
 }
-
 .page188a {
 	text-align: left;
 	position: relative;
@@ -24940,7 +24608,6 @@ color:#1FA8D0;
 	margin-top: 225px;
 	color:black;
 }
-
 .page_189aaaa {
 	text-align: left;
 	position: relative;
@@ -24995,7 +24662,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_189bb {
 	text-align: left;
 	position: relative;
@@ -25023,7 +24689,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_189bbb {
 	text-align: left;
 	position: relative;
@@ -25078,7 +24743,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_189c {
 	text-align: left;
 	position: relative;
@@ -25133,7 +24797,6 @@ color:#1FA8D0;
 	margin-top: 63px;
 	color:white;
 }
-
 .page_189d {
 	text-align: left;
 	position: relative;
@@ -25293,7 +24956,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_190bb {
 	text-align: left;
 	position: relative;
@@ -25321,7 +24983,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_190bbb {
 	text-align: left;
 	position: relative;
@@ -25376,7 +25037,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_190c {
 	text-align: left;
 	position: relative;
@@ -25431,7 +25091,6 @@ color:#1FA8D0;
 	margin-top: 63px;
 	color:white;
 }
-
 .page_190d {
 	text-align: left;
 	position: relative;
@@ -25591,7 +25250,6 @@ color:#1FA8D0;
 	margin-top: 440px;
 	color:white;
 }
-
 .page_191bb {
 	text-align: left;
 	position: relative;
@@ -25619,7 +25277,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_191bbb {
 	text-align: left;
 	position: relative;
@@ -25674,7 +25331,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_191c {
 	text-align: left;
 	position: relative;
@@ -25729,7 +25385,6 @@ color:#1FA8D0;
 	margin-top: 63px;
 	color:white;
 }
-
 .page_191d {
 	text-align: left;
 	position: relative;
@@ -25898,7 +25553,6 @@ color:#1FA8D0;
 	margin-top: 46px;
 	color:black;
 }
-
 .page_192bb {
 	text-align: left;
 	position: relative;
@@ -25926,7 +25580,6 @@ color:#1FA8D0;
 	margin-top: 978px;
 	color:#7C459A;
 }
-
 .page_192bbb {
 	text-align: left;
 	position: relative;
@@ -25981,7 +25634,6 @@ color:#1FA8D0;
 	margin-top: 61px;
 	color:black;
 }
-
 .page_192c {
 	text-align: left;
 	position: relative;
@@ -26036,7 +25688,6 @@ color:#1FA8D0;
 	margin-top: 63px;
 	color:white;
 }
-
 .page_192d {
 	text-align: left;
 	position: relative;
@@ -26146,7 +25797,6 @@ font-family: HelveticaLTStd-BoldCond;
 {
 font-family: american_typewriter;
 }
-
 .space1{
 	word-spacing:1px;
 	}
