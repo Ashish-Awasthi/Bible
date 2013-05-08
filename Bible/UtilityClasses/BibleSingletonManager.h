@@ -34,6 +34,7 @@
 @property(nonatomic,retain) id pageViewController;
 @property(nonatomic,assign) BOOL    isItGoforNextPage;
 @property(nonatomic,assign) BOOL    pageLoadingComplete;
+@property(nonatomic,assign) BOOL    isAudioEnable;
 @property(nonatomic,assign) NSInteger      currentPageId;
 
 + (BibleSingletonManager*)sharedManager;

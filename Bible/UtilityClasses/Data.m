@@ -39,6 +39,7 @@
 @synthesize _audioFileNameStr;
 @synthesize _audioStartTime;
 @synthesize _audioEndTime;
+@synthesize _lastTextColor;
 
 - (void) dealloc {
     
@@ -48,7 +49,7 @@
     RELEASE(_colorCodeStr);
     RELEASE(_spanIdStr);
     RELEASE(_audioFileNameStr);
-    
+    RELEASE(_lastTextColor);
 	[super dealloc];
 }
 

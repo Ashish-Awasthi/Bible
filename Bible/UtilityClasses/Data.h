@@ -37,6 +37,6 @@
 @property (nonatomic, copy) NSString *_audioFileNameStr;
 @property(nonatomic,assign) float _audioStartTime;
 @property(nonatomic,assign) float _audioEndTime;
-
+@property(nonatomic,copy)  NSString*     _lastTextColor;
 @end
 

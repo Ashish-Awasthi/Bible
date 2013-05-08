@@ -160,6 +160,13 @@ static sqlite3 *m_database = nil;
                 else{
                     thisObj._audioEndTime = -1;
                 }
+                if(sqlite3_column_text(statement,6))
+                {
+                    thisObj._lastTextColor = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 6)];
+                }
+                else{
+                    thisObj._lastTextColor = @"";
+                }
                 
                 [tempArray addObject:thisObj];
                 [thisObj release];

@@ -190,6 +190,7 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
     // Stop Audio When you flip page
+    [BibleSingletonManager sharedManager].isAudioEnable = NO;
     [BibleSingletonManager sharedManager].isItGoforNextPage = YES;
     PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
     [currentViewController releaseAudioObjcet];
@@ -204,7 +205,9 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
     // Stop Audio When you flip page.
+  
     [BibleSingletonManager sharedManager].isItGoforNextPage = YES;
+     [BibleSingletonManager sharedManager].isAudioEnable = NO;
      PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
      [currentViewController releaseAudioObjcet];
     [currentViewController reStoreLastAudioState];
@@ -213,6 +216,7 @@
     if ([self.delegate performSelector:@selector(setMenuSliderViewHidden:)]) {
         [self.delegate setMenuSliderViewHidden:YES];
     }
+    
     PageViewController    *rightPageViewController = [self getViewControllerFormArr:RightView];
     
     return rightPageViewController;

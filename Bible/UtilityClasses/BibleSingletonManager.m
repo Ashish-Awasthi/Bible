@@ -25,6 +25,7 @@
 @synthesize currentPageId;
 @synthesize isItGoforNextPage;
 @synthesize pageLoadingComplete;
+@synthesize isAudioEnable;
 
 //@synthesize _parseDataController;
 static BibleSingletonManager* _sharedManager; // self

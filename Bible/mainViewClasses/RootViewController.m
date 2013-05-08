@@ -26,22 +26,26 @@
     [super dealloc];
 }
 
+// Add five controller of pageView and cache all five controller>>>>>>>> 
 -(void)addPreLoadView{
     
     PageViewController *viewController1 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"" withHtmlStr:@"Empty.htm"];
+    [viewController1 setDelegate:self];
     [viewController1.view setTag:ExtremLeftView];
     [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController1];
     RELEASE(viewController1);
     
     PageViewController *viewController2 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"" withHtmlStr:@"Empty.htm"];
+     [viewController2 setDelegate:self];
     [viewController2.view setTag:LeftView];
     [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController2];
     RELEASE(viewController2);
     
     PageViewController *viewController3 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"1" withHtmlStr:@"Page_001.htm"];
+     [viewController3 setDelegate:self];
     
     [viewController3.view setTag:CurrentView];
     [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController3];
@@ -49,12 +53,14 @@
     
     PageViewController *viewController4 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"2" withHtmlStr:@"Page_002.htm"];
+     [viewController4 setDelegate:self];
     [viewController4.view setTag:RightView];
     [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController4];
     RELEASE(viewController4);
     
     PageViewController *viewController5 = [[PageViewController alloc]
                                            initWithNibName:nil bundle:nil withTitle:@"3" withHtmlStr:@"Page_003.htm"];
+     [viewController5 setDelegate:self];
     
     [viewController5.view setTag:ExtremRightView];
     [[BibleSingletonManager sharedManager].preLoadViewArr  addObject:viewController5];
@@ -83,8 +89,6 @@
 {
     [self addPreLoadView];
     [super viewDidLoad];
-    
-    [BibleSingletonManager sharedManager].pageLoadingComplete = YES;
     
     NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
     
@@ -117,7 +121,7 @@
     self.pageViewController.view.frame = pageViewRect;
 
     [self.pageViewController didMoveToParentViewController:self];
-
+    self.pageViewController.doubleSided = NO;
     // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
      self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
     
@@ -135,21 +139,45 @@
     }
     
     menuViewController = [[MenuSliderViewController alloc]initWithNibName:@"MenuSliderViewController" bundle:nil];
+   // [menuViewController.view setBackgroundColor:[UIColor redColor]];
     [menuViewController setDelegate:self];
     [self.view addSubview:menuViewController.view];
     [self setMenuSliderViewHidden:YES];
 }
 
+- (ModelController *)modelController
+{
+    // Return the model controller object, creating it if necessary.
+    // In more complex implementations, the model controller may be passed to the view controller.
+    if (!_modelController) {
+        _modelController = [[ModelController alloc] init];
+        [_modelController setDelegate:self];
+    }
+    return _modelController;
+}
+
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    
+	if (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation ==UIInterfaceOrientationPortraitUpsideDown)
+        return YES;
+    else
+        return NO;
+
+}
+- (BOOL)shouldAutorotate
+{
+    return self.pageViewController.shouldAutorotate;
+}
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return self.pageViewController.supportedInterfaceOrientations;
+    
+}
+
+
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
-    // Here check next and prev page loading complete
-    if ([BibleSingletonManager sharedManager].pageLoadingComplete == NO) {
-        return NO;
-    }
-    [self.view.window setUserInteractionEnabled:NO];
-    
-    [self  performSelector:@selector(setWindowUserinteractionEnable) withObject:nil afterDelay:.7];
-    
     NSArray * indexArr = [BibleSingletonManager sharedManager].pageIndexArr;
     
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
@@ -162,6 +190,8 @@
         currentPosition = [currentPagePostion intValue];
         [BibleSingletonManager sharedManager].currentPageId = currentPosition;
         if (distance.x > 0) {
+            [self.view.window setUserInteractionEnabled:NO];
+            [self  performSelector:@selector(setWindowUserinteractionEnable) withObject:nil afterDelay:.7];
             //NSLog(@"currentPagePostion %@", currentPagePostion);
              [self setMenuSliderViewHidden:YES];// Here we check user swaped left to right
             [BibleSingletonManager sharedManager].leftToRight = YES;
@@ -173,7 +203,9 @@
              }
             } else if (distance.x < 0) { //Here we check user swaped right to left
            // NSLog(@"user swiped Left");
-                // NSLog(@"======= touch swape view left.....");
+            // NSLog(@"======= touch swape view left.....");
+            [self.view.window setUserInteractionEnabled:NO];
+            [self  performSelector:@selector(setWindowUserinteractionEnable) withObject:nil afterDelay:.7];
              [BibleSingletonManager sharedManager].leftToRight =  NO;
              [BibleSingletonManager sharedManager].rightToLeft = YES;
               
@@ -195,6 +227,15 @@
     return YES;
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark - UIPageViewController delegate methods
+
 
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
@@ -203,14 +244,14 @@
     self.pageAnimationFinished = YES;
     
     if (completed) {
-       // NSLog(@"flip complete page");
-         if ([BibleSingletonManager sharedManager].rightToLeft) {
+        // NSLog(@"flip complete page");
+        if ([BibleSingletonManager sharedManager].rightToLeft) {
             [[BibleSingletonManager sharedManager].modelViewController loadNextView];
-          }
+        }
         
-         if ([BibleSingletonManager sharedManager].leftToRight) {
-          [[BibleSingletonManager sharedManager].modelViewController loadPrevView];
-         }
+        if ([BibleSingletonManager sharedManager].leftToRight) {
+            [[BibleSingletonManager sharedManager].modelViewController loadPrevView];
+        }
         
         if ([BibleSingletonManager sharedManager].rightToLeft) {
             if (currentPosition >=ShowMenuOptionNumberPage) {
@@ -226,69 +267,31 @@
                 [self setMenuSliderViewHidden:YES];
             }
         }
-
-     }else{
-         
-         if ([BibleSingletonManager sharedManager].rightToLeft) {
-             if (currentPosition >ShowMenuOptionNumberPage) {
-                 [self setMenuSliderViewHidden:NO];
-             }else{
-                 [self setMenuSliderViewHidden:YES];
-             }
-         }else if([BibleSingletonManager sharedManager].leftToRight){
-             
-             if (currentPosition >3) {
-                 [self setMenuSliderViewHidden:NO];
-             }else{
-                 [self setMenuSliderViewHidden:YES];
-             }
-         }
-
+        
+    }else{
+        
+        if ([BibleSingletonManager sharedManager].rightToLeft) {
+            if (currentPosition >ShowMenuOptionNumberPage) {
+                [self setMenuSliderViewHidden:NO];
+            }else{
+                [self setMenuSliderViewHidden:YES];
+            }
+        }else if([BibleSingletonManager sharedManager].leftToRight){
+            
+            if (currentPosition >=3) {
+                [self setMenuSliderViewHidden:NO];
+            }else{
+                NSLog(@"currentPosition  %d",currentPosition);
+                [self setMenuSliderViewHidden:YES];
+            }
+        }
+        
         // NSLog(@"NOT flip complete page");
-     }
-    
-   // NSLog(@"currentPosition  %d",currentPosition);
-    
-      
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (ModelController *)modelController
-{
-     // Return the model controller object, creating it if necessary.
-     // In more complex implementations, the model controller may be passed to the view controller.
-    if (!_modelController) {
-        _modelController = [[ModelController alloc] init];
-        [_modelController setDelegate:self];
     }
-    return _modelController;
-}
-
--(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-	return NO;
-}
-- (NSUInteger)supportedInterfaceOrientations{
     
-    return 0;
+    // NSLog(@"currentPosition  %d",currentPosition);
     
 }
-- (BOOL)shouldAutorotate{
-    return NO;
-}
-#pragma mark - UIPageViewController delegate methods
-
-/*
-- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
-{
-    
-}
- */
-
 - (UIPageViewControllerSpineLocation)pageViewController:(UIPageViewController *)pageViewController spineLocationForInterfaceOrientation:(UIInterfaceOrientation)orientation
 {
     if (UIInterfaceOrientationIsPortrait(orientation) || ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)) {
@@ -325,6 +328,17 @@
     return viewController;
     
 }
+#pragma marks-
+#pragma PageViewControllerDelegate method-
+-(void)pageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr{
+    
+    [self.pageViewController setViewControllers:viewControllersArr direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+        if (finished) {
+            [[BibleSingletonManager sharedManager].modelViewController loadNextView];
+        }
+    }];
+}
+
 
 -(void)enablePanGesture{
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
@@ -349,4 +363,5 @@
     self.pageAnimationFinished = isFlip;
     isItTouchInMenuView = YES;
 }
+
 @end

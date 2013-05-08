@@ -78,9 +78,9 @@
 
 #pragma maks
 #pragma swipe gesture Delegate method-
-
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
+    
     BOOL   isItGetTouchUpDown;
     
     UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
@@ -117,7 +117,7 @@
                     break;
                     
                 case 39:
-                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:39.0];
+                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:39];
                     break;
                     
                 default:
@@ -175,7 +175,6 @@
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
 
-    
     if ([self.delegate respondsToSelector:@selector(setPageFlip:)]) {
         [self.delegate setPageFlip:YES];
     }
@@ -350,13 +349,11 @@
     // Release any cached data, images, etc. that aren't in use.
 }
 
-
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-
 
 - (void)dealloc {
     [self UnregisterForNotification];

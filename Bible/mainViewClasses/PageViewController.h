@@ -5,7 +5,10 @@
 //  Created by Ashish Awasthi on 4/17/13.
 //  Copyright (c) 2013 Ashish Awasthi. All rights reserved.
 //
-
+@protocol PageViewController <NSObject>
+@optional
+-(void)pageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr;
+@end
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 @interface PageViewController : UIViewController<UIWebViewDelegate,
@@ -29,13 +32,13 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
     NSTimer*              progessTimer;
     AVAudioPlayer     *audioPlayer;
 }
-//@property(nonatomic,retain) AVAudioPlayer     *audioPlayer;
+@property(nonatomic,assign)id delegate;
 @property(nonatomic,retain)AVAudioPlayer     *lastAudioPlayerObj;
 @property (strong, nonatomic) id dataObject;
 @property(nonatomic,retain) UIWebView    *webView;
 @property(nonatomic,retain)UILabel     *dataLabel;
 @property(nonatomic,copy) NSString         *lastSpanIdStr;
-
+@property(nonatomic,copy)NSString          *lastSentenceTextColorStr;
 -(void)loadHtml:(NSString *)htmlName;
 - (id)initWithNibName:(NSString *)nibNameOrNil
                bundle:(NSBundle *)nibBundleOrNil

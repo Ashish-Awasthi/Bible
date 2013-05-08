@@ -63,7 +63,6 @@
 -(void)UnregisterForNotification;
 @property(nonatomic)BOOL isExpanded;
 @property(nonatomic)BOOL isRibbonAnimating;
-
 //PageViewController delegate Method
 -(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId;
 @end
