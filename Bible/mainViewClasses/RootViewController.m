@@ -89,7 +89,7 @@
 {
     [self addPreLoadView];
     [super viewDidLoad];
-    
+    [BibleSingletonManager sharedManager].pageLoadingComplete = YES;
     NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
     
     for (int i = 0; i<[pageData count]; i++) {
@@ -179,7 +179,11 @@
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
     NSArray * indexArr = [BibleSingletonManager sharedManager].pageIndexArr;
-    
+//    // this condition use if prev page loading not complete,user not able flip page
+//    if ([BibleSingletonManager sharedManager].pageLoadingComplete == NO) {
+//        return NO;
+//    }
+   
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
     {
         UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
@@ -281,7 +285,7 @@
             if (currentPosition >=3) {
                 [self setMenuSliderViewHidden:NO];
             }else{
-                NSLog(@"currentPosition  %d",currentPosition);
+                //NSLog(@"currentPosition  %d",currentPosition);
                 [self setMenuSliderViewHidden:YES];
             }
         }

@@ -85,7 +85,12 @@
     
     UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
     CGPoint point = [panGes locationInView:self.view];
-    // NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
+    // this condition use for not get touch if user tab on Menu View or only get touch if tab on ribbon...
+    if (point.y<800) {
+        return NO;
+    }
+    
+   //  NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
         // This condition use for if u tab Upper right corner.....
         PageViewController    *currentpageViewController = (PageViewController *)[BibleSingletonManager sharedManager].pageViewController;
@@ -98,7 +103,7 @@
                 [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:4];
                 break;
                 case 5:
-                [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:5];
+                //[[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:5];
                 break;
                 case 11:
                 [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:11];

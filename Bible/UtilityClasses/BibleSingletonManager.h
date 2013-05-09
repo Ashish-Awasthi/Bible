@@ -36,7 +36,6 @@
 @property(nonatomic,assign) BOOL    pageLoadingComplete;
 @property(nonatomic,assign) BOOL    isAudioEnable;
 @property(nonatomic,assign) NSInteger      currentPageId;
-
 + (BibleSingletonManager*)sharedManager;
 
 - (void)showAlert:(NSString*)a_titleStr 

@@ -56,7 +56,6 @@
 }
 
 
-
 -(void)reLoadDataOnNextView:(NSString *) changeTitleStr
                  withHtmlName:(NSString *)htmlNameStr{
     
@@ -144,6 +143,7 @@
                 pageViewController.view.tag = ExtremLeftView;
                 [pageViewController.dataLabel setText:changeTitleStr];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
+                [BibleSingletonManager sharedManager].pageLoadingComplete = NO;
                 break;
                 
             default:

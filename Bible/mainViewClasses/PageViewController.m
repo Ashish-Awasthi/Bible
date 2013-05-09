@@ -106,7 +106,7 @@
             [self.view addSubview:imageView];
 
             UIImage   *image = [UIImage imageNamed:@"loaderBg.png"];
-            increaseProgess = 0.1;
+            increaseProgess = 0.0;
             loadingProgessView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
             loadingProgessView.trackImage = [UIImage imageNamed:@"loaderBg.png"] ;
             loadingProgessView.progressImage = [UIImage imageNamed:@"selectedPg.png"];
@@ -149,23 +149,9 @@
 -(void)loadHtml:(NSString *)htmlName{
     
     [BibleSingletonManager sharedManager].isAudioEnable = NO;
-    
-    [[NSURLCache sharedURLCache] removeAllCachedResponses];
-    
-    [[NSURLCache sharedURLCache] setDiskCapacity:0];
-    [[NSURLCache sharedURLCache] setMemoryCapacity:0];
-    
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
-                                                                                 pathForAuxiliaryExecutable:htmlName]]
-                                                         cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval: 0.0];
-
-    NSData  *urlData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-        
-    NSString *text = [[NSString alloc] initWithData:urlData encoding:NSUTF8StringEncoding];
-        
-    //NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
-                                                                               //pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
+    [self.webView loadHTMLString:nil baseURL:nil];
+    NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
+                                                                               pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     [self.webView loadHTMLString:text baseURL:baseURL];
@@ -201,10 +187,14 @@
                                                            encoding:NSUTF8StringEncoding];
     [webView stringByEvaluatingJavaScriptFromString:jsString];
     
+    [self performSelector:@selector(loadingComplete) withObject:nil afterDelay:0.4];
     //*****************************close**************************************************************************
     
 }
 
+-(void)loadingComplete{
+    [BibleSingletonManager sharedManager].pageLoadingComplete = YES;
+}
 
 -(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId{
     /*
@@ -382,7 +372,7 @@
             [self.lastAudioPlayerObj stop];
             [self releaseAudioObjcet];
              self.lastSpanIdStr = @"";
-              [BibleSingletonManager sharedManager].isAudioEnable = NO;
+              [BibleSingletonManager sharedManager].isAudioEnable = YES;
             return YES;
         }
         
