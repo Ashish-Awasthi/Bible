@@ -158,20 +158,23 @@
 
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    
-	if (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation ==UIInterfaceOrientationPortraitUpsideDown)
-        return YES;
-    else
-        return NO;
+   
+      return NO;
+//	if (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation ==UIInterfaceOrientationPortraitUpsideDown)
+//        return YES;
+//    else
+//        return NO;
 
 }
 - (BOOL)shouldAutorotate
 {
-    return self.pageViewController.shouldAutorotate;
+      return NO;
+   // return self.pageViewController.shouldAutorotate;
 }
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return self.pageViewController.supportedInterfaceOrientations;
+    return NO;
+   // return self.pageViewController.supportedInterfaceOrientations;
     
 }
 
@@ -180,9 +183,9 @@
 {
     NSArray * indexArr = [BibleSingletonManager sharedManager].pageIndexArr;
 //    // this condition use if prev page loading not complete,user not able flip page
-//    if ([BibleSingletonManager sharedManager].pageLoadingComplete == NO) {
-//        return NO;
-//    }
+    if ([BibleSingletonManager sharedManager].pageLoadingComplete == NO) {
+       return NO;
+   }
    
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
     {

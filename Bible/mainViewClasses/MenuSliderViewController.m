@@ -96,23 +96,21 @@
         PageViewController    *currentpageViewController = (PageViewController *)[BibleSingletonManager sharedManager].pageViewController;
                                                                                 
         int  pageId =  [currentpageViewController.dataLabel.text integerValue];
-        
         if (point.x<187) {
+            // not take touch complete page
+//            NSLog(@"isitExpandHideAudioIcon%d",isitExpandHideAudioIcon);
+//            if (isitExpandHideAudioIcon) {
+//                return NO;
+//            }
             switch (pageId) {
                 case 4:
                 [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:4];
                 break;
-                case 5:
-                //[[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:5];
-                break;
                 case 11:
                 [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:11];
                 break;
-                case 12:
-                [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:12];
-                break;
                 case 17:
-                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:17];
+                [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:17];
                     break;
                 case 20:
                     [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:20];
@@ -198,10 +196,16 @@
     if (point.x>185) {// get touch only ribin
 	if (!self.isExpanded)
 	{
+        // in case of Hide audio button to from menu bar
+        [self setAudioIconHiddenCondition:YES];
+        
 		[self slideDown];
 	}
-	else 
+	else
     {
+        // in case of Hide audio button to from menu bar
+        [self setAudioIconHiddenCondition:NO];
+        
 		[self slideUp];
 	}
 	[self pageSwiped];
@@ -257,7 +261,12 @@
 	}
 
     CGFloat finalY = firstY+translatedPoint.y;
-
+    // in case of Hide audio button to from menu bar
+    if (finalY>=-640) {
+      [self setAudioIconHiddenCondition:YES];
+    }else{
+       [self setAudioIconHiddenCondition:NO];
+    }
     translatedPoint = CGPointMake(self.view.frame.origin.x, firstY+translatedPoint.y);
     
 	if (translatedPoint.y<0)
@@ -303,7 +312,13 @@
     isRibbonAnimating = YES;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+-(void)setAudioIconHiddenCondition:(BOOL)flag{
+    
+    isitExpandHideAudioIcon = flag;
+   
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Overriden to allow any orientation.
     return NO;

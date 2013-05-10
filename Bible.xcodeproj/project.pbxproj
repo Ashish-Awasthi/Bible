@@ -179,7 +179,6 @@
 		BC8071D41728096F003D0AB5 /* MenuSliderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8071D21728096D003D0AB5 /* MenuSliderViewController.m */; };
 		BC8071D51728096F003D0AB5 /* MenuSliderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8071D31728096E003D0AB5 /* MenuSliderViewController.xib */; };
 		BC8071D8172809A5003D0AB5 /* Animator.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8071D7172809A4003D0AB5 /* Animator.m */; };
-		BC8133C51733C49700098A8A /* Bible.Sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BC8133C41733C49700098A8A /* Bible.Sqlite */; };
 		BC8133DB1733C58800098A8A /* p10_120312.wav in Resources */ = {isa = PBXBuildFile; fileRef = BC8133C61733C58800098A8A /* p10_120312.wav */; };
 		BC8133DC1733C58800098A8A /* p11_120312.wav in Resources */ = {isa = PBXBuildFile; fileRef = BC8133C71733C58800098A8A /* p11_120312.wav */; };
 		BC8133DD1733C58800098A8A /* p12_120312.wav in Resources */ = {isa = PBXBuildFile; fileRef = BC8133C81733C58800098A8A /* p12_120312.wav */; };
@@ -256,6 +255,7 @@
 		BCD05BA71726B9A000C23A36 /* readmore_text.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD05B9E1726B9A000C23A36 /* readmore_text.png */; };
 		BCD05BA81726B9A000C23A36 /* share_text.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD05B9F1726B9A000C23A36 /* share_text.png */; };
 		BCD05BA91726B9A000C23A36 /* stories_text.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD05BA01726B9A000C23A36 /* stories_text.png */; };
+		BCEEBF9F173CBB01000678D9 /* Bible.Sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BCEEBF9E173CBB01000678D9 /* Bible.Sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -441,7 +441,6 @@
 		BC8071D31728096E003D0AB5 /* MenuSliderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuSliderViewController.xib; sourceTree = "<group>"; };
 		BC8071D6172809A4003D0AB5 /* Animator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Animator.h; sourceTree = "<group>"; };
 		BC8071D7172809A4003D0AB5 /* Animator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Animator.m; sourceTree = "<group>"; };
-		BC8133C41733C49700098A8A /* Bible.Sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bible.Sqlite; sourceTree = "<group>"; };
 		BC8133C61733C58800098A8A /* p10_120312.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = p10_120312.wav; sourceTree = "<group>"; };
 		BC8133C71733C58800098A8A /* p11_120312.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = p11_120312.wav; sourceTree = "<group>"; };
 		BC8133C81733C58800098A8A /* p12_120312.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = p12_120312.wav; sourceTree = "<group>"; };
@@ -524,6 +523,7 @@
 		BCD05B9E1726B9A000C23A36 /* readmore_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = readmore_text.png; sourceTree = "<group>"; };
 		BCD05B9F1726B9A000C23A36 /* share_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_text.png; sourceTree = "<group>"; };
 		BCD05BA01726B9A000C23A36 /* stories_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stories_text.png; sourceTree = "<group>"; };
+		BCEEBF9E173CBB01000678D9 /* Bible.Sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bible.Sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -655,7 +655,7 @@
 		BC139A8117265C2200FAB313 /* ResourceData */ = {
 			isa = PBXGroup;
 			children = (
-				BC8133C41733C49700098A8A /* Bible.Sqlite */,
+				BCEEBF9E173CBB01000678D9 /* Bible.Sqlite */,
 				BC1361FA1730F1B30048F227 /* HtmlFile */,
 				BC8071A01727BCD9003D0AB5 /* AudioFile */,
 				BC8071991727B953003D0AB5 /* JsFile */,
@@ -1080,7 +1080,6 @@
 				BC1362BB1730FF5A0048F227 /* p7.wav in Resources */,
 				BC1362BC1730FF5A0048F227 /* p9.wav in Resources */,
 				BCB7E29A173122E1008C726F /* p8.wav in Resources */,
-				BC8133C51733C49700098A8A /* Bible.Sqlite in Resources */,
 				BC8133DB1733C58800098A8A /* p10_120312.wav in Resources */,
 				BC8133DC1733C58800098A8A /* p11_120312.wav in Resources */,
 				BC8133DD1733C58800098A8A /* p12_120312.wav in Resources */,
@@ -1259,6 +1258,7 @@
 				BC76E740173912E200196658 /* Page_049.htm in Resources */,
 				BC76E741173912E200196658 /* Page_050.htm in Resources */,
 				BC76E742173912E200196658 /* style.css in Resources */,
+				BCEEBF9F173CBB01000678D9 /* Bible.Sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

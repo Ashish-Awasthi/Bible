@@ -16,7 +16,7 @@
 @synthesize repeatCount;
 @synthesize delegate;
 
-static int repeats =0;
+static int repeats = 0;
 
 -(void)initialize
 {

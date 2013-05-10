@@ -36,6 +36,7 @@
 	IBOutlet UILabel     *lbel;
     id delegate;
     
+    BOOL   isitExpandHideAudioIcon;
     CGPoint touchStart;
     CGFloat firstX;
     CGFloat firstY;
@@ -63,6 +64,7 @@
 -(void)UnregisterForNotification;
 @property(nonatomic)BOOL isExpanded;
 @property(nonatomic)BOOL isRibbonAnimating;
+-(void)setAudioIconHiddenCondition:(BOOL)flag;
 //PageViewController delegate Method
 -(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId;
 @end

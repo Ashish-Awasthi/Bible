@@ -149,7 +149,7 @@
 -(void)loadHtml:(NSString *)htmlName{
     
     [BibleSingletonManager sharedManager].isAudioEnable = NO;
-    [self.webView loadHTMLString:nil baseURL:nil];
+    
     NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
                                                                                pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
     NSString *path = [[NSBundle mainBundle] bundlePath];
@@ -360,7 +360,7 @@
     if(navigationType == UIWebViewNavigationTypeLinkClicked)
 	{
         NSString *selectedId   = [NSString stringWithFormat:@"selectedId"];
-        NSString * spanIdStr = [webView stringByEvaluatingJavaScriptFromString:selectedId];
+        NSString  *spanIdStr = [webView stringByEvaluatingJavaScriptFromString:selectedId];
         NSString     *chapeterIdStr     = [[spanIdStr componentsSeparatedByString:@"Audio_#"] lastObject];
         
         if ([chapeterIdStr integerValue]>=3) {
@@ -372,7 +372,7 @@
             [self.lastAudioPlayerObj stop];
             [self releaseAudioObjcet];
              self.lastSpanIdStr = @"";
-              [BibleSingletonManager sharedManager].isAudioEnable = YES;
+            [BibleSingletonManager sharedManager].isAudioEnable = YES;
             return YES;
         }
         
@@ -389,7 +389,7 @@
         NSString     *colorCodeStr = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._colorCodeStr;
         //  NSLog(@"Start Time is %f    endTime is %f  audioFileName is:- %@",startTime,endTime,audioFileNameStr);
         [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:spanIdStr];
-         }
+        }
     }
  
     return YES;
@@ -447,10 +447,17 @@
 }
 
 -(void)getCurrentSpanInfo:(NSString  *)queryStr{
+    
     if (audioInfoPageArr) {
         RELEASE(audioInfoPageArr);
     }
     audioInfoPageArr =  [[DBConnectionManager getDataFromAudioTable:queryStr] retain];
+    
+//    for (int i = 0; i<[audioInfoPageArr count]; i++) {
+//        
+//          NSLog(@"id =====%@",((AudioData *)[audioInfoPageArr objectAtIndex:i])._spanIdStr);
+//    }
+  
 }
 -(void)setlastTextSentenceColor{
     self.lastSentenceTextColorStr  = @"";
@@ -469,7 +476,8 @@
 }
 
 -(void)reStoreLastAudioState{
-     hieghLightNumber = [audioInfoPageArr count]+10;
+    self.lastSpanIdStr = @"";
+    hieghLightNumber = [audioInfoPageArr count]+10;
     [BibleSingletonManager sharedManager].isAudioEnable = NO;
     [self removeHightLightWithId:self.lastSpanIdStr withTextColor:self.lastSentenceTextColorStr];
 }

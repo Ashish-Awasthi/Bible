@@ -69,6 +69,6 @@ typedef enum{
 
 #define KPageDataQuery @"Select * from PageTable"
 
-#define KAudioDataQueryWherePageId @"Select * from AudioTable where PageId = %d"
+#define KAudioDataQueryWherePageId @"Select * from AudioTable where PageId = %d order by SpanId"
 
 #define KAudioDataQueryWhereSpanID @"Select * from AudioTable where spanId = '%@'"
