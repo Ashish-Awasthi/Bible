@@ -89,8 +89,10 @@
 {
     [self addPreLoadView];
     [super viewDidLoad];
+    
     [BibleSingletonManager sharedManager]._rootViewController = self;
     [BibleSingletonManager sharedManager].pageLoadingComplete = YES;
+    [BibleSingletonManager sharedManager].firstGetTouchMenuSliderView = NO;
     NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
     
     for (int i = 0; i<[pageData count]; i++) {
@@ -130,6 +132,7 @@
     {
         if ([gesRecog isKindOfClass:[UITapGestureRecognizer class]]){
             gesRecog.enabled = NO;
+            gesRecog.delegate = self;
         }
         else if ([gesRecog isKindOfClass:[UIPanGestureRecognizer class]]){
             gesRecog.enabled = NO;
@@ -179,6 +182,11 @@
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
     NSArray * indexArr = [BibleSingletonManager sharedManager].pageIndexArr;
+    
+    PageViewController    *currentViewController = (PageViewController *)[self getViewControllerFrameArr:CurrentView];
+    NSString    *currentPagePostion = currentViewController.dataLabel.text;
+    currentPosition = [currentPagePostion intValue];
+    
 //    // this condition use if prev page loading not complete,user not able flip page
     if ([BibleSingletonManager sharedManager].pageLoadingComplete == NO) {
        return NO;
@@ -187,14 +195,50 @@
     // implement logic if user tab on right side in 44 pixel area:- page flip left
     // implement logic if user tab on left side in 44 pixel area:- page flip right
    
+    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
+    {
+        UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
+      CGPoint point = [panGes locationInView:self.view];
+        if (point.x>self.view.frame.size.width-44) {
+            // if Menu view present on rootView,not get Touch on rootView......
+            if ([BibleSingletonManager sharedManager].firstGetTouchMenuSliderView == YES) {
+                [BibleSingletonManager sharedManager].firstGetTouchMenuSliderView = NO;
+                return NO;
+            }
+            if ([currentPagePostion intValue] == [indexArr count]) {//Here check this is last page>>>>>>>>>>
+                [self setMenuSliderViewHidden:NO];
+                return NO;
+            }else{
+            [self.view.window setUserInteractionEnabled:NO];
+            [self  performSelector:@selector(setWindowUserinteractionEnable) withObject:nil afterDelay:.7];
+             NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFrameArr:RightView]];
+            [self nextPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
+            }
+           // NSLog(@"Right touch ");
+           }else if(point.x<44){
+               if ([currentPagePostion intValue] <= 1) {
+                   // NSLog(@"No swape remaing left");// Here check this is first page>>>>>>>>>>
+                   return NO;
+               }else{
+               [self.view.window setUserInteractionEnabled:NO];
+               [self  performSelector:@selector(setWindowUserinteractionEnable) withObject:nil afterDelay:.7];
+                NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFrameArr:LeftView]];
+               [self prevPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
+               }
+            // NSLog(@"left  touch ");
+            }else{
+             return NO;
+            }
+     // NSLog(@" location data x %f && location data Y %f",point.x,point.y);
+     }
+    
+    
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
     {
         UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
         CGPoint distance = [panGes translationInView:self.view];
         
-        PageViewController    *currentViewController = (PageViewController *)[self getViewControllerFrameArr:CurrentView];
-         NSString    *currentPagePostion = currentViewController.dataLabel.text;
-        currentPosition = [currentPagePostion intValue];
+       
         [BibleSingletonManager sharedManager].currentPageId = currentPosition;
         if (distance.x > 0) {
             [self.view.window setUserInteractionEnabled:NO];
@@ -203,7 +247,7 @@
              [self setMenuSliderViewHidden:YES];// Here we check user swaped left to right
             [BibleSingletonManager sharedManager].leftToRight = YES;
             [BibleSingletonManager sharedManager].rightToLeft = NO;
-
+            
             if ([currentPagePostion intValue] <= 1) {
                 // NSLog(@"No swape remaing left");// Here check this is first page>>>>>>>>>>
                return NO;
@@ -318,7 +362,7 @@
 
 -(void)prevPageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr{
     
-    [self.pageViewController setViewControllers:viewControllersArr direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+    [self.pageViewController setViewControllers:viewControllersArr direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
         if (finished) {
             [[BibleSingletonManager sharedManager].modelViewController loadPrevView];
         }
@@ -331,7 +375,7 @@
     for (UIGestureRecognizer * gesRecog in self.pageViewController.gestureRecognizers)
     {
         if ([gesRecog isKindOfClass:[UITapGestureRecognizer class]]){
-           // gesRecog.enabled = YES;
+            gesRecog.enabled = YES;
         }
         if ([gesRecog isKindOfClass:[UIPanGestureRecognizer class]]){
             gesRecog.enabled = YES;

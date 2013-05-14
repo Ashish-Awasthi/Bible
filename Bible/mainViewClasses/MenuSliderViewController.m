@@ -82,15 +82,14 @@
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
     
+    [BibleSingletonManager sharedManager].firstGetTouchMenuSliderView = YES;
     BOOL   isItGetTouchUpDown;
-    
     UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
     CGPoint point = [panGes locationInView:self.view];
     // this condition use for not get touch if user tab on Menu View or only get touch if tab on ribbon...
     if (point.y<800) {
         return NO;
     }
-    
    //  NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
         // This condition use for if u tab Upper right corner.....
@@ -127,7 +126,7 @@
                 default:
                     break;
             }
-            
+
           return NO;
         }
         return YES;
@@ -141,7 +140,6 @@
         }else{
             isItGetTouchUpDown = YES;//enable gesture on up to bottom swipe and bottom to up swipe
         }
-        
         
     }else{
         isItGetTouchUpDown = NO;// Avoid tab On touch

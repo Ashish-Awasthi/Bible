@@ -60,7 +60,54 @@ nil
     [self.view addSubview:backBtn];
     [self callSocialMediaClasses];
     [self addShareOption];
+    
+    frameSize = CGRectMake(250,60,100, 40);
+//    m_FBLikeView = [[FacebookLikeView alloc] initWithFrame:frameSize];
+//   // [m_FBLikeView setBackgroundColor:[UIColor redColor]];
+//    m_FBLikeView.href = [NSURL URLWithString:kMusicChoiceFacebookPageURL];
+//    m_FBLikeView.layout  = @"standard";
+//    m_FBLikeView.showFaces = NO;
+//    m_FBLikeView.alpha = 1;
+//    m_FBLikeView.delegate  = (id) self;
+//    [m_FBLikeView load];
+//    [self.view addSubview:m_FBLikeView];
+    
 	// Do any additional setup after loading the view.
+}
+
+-(void)addShareOption{
+    
+    UIImage     *image;
+    CGRect    frameSize;
+    NSArray   *optionArr = [NSArray arrayWithObjects:ShareOptionArr];
+    int xOffSet = 150;
+    int yoffSet = 360;
+    
+    for (int i = 0; i<[optionArr count]; i++) {
+        image = [UIImage imageNamed:[optionArr objectAtIndex:i]];
+        frameSize = CGRectMake(xOffSet, yoffSet, image.size.width, image.size.height);
+        
+        UIButton *shareOptionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [shareOptionBtn setTag:i];
+        [shareOptionBtn setFrame:frameSize];
+        [shareOptionBtn setImage:image forState:UIControlStateNormal];
+        [shareOptionBtn addTarget:self action:@selector(tabOnShareOption:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:shareOptionBtn];
+        if (i == 2) {
+            m_FBLikeView = [[FacebookLikeView alloc] initWithFrame:CGRectMake((image.size.width-50)/2,(image.size.height-30)/2,50, 30)];
+            [m_FBLikeView setBackgroundColor:[UIColor clearColor]];
+            m_FBLikeView.href = [NSURL URLWithString:kMusicChoiceFacebookPageURL];
+            m_FBLikeView.layout  = @"standard";
+            m_FBLikeView.showFaces = NO;
+            m_FBLikeView.alpha = 1;
+            m_FBLikeView.delegate  = (id) self;
+            [m_FBLikeView load];
+            [shareOptionBtn addSubview:m_FBLikeView];
+        }
+       
+        yoffSet = yoffSet+image.size.height+50;
+    }
+    
 }
 
 #pragma marks
@@ -80,6 +127,7 @@ nil
 }
 
 -(void)faceBookLogin:(id)sender{
+    _faceBooKGetAndPostOption = FB_WallPost;
     [[FBShareManager sharedManager] loginFacebook];
 }
 
@@ -98,9 +146,13 @@ nil
 #pragma mark <FBShareManagerDelegate>:
 -(void)facebookLoginSuccess
 {
-    NSLog(@"=======FacBook login success");
-    [self postWallOnFacebook:nil];
-    
+      NSLog(@"=======FacBook login success");
+    if (_faceBooKGetAndPostOption == FB_WallPost) {
+        [BibleSingletonManager sharedManager].m_isFBLogin = YES;
+        [self postWallOnFacebook:nil];
+    }else{
+        
+    }
 }
 
 
@@ -115,6 +167,56 @@ nil
     
     NSLog(@"face post now fail.....");
     
+}
+
+#pragma mark - FacebookLikeViewDelegate methods
+
+- (void)facebookLikeViewRequiresLogin:(FacebookLikeView *)aFacebookLikeView
+{
+    if(![BibleSingletonManager sharedManager].m_isFBLogin){
+        [[FBShareManager sharedManager] loginFacebook];
+    }
+    
+    
+}
+
+- (void)facebookLikeViewDidRender:(FacebookLikeView *)aFacebookLikeView
+{
+    
+}
+
+- (void)facebookLikeViewDidLike:(FacebookLikeView *)aFacebookLikeView
+{
+    
+    [m_FBLikeView._webView.scrollView scrollRectToVisible:CGRectZero animated:NO];
+    
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Liked"
+                                                     message:KFaceBookLikeMsgKey
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil] autorelease];
+    [alert show];
+    
+}
+
+- (void)facebookLikeViewDidUnlike:(FacebookLikeView *)aFacebookLikeView
+{
+    
+    
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Unliked"
+                                                     message:KFaceBookUnLikeMsgKey
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil] autorelease];
+    [alert show];
+    
+    
+    
+    
+}
+
+- (void)facebookLikeView:(FacebookLikeView *)aFacebookLikeView didFailLoadWithError:(NSError *)error{
+    NSLog(@"webView Erros %@",error);
 }
 -(void)twitterLogin:(id)sender{
     
@@ -160,32 +262,6 @@ nil
     
 }
 
-
--(void)addShareOption{
-    
-    UIImage     *image;
-    CGRect    frameSize;
-    NSArray   *optionArr = [NSArray arrayWithObjects:ShareOptionArr];
-    int xOffSet = 150;
-    int yoffSet = 360;
-    
-    for (int i = 0; i<[optionArr count]; i++) {
-    image = [UIImage imageNamed:[optionArr objectAtIndex:i]];
-    frameSize = CGRectMake(xOffSet, yoffSet, image.size.width, image.size.height);
-    UIButton *shareOptionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [shareOptionBtn setTag:i];
-    [shareOptionBtn setFrame:frameSize];
-    [shareOptionBtn setImage:image forState:UIControlStateNormal];
-    [shareOptionBtn addTarget:self action:@selector(tabOnShareOption:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:shareOptionBtn];
-    yoffSet = yoffSet+image.size.height+50;
-        
-    }
-
-}
-
-
-
 -(void)tabOnShareOption:(id)sender{
     
     UIButton    *shareOptionBtn = (UIButton *)sender;
@@ -198,7 +274,7 @@ nil
             [self shareMessageViaFaceBook];
             break;
         case LikeOnFaceBook:
-            [self likeOnFaceBook];
+            //[self likeOnFaceBook];
             break;
         case ShareViaTwitter:
             [self shareMessageViaTwitter];
@@ -235,9 +311,6 @@ nil
         // prior iOS versions
     }
 
-}
--(void)likeOnFaceBook{
-     NSLog(@"likeOnFaceBook");
 }
 
 - (void)didReceiveMemoryWarning
@@ -361,5 +434,6 @@ nil
     [[BibleSingletonManager sharedManager] showAlert:@"Mail" message:messageStr withTag:-1 withDelegate:nil];
     [self dismissModalViewControllerAnimated:YES];
 }
+
 
 @end

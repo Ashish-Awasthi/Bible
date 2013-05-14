@@ -65,6 +65,10 @@ typedef enum{
  ExtremRightView,
 }PreLoadView;
 
+#define KFaceBookLikeMsgKey                     @"You liked Yardsellr. Thanks!"
+
+
+#define KFaceBookUnLikeMsgKey                     @"You unliked Yardsellr. Where's the love?"
 //*************************************************Query part ***************************************
 
 #define KPageDataQuery @"Select * from PageTable"

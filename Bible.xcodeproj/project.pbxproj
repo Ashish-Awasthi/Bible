@@ -173,6 +173,9 @@
 		BC76E740173912E200196658 /* Page_049.htm in Resources */ = {isa = PBXBuildFile; fileRef = BC76E6BD173912E200196658 /* Page_049.htm */; };
 		BC76E741173912E200196658 /* Page_050.htm in Resources */ = {isa = PBXBuildFile; fileRef = BC76E6BE173912E200196658 /* Page_050.htm */; };
 		BC76E742173912E200196658 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = BC76E6BF173912E200196658 /* style.css */; };
+		BC7EADD2174223E700542035 /* FacebookLikeView.html in Resources */ = {isa = PBXBuildFile; fileRef = BC7EADD0174223E700542035 /* FacebookLikeView.html */; };
+		BC7EADD3174223E700542035 /* FacebookLikeView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7EADD1174223E700542035 /* FacebookLikeView.m */; };
+		BC7EADD61742396E00542035 /* NSData+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = BC7EADD51742396E00542035 /* NSData+Extras.m */; };
 		BC8071A21727BCD9003D0AB5 /* p3_120312.wav in Resources */ = {isa = PBXBuildFile; fileRef = BC8071A11727BCD9003D0AB5 /* p3_120312.wav */; };
 		BC8071A41727BF00003D0AB5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC8071A31727BF00003D0AB5 /* AVFoundation.framework */; };
 		BC8071A71727BFC5003D0AB5 /* AudioClass.m in Sources */ = {isa = PBXBuildFile; fileRef = BC8071A61727BFC5003D0AB5 /* AudioClass.m */; };
@@ -513,6 +516,11 @@
 		BC76E6BD173912E200196658 /* Page_049.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Page_049.htm; sourceTree = "<group>"; };
 		BC76E6BE173912E200196658 /* Page_050.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Page_050.htm; sourceTree = "<group>"; };
 		BC76E6BF173912E200196658 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		BC7EADCF174223E700542035 /* FacebookLikeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookLikeView.h; sourceTree = "<group>"; };
+		BC7EADD0174223E700542035 /* FacebookLikeView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = FacebookLikeView.html; sourceTree = "<group>"; };
+		BC7EADD1174223E700542035 /* FacebookLikeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookLikeView.m; sourceTree = "<group>"; };
+		BC7EADD41742396E00542035 /* NSData+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Extras.h"; sourceTree = "<group>"; };
+		BC7EADD51742396E00542035 /* NSData+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Extras.m"; sourceTree = "<group>"; };
 		BC8071A11727BCD9003D0AB5 /* p3_120312.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = p3_120312.wav; sourceTree = "<group>"; };
 		BC8071A31727BF00003D0AB5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BC8071A51727BFC4003D0AB5 /* AudioClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioClass.h; sourceTree = "<group>"; };
@@ -1002,6 +1010,18 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		BC7EADCE174223E700542035 /* FaceBookLike */ = {
+			isa = PBXGroup;
+			children = (
+				BC7EADD41742396E00542035 /* NSData+Extras.h */,
+				BC7EADD51742396E00542035 /* NSData+Extras.m */,
+				BC7EADCF174223E700542035 /* FacebookLikeView.h */,
+				BC7EADD1174223E700542035 /* FacebookLikeView.m */,
+				BC7EADD0174223E700542035 /* FacebookLikeView.html */,
+			);
+			path = FaceBookLike;
+			sourceTree = "<group>";
+		};
 		BC8071991727B953003D0AB5 /* JsFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1285,6 +1305,7 @@
 		BC89FFAF174103AA00CE00E7 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
+				BC7EADCE174223E700542035 /* FaceBookLike */,
 				BC89FFB0174103AA00CE00E7 /* FBConnect */,
 				BC89FFBB174103AA00CE00E7 /* FBShareManager.h */,
 				BC89FFBC174103AA00CE00E7 /* FBShareManager.m */,
@@ -1790,6 +1811,7 @@
 				BC89006B174103AB00CE00E7 /* txt_tweet_l-hdd.png in Resources */,
 				BC89006C174103AB00CE00E7 /* txt_tweet_l.png in Resources */,
 				BC89006D174103AB00CE00E7 /* txt_tweet_l@2x.png in Resources */,
+				BC7EADD2174223E700542035 /* FacebookLikeView.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1851,6 +1873,8 @@
 				BC890070174103AB00CE00E7 /* APElement.m in Sources */,
 				BC890071174103AB00CE00E7 /* XMLReader.m in Sources */,
 				BC89007B17410C7F00CE00E7 /* TWSharedManager.m in Sources */,
+				BC7EADD3174223E700542035 /* FacebookLikeView.m in Sources */,
+				BC7EADD61742396E00542035 /* NSData+Extras.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

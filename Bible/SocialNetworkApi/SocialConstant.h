@@ -41,7 +41,7 @@
 #define KFbPageLikeskey      @"pages/Music Choice/372563200384"
 
 
-#define kMusicChoiceFacebookPageURL             @"http://www.facebook.com/MusicChoice"
+#define kMusicChoiceFacebookPageURL             @"https://www.facebook.com/KiwiTech"
 
 
 
@@ -69,7 +69,6 @@
 #define   KTwitterUserScreenNameKey  @"screen_name"
 
 typedef enum {
-    
     FB_GetProfileImage = 1,
     FB_GetProfileDeatils,
     FB_GetProfileInfo,
@@ -88,7 +87,7 @@ typedef enum {
     Fb_Location,
     Fb_LikesPage,
     Fb_PageLike,
-    
+    FB_WallPost,
     
 }FaceBooKGetAndPostOption;
 

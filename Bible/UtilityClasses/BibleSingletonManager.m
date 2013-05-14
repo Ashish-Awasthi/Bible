@@ -18,6 +18,7 @@
 @synthesize  pageIndexArr;
 @synthesize isFirstTime;
 @synthesize delegate;
+@synthesize m_isFBLogin;
 @synthesize rightToLeft;
 @synthesize leftToRight;
 @synthesize modelViewController;
@@ -27,7 +28,7 @@
 @synthesize pageLoadingComplete;
 @synthesize isAudioEnable;
 @synthesize _rootViewController;
-
+@synthesize firstGetTouchMenuSliderView;
 
 //@synthesize _parseDataController;
 static BibleSingletonManager* _sharedManager; // self
