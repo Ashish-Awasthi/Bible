@@ -26,6 +26,7 @@
 @synthesize isItGoforNextPage;
 @synthesize pageLoadingComplete;
 @synthesize isAudioEnable;
+@synthesize _rootViewController;
 
 
 //@synthesize _parseDataController;

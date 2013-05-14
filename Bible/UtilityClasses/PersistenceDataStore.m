@@ -90,6 +90,7 @@ static PersistenceDataStore* _sharedManager; // self
       _dataDictionary  = [[[NSUserDefaults standardUserDefaults] objectForKey:KPersistenceDataKey] mutableCopy];
      }
     [_dataDictionary setObject:value forKey:keyString];
+    NSLog(@"==%@ ",_dataDictionary);
     
     [[NSUserDefaults standardUserDefaults] setObject:_dataDictionary forKey:KPersistenceDataKey];
     [[NSUserDefaults standardUserDefaults] synchronize];

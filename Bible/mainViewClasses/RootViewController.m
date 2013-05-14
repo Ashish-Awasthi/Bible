@@ -89,6 +89,7 @@
 {
     [self addPreLoadView];
     [super viewDidLoad];
+    [BibleSingletonManager sharedManager]._rootViewController = self;
     [BibleSingletonManager sharedManager].pageLoadingComplete = YES;
     NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
     
@@ -160,21 +161,17 @@
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
    
       return NO;
-//	if (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation ==UIInterfaceOrientationPortraitUpsideDown)
-//        return YES;
-//    else
-//        return NO;
 
 }
 - (BOOL)shouldAutorotate
 {
       return NO;
-   // return self.pageViewController.shouldAutorotate;
+   
 }
 - (NSUInteger)supportedInterfaceOrientations
 {
     return NO;
-   // return self.pageViewController.supportedInterfaceOrientations;
+  
     
 }
 
@@ -185,7 +182,10 @@
 //    // this condition use if prev page loading not complete,user not able flip page
     if ([BibleSingletonManager sharedManager].pageLoadingComplete == NO) {
        return NO;
-   }
+     }
+    
+    // implement logic if user tab on right side in 44 pixel area:- page flip left
+    // implement logic if user tab on left side in 44 pixel area:- page flip right
    
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
     {
@@ -299,36 +299,6 @@
     // NSLog(@"currentPosition  %d",currentPosition);
     
 }
-- (UIPageViewControllerSpineLocation)pageViewController:(UIPageViewController *)pageViewController spineLocationForInterfaceOrientation:(UIInterfaceOrientation)orientation
-{
-    if (UIInterfaceOrientationIsPortrait(orientation) || ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)) {
-        // In portrait orientation or on iPhone: Set the spine position to "min" and the page view controller's view controllers array to contain just one view controller. Setting the spine position to 'UIPageViewControllerSpineLocationMid' in landscape orientation sets the doubleSided property to YES, so set it to NO here.
-        
-        UIViewController *currentViewController = self.pageViewController.viewControllers[0];
-        NSArray *viewControllers = @[currentViewController];
-        [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];
-        
-        self.pageViewController.doubleSided = NO;
-        return UIPageViewControllerSpineLocationMin;
-    }
-
-    // In landscape orientation: Set set the spine location to "mid" and the page view controller's view controllers array to contain two view controllers. If the current page is even, set it to contain the current and next view controllers; if it is odd, set the array to contain the previous and current view controllers.
-    DataViewController *currentViewController = self.pageViewController.viewControllers[0];
-    NSArray *viewControllers = nil;
-
-    NSUInteger indexOfCurrentViewController = [self.modelController indexOfViewController:currentViewController];
-    if (indexOfCurrentViewController == 0 || indexOfCurrentViewController % 2 == 0) {
-        UIViewController *nextViewController = [self.modelController pageViewController:self.pageViewController viewControllerAfterViewController:currentViewController];
-        viewControllers = @[currentViewController, nextViewController];
-    } else {
-        UIViewController *previousViewController = [self.modelController pageViewController:self.pageViewController viewControllerBeforeViewController:currentViewController];
-        viewControllers = @[previousViewController, currentViewController];
-    }
-    [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:NULL];
-
-
-    return UIPageViewControllerSpineLocationMid;
-}
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
@@ -337,11 +307,20 @@
 }
 #pragma marks-
 #pragma PageViewControllerDelegate method-
--(void)pageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr{
+-(void)nextPageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr{
     
     [self.pageViewController setViewControllers:viewControllersArr direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
         if (finished) {
             [[BibleSingletonManager sharedManager].modelViewController loadNextView];
+        }
+    }];
+}
+
+-(void)prevPageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr{
+    
+    [self.pageViewController setViewControllers:viewControllersArr direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+        if (finished) {
+            [[BibleSingletonManager sharedManager].modelViewController loadPrevView];
         }
     }];
 }
@@ -351,6 +330,9 @@
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
     for (UIGestureRecognizer * gesRecog in self.pageViewController.gestureRecognizers)
     {
+        if ([gesRecog isKindOfClass:[UITapGestureRecognizer class]]){
+           // gesRecog.enabled = YES;
+        }
         if ([gesRecog isKindOfClass:[UIPanGestureRecognizer class]]){
             gesRecog.enabled = YES;
         }

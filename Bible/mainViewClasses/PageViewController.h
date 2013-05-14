@@ -7,7 +7,7 @@
 //
 @protocol PageViewController <NSObject>
 @optional
--(void)pageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr;
+-(void)nextPageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr;
 @end
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>

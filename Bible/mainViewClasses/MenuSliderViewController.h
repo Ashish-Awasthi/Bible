@@ -19,7 +19,7 @@
 #define PageSwipedForwardNotification @"PageSwipedForwardNotification"
 #define PageSwipedBackwardNotification @"PageSwipedBackwardNotification"
 #define DeviceDisturbedNotification @"DeviceDisturbedNotification" 
-
+#import "ShareViewController.h"
 @protocol MenuSliderDelegate <NSObject>
 @optional
 -(void)setPageFlip:(BOOL)isFlip;

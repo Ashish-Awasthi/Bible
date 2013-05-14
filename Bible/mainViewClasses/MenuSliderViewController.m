@@ -8,6 +8,7 @@
 #import "MenuSliderViewController.h"
 #import "Animator.h"
 #import "PageViewController.h"
+
 @implementation MenuSliderViewController
 @synthesize isExpanded;
 @synthesize delegate;
@@ -192,25 +193,25 @@
 {
     CGPoint point = [gesture locationInView:self.view];
    // NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
-        NSLog(@"======= touch Menu view.....");
+       // NSLog(@"======= touch Menu view.....");
     if (point.x>185) {// get touch only ribin
 	if (!self.isExpanded)
 	{
         // in case of Hide audio button to from menu bar
-        [self setAudioIconHiddenCondition:YES];
+        //[self setAudioIconHiddenCondition:YES];
         
 		[self slideDown];
 	}
 	else
     {
         // in case of Hide audio button to from menu bar
-        [self setAudioIconHiddenCondition:NO];
+        //[self setAudioIconHiddenCondition:NO];
         
 		[self slideUp];
 	}
 	[self pageSwiped];
 	 isExpanded = !isExpanded;
-    } else{
+     } else{
         if ([self.delegate respondsToSelector:@selector(setMenuSliderViewHidden:)]) {
             [self.delegate setMenuSliderViewHidden:NO];
         }
@@ -357,7 +358,14 @@
     
 }
 -(IBAction)tabOnShareButton:(id)sender{
-    NSLog(@"tabOnShareButton");
+    //Stop audio When user flip page>>>>>>>>>>>>>>
+    
+     [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
+    ShareViewController     *shareViewController = [[ShareViewController alloc] init];
+    shareViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:shareViewController animated:YES completion:^{
+        NSLog(@"Now Show share View");
+    }];
     
 }
 

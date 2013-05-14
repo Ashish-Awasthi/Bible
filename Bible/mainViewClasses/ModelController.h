@@ -22,4 +22,5 @@
 @property(nonatomic,retain) id <NSObject,ModelControllerDelegate>delegate;
 -(void)loadNextView;
 -(void)loadPrevView;
+-(void)stopAudioWhenUserSwitchPage;
 @end

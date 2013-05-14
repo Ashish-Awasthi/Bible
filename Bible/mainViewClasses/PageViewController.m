@@ -200,8 +200,8 @@
     /*
     // Call this Method  if you wanna page flip automatically when current page audio complete  
     NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFormArr:RightView]];
-    if([self.delegate respondsToSelector:@selector(pageFlipAutomaticallyWhenAudioFinsh:)]){
-        [self.delegate pageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
+    if([self.delegate respondsToSelector:@selector(nextPageFlipAutomaticallyWhenAudioFinsh:)]){
+        [self.delegate nextPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
     }*/
   
     if ( [BibleSingletonManager sharedManager].isAudioEnable  == NO) {

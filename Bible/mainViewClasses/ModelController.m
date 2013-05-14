@@ -189,14 +189,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    // Stop Audio When you flip page
-    [BibleSingletonManager sharedManager].isAudioEnable = NO;
-    [BibleSingletonManager sharedManager].isItGoforNextPage = YES;
-    PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
-    [currentViewController releaseAudioObjcet];
-    [currentViewController reStoreLastAudioState];
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    
+    [self stopAudioWhenUserSwitchPage];
     PageViewController    *leftPageViewController = [self getViewControllerFormArr:LeftView];
  return leftPageViewController;
   
@@ -204,14 +197,7 @@
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
-    // Stop Audio When you flip page.
-  
-    [BibleSingletonManager sharedManager].isItGoforNextPage = YES;
-     [BibleSingletonManager sharedManager].isAudioEnable = NO;
-     PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
-     [currentViewController releaseAudioObjcet];
-    [currentViewController reStoreLastAudioState];
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+       [self stopAudioWhenUserSwitchPage];
     // Hide menu View when you flip page.
     if ([self.delegate performSelector:@selector(setMenuSliderViewHidden:)]) {
         [self.delegate setMenuSliderViewHidden:YES];
@@ -255,5 +241,15 @@
                 [self reLoadDataOnNextView:@"" withHtmlName:@"Empty.htm"];
           }
     }
+}
+
+-(void)stopAudioWhenUserSwitchPage{
+    // Stop Audio When you flip page
+    [BibleSingletonManager sharedManager].isAudioEnable = NO;
+    [BibleSingletonManager sharedManager].isItGoforNextPage = YES;
+    PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
+    [currentViewController releaseAudioObjcet];
+    [currentViewController reStoreLastAudioState];
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
 @end

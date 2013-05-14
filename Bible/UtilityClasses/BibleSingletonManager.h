@@ -9,6 +9,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MessageUI/MessageUI.h>
+#import"RootViewController.h"
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 #import"AudioClass.h"
@@ -32,8 +33,10 @@
 @property(nonatomic,assign) id delegate;
 @property(nonatomic,retain) id modelViewController;
 @property(nonatomic,retain) id pageViewController;
+@property(nonatomic,retain)RootViewController    *_rootViewController;
 @property(nonatomic,assign) BOOL    isItGoforNextPage;
 @property(nonatomic,assign) BOOL    pageLoadingComplete;
+
 @property(nonatomic,assign) BOOL    isAudioEnable;
 @property(nonatomic,assign) NSInteger      currentPageId;
 + (BibleSingletonManager*)sharedManager;

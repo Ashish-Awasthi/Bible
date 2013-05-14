@@ -21,5 +21,5 @@
 @property(nonatomic,assign) BOOL pageAnimationFinished;
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 -(void)setMenuSliderViewHidden:(BOOL) isHidden;
--(void)pageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr;
+-(void)nextPageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr;
 @end
