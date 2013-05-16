@@ -96,6 +96,7 @@
         PageViewController    *currentpageViewController = (PageViewController *)[BibleSingletonManager sharedManager].pageViewController;
                                                                                 
         int  pageId =  [currentpageViewController.dataLabel.text integerValue];
+        
         if (point.x<187) {
             // not take touch complete page
 //            NSLog(@"isitExpandHideAudioIcon%d",isitExpandHideAudioIcon);
@@ -118,9 +119,20 @@
                 case 26:
                     [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:26];
                     break;
-                    
                 case 39:
                     [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:39];
+                    break;
+                case 58:
+                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:58];
+                    break;
+                case 60:
+                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:60];
+                    break;
+                case 62:
+                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:62];
+                    break;
+                case 72:
+                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:72];
                     break;
                     
                 default:

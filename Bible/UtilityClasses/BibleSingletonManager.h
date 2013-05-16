@@ -37,7 +37,6 @@
 @property(nonatomic,retain) id pageViewController;
 @property(nonatomic,retain)RootViewController    *_rootViewController;
 @property(nonatomic,assign) BOOL    isItGoforNextPage;
-@property(nonatomic,assign) BOOL    pageLoadingComplete;
 
 @property(nonatomic,assign) BOOL    isAudioEnable;
 @property(nonatomic,assign) NSInteger      currentPageId;

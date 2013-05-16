@@ -90,8 +90,14 @@
     [self addPreLoadView];
     [super viewDidLoad];
     
+    self.view.multipleTouchEnabled = NO;
+    self.view.exclusiveTouch = YES;
+    
+    isitTabAnimationComplete = YES;
+    self.pageAnimationFinished = YES;
+    
     [BibleSingletonManager sharedManager]._rootViewController = self;
-    [BibleSingletonManager sharedManager].pageLoadingComplete = YES;
+    
     [BibleSingletonManager sharedManager].firstGetTouchMenuSliderView = NO;
     NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
     
@@ -100,7 +106,7 @@
       [[BibleSingletonManager sharedManager].pageIndexArr addObject:indexIdStr];
      }
     
-    self.pageAnimationFinished = YES;
+   
 	// Do any additional setup after loading the view, typically from a nib.
     // Configure the page view controller and add it as a child view controller.
     self.pageViewController = [[[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil] autorelease];
@@ -178,6 +184,16 @@
     
 }
 
+#pragma marks-
+#pragma UIGestureRecognizer  Delegate Method-
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    BOOL    isItGetTouch = YES;
+    if (isitTabAnimationComplete == NO) {
+       isItGetTouch = NO;
+    }
+    return isItGetTouch;
+}
 
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
@@ -186,20 +202,17 @@
     PageViewController    *currentViewController = (PageViewController *)[self getViewControllerFrameArr:CurrentView];
     NSString    *currentPagePostion = currentViewController.dataLabel.text;
     currentPosition = [currentPagePostion intValue];
-    
-//    // this condition use if prev page loading not complete,user not able flip page
-    if ([BibleSingletonManager sharedManager].pageLoadingComplete == NO) {
-       return NO;
-     }
-    
     // implement logic if user tab on right side in 44 pixel area:- page flip left
     // implement logic if user tab on left side in 44 pixel area:- page flip right
    
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
     {
-        UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
-      CGPoint point = [panGes locationInView:self.view];
-        if (point.x>self.view.frame.size.width-44) {
+        if (isitTabAnimationComplete == NO) {
+            return NO;
+         }
+        UIPanGestureRecognizer * tapRecognizer = (UIPanGestureRecognizer *)gestureRecognizer;
+        CGPoint point = [tapRecognizer locationInView:self.view];
+        if (point.x>self.view.frame.size.width-44 && tapRecognizer.state == UIGestureRecognizerStateEnded) {
             // if Menu view present on rootView,not get Touch on rootView......
             if ([BibleSingletonManager sharedManager].firstGetTouchMenuSliderView == YES) {
                 [BibleSingletonManager sharedManager].firstGetTouchMenuSliderView = NO;
@@ -209,21 +222,21 @@
                 [self setMenuSliderViewHidden:NO];
                 return NO;
             }else{
-            [self.view.window setUserInteractionEnabled:NO];
-            [self  performSelector:@selector(setWindowUserinteractionEnable) withObject:nil afterDelay:.7];
+                 isitTabAnimationComplete = NO;
              NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFrameArr:RightView]];
-            [self nextPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
+              [self nextPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
+              return YES;
             }
            // NSLog(@"Right touch ");
-           }else if(point.x<44){
+           }else if(point.x<44 && tapRecognizer.state == UIGestureRecognizerStateEnded){
                if ([currentPagePostion intValue] <= 1) {
                    // NSLog(@"No swape remaing left");// Here check this is first page>>>>>>>>>>
                    return NO;
                }else{
-               [self.view.window setUserInteractionEnabled:NO];
-               [self  performSelector:@selector(setWindowUserinteractionEnable) withObject:nil afterDelay:.7];
+                    isitTabAnimationComplete = NO;
                 NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFrameArr:LeftView]];
                [self prevPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
+                return YES;
                }
             // NSLog(@"left  touch ");
             }else{
@@ -320,7 +333,6 @@
         }
         
     }else{
-        
         if ([BibleSingletonManager sharedManager].rightToLeft) {
             if (currentPosition >ShowMenuOptionNumberPage) {
                 [self setMenuSliderViewHidden:NO];
@@ -355,7 +367,14 @@
     
     [self.pageViewController setViewControllers:viewControllersArr direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
         if (finished) {
+            
             [[BibleSingletonManager sharedManager].modelViewController loadNextView];
+            if (currentPosition >=ShowMenuOptionNumberPage) {
+                [self setMenuSliderViewHidden:NO];
+            }else{
+                [self setMenuSliderViewHidden:YES];
+            }
+         [self performSelector:@selector(tapPageAnimationIsComplete) withObject:nil afterDelay:.1];
         }
     }];
 }
@@ -365,10 +384,20 @@
     [self.pageViewController setViewControllers:viewControllersArr direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
         if (finished) {
             [[BibleSingletonManager sharedManager].modelViewController loadPrevView];
+            if (currentPosition >3) {
+                [self setMenuSliderViewHidden:NO];
+            }else{
+                //NSLog(@"currentPosition  %d",currentPosition);
+                [self setMenuSliderViewHidden:YES];
+            }
+            [self performSelector:@selector(tapPageAnimationIsComplete) withObject:nil afterDelay:.1];
         }
     }];
 }
 
+-(void)tapPageAnimationIsComplete{
+    isitTabAnimationComplete = YES;
+}
 
 -(void)enablePanGesture{
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;

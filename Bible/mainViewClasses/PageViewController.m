@@ -73,27 +73,6 @@
         [self.dataLabel setFrame:frameSize];
         [self.view addSubview:self.dataLabel];
         
-        frameSize = CGRectMake(0, 0, 768, 1024);
-        
-
-        self.webView = [[UIWebView alloc] init];
-        [self.webView setOpaque:YES];
-        [self.webView setBackgroundColor:[UIColor blackColor]];
-        
-        for (UIView   *subViews in [self.webView subviews]) {
-            if ([subViews isKindOfClass:[UIScrollView class]]) {
-               UIScrollView    *scrollView = (UIScrollView *)subViews;
-                [scrollView setScrollEnabled:NO];
-                [scrollView setDelegate:self];
-            }
-        }
-       
-        [self.webView setDelegate:self];
-        [self.webView setScalesPageToFit:YES];
-        [self.webView setBackgroundColor:[UIColor clearColor]];
-        [self.webView setFrame:frameSize];
-        [self.view  addSubview:self.webView];
-    
         [self loadHtml:htmlName];
         if ([BibleSingletonManager sharedManager].isFirstTime) {
             frameSize = CGRectMake(0, 0, 768, 1024);
@@ -148,7 +127,34 @@
 
 -(void)loadHtml:(NSString *)htmlName{
     
+    
+    if (self.webView) {
+        [self.webView removeFromSuperview];
+        RELEASE(self.webView);
+        self.webView = nil;
+    }
+    CGRect   frameSize;
     [BibleSingletonManager sharedManager].isAudioEnable = NO;
+    frameSize = CGRectMake(0, 0, 768, 1024);
+    
+    
+    self.webView = [[UIWebView alloc] init];
+    [self.webView setOpaque:YES];
+    [self.webView setBackgroundColor:[UIColor blackColor]];
+    
+    for (UIView   *subViews in [self.webView subviews]) {
+        if ([subViews isKindOfClass:[UIScrollView class]]) {
+            UIScrollView    *scrollView = (UIScrollView *)subViews;
+            [scrollView setScrollEnabled:NO];
+            [scrollView setDelegate:self];
+        }
+    }
+    
+    [self.webView setDelegate:self];
+    [self.webView setScalesPageToFit:YES];
+    [self.webView setBackgroundColor:[UIColor clearColor]];
+    [self.webView setFrame:frameSize];
+    [self.view  addSubview:self.webView];
     
     NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
                                                                                pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
@@ -186,15 +192,10 @@
     NSString *jsString      = [[NSMutableString alloc] initWithData:fileData
                                                            encoding:NSUTF8StringEncoding];
     [webView stringByEvaluatingJavaScriptFromString:jsString];
-    
-    [self performSelector:@selector(loadingComplete) withObject:nil afterDelay:0.4];
     //*****************************close**************************************************************************
     
 }
 
--(void)loadingComplete{
-    [BibleSingletonManager sharedManager].pageLoadingComplete = YES;
-}
 
 -(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId{
     /*

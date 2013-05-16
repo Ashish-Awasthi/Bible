@@ -25,7 +25,6 @@
 @synthesize pageViewController;
 @synthesize currentPageId;
 @synthesize isItGoforNextPage;
-@synthesize pageLoadingComplete;
 @synthesize isAudioEnable;
 @synthesize _rootViewController;
 @synthesize firstGetTouchMenuSliderView;

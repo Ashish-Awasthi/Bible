@@ -15,6 +15,7 @@
     NSInteger    findPageIndex;
     MenuSliderViewController     *menuViewController;
     BOOL           isItTouchInMenuView;
+    BOOL           isitTabAnimationComplete;
     NSInteger     currentPosition;
     
 }

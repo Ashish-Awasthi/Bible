@@ -71,7 +71,7 @@ typedef enum{
 #define KFaceBookUnLikeMsgKey                     @"You unliked Yardsellr. Where's the love?"
 //*************************************************Query part ***************************************
 
-#define KPageDataQuery @"Select * from PageTable"
+#define KPageDataQuery @"Select * from PageTable limit 72"
 
 #define KAudioDataQueryWherePageId @"Select * from AudioTable where PageId = %d order by SpanId"
 
