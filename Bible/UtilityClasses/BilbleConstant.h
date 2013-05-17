@@ -5,7 +5,7 @@
 //  RootViewController.h
 //  PageWebView
 //
-//  Created by Tech Soft LABS on 18/04/13.
+//  Created by Ashish Awasthi on 18/04/13.
 //  Copyright (c) 2013 Tech Soft LABS. All rights reserved.
 //
 
@@ -64,6 +64,8 @@ typedef enum{
  RightView,
  ExtremRightView,
 }PreLoadView;
+
+#define SocialNetworkMessage  @"I am loving The Oldest Bedtime Story Ever by Benjamin Morse.  To learn more visit www.biblebeautiful.com. Published by @OrsonCo."
 
 #define KFaceBookLikeMsgKey                     @"You liked Yardsellr. Thanks!"
 

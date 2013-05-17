@@ -17,7 +17,7 @@
     BOOL           isItTouchInMenuView;
     BOOL           isitTabAnimationComplete;
     NSInteger     currentPosition;
-    
+    NSInteger     numberOfTabCount;
 }
 @property(nonatomic,assign) BOOL pageAnimationFinished;
 @property (strong, nonatomic) UIPageViewController *pageViewController;

@@ -198,13 +198,8 @@
 
 
 -(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId{
-    /*
-    // Call this Method  if you wanna page flip automatically when current page audio complete  
-    NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFormArr:RightView]];
-    if([self.delegate respondsToSelector:@selector(nextPageFlipAutomaticallyWhenAudioFinsh:)]){
-        [self.delegate nextPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
-    }*/
-  
+    [BibleSingletonManager sharedManager].currentPageId = pageId;
+    
     if ( [BibleSingletonManager sharedManager].isAudioEnable  == NO) {
          [BibleSingletonManager sharedManager].isAudioEnable = YES;
     }else{
@@ -241,6 +236,8 @@
 }
 
 -(void)tabOnAudioIcon:(NSInteger )pageId{
+    
+    [BibleSingletonManager sharedManager].currentPageId = pageId;
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
@@ -309,9 +306,15 @@
         
          [self audioSycWithText:audioFileNameStr withStartTime:startTime withEndTime:endTime withHighLightColor:colorCodeStr withSpanId:spanIdStr];
         
-    }else{
+       }else{
           [BibleSingletonManager sharedManager].isAudioEnable = NO;
-    }
+           if ([BibleSingletonManager sharedManager].isItLetItRead) {
+                // Call this Method  if you wanna page flip automatically when current page audio complete 
+               NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFormArr:RightView]];
+               [[BibleSingletonManager sharedManager]._rootViewController nextPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
+           }
+          
+       }
 }
 
 #pragma marks

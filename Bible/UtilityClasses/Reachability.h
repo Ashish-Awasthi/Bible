@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2011, Tony Million.
+ Copyright (c) 2011, Ashish Awasthi.
  All rights reserved.
  
  Redistribution and use in source and binary forms, with or without

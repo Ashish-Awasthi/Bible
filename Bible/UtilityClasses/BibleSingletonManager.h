@@ -1,6 +1,6 @@
 //
-//  MCSingletonManager.h
-//  MusicChoice
+//  BibleSingletonManager.h
+//  BibleSingletonManager
 //
 //  Created by Ashish Awasthi on 14/01/13.
 //  Copyright (c) 2013 Kiwitech International. All rights reserved.
@@ -29,7 +29,7 @@
 @property(nonatomic,retain) NSMutableArray     *pageIndexArr;
 @property(nonatomic,assign)BOOL                m_isFBLogin;
 @property(nonatomic,assign)BOOL                firstGetTouchMenuSliderView;
-@property(nonatomic,assign)BOOL                isFirstTime;
+@property(nonatomic,assign)BOOL                 isFirstTime;
 @property(nonatomic,assign)BOOL                 rightToLeft;
 @property(nonatomic,assign)BOOL                 leftToRight;
 @property(nonatomic,assign) id delegate;
@@ -37,7 +37,7 @@
 @property(nonatomic,retain) id pageViewController;
 @property(nonatomic,retain)RootViewController    *_rootViewController;
 @property(nonatomic,assign) BOOL    isItGoforNextPage;
-
+@property(nonatomic,assign) BOOL    isItLetItRead;
 @property(nonatomic,assign) BOOL    isAudioEnable;
 @property(nonatomic,assign) NSInteger      currentPageId;
 + (BibleSingletonManager*)sharedManager;

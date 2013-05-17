@@ -42,6 +42,8 @@
     CGFloat firstY;
     CGFloat centerX,centerY;
     Animator *animatorObj;
+    IBOutlet     UIButton*       hereItPageBtn;
+    IBOutlet     UIButton*       letItReadBtn;
 }
 
 @property(nonatomic, assign) id <NSObject,MenuSliderDelegate>delegate;
@@ -67,4 +69,5 @@
 -(void)setAudioIconHiddenCondition:(BOOL)flag;
 //PageViewController delegate Method
 -(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId;
+-(void)enableHearitPageOption;
 @end

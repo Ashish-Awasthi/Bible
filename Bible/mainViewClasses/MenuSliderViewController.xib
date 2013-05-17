@@ -62,6 +62,7 @@
 						<reference key="NSNextKeyView" ref="772423563"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
+						<int key="IBUITag">60001</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
@@ -79,7 +80,7 @@
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">hearpage_text.png</string>
+							<string key="NSResourceName">Hear-page_sel.png</string>
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="439175154">
 							<int key="type">2</int>
@@ -99,6 +100,7 @@
 						<reference key="NSNextKeyView" ref="898358441"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
+						<int key="IBUITag">60004</int>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
@@ -110,7 +112,7 @@
 						<reference key="IBUINormalTitleShadowColor" ref="474789503"/>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">letitread_text.png</string>
+							<string key="NSResourceName">let-it-read_unsel.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="439175154"/>
 						<reference key="IBUIFont" ref="414105853"/>
@@ -245,7 +247,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{23, 654}, {190, 128}}</string>
 						<reference key="NSSuperview" ref="214918896"/>
-						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="960137249">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
@@ -311,6 +312,22 @@
 						<reference key="destination" ref="214918896"/>
 					</object>
 					<int key="connectionID">53</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">hereItPageBtn</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="771537738"/>
+					</object>
+					<int key="connectionID">102</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">letItReadBtn</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="431628332"/>
+					</object>
+					<int key="connectionID">103</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -522,7 +539,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">101</int>
+			<int key="maxID">103</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
@@ -537,10 +554,10 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>Hear-page_sel.png</string>
 				<string>audio_btn.png</string>
 				<string>fineprint_text.png</string>
-				<string>hearpage_text.png</string>
-				<string>letitread_text.png</string>
+				<string>let-it-read_unsel.png</string>
 				<string>makeityourself_text.png</string>
 				<string>menu_bg.png</string>
 				<string>readmore_text.png</string>
@@ -549,9 +566,9 @@
 			</object>
 			<object class="NSArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<string>{50, 39}</string>
 				<string>{50, 49}</string>
 				<string>{198, 133}</string>
-				<string>{50, 39}</string>
 				<string>{53, 35}</string>
 				<string>{198, 133}</string>
 				<string>{230, 972}</string>

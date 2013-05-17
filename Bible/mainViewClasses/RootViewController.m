@@ -70,7 +70,7 @@
     
 }
 
--(PageViewController *)getViewControllerFrameArr:(PreLoadView )viewNumber{
+-(PageViewController *)getViewControllerFormArr:(PreLoadView )viewNumber{
     
     PageViewController   *viewController;
     
@@ -112,7 +112,7 @@
     self.pageViewController = [[[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStylePageCurl navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil] autorelease];
     self.pageViewController.delegate = self;
 
-    PageViewController *viewController = [self getViewControllerFrameArr:CurrentView];
+    PageViewController *viewController = [self getViewControllerFormArr:CurrentView];
     
     NSArray *viewControllers = @[viewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:NULL];
@@ -189,7 +189,9 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     BOOL    isItGetTouch = YES;
-    if (isitTabAnimationComplete == NO) {
+    NSLog(@"%d", [touch tapCount]);
+    numberOfTabCount = [touch tapCount];
+    if (isitTabAnimationComplete == NO && [touch tapCount] >= 2) {
        isItGetTouch = NO;
     }
     return isItGetTouch;
@@ -197,9 +199,13 @@
 
 -(BOOL)gestureRecognizerShouldBegin:(UIPanGestureRecognizer *)gestureRecognizer
 {
+    if (numberOfTabCount>=2) {
+        return NO;
+    }
+    
     NSArray * indexArr = [BibleSingletonManager sharedManager].pageIndexArr;
     
-    PageViewController    *currentViewController = (PageViewController *)[self getViewControllerFrameArr:CurrentView];
+    PageViewController    *currentViewController = (PageViewController *)[self getViewControllerFormArr:CurrentView];
     NSString    *currentPagePostion = currentViewController.dataLabel.text;
     currentPosition = [currentPagePostion intValue];
     // implement logic if user tab on right side in 44 pixel area:- page flip left
@@ -212,7 +218,7 @@
          }
         UIPanGestureRecognizer * tapRecognizer = (UIPanGestureRecognizer *)gestureRecognizer;
         CGPoint point = [tapRecognizer locationInView:self.view];
-        if (point.x>self.view.frame.size.width-44 && tapRecognizer.state == UIGestureRecognizerStateEnded) {
+        if (point.x>self.view.frame.size.width-44) {
             // if Menu view present on rootView,not get Touch on rootView......
             if ([BibleSingletonManager sharedManager].firstGetTouchMenuSliderView == YES) {
                 [BibleSingletonManager sharedManager].firstGetTouchMenuSliderView = NO;
@@ -222,19 +228,23 @@
                 [self setMenuSliderViewHidden:NO];
                 return NO;
             }else{
-                 isitTabAnimationComplete = NO;
-             NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFrameArr:RightView]];
+              isitTabAnimationComplete = NO;
+                // enable here it page option.............
+                [menuViewController enableHearitPageOption];
+              NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFormArr:RightView]];
               [self nextPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
               return YES;
             }
            // NSLog(@"Right touch ");
-           }else if(point.x<44 && tapRecognizer.state == UIGestureRecognizerStateEnded){
+           }else if(point.x<44){
                if ([currentPagePostion intValue] <= 1) {
                    // NSLog(@"No swape remaing left");// Here check this is first page>>>>>>>>>>
                    return NO;
                }else{
-                    isitTabAnimationComplete = NO;
-                NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFrameArr:LeftView]];
+                isitTabAnimationComplete = NO;
+                // enable here it page option.............
+                [menuViewController enableHearitPageOption];
+                NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFormArr:LeftView]];
                [self prevPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
                 return YES;
                }
@@ -268,8 +278,8 @@
             } else if (distance.x < 0) { //Here we check user swaped right to left
            // NSLog(@"user swiped Left");
             // NSLog(@"======= touch swape view left.....");
-            [self.view.window setUserInteractionEnabled:NO];
-            [self  performSelector:@selector(setWindowUserinteractionEnable) withObject:nil afterDelay:.7];
+             [self.view.window setUserInteractionEnabled:NO];
+             [self  performSelector:@selector(setWindowUserinteractionEnable) withObject:nil afterDelay:.7];
              [BibleSingletonManager sharedManager].leftToRight =  NO;
              [BibleSingletonManager sharedManager].rightToLeft = YES;
               
@@ -299,15 +309,13 @@
 
 
 #pragma mark - UIPageViewController delegate methods
-
-
 - (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray *)previousViewControllers transitionCompleted:(BOOL)completed
 {
-    // NSArray * indexArr = [BibleSingletonManager sharedManager].pageIndexArr;
-    
     self.pageAnimationFinished = YES;
     
     if (completed) {
+        // enable here it page option.............
+         [menuViewController enableHearitPageOption];
         // NSLog(@"flip complete page");
         if ([BibleSingletonManager sharedManager].rightToLeft) {
             [[BibleSingletonManager sharedManager].modelViewController loadNextView];
@@ -365,22 +373,28 @@
 #pragma PageViewControllerDelegate method-
 -(void)nextPageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr{
     
+     [self stopAudioWhenUserSwitchPage];
     [self.pageViewController setViewControllers:viewControllersArr direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
         if (finished) {
-            
             [[BibleSingletonManager sharedManager].modelViewController loadNextView];
             if (currentPosition >=ShowMenuOptionNumberPage) {
                 [self setMenuSliderViewHidden:NO];
             }else{
                 [self setMenuSliderViewHidden:YES];
             }
+            // start read and highlight next page, if letitread option enable..........
+            if ([BibleSingletonManager sharedManager].isItLetItRead) {
+                PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
+                NSInteger    currentPageId = [BibleSingletonManager sharedManager].currentPageId;
+                [currentViewController hieghtTextWhenSwipeUpperCorner:currentPageId+1];
+             }
          [self performSelector:@selector(tapPageAnimationIsComplete) withObject:nil afterDelay:.1];
         }
     }];
 }
 
 -(void)prevPageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr{
-    
+     [self stopAudioWhenUserSwitchPage];
     [self.pageViewController setViewControllers:viewControllersArr direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
         if (finished) {
             [[BibleSingletonManager sharedManager].modelViewController loadPrevView];
@@ -405,6 +419,7 @@
     {
         if ([gesRecog isKindOfClass:[UITapGestureRecognizer class]]){
             gesRecog.enabled = YES;
+            gesRecog.cancelsTouchesInView = YES;
         }
         if ([gesRecog isKindOfClass:[UIPanGestureRecognizer class]]){
             gesRecog.enabled = YES;
@@ -419,6 +434,15 @@
     [menuViewController.view setHidden:isHidden];
 }
 
+-(void)stopAudioWhenUserSwitchPage{
+    // Stop Audio When you flip page
+    [BibleSingletonManager sharedManager].isAudioEnable = NO;
+    [BibleSingletonManager sharedManager].isItGoforNextPage = YES;
+    PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
+    [currentViewController releaseAudioObjcet];
+    [currentViewController reStoreLastAudioState];
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+}
 #pragma marks
 #pragma MenuSliderViewControllerDelegate-
 -(void)setPageFlip:(BOOL)isFlip{

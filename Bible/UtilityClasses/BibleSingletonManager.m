@@ -1,6 +1,6 @@
 //
-//  MCSingletonManager.m
-//  MusicChoice
+// BibleSingletonManager.m
+//  BibleSingletonManager
 //
 //  Created by Ashish Awasthi on 14/01/13.
 //  Copyright (c) 2013 Kiwitech International. All rights reserved.
@@ -28,6 +28,7 @@
 @synthesize isAudioEnable;
 @synthesize _rootViewController;
 @synthesize firstGetTouchMenuSliderView;
+@synthesize isItLetItRead;
 
 //@synthesize _parseDataController;
 static BibleSingletonManager* _sharedManager; // self

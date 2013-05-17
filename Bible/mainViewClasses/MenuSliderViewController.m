@@ -8,6 +8,16 @@
 #import "MenuSliderViewController.h"
 #import "Animator.h"
 #import "PageViewController.h"
+#import "ReadMoreViewController.h"
+#import "StoriesViewController.h"
+#import "FinePrintViewController.h"
+#import "MakeItYourSelfViewController.h"
+
+#define HearItPageSelected  60001
+#define HearItPageUnSelected  60002
+
+#define letItReadPageSelected  60003
+#define letItReadPUnSelected   60004
 
 @implementation MenuSliderViewController
 @synthesize isExpanded;
@@ -334,47 +344,92 @@
     // Overriden to allow any orientation.
     return NO;
 }
+
+-(void)enableHearitPageOption{
+    [BibleSingletonManager sharedManager].isItLetItRead = NO;
+    UIImage   *imageName;
+    imageName = [UIImage imageNamed:@"Hear-page_sel.png"];
+    [hereItPageBtn setImage:imageName forState:UIControlStateNormal];
+    imageName = [UIImage imageNamed:@"let-it-read_unsel.png"];
+    [letItReadBtn setImage:imageName forState:UIControlStateNormal];
+
+}
 #pragma marks
 #pragma Button Eevets....
-
 -(IBAction)tabObHearItNowButton:(id)sender{
-    NSLog(@"tabObHearItNowButton");
+    [self enableHearitPageOption];
 }
 
 -(IBAction)tabOnAudioButton:(id)sender{
-    NSLog(@"tabOnAudioButton");
-    
+       
 }
 
 -(IBAction)tabOnLetItReadButton:(id)sender{
-    NSLog(@"tabOnLetItReadButton");
-    
+    [BibleSingletonManager sharedManager].isItLetItRead = YES;
+    UIImage   *imageName;
+    imageName = [UIImage imageNamed:@"Hear_page_unsel.png"];
+    [hereItPageBtn setImage:imageName forState:UIControlStateNormal];
+    imageName = [UIImage imageNamed:@"let-it-read_sel.png"];
+    [letItReadBtn setImage:imageName forState:UIControlStateNormal];
 }
 
 -(IBAction)tabOnLetItStoryButton:(id)sender{
     NSLog(@"tabOnLetItStoryButton");
+    //Stop audio When user flip page>>>>>>>>>>>>>>
+    
+    [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
+    StoriesViewController     *shareViewController = [[StoriesViewController alloc] init];
+    shareViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:shareViewController animated:YES completion:^{
+        // NSLog(@"Now Show share View");
+    }];
+
     
 }
 -(IBAction)tabOnReadMoreButton:(id)sender{
     NSLog(@"tabOnReadMoreButton");
+    //Stop audio When user flip page>>>>>>>>>>>>>>
     
+    [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
+    ReadMoreViewController     *shareViewController = [[ReadMoreViewController alloc] init];
+    shareViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:shareViewController animated:YES completion:^{
+        // NSLog(@"Now Show share View");
+    }];
+
 }
 -(IBAction)tabOnFinePrintButton:(id)sender{
     NSLog(@"tabOnFinePrintButton");
+    //Stop audio When user flip page>>>>>>>>>>>>>>
     
+    [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
+    FinePrintViewController     *shareViewController = [[FinePrintViewController alloc] init];
+    shareViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:shareViewController animated:YES completion:^{
+        // NSLog(@"Now Show share View");
+    }];
+
 }
 -(IBAction)tabOnMakeItYourSelfButton:(id)sender{
     NSLog(@"tabOnMakeItYourSelfButton");
+    //Stop audio When user flip page>>>>>>>>>>>>>>
     
+    [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
+    MakeItYourSelfViewController     *shareViewController = [[MakeItYourSelfViewController alloc] init];
+    shareViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:shareViewController animated:YES completion:^{
+        // NSLog(@"Now Show share View");
+    }];
+
 }
 -(IBAction)tabOnShareButton:(id)sender{
     //Stop audio When user flip page>>>>>>>>>>>>>>
     
-     [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
+    [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
     ShareViewController     *shareViewController = [[ShareViewController alloc] init];
     shareViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [[BibleSingletonManager sharedManager]._rootViewController presentViewController:shareViewController animated:YES completion:^{
-        NSLog(@"Now Show share View");
+       // NSLog(@"Now Show share View");
     }];
     
 }

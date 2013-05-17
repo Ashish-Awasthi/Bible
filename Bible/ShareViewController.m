@@ -8,6 +8,7 @@
 
 #import "ShareViewController.h"
 #import "PersistenceDataStore.h"
+
 #define ShareOptionArr \
 @"icon_email.png",\
 @"icon_facebook.png",\
@@ -117,6 +118,7 @@ nil
         NSLog(@"Go back On last Page");
     }];
 }
+
 #pragma Social Media Login
 -(void)callSocialMediaClasses{
     
@@ -133,12 +135,12 @@ nil
 
 -(void)postWallOnFacebook:(id)sender{
     [FBShareManager sharedManager].m_getPostOption = FB_PostProfileWall;
-    [FBShareManager sharedManager].m_titleName  = @"Testing Project....";
-    [FBShareManager sharedManager].m_caption = @"No caption related to wall";
-    [FBShareManager sharedManager].m_description = @"testing only social networking on iPhone or iPad....";
+    [FBShareManager sharedManager].m_titleName  = @"";
+    [FBShareManager sharedManager].m_caption = @"";
+    [FBShareManager sharedManager].m_description = SocialNetworkMessage;
     [FBShareManager sharedManager].m_iconUrl = @"";
     [FBShareManager sharedManager].m_linkUrl = @"";
-    [FBShareManager sharedManager].m_msg =     @"Testing.....";
+    [FBShareManager sharedManager].m_msg =     SocialNetworkMessage;
     
     [[FBShareManager sharedManager]  publishStream];
 }
@@ -234,7 +236,7 @@ nil
 }
 -(void)postTweetButton:(id)sender{
     m_twtManger.requestType = TweetOnTwitter;
-    [m_twtManger tweetWithMsg:@"Hi every one... hope so injoy today......"];
+    [m_twtManger tweetWithMsg:SocialNetworkMessage];
 }
 
 
@@ -242,7 +244,7 @@ nil
 #pragma mark TwitterManager delegates
 -(void)twitterLoginFail
 {
-    NSLog(@"Twitter login Fail");
+    [[BibleSingletonManager sharedManager] showAlert:@"Error" message:@"Log-in failed,try later." withTag:-1 withDelegate:nil];
     
 }
 
@@ -342,9 +344,9 @@ nil
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
         mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [mySLComposerSheet setInitialText:@"Post Message\n"];
+        [mySLComposerSheet setInitialText:SocialNetworkMessage];
         [mySLComposerSheet addImage:[UIImage imageNamed:@"image_1.png"]];
-        [mySLComposerSheet addURL:[NSURL URLWithString:@"http://wwww.flaggShow.info"]];
+        [mySLComposerSheet addURL:[NSURL URLWithString:@""]];
         [self presentViewController:mySLComposerSheet animated:YES completion:nil];
         
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
@@ -376,9 +378,9 @@ nil
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
         mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [mySLComposerSheet setInitialText:@"Post Message\n"];
+        [mySLComposerSheet setInitialText:SocialNetworkMessage];
         [mySLComposerSheet addImage:[UIImage imageNamed:@"image_1.png"]];
-        [mySLComposerSheet addURL:[NSURL URLWithString:@"http://wwww.flaggShow.info"]];
+        [mySLComposerSheet addURL:[NSURL URLWithString:@"nil"]];
         [self presentViewController:mySLComposerSheet animated:YES completion:nil];
         
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
