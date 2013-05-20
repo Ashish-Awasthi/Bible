@@ -80,12 +80,12 @@ NSURL *baseURL = [NSURL fileURLWithPath:path];
 [webView loadHTMLString:text baseURL:baseURL];
 
 frameSize = CGRectMake((webView.frame.size.width - 36)/2, (webView.frame.size.height -36)/2, 36, 36);
-identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 [identicaterView setBackgroundColor:[UIColor blackColor]];
 [identicaterView.layer setCornerRadius:4.0];
 [identicaterView setFrame:frameSize];
 [webView addSubview:identicaterView];
-
+[identicaterView startAnimating];
 }
 #pragma marks
 #pragma UIScrollView Delegate-
@@ -96,20 +96,24 @@ identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyl
 #pragma marks
 #pragma UIwebViewDelegate Method-
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    [identicaterView startAnimating];
+    
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    [identicaterView stopAnimating];
+    if (identicaterView) {
+        [identicaterView stopAnimating];
+        [identicaterView removeFromSuperview];
+        RELEASE(identicaterView);
+    }
+
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
     if(navigationType == UIWebViewNavigationTypeLinkClicked){
         NSString  *requestUrlStr = [request.URL absoluteString];
-        NSString  *chapterNameStr = [[requestUrlStr componentsSeparatedByString:@"/"] lastObject];
-        NSLog(@" Request Type %@, Chapter Name is:- %@",requestUrlStr,chapterNameStr);
-        if ([chapterNameStr length]>0) {
-           // [self openSelectedPage:chapterNameStr];
+        NSLog(@" Request Type %@",requestUrlStr);
+        if ([requestUrlStr length]>0) {
+            [self openSelectedPage:requestUrlStr];
         }
         return NO;
     }
@@ -119,6 +123,8 @@ identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyl
 -(void)openSelectedPage:(NSString *)selectedPageHtmlNameStr{
     
     CommanPageViewController    *commanPageViewController = [[CommanPageViewController alloc] initWithNibName:nil bundle:nil withHtml:selectedPageHtmlNameStr];
+    [commanPageViewController loadUrl:selectedPageHtmlNameStr];
+    
     commanPageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:commanPageViewController animated:YES completion:^{
         NSLog(@"Now Show commanPageViewController");

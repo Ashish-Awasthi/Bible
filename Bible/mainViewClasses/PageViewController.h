@@ -45,4 +45,5 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
 -(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId;
 -(void)tabOnAudioIcon:(NSInteger )pageId;
 -(void)reStoreLastAudioState;
+-(void)startPageThirdAnimation;
 @end

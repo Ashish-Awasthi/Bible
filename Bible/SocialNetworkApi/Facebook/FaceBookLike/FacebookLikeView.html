@@ -28,6 +28,21 @@
             alert('like');
             };
             beginForwardingEvents(['edge.create', 'edge.remove', 'xfbml.render']);
+            window.fbAsyncInit = function() {
+            FB.init({appId: 'YOUR_FACEBOOK_APP_ID', status: true, cookie: true, xfbml: true});
+            FB.Event.subscribe('edge.create', function(href, widget) {
+            // Do something, e.g. track the click on the "Like" button here
+            alert('You just liked '+href);
+            });
+            
+            };
+            (function() {
+            var e = document.createElement('script');
+            e.type = 'text/javascript';
+            e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
+            e.async = true;
+            document.getElementById('fb-root').appendChild(e);
+            }());
         </script>                                                                                   
         <fb:like    href='%@' 
                     send='false' 

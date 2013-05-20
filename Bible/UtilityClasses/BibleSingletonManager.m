@@ -245,9 +245,7 @@ static BibleSingletonManager* _sharedManager; // self
     
     BOOL cameraAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     
-    BOOL frontCameraAvailable = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerCameraDeviceFront];
-
-    return cameraAvailable || frontCameraAvailable; 
+    return cameraAvailable ; 
 }
 
 - (NSString*)trimString:(NSString*)a_str

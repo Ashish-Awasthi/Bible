@@ -23,7 +23,6 @@ nil
 -(void)shareMessageViaEmail;
 -(void)shareMessageViaFaceBook;
 -(void)shareMessageViaTwitter;
--(void)likeOnFaceBook;
 @end
 
 @implementation ShareViewController
@@ -63,16 +62,6 @@ nil
     [self addShareOption];
     
     frameSize = CGRectMake(250,60,100, 40);
-//    m_FBLikeView = [[FacebookLikeView alloc] initWithFrame:frameSize];
-//   // [m_FBLikeView setBackgroundColor:[UIColor redColor]];
-//    m_FBLikeView.href = [NSURL URLWithString:kMusicChoiceFacebookPageURL];
-//    m_FBLikeView.layout  = @"standard";
-//    m_FBLikeView.showFaces = NO;
-//    m_FBLikeView.alpha = 1;
-//    m_FBLikeView.delegate  = (id) self;
-//    [m_FBLikeView load];
-//    [self.view addSubview:m_FBLikeView];
-    
 	// Do any additional setup after loading the view.
 }
 

@@ -86,8 +86,9 @@
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
             case RightView:
-                pageViewController.view.tag = CurrentView;
-                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
+                 pageViewController.view.tag = CurrentView;
+                [pageViewController startPageThirdAnimation];
+                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                  [BibleSingletonManager sharedManager].pageViewController = (id)pageViewController;
                 break;
                 
@@ -124,13 +125,14 @@
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
             case LeftView:
-                 pageViewController.view.tag = CurrentView;
+                pageViewController.view.tag = CurrentView;
+                [pageViewController startPageThirdAnimation];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 [BibleSingletonManager sharedManager].pageViewController = (id)pageViewController;
                 break;
                 
             case CurrentView:
-                pageViewController.view.tag = RightView;
+                 pageViewController.view.tag = RightView;
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
             case RightView:

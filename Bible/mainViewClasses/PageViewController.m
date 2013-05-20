@@ -125,6 +125,10 @@
 	// Do any additional setup after loading the view.
 }
 
+
+-(void)startPageThirdAnimation{
+    [self.webView stringByEvaluatingJavaScriptFromString:@"processNextMove()"];
+}
 -(void)loadHtml:(NSString *)htmlName{
     
     if (self.webView) {
@@ -175,6 +179,16 @@
 
     //  not show copy paste option in webview
     [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
+    
+    // if  u want animation withen html images must be add this .js file jquery.min.js
+    
+    NSString *animationJsFileStr      = [[NSBundle mainBundle] pathForResource:@"jquery.min"
+                                                                    ofType:@"js" inDirectory:@""];
+    NSData *animationFileData        = [NSData dataWithContentsOfFile:animationJsFileStr];
+    NSString *animationJQueryStr  = [[NSMutableString alloc] initWithData:animationFileData
+                                                           encoding:NSUTF8StringEncoding];
+    
+    [webView stringByEvaluatingJavaScriptFromString:animationJQueryStr];
     
     // * if you wanna find audio span id from webView, when user tab on sentence. must we add these javascript file in our resuorce bundle********************
     

@@ -31,6 +31,11 @@
 
 @implementation StoriesPageViewController
 
+@synthesize webView;
+@synthesize lastAudioPlayerObj;
+@synthesize lastSentenceTextColorStr;
+@synthesize lastSpanIdStr;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -115,7 +120,7 @@
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     
     //  not show copy paste option in webview
-    [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
+    [self.webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
     
     // * if you wanna find audio span id from webView, when user tab on sentence. must we add these javascript file in our resuorce bundle********************
     
@@ -124,14 +129,14 @@
     NSData *jqueryFileData        = [NSData dataWithContentsOfFile:jqueryFilePath];
     NSString *jqueryString  = [[NSMutableString alloc] initWithData:jqueryFileData
                                                            encoding:NSUTF8StringEncoding];
-    [webView stringByEvaluatingJavaScriptFromString:jqueryString];
+    [self.webView stringByEvaluatingJavaScriptFromString:jqueryString];
     
     NSString *filePath      = [[NSBundle mainBundle] pathForResource:@"selectedElement"
                                                               ofType:@"js" inDirectory:@""];
     NSData *fileData        = [NSData dataWithContentsOfFile:filePath];
     NSString *jsString      = [[NSMutableString alloc] initWithData:fileData
                                                            encoding:NSUTF8StringEncoding];
-    [webView stringByEvaluatingJavaScriptFromString:jsString];
+    [self.webView stringByEvaluatingJavaScriptFromString:jsString];
     //*****************************close**************************************************************************
     
 }
@@ -257,7 +262,7 @@
     if(navigationType == UIWebViewNavigationTypeLinkClicked)
 	{
         NSString *selectedId   = [NSString stringWithFormat:@"selectedId"];
-        NSString  *spanIdStr = [webView stringByEvaluatingJavaScriptFromString:selectedId];
+        NSString  *spanIdStr = [self.webView stringByEvaluatingJavaScriptFromString:selectedId];
         NSString     *chapeterIdStr     = [[spanIdStr componentsSeparatedByString:@"Audio_#"] lastObject];
         
         if ([chapeterIdStr integerValue]>=3) {

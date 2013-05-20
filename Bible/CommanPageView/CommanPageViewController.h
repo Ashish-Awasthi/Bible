@@ -11,8 +11,11 @@
 @interface CommanPageViewController : UIViewController<UIWebViewDelegate,
 UIScrollViewDelegate>{
     UIActivityIndicatorView*   identicaterView;
-    NSString*                  _htmlNameStr;
+    BOOL                 isItHaveIdenticatior;
 }
+
+-(void)loadUrl:(NSString *)urlPathStr;
+-(void)loadHtml:(NSString *)htmlNameStr;
 - (id)initWithNibName:(NSString *)nibNameOrNil
                bundle:(NSBundle *)nibBundleOrNil
              withHtml:(NSString *)htmlNameStr;
