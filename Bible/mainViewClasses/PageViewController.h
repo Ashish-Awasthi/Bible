@@ -16,7 +16,6 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
     UIProgressView*     loadingProgessView;
     float               increaseProgess;
     UIImageView         *imageView;
-    UIButton       *menuOptionBtn;
 
     NSArray           *audioInfoPageArr;
     NSInteger        hieghtLightRemoveTime;
@@ -26,8 +25,6 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
     BOOL             letItReadEnable;
     BOOL             wantAudioCompletelyOff;
     NSInteger        _currentPageId;
-    UIActivityIndicatorView*  pinner;
-    NSMutableArray*        audioObjectArr;
     
     NSTimer*              progessTimer;
     AVAudioPlayer     *audioPlayer;

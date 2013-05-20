@@ -373,6 +373,7 @@
 		BC838823174A038A004DDA66 /* Page_092.htm in Resources */ = {isa = PBXBuildFile; fileRef = BC838730174A038A004DDA66 /* Page_092.htm */; };
 		BC838824174A038A004DDA66 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = BC838731174A038A004DDA66 /* style.css */; };
 		BC838828174A0608004DDA66 /* CommanPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC838827174A0608004DDA66 /* CommanPageViewController.m */; };
+		BC83882B174A286E004DDA66 /* StoriesPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC83882A174A286D004DDA66 /* StoriesPageViewController.m */; };
 		BC848C62171C26A2008F14E6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC848C61171C26A2008F14E6 /* UIKit.framework */; };
 		BC848C64171C26A2008F14E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC848C63171C26A2008F14E6 /* Foundation.framework */; };
 		BC848C66171C26A2008F14E6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC848C65171C26A2008F14E6 /* CoreGraphics.framework */; };
@@ -869,6 +870,8 @@
 		BC838731174A038A004DDA66 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		BC838826174A0608004DDA66 /* CommanPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommanPageViewController.h; path = CommanPageView/CommanPageViewController.h; sourceTree = "<group>"; };
 		BC838827174A0608004DDA66 /* CommanPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommanPageViewController.m; path = CommanPageView/CommanPageViewController.m; sourceTree = "<group>"; };
+		BC838829174A286D004DDA66 /* StoriesPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoriesPageViewController.h; path = CommanPageView/StoriesPageViewController.h; sourceTree = "<group>"; };
+		BC83882A174A286D004DDA66 /* StoriesPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoriesPageViewController.m; path = CommanPageView/StoriesPageViewController.m; sourceTree = "<group>"; };
 		BC848C5E171C26A2008F14E6 /* Bible.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bible.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC848C61171C26A2008F14E6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BC848C63171C26A2008F14E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -1546,6 +1549,8 @@
 			children = (
 				BC838826174A0608004DDA66 /* CommanPageViewController.h */,
 				BC838827174A0608004DDA66 /* CommanPageViewController.m */,
+				BC838829174A286D004DDA66 /* StoriesPageViewController.h */,
+				BC83882A174A286D004DDA66 /* StoriesPageViewController.m */,
 			);
 			name = CommanPageView;
 			sourceTree = "<group>";
@@ -2488,6 +2493,7 @@
 				BC80766D174618FB00828193 /* MakeItYourSelfViewController.m in Sources */,
 				BC8076711746196500828193 /* ReadMoreViewController.m in Sources */,
 				BC838828174A0608004DDA66 /* CommanPageViewController.m in Sources */,
+				BC83882B174A286E004DDA66 /* StoriesPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

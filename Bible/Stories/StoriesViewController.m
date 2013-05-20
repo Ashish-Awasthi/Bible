@@ -7,7 +7,7 @@
 //
 
 #import "StoriesViewController.h"
-#import "CommanPageViewController.h"
+#import "StoriesPageViewController.h"
 #define   StoriesWebViewTag  300001
 @interface StoriesViewController ()
 
@@ -43,6 +43,7 @@
 
 	// Do any additional setup after loading the view.
 }
+
 #pragma marks
 #pragma Button Eevent
 -(void)goBackOnLastView:(id)sender{
@@ -122,13 +123,15 @@
 }
 -(void)openSelectedPage:(NSString *)selectedPageHtmlNameStr{
     
-    CommanPageViewController    *commanPageViewController = [[CommanPageViewController alloc] initWithNibName:nil bundle:nil withHtml:selectedPageHtmlNameStr];
-    commanPageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:commanPageViewController animated:YES completion:^{
+    StoriesPageViewController    *pageViewController = [[StoriesPageViewController alloc] init ];
+    [pageViewController  loadHtml:selectedPageHtmlNameStr];
+    
+    pageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:pageViewController animated:YES completion:^{
         NSLog(@"Now Show commanPageViewController");
         
     }];
-    RELEASE(commanPageViewController);
+    RELEASE(pageViewController);
 }
 - (void)didReceiveMemoryWarning
 {
