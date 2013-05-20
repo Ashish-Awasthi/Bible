@@ -70,7 +70,7 @@
         }
     
     // Default settings
-    self.href = [NSURL URLWithString:kMusicChoiceFacebookPageURL];
+    self.href = [NSURL URLWithString:kBibleFacebookPageURL];
     self.layout = @"standard";
     self.showFaces = YES;
     self.action = @"like";
@@ -108,6 +108,7 @@
 }
 
 - (void)didObserveFacebookEvent:(NSString *)fbEvent {
+    NSLog(@"fbEvent is %@",fbEvent);
     if ([fbEvent isEqualToString:@"edge.create"] && [_delegate respondsToSelector:@selector(facebookLikeViewDidLike:)])
         [_delegate facebookLikeViewDidLike:self];
     else if ([fbEvent isEqualToString:@"edge.remove"] && [_delegate respondsToSelector:@selector(facebookLikeViewDidUnlike:)])
@@ -118,6 +119,10 @@
 
 #pragma mark UIWebViewDelegate methods
 
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    //  not show copy paste option in webview
+    [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
+}
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     // Allow loading Like button XFBML from file
     if ([request.URL.host isEqual:self.href.host])

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReadMoreViewController : UIViewController
-
+@interface ReadMoreViewController : UIViewController<UIScrollViewDelegate,
+UIWebViewDelegate>{
+    UIActivityIndicatorView*   identicaterView;
+}
 @end

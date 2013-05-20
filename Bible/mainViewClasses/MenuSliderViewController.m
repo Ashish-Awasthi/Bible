@@ -378,49 +378,50 @@
     //Stop audio When user flip page>>>>>>>>>>>>>>
     
     [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
-    StoriesViewController     *shareViewController = [[StoriesViewController alloc] init];
-    shareViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:shareViewController animated:YES completion:^{
+    StoriesViewController     *storiesViewController = [[StoriesViewController alloc] init];
+    storiesViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:storiesViewController animated:YES completion:^{
         // NSLog(@"Now Show share View");
     }];
 
-    
+     RELEASE(storiesViewController);
 }
 -(IBAction)tabOnReadMoreButton:(id)sender{
-    NSLog(@"tabOnReadMoreButton");
+    //NSLog(@"tabOnReadMoreButton");
     //Stop audio When user flip page>>>>>>>>>>>>>>
     
     [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
-    ReadMoreViewController     *shareViewController = [[ReadMoreViewController alloc] init];
-    shareViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:shareViewController animated:YES completion:^{
+    ReadMoreViewController     *readMoreViewController = [[ReadMoreViewController alloc] init];
+    readMoreViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:readMoreViewController animated:YES completion:^{
         // NSLog(@"Now Show share View");
     }];
+    RELEASE(readMoreViewController);
 
 }
 -(IBAction)tabOnFinePrintButton:(id)sender{
-    NSLog(@"tabOnFinePrintButton");
+    //NSLog(@"tabOnFinePrintButton");
     //Stop audio When user flip page>>>>>>>>>>>>>>
     
     [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
-    FinePrintViewController     *shareViewController = [[FinePrintViewController alloc] init];
-    shareViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:shareViewController animated:YES completion:^{
+    FinePrintViewController     *fineViewController = [[FinePrintViewController alloc] init];
+    fineViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:fineViewController animated:YES completion:^{
         // NSLog(@"Now Show share View");
     }];
-
+   RELEASE(fineViewController);
 }
 -(IBAction)tabOnMakeItYourSelfButton:(id)sender{
     NSLog(@"tabOnMakeItYourSelfButton");
     //Stop audio When user flip page>>>>>>>>>>>>>>
     
     [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
-    MakeItYourSelfViewController     *shareViewController = [[MakeItYourSelfViewController alloc] init];
-    shareViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:shareViewController animated:YES completion:^{
+    MakeItYourSelfViewController     *makeItMoreViewController = [[MakeItYourSelfViewController alloc] init];
+    makeItMoreViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:makeItMoreViewController animated:YES completion:^{
         // NSLog(@"Now Show share View");
     }];
-
+   RELEASE(makeItMoreViewController);
 }
 -(IBAction)tabOnShareButton:(id)sender{
     //Stop audio When user flip page>>>>>>>>>>>>>>
@@ -431,7 +432,7 @@
     [[BibleSingletonManager sharedManager]._rootViewController presentViewController:shareViewController animated:YES completion:^{
        // NSLog(@"Now Show share View");
     }];
-    
+      RELEASE(shareViewController);
 }
 
 

@@ -7,8 +7,11 @@
 //
 
 #import "MakeItYourSelfViewController.h"
+#import "CommanPageViewController.h"
 
+#define   MakeItReadWebViewTag  400001
 @interface MakeItYourSelfViewController ()
+-(void)loadHtml:(NSString *)htmlName;
 
 @end
 
@@ -26,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self loadHtml:MakeItYourPageName];
     UIImage     *image;
     CGRect    frameSize;
     
@@ -37,8 +42,89 @@
     [backBtn setImage:image forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(goBackOnLastView:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backBtn];
-
+    
+   
 	// Do any additional setup after loading the view.
+}
+
+-(void)loadHtml:(NSString *)htmlName{
+
+CGRect   frameSize;
+[BibleSingletonManager sharedManager].isAudioEnable = NO;
+frameSize = CGRectMake(0, 0, 768, 1024);
+
+
+UIWebView           *webView = [[UIWebView alloc] init];
+[webView setTag:MakeItReadWebViewTag];
+[webView setOpaque:YES];
+[webView setBackgroundColor:[UIColor blackColor]];
+
+for (UIView   *subViews in [webView subviews]) {
+    if ([subViews isKindOfClass:[UIScrollView class]]) {
+        UIScrollView    *scrollView = (UIScrollView *)subViews;
+        [scrollView setScrollEnabled:NO];
+        [scrollView setDelegate:self];
+    }
+}
+
+[webView setDelegate:self];
+[webView setScalesPageToFit:YES];
+[webView setBackgroundColor:[UIColor clearColor]];
+[webView setFrame:frameSize];
+[self.view  addSubview:webView];
+
+NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
+                                                                           pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
+NSString *path = [[NSBundle mainBundle] bundlePath];
+NSURL *baseURL = [NSURL fileURLWithPath:path];
+[webView loadHTMLString:text baseURL:baseURL];
+
+frameSize = CGRectMake((webView.frame.size.width - 36)/2, (webView.frame.size.height -36)/2, 36, 36);
+identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+[identicaterView setBackgroundColor:[UIColor blackColor]];
+[identicaterView.layer setCornerRadius:4.0];
+[identicaterView setFrame:frameSize];
+[webView addSubview:identicaterView];
+
+}
+#pragma marks
+#pragma UIScrollView Delegate-
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return nil;
+}
+
+#pragma marks
+#pragma UIwebViewDelegate Method-
+- (void)webViewDidStartLoad:(UIWebView *)webView{
+    [identicaterView startAnimating];
+}
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    [identicaterView stopAnimating];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    
+    if(navigationType == UIWebViewNavigationTypeLinkClicked){
+        NSString  *requestUrlStr = [request.URL absoluteString];
+        NSString  *chapterNameStr = [[requestUrlStr componentsSeparatedByString:@"/"] lastObject];
+        NSLog(@" Request Type %@, Chapter Name is:- %@",requestUrlStr,chapterNameStr);
+        if ([chapterNameStr length]>0) {
+           // [self openSelectedPage:chapterNameStr];
+        }
+        return NO;
+    }
+    
+    return YES;
+}
+-(void)openSelectedPage:(NSString *)selectedPageHtmlNameStr{
+    
+    CommanPageViewController    *commanPageViewController = [[CommanPageViewController alloc] initWithNibName:nil bundle:nil withHtml:selectedPageHtmlNameStr];
+    commanPageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:commanPageViewController animated:YES completion:^{
+        NSLog(@"Now Show commanPageViewController");
+        
+    }];
+    RELEASE(commanPageViewController);
 }
 
 #pragma marks

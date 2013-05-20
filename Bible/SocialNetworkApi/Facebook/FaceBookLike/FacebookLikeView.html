@@ -17,12 +17,15 @@
                 iframe.parentNode.removeChild(iframe);  
             };
             function beginForwardingEvent(name) {
+
                 FB.Event.subscribe(name, function(r) { forwardEvent(name); });
             };
             function beginForwardingEvents(names) {
                 for (var i = 0; i < names.length; i++) {
+            )
                     beginForwardingEvent(names[i]);
                 }
+            alert('like');
             };
             beginForwardingEvents(['edge.create', 'edge.remove', 'xfbml.render']);
         </script>                                                                                   

@@ -97,7 +97,7 @@ nil
         if (i == 2) {
             m_FBLikeView = [[FacebookLikeView alloc] initWithFrame:CGRectMake((image.size.width-50)/2,(image.size.height-30)/2,50, 30)];
             [m_FBLikeView setBackgroundColor:[UIColor clearColor]];
-            m_FBLikeView.href = [NSURL URLWithString:kMusicChoiceFacebookPageURL];
+            m_FBLikeView.href = [NSURL URLWithString:kBibleFacebookPageURL];
             m_FBLikeView.layout  = @"standard";
             m_FBLikeView.showFaces = NO;
             m_FBLikeView.alpha = 1;

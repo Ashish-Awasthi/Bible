@@ -1,25 +1,28 @@
 //
-//  ReadMoreViewController.m
+//  CommanPageViewController.m
 //  Bible
 //
-//  Created by Ashish Awasthi on 5/17/13.
+//  Created by Ashish Awasthi on 5/20/13.
 //  Copyright (c) 2013 Ashish Awasthi. All rights reserved.
 //
 
-#import "ReadMoreViewController.h"
 #import "CommanPageViewController.h"
-#define   ReadMoreWebViewTag  200001
-@interface ReadMoreViewController ()
--(void)loadHtml:(NSString *)htmlName;
+
+#define KCommanWebViewTag  700001
+@interface CommanPageViewController ()
+
 @end
 
-@implementation ReadMoreViewController
+@implementation CommanPageViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil
+               bundle:(NSBundle *)nibBundleOrNil
+             withHtml:(NSString *)htmlNameStr;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _htmlNameStr = htmlNameStr;
     }
     return self;
 }
@@ -27,11 +30,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadHtml:@"Page_078.htm"];
-
+   
+    
     UIImage     *image;
     CGRect    frameSize;
     
+    [self loadHtml:_htmlNameStr];
     image = [UIImage imageNamed:@"btn_back.png"];
     frameSize = CGRectMake(0, 0, image.size.width, image.size.height);
     
@@ -40,6 +44,7 @@
     [backBtn setImage:image forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(goBackOnLastView:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backBtn];
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -51,7 +56,7 @@
     
     
     UIWebView           *webView = [[UIWebView alloc] init];
-    [webView setTag:ReadMoreWebViewTag];
+    [webView setTag:KCommanWebViewTag];
     [webView setOpaque:YES];
     [webView setBackgroundColor:[UIColor blackColor]];
     
@@ -101,28 +106,10 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
     if(navigationType == UIWebViewNavigationTypeLinkClicked){
-        NSString  *requestUrlStr = [request.URL absoluteString];
-        NSString  *chapterNameStr = [[requestUrlStr componentsSeparatedByString:@"/"] lastObject];
-        NSLog(@" Request Type %@, Chapter Name is:- %@",requestUrlStr,chapterNameStr);
-        if ([chapterNameStr length]>0) {
-            [self openSelectedPage:chapterNameStr];
-        }
-        return NO;
+       
     }
-    
-    
-    
+   
     return YES;
-}
--(void)openSelectedPage:(NSString *)selectedPageHtmlNameStr{
-    
-    CommanPageViewController    *commanPageViewController = [[CommanPageViewController alloc] initWithNibName:nil bundle:nil withHtml:selectedPageHtmlNameStr];
-    commanPageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:commanPageViewController animated:YES completion:^{
-        NSLog(@"Now Show commanPageViewController");
-        
-    }];
-    RELEASE(commanPageViewController);
 }
 
 #pragma marks

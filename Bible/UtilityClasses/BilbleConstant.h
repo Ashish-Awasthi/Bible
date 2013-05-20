@@ -56,6 +56,10 @@ nil
 @"Page_010.htm",\
 nil
 
+#define   StoriesPageName      @"Page_076.htm"
+#define   ReadMorePageName     @"Page_078.htm"
+#define   FinePrintPageName    @"Page_084.htm"
+#define   MakeItYourPageName   @"Page_089.htm"
 
 typedef enum{
  ExtremLeftView = 0,
@@ -73,7 +77,7 @@ typedef enum{
 #define KFaceBookUnLikeMsgKey                     @"You unliked Yardsellr. Where's the love?"
 //*************************************************Query part ***************************************
 
-#define KPageDataQuery @"Select * from PageTable limit 72"
+#define KPageDataQuery @"Select * from PageTable limit 92"
 
 #define KAudioDataQueryWherePageId @"Select * from AudioTable where PageId = %d order by SpanId"
 

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StoriesViewController : UIViewController
+@interface StoriesViewController : UIViewController<UIWebViewDelegate,UIScrollViewDelegate>{
+    UIActivityIndicatorView*   identicaterView;
+}
 
 @end

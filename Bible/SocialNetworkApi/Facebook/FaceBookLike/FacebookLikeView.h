@@ -11,7 +11,7 @@
 @protocol FacebookLikeViewDelegate;
 
 
-@interface FacebookLikeView : UIView {
+@interface FacebookLikeView : UIView <UIWebViewDelegate,UIScrollViewDelegate>{
     UIWebView *_webView;
 }
 
@@ -45,8 +45,9 @@
 // Load/reload the content of the web view. You should call this after changing any of the above parameters,
 // and whenever the user signs in or out of Facebook.
 - (void)load;
-
+- (void)didObserveFacebookEvent:(NSString *)fbEvent;
 @end
+
 
 
 @protocol FacebookLikeViewDelegate <NSObject>

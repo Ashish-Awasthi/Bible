@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FinePrintViewController : UIViewController
-
+@interface FinePrintViewController : UIViewController<UIScrollViewDelegate,
+UIWebViewDelegate>{
+ UIActivityIndicatorView*   identicaterView;
+}
 @end
