@@ -127,7 +127,13 @@
 }
 -(void)openSelectedPage:(NSString *)selectedPageHtmlNameStr{
     
-    StoriesPageViewController    *pageViewController = [[StoriesPageViewController alloc] init ];
+    [[BibleSingletonManager sharedManager]._rootViewController reLoadAllFiveViewDataWhenYouComeFromMenuOption:selectedPageHtmlNameStr];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"Go back On last Page");
+    }];
+    
+   /* StoriesPageViewController    *pageViewController = [[StoriesPageViewController alloc] init ];
     [pageViewController  loadHtml:selectedPageHtmlNameStr];
     
     pageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -135,7 +141,7 @@
         NSLog(@"Now Show commanPageViewController");
         
     }];
-    RELEASE(pageViewController);
+    RELEASE(pageViewController);*/
 }
 - (void)didReceiveMemoryWarning
 {

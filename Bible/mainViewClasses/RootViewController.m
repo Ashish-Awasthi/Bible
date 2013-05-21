@@ -388,7 +388,7 @@
                 NSInteger    currentPageId = [BibleSingletonManager sharedManager].currentPageId;
                 [currentViewController hieghtTextWhenSwipeUpperCorner:currentPageId+1];
              }
-         [self performSelector:@selector(tapPageAnimationIsComplete) withObject:nil afterDelay:.1];
+         [self performSelector:@selector(tapPageAnimationIsComplete) withObject:nil afterDelay:.2];
         }
     }];
 }
@@ -404,7 +404,7 @@
                 //NSLog(@"currentPosition  %d",currentPosition);
                 [self setMenuSliderViewHidden:YES];
             }
-            [self performSelector:@selector(tapPageAnimationIsComplete) withObject:nil afterDelay:.1];
+            [self performSelector:@selector(tapPageAnimationIsComplete) withObject:nil afterDelay:.2];
         }
     }];
 }
@@ -449,5 +449,59 @@
     self.pageAnimationFinished = isFlip;
     isItTouchInMenuView = YES;
 }
+
+-(void)reLoadAllFiveViewDataWhenYouComeFromMenuOption:(NSString *)htmlNameStr{
+    
+    NSLog(@"htmlNameStr%@",htmlNameStr);
+    NSString *pageNumberStr = [[htmlNameStr componentsSeparatedByString:@"Page_0"] lastObject];
+    pageNumberStr = [[pageNumberStr componentsSeparatedByString:@"."] objectAtIndex:0];
+   
+    NSLog(@"htmlNameStr%@, Page Number is:- %d",htmlNameStr,[pageNumberStr integerValue]);
+    /*
+    NSArray   *objectArr = [[BibleSingletonManager sharedManager].preLoadViewArr copy];
+    [[BibleSingletonManager sharedManager].preLoadViewArr removeAllObjects];
+    
+    PageViewController   *pageViewController;
+    
+    for (int i = 0; i<[objectArr count]; i++) {
+        
+        pageViewController = [objectArr objectAtIndex:i];
+        
+        switch (pageViewController.view.tag) {
+                
+            case ExtremLeftView:
+                [pageViewController loadHtml:htmlNameStr];
+                [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",[pageNumberStr integerValue]]];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
+                break;
+            case LeftView:
+               [pageViewController loadHtml:htmlNameStr];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
+                break;
+                
+            case CurrentView:
+                 [pageViewController loadHtml:htmlNameStr];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
+                break;
+            case RightView:
+                [pageViewController loadHtml:htmlNameStr];
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
+                [BibleSingletonManager sharedManager].pageViewController = (id)pageViewController;
+                break;
+                
+            case ExtremRightView:
+                pageViewController.view.tag = RightView;
+                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
+                break;
+                
+            default:
+                break;
+        }
+        
+    }
+    
+    [objectArr release]; */
+}
+
 
 @end

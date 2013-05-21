@@ -282,43 +282,47 @@ font-weight: bold;
 }
 							/*FOR IMAGE GLOW EFFECT*/
 .treeImage{
-	background-image: url(Frem1.png);
+	background-image: url(frame_sprite.png);
 	background-repeat: no-repeat;
+	background-position: 1px 0;
 	height:314px;
 	width:337px;
 	position: relative;
 	left: 29.4%;
-	top: 23px;
+	top: 24px;
 	display: inline-block;
 }
 .treeImage1{
-	background-image: url(Frem2.png);
+	background-image: url(frame_sprite.png);
 	background-repeat: no-repeat;
+	background-position: -356px 0;
 	height:314px;
 	width:337px;
 	position: relative;
 	left: 29.4%;
-	top: 23px;
+	top: 24px;
 	display: inline-block;
 }
 .treeImage2{
-	background-image: url(Frem3.png);
+	background-image: url(frame_sprite.png);
 	background-repeat: no-repeat;
+	background-position: -714px 0;
 	height:314px;
 	width:337px;
 	position: relative;
 	left: 29.4%;
-	top: 23px;
+	top: 24px;
 	display: inline-block;
 }
 .treeImage3{
-	background-image: url(Frem4.png);
+	background-image: url(frame_sprite.png);
 	background-repeat: no-repeat;
+	background-position: -1071px 0;
 	height:314px;
 	width:337px;
 	position: relative;
 	left: 29.4%;
-	top: 23px;
+	top: 24px;
 	display: inline-block;
 }
 										/*END GLOW EFFECT*/

@@ -27,7 +27,7 @@ TWSharedManagerDelegate,FBShareManagerDelegate,FacebookLikeViewDelegate>{
    SLComposeViewController    *mySLComposerSheet;
      TWSharedManager           *m_twtManger;
     FaceBooKGetAndPostOption   _faceBooKGetAndPostOption;
-      FacebookLikeView        *m_FBLikeView;
+    FacebookLikeView        *m_FBLikeView;
 }
 
 

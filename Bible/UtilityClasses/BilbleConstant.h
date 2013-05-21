@@ -69,7 +69,11 @@ typedef enum{
  ExtremRightView,
 }PreLoadView;
 
-#define SocialNetworkMessage  @"I am loving The Oldest Bedtime Story Ever by Benjamin Morse.  To learn more visit www.biblebeautiful.com. Published by @OrsonCo."
+#define FaceBookMsg  @"I am reading The Bible Beautiful: The Oldest Bedtime Story Ever, written and illustrated by Benjamin Morse.  It is available in hardback and as an eLuminated app.  To learn more or to buy it, visit www.biblebeautiful.com \n  Developed by: Orson & Co \n via The Oldest Bedtime Story Ever "
+
+#define TwitterShareMsg  @"I am loving The Oldest Bedtime Story Ever by Benjamin Morse.  To learn more visit www.biblebeautiful.com."
+
+#define EmailShareMsg @"I am reading The Bible Beautiful: The Oldest Bedtime Story Ever, written and illustrated by Benjamin Morse.  It is available in hardback and as an eLuminated app.  To learn more or to buy it, visit www.biblebeautiful.com."
 
 #define KFaceBookLikeMsgKey                     @"You liked Yardsellr. Thanks!"
 

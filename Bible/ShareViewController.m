@@ -126,10 +126,10 @@ nil
     [FBShareManager sharedManager].m_getPostOption = FB_PostProfileWall;
     [FBShareManager sharedManager].m_titleName  = @"";
     [FBShareManager sharedManager].m_caption = @"";
-    [FBShareManager sharedManager].m_description = SocialNetworkMessage;
+    [FBShareManager sharedManager].m_description = FaceBookMsg;
     [FBShareManager sharedManager].m_iconUrl = @"";
     [FBShareManager sharedManager].m_linkUrl = @"";
-    [FBShareManager sharedManager].m_msg =     SocialNetworkMessage;
+    [FBShareManager sharedManager].m_msg =     FaceBookMsg;
     
     [[FBShareManager sharedManager]  publishStream];
 }
@@ -193,16 +193,12 @@ nil
 - (void)facebookLikeViewDidUnlike:(FacebookLikeView *)aFacebookLikeView
 {
     
-    
     UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Unliked"
                                                      message:KFaceBookUnLikeMsgKey
                                                     delegate:self
                                            cancelButtonTitle:@"OK"
                                            otherButtonTitles:nil] autorelease];
     [alert show];
-    
-    
-    
     
 }
 
@@ -225,7 +221,7 @@ nil
 }
 -(void)postTweetButton:(id)sender{
     m_twtManger.requestType = TweetOnTwitter;
-    [m_twtManger tweetWithMsg:SocialNetworkMessage];
+    [m_twtManger tweetWithMsg:TwitterShareMsg];
 }
 
 
@@ -316,9 +312,10 @@ nil
         
         MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
         controller.mailComposeDelegate = self;
-        [controller setSubject:@"Test mail"];
-        [controller setMessageBody:@"Hi Ashi, \n\n Are u there ?" isHTML:NO];
-        if (controller) [self presentModalViewController:controller animated:YES];
+        [controller setSubject:@"History of a Bible, illustrated by Benjamin Morse"];
+        [controller setMessageBody:EmailShareMsg isHTML:NO];
+        if (controller)
+        [self presentModalViewController:controller animated:YES];
         [controller release];
         
     } else {
@@ -333,9 +330,9 @@ nil
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
         mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [mySLComposerSheet setInitialText:SocialNetworkMessage];
-        [mySLComposerSheet addImage:[UIImage imageNamed:@"image_1.png"]];
-        [mySLComposerSheet addURL:[NSURL URLWithString:@""]];
+        [mySLComposerSheet setInitialText:FaceBookMsg];
+        [mySLComposerSheet addImage:[UIImage imageNamed:@"Icon-72.png"]];
+        [mySLComposerSheet addURL:[NSURL URLWithString:@"www.biblebeautiful.com"]];
         [self presentViewController:mySLComposerSheet animated:YES completion:nil];
         
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
@@ -367,9 +364,9 @@ nil
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
     {
         mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [mySLComposerSheet setInitialText:SocialNetworkMessage];
+        [mySLComposerSheet setInitialText:TwitterShareMsg];
         [mySLComposerSheet addImage:[UIImage imageNamed:@"image_1.png"]];
-        [mySLComposerSheet addURL:[NSURL URLWithString:@"nil"]];
+        [mySLComposerSheet addURL:[NSURL URLWithString:@"http://orsonandco.com/"]];
         [self presentViewController:mySLComposerSheet animated:YES completion:nil];
         
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {

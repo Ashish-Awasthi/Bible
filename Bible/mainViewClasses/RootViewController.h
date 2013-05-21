@@ -23,4 +23,6 @@
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 -(void)setMenuSliderViewHidden:(BOOL) isHidden;
 -(void)nextPageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr;
+-(void)reLoadAllFiveViewDataWhenYouComeFromMenuOption:(NSString *)htmlNameStr;
+
 @end
