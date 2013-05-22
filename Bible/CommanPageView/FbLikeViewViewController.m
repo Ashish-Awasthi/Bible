@@ -80,6 +80,8 @@
     [backBtn setImage:image forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(goBackOnLastView:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backBtn];
+    
+    RELEASE(faceLikewebView);
     RELEASE(faceLikeView);
 	// Do any additional setup after loading the view.
 }

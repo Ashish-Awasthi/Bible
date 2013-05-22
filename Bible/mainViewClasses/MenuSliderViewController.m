@@ -145,6 +145,9 @@
                     [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:72];
                     break;
                     
+                case 75:
+                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:4];
+                break;
                 default:
                     break;
             }

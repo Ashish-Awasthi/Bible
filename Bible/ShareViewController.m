@@ -23,7 +23,7 @@ nil
 -(void)shareMessageViaEmail;
 -(void)shareMessageViaFaceBook;
 -(void)shareMessageViaTwitter;
--(void)likeOnFaceBook;
+-(void)openfaceLikeView;
 @end
 
 @implementation ShareViewController
@@ -84,8 +84,6 @@ nil
         [shareOptionBtn setImage:image forState:UIControlStateNormal];
         [shareOptionBtn addTarget:self action:@selector(tabOnShareOption:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:shareOptionBtn];
-      
-       
         yoffSet = yoffSet+image.size.height+50;
     }
     
@@ -128,6 +126,7 @@ nil
 #pragma mark <FBShareManagerDelegate>:
 -(void)facebookLoginSuccess
 {
+      NSLog(@"=======FacBook login success");
     if (_faceBooKGetAndPostOption == FB_WallPost) {
         [BibleSingletonManager sharedManager].m_isFBLogin = YES;
         [self postWallOnFacebook:nil];
@@ -135,6 +134,7 @@ nil
         
     }
 }
+
 
 #pragma marks-
 #pragma FaceResponce Delegate Message
@@ -149,6 +149,51 @@ nil
     
 }
 
+#pragma mark - FacebookLikeViewDelegate methods
+
+- (void)facebookLikeViewRequiresLogin:(FacebookLikeView *)aFacebookLikeView
+{
+    if(![BibleSingletonManager sharedManager].m_isFBLogin){
+        [[FBShareManager sharedManager] loginFacebook];
+    }
+    
+    
+}
+
+- (void)facebookLikeViewDidRender:(FacebookLikeView *)aFacebookLikeView
+{
+    
+}
+
+- (void)facebookLikeViewDidLike:(FacebookLikeView *)aFacebookLikeView
+{
+    
+    [m_FBLikeView._webView.scrollView scrollRectToVisible:CGRectZero animated:NO];
+    
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Liked"
+                                                     message:KFaceBookLikeMsgKey
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil] autorelease];
+    [alert show];
+    
+}
+
+- (void)facebookLikeViewDidUnlike:(FacebookLikeView *)aFacebookLikeView
+{
+    
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Unliked"
+                                                     message:KFaceBookUnLikeMsgKey
+                                                    delegate:self
+                                           cancelButtonTitle:@"OK"
+                                           otherButtonTitles:nil] autorelease];
+    [alert show];
+    
+}
+
+- (void)facebookLikeView:(FacebookLikeView *)aFacebookLikeView didFailLoadWithError:(NSError *)error{
+    NSLog(@"webView Erros %@",error);
+}
 -(void)twitterLogin:(id)sender{
     
     NSString    *isItAlreadyLogin =  [[PersistenceDataStore sharedManager] getDatawithKey:KTwitterLoginKey];
@@ -205,7 +250,7 @@ nil
             [self shareMessageViaFaceBook];
             break;
         case LikeOnFaceBook:
-            [self likeOnFaceBook];
+            [self openfaceLikeView];
             break;
         case ShareViaTwitter:
             [self shareMessageViaTwitter];
@@ -367,15 +412,15 @@ nil
     [self dismissModalViewControllerAnimated:YES];
 }
 
-
--(void)likeOnFaceBook{
+-(void)openfaceLikeView{
     
     FbLikeViewViewController    *fbLikeViewViewController = [[FbLikeViewViewController alloc] init];
     fbLikeViewViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:fbLikeViewViewController animated:YES completion:^{
+    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:fbLikeViewViewController animated:YES completion:^{
         NSLog(@"Now Show FbLikeViewViewController");
-        
     }];
     RELEASE(fbLikeViewViewController);
- }
+}
+
+
 @end

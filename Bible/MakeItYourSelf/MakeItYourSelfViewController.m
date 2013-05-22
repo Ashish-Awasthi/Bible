@@ -12,7 +12,6 @@
 #define   MakeItReadWebViewTag  400001
 @interface MakeItYourSelfViewController ()
 -(void)loadHtml:(NSString *)htmlName;
-
 @end
 
 @implementation MakeItYourSelfViewController
@@ -54,44 +53,46 @@ CGRect   frameSize;
 frameSize = CGRectMake(0, 0, 768, 1024);
 
 
-UIWebView           *webView = [[UIWebView alloc] init];
-[webView setTag:MakeItReadWebViewTag];
-[webView setOpaque:YES];
-[webView setBackgroundColor:[UIColor blackColor]];
+ UIWebView           *webView = [[UIWebView alloc] init];
+ [webView setTag:MakeItReadWebViewTag];
+ [webView setOpaque:YES];
+ [webView setBackgroundColor:[UIColor blackColor]];
 
-for (UIView   *subViews in [webView subviews]) {
+  for (UIView   *subViews in [webView subviews]) {
     if ([subViews isKindOfClass:[UIScrollView class]]) {
         UIScrollView    *scrollView = (UIScrollView *)subViews;
         [scrollView setScrollEnabled:NO];
         [scrollView setDelegate:self];
     }
-}
+    }
+  [webView setDelegate:self];
+  [webView setScalesPageToFit:YES];
+  [webView setBackgroundColor:[UIColor clearColor]];
+  [webView setFrame:frameSize];
+  [self.view  addSubview:webView];
 
-[webView setDelegate:self];
-[webView setScalesPageToFit:YES];
-[webView setBackgroundColor:[UIColor clearColor]];
-[webView setFrame:frameSize];
-[self.view  addSubview:webView];
-
-NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
+  NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
                                                                            pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
-NSString *path = [[NSBundle mainBundle] bundlePath];
-NSURL *baseURL = [NSURL fileURLWithPath:path];
-[webView loadHTMLString:text baseURL:baseURL];
+  NSString *path = [[NSBundle mainBundle] bundlePath];
+   NSURL *baseURL = [NSURL fileURLWithPath:path];
+  [webView loadHTMLString:text baseURL:baseURL];
 
-frameSize = CGRectMake((webView.frame.size.width - 36)/2, (webView.frame.size.height -36)/2, 36, 36);
-identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-[identicaterView setBackgroundColor:[UIColor blackColor]];
-[identicaterView.layer setCornerRadius:4.0];
-[identicaterView setFrame:frameSize];
-[webView addSubview:identicaterView];
-[identicaterView startAnimating];
+   frameSize = CGRectMake((webView.frame.size.width - 36)/2, (webView.frame.size.height -36)/2, 36, 36);
+   identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+   [identicaterView setBackgroundColor:[UIColor blackColor]];
+   [identicaterView.layer setCornerRadius:4.0];
+   [identicaterView setFrame:frameSize];
+   [webView addSubview:identicaterView];
+    [identicaterView startAnimating];
+     RELEASE(webView);
 }
+
 #pragma marks
 #pragma UIScrollView Delegate-
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
     return nil;
 }
+
 
 #pragma marks
 #pragma UIwebViewDelegate Method-
@@ -111,7 +112,7 @@ identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyl
     
     if(navigationType == UIWebViewNavigationTypeLinkClicked){
         NSString  *requestUrlStr = [request.URL absoluteString];
-        NSLog(@" Request Type %@",requestUrlStr);
+       // NSLog(@" Request Type %@",requestUrlStr);
         if ([requestUrlStr length]>0) {
             [self openSelectedPage:requestUrlStr];
         }
@@ -128,7 +129,7 @@ identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyl
     
     commanPageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:commanPageViewController animated:YES completion:^{
-        NSLog(@"Now Show commanPageViewController");
+       // NSLog(@"Now Show commanPageViewController");
         
     }];
     RELEASE(commanPageViewController);

@@ -89,6 +89,8 @@
     [identicaterView.layer setCornerRadius:4.0];
     [identicaterView setFrame:frameSize];
     [webView addSubview:identicaterView];
+    
+    RELEASE(webView);
 
 }
 #pragma marks
@@ -100,9 +102,12 @@
 #pragma marks
 #pragma UIwebViewDelegate Method-
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    [identicaterView startAnimating];
+     if (identicaterView) {
+      [identicaterView startAnimating];
+      }
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
+    
     if (identicaterView) {
         [identicaterView stopAnimating];
         [identicaterView removeFromSuperview];
@@ -132,15 +137,6 @@
         NSLog(@"Go back On last Page");
     }];
     
-   /* StoriesPageViewController    *pageViewController = [[StoriesPageViewController alloc] init ];
-    [pageViewController  loadHtml:selectedPageHtmlNameStr];
-    
-    pageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:pageViewController animated:YES completion:^{
-        NSLog(@"Now Show commanPageViewController");
-        
-    }];
-    RELEASE(pageViewController);*/
 }
 - (void)didReceiveMemoryWarning
 {

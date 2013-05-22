@@ -13,6 +13,8 @@
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 #import"AudioClass.h"
+#import "ShareViewCommanClass.h"
+
 @protocol BibleSingletonManagerDelegate <NSObject>
 
 @optional
@@ -25,6 +27,8 @@
 @interface BibleSingletonManager : NSObject<UIPopoverControllerDelegate>{
     
 }
+@property(nonatomic,retain)ShareViewCommanClass*     shareViewCommanClass;
+
 @property(nonatomic,retain) NSMutableArray     *preLoadViewArr;
 @property(nonatomic,retain) NSMutableArray     *pageIndexArr;
 @property(nonatomic,retain) NSMutableArray     *htmlPageArr;

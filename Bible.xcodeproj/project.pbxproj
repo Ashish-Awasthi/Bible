@@ -1645,7 +1645,6 @@
 		BC848C67171C26A2008F14E6 /* Bible */ = {
 			isa = PBXGroup;
 			children = (
-				BC3C863E174CCA06005CC52A /* FacebookLikeView */,
 				BC89FFAE174103AA00CE00E7 /* SocialNetworkApi */,
 				BC853073172E623500E35A0C /* CustomClassess */,
 				BC139A8117265C2200FAB313 /* ResourceData */,
@@ -1781,6 +1780,7 @@
 		BC89FF901740EBD200CE00E7 /* ShareView */ = {
 			isa = PBXGroup;
 			children = (
+				BC3C863E174CCA06005CC52A /* FacebookLikeView */,
 				BC89FF911740EC0F00CE00E7 /* ShareViewController.h */,
 				BC89FF921740EC0F00CE00E7 /* ShareViewController.m */,
 				BC8160E5174B37F600120FEE /* ShareViewCommanClass.h */,

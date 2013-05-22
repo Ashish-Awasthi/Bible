@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface ShareViewCommanClass : NSObject
-
+#import "TWSharedManager.h"
+#import "FBShareManager.h"
+#import "PersistenceDataStore.h"
+#import <Social/Social.h>
+#import <MessageUI/MessageUI.h>
+@interface ShareViewCommanClass :NSObject <MFMailComposeViewControllerDelegate,
+TWSharedManagerDelegate,FBShareManagerDelegate>{
+    SLComposeViewController    *mySLComposerSheet;
+    TWSharedManager           *m_twtManger;
+}
+-(void)shareMessageViaEmail;
+-(void)shareMessageViaFaceBook;
+-(void)shareMessageViaTwitter;
+-(void)openfaceLikeView;
 @end

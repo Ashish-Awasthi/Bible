@@ -10,22 +10,16 @@
 #import "TWSharedManager.h"
 #import "FBShareManager.h"
 
-typedef enum{
- ShareViaEmail = 0,
- ShareViaFacebook,
- LikeOnFaceBook,
- ShareViaTwitter,
-}ShareOption;
-
-
 #import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
+#import"FacebookLikeView.h"
 
 @interface ShareViewController : UIViewController<MFMailComposeViewControllerDelegate,
-TWSharedManagerDelegate,FBShareManagerDelegate>{
-    SLComposeViewController    *mySLComposerSheet;
+TWSharedManagerDelegate,FBShareManagerDelegate,FacebookLikeViewDelegate>{
+   SLComposeViewController    *mySLComposerSheet;
      TWSharedManager           *m_twtManger;
     FaceBooKGetAndPostOption   _faceBooKGetAndPostOption;
+    FacebookLikeView        *m_FBLikeView;
 }
 
 

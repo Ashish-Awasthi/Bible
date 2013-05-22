@@ -14,6 +14,7 @@
 
 @implementation BibleSingletonManager
 
+@synthesize shareViewCommanClass;
 @synthesize preLoadViewArr;
 @synthesize  pageIndexArr;
 @synthesize  htmlPageArr;
@@ -64,6 +65,7 @@ static BibleSingletonManager* _sharedManager; // self
         pageIndexArr = [[NSMutableArray alloc] init];
         
         htmlPageArr = [[NSMutableArray alloc] init];
+        self.shareViewCommanClass = [[ShareViewCommanClass alloc] init];
         
        // _parseDataController = [[Controller alloc] init];
         //m_signedInFromMSO = NO;

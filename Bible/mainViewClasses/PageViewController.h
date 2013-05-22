@@ -28,6 +28,7 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
     
     NSTimer*              progessTimer;
     AVAudioPlayer     *audioPlayer;
+    
 }
 @property(nonatomic,assign)id delegate;
 @property(nonatomic,retain)AVAudioPlayer     *lastAudioPlayerObj;

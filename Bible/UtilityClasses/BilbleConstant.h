@@ -63,6 +63,13 @@ nil
 #define   MakeItYourPageName   @"Page_089.htm"
 
 typedef enum{
+    ShareViaEmail = 0,
+    ShareViaFacebook,
+    LikeOnFaceBook,
+    ShareViaTwitter,
+}ShareOption;
+
+typedef enum{
  ExtremLeftView = 0,
  LeftView,
  CurrentView,

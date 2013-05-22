@@ -7,6 +7,7 @@
 //
 
 #import "PageViewController.h"
+#import "FbLikeViewViewController.h"
 #import "CommanPageViewController.h"
 
 @interface PageViewController ()
@@ -390,11 +391,25 @@
         // NSLog(@" Request Type %@, Chapter Name is:- %@",requestUrlStr,chapterNameStr);
         if ([pageNumberStr integerValue]>0) {
             [self openSelectedPage:chapterNameStr];
+            return NO;
+           }else if([requestUrlStr hasPrefix:@"http:"]){
+               NSString  *shareOptionStr = [[requestUrlStr componentsSeparatedByString:@"/"] lastObject];
+               if ([shareOptionStr caseInsensitiveCompare:@"Email"] == NSOrderedSame) {
+                   [[BibleSingletonManager sharedManager].shareViewCommanClass  shareMessageViaEmail];
+                }
+               else if ([shareOptionStr caseInsensitiveCompare:@"Facebook"] == NSOrderedSame) {
+                   [[BibleSingletonManager sharedManager].shareViewCommanClass  shareMessageViaFaceBook];
+                }
+               else if ([shareOptionStr caseInsensitiveCompare:@"FacebookLike"] == NSOrderedSame) {
+                   [[BibleSingletonManager sharedManager].shareViewCommanClass openfaceLikeView];
+               }
+               else if ([shareOptionStr caseInsensitiveCompare:@"Twitter"] == NSOrderedSame) {
+                   [[BibleSingletonManager sharedManager].shareViewCommanClass  shareMessageViaTwitter];
+               }else{
+                [self loadUrlOffNextPage:requestUrlStr];
+                }
              return NO;
-        }else{
-            [self loadUrlOffNextPage:requestUrlStr];
-             return NO;
-        }
+           }
 
         NSString *selectedId   = [NSString stringWithFormat:@"selectedId"];
         NSString  *spanIdStr = [webView stringByEvaluatingJavaScriptFromString:selectedId];
@@ -551,11 +566,13 @@
     }];
 
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 @end
