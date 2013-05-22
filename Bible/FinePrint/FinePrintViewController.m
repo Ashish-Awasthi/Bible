@@ -7,7 +7,6 @@
 //
 
 #import "FinePrintViewController.h"
-#import "CommanPageViewController.h"
 #define   FinePrintWebViewTag  200001
 @interface FinePrintViewController ()
 -(void)loadHtml:(NSString *)htmlName;
@@ -123,6 +122,13 @@
 }
 -(void)openSelectedPage:(NSString *)selectedPageHtmlNameStr{
     
+    [[BibleSingletonManager sharedManager]._rootViewController reLoadAllFiveViewDataWhenYouComeFromMenuOption:selectedPageHtmlNameStr];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"Go back On last Page");
+    }];
+    
+    /*
     CommanPageViewController    *commanPageViewController = [[CommanPageViewController alloc] initWithNibName:nil bundle:nil withHtml:selectedPageHtmlNameStr];
     [commanPageViewController loadHtml:selectedPageHtmlNameStr];
     
@@ -131,7 +137,7 @@
         NSLog(@"Now Show commanPageViewController");
         
     }];
-    RELEASE(commanPageViewController);
+    RELEASE(commanPageViewController);*/
 }
 #pragma marks
 #pragma Button Eevent

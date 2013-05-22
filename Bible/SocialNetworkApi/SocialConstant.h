@@ -41,9 +41,6 @@
 #define KFbPageLikeskey      @"pages/Music Choice/372563200384"
 
 
-#define kBibleFacebookPageURL             @"https://www.facebook.com/pages/The-Bible-Beautiful-Series/496298287061110?fref=ts"
-
-
 
 /************************************* SignIn/like/follow Info Keys ******************************************/
 

@@ -189,7 +189,7 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     BOOL    isItGetTouch = YES;
-    NSLog(@"%d", [touch tapCount]);
+   // NSLog(@" Number of count %d", [touch tapCount]);
     numberOfTabCount = [touch tapCount];
     if (isitTabAnimationComplete == NO && [touch tapCount] >= 2) {
        isItGetTouch = NO;
@@ -457,11 +457,19 @@
     pageNumberStr = [[pageNumberStr componentsSeparatedByString:@"."] objectAtIndex:0];
    
     NSLog(@"htmlNameStr%@, Page Number is:- %d",htmlNameStr,[pageNumberStr integerValue]);
-    /*
+    
     NSArray   *objectArr = [[BibleSingletonManager sharedManager].preLoadViewArr copy];
     [[BibleSingletonManager sharedManager].preLoadViewArr removeAllObjects];
     
     PageViewController   *pageViewController;
+    
+    NSString*   htmlFileNameStr = nil;
+    NSInteger  pageNumber = [pageNumberStr integerValue];
+    NSInteger  totalNumberOfPage = [[BibleSingletonManager sharedManager].htmlPageArr count];
+    
+    if(pageNumber <= 2){
+        [self setMenuSliderViewHidden:YES];
+    }
     
     for (int i = 0; i<[objectArr count]; i++) {
         
@@ -470,27 +478,54 @@
         switch (pageViewController.view.tag) {
                 
             case ExtremLeftView:
-                [pageViewController loadHtml:htmlNameStr];
-                [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",[pageNumberStr integerValue]]];
+                if (pageNumber <= 1) {
+                   htmlFileNameStr = @"Empty.htm";
+                  }else{
+                   htmlFileNameStr = [[BibleSingletonManager sharedManager].htmlPageArr objectAtIndex: pageNumber-3];
+                   [pageViewController loadHtml:htmlFileNameStr];
+                   }
+                 [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",pageNumber - 2]];
+                
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
             case LeftView:
-               [pageViewController loadHtml:htmlNameStr];
+                if (pageNumber <= 1) {
+                    htmlFileNameStr = @"Empty.htm";
+                 }else{
+                   htmlFileNameStr = [[BibleSingletonManager sharedManager].htmlPageArr objectAtIndex:pageNumber -2];
+                   [pageViewController loadHtml:htmlFileNameStr];
+                 }
+                 [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",pageNumber-1]];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
                 
             case CurrentView:
-                 [pageViewController loadHtml:htmlNameStr];
-                [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
+                 htmlFileNameStr = [[BibleSingletonManager sharedManager].htmlPageArr objectAtIndex:pageNumber-1];
+                 [pageViewController loadHtml:htmlFileNameStr];
+                 [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",pageNumber]];
+                 NSLog(@"pageViewController.dataLabel %@",pageViewController.dataLabel.text);
+                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
             case RightView:
-                [pageViewController loadHtml:htmlNameStr];
+               if (pageNumber >= totalNumberOfPage) {
+                    htmlFileNameStr = @"Empty.htm";
+                }else{
+                 htmlFileNameStr = [[BibleSingletonManager sharedManager].htmlPageArr objectAtIndex:pageNumber];
+                [pageViewController loadHtml:htmlFileNameStr];
+                }
+                [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",pageNumber+1]];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 [BibleSingletonManager sharedManager].pageViewController = (id)pageViewController;
                 break;
                 
             case ExtremRightView:
-                pageViewController.view.tag = RightView;
+                if (pageNumber >= totalNumberOfPage) {
+                    htmlFileNameStr = @"Empty.htm";
+                }else{
+                 htmlFileNameStr = [[BibleSingletonManager sharedManager].htmlPageArr objectAtIndex:pageNumber+1];
+                [pageViewController loadHtml:htmlFileNameStr];
+                }
+                [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",pageNumber+2]];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
                 
@@ -500,7 +535,7 @@
         
     }
     
-    [objectArr release]; */
+    [objectArr release]; 
 }
 
 

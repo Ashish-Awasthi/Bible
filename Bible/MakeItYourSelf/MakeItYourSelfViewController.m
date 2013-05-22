@@ -120,6 +120,7 @@ identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyl
     
     return YES;
 }
+
 -(void)openSelectedPage:(NSString *)selectedPageHtmlNameStr{
     
     CommanPageViewController    *commanPageViewController = [[CommanPageViewController alloc] initWithNibName:nil bundle:nil withHtml:selectedPageHtmlNameStr];

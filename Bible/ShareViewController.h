@@ -20,14 +20,12 @@ typedef enum{
 
 #import <Social/Social.h>
 #import <MessageUI/MessageUI.h>
-#import"FacebookLikeView.h"
 
 @interface ShareViewController : UIViewController<MFMailComposeViewControllerDelegate,
-TWSharedManagerDelegate,FBShareManagerDelegate,FacebookLikeViewDelegate>{
-   SLComposeViewController    *mySLComposerSheet;
+TWSharedManagerDelegate,FBShareManagerDelegate>{
+    SLComposeViewController    *mySLComposerSheet;
      TWSharedManager           *m_twtManger;
     FaceBooKGetAndPostOption   _faceBooKGetAndPostOption;
-    FacebookLikeView        *m_FBLikeView;
 }
 
 

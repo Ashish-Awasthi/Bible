@@ -37,6 +37,9 @@
 		BC1941DD171EB6AF002FF0E0 /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1941DC171EB6AF002FF0E0 /* PageViewController.m */; };
 		BC1941E7171EBC1A002FF0E0 /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1941E4171EBC1A002FF0E0 /* ModelController.m */; };
 		BC1941E9171EBC49002FF0E0 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC1941E8171EBC49002FF0E0 /* RootViewController.m */; };
+		BC3C8641174CCC28005CC52A /* FbLikeViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC3C8640174CCC28005CC52A /* FbLikeViewViewController.m */; };
+		BC3C8643174CCDB0005CC52A /* FbLikeBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3C8642174CCDB0005CC52A /* FbLikeBg@2x.png */; };
+		BC3C8645174CCDD5005CC52A /* FbLikeBg.png in Resources */ = {isa = PBXBuildFile; fileRef = BC3C8644174CCDD5005CC52A /* FbLikeBg.png */; };
 		BC7E7B3C1744E52600BD3971 /* p10_120312.wav in Resources */ = {isa = PBXBuildFile; fileRef = BC7E7AF41744E52600BD3971 /* p10_120312.wav */; };
 		BC7E7B3D1744E52600BD3971 /* p11_120312.wav in Resources */ = {isa = PBXBuildFile; fileRef = BC7E7AF51744E52600BD3971 /* p11_120312.wav */; };
 		BC7E7B3E1744E52600BD3971 /* p12_120312.wav in Resources */ = {isa = PBXBuildFile; fileRef = BC7E7AF61744E52600BD3971 /* p12_120312.wav */; };
@@ -533,6 +536,10 @@
 		BC1941E4171EBC1A002FF0E0 /* ModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelController.m; sourceTree = "<group>"; };
 		BC1941E5171EBC1A002FF0E0 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		BC1941E8171EBC49002FF0E0 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		BC3C863F174CCC28005CC52A /* FbLikeViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FbLikeViewViewController.h; path = CommanPageView/FbLikeViewViewController.h; sourceTree = "<group>"; };
+		BC3C8640174CCC28005CC52A /* FbLikeViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FbLikeViewViewController.m; path = CommanPageView/FbLikeViewViewController.m; sourceTree = "<group>"; };
+		BC3C8642174CCDB0005CC52A /* FbLikeBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FbLikeBg@2x.png"; sourceTree = "<group>"; };
+		BC3C8644174CCDD5005CC52A /* FbLikeBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FbLikeBg.png; sourceTree = "<group>"; };
 		BC7E7AF41744E52600BD3971 /* p10_120312.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = p10_120312.wav; sourceTree = "<group>"; };
 		BC7E7AF51744E52600BD3971 /* p11_120312.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = p11_120312.wav; sourceTree = "<group>"; };
 		BC7E7AF61744E52600BD3971 /* p12_120312.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = p12_120312.wav; sourceTree = "<group>"; };
@@ -1070,6 +1077,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC139A7D17265B0C00FAB313 /* QuartzCore.framework in Frameworks */,
 				BC8900771741044800CE00E7 /* libz.dylib in Frameworks */,
 				BC890073174103C100CE00E7 /* libxml2.2.dylib in Frameworks */,
 				BC89FFAD174100BB00CE00E7 /* MessageUI.framework in Frameworks */,
@@ -1077,7 +1085,6 @@
 				BC8071A41727BF00003D0AB5 /* AVFoundation.framework in Frameworks */,
 				BC139AA817266B1D00FAB313 /* libsqlite3.0.dylib in Frameworks */,
 				BC139A7F17265B3600FAB313 /* SystemConfiguration.framework in Frameworks */,
-				BC139A7D17265B0C00FAB313 /* QuartzCore.framework in Frameworks */,
 				BC139A7B17265AED00FAB313 /* CFNetwork.framework in Frameworks */,
 				BC848C62171C26A2008F14E6 /* UIKit.framework in Frameworks */,
 				BC848C64171C26A2008F14E6 /* Foundation.framework in Frameworks */,
@@ -1159,6 +1166,15 @@
 				BC8071A61727BFC5003D0AB5 /* AudioClass.m */,
 			);
 			path = mainViewClasses;
+			sourceTree = "<group>";
+		};
+		BC3C863E174CCA06005CC52A /* FacebookLikeView */ = {
+			isa = PBXGroup;
+			children = (
+				BC3C863F174CCC28005CC52A /* FbLikeViewViewController.h */,
+				BC3C8640174CCC28005CC52A /* FbLikeViewViewController.m */,
+			);
+			name = FacebookLikeView;
 			sourceTree = "<group>";
 		};
 		BC7E7AF31744E52600BD3971 /* AudioFile */ = {
@@ -1629,6 +1645,7 @@
 		BC848C67171C26A2008F14E6 /* Bible */ = {
 			isa = PBXGroup;
 			children = (
+				BC3C863E174CCA06005CC52A /* FacebookLikeView */,
 				BC89FFAE174103AA00CE00E7 /* SocialNetworkApi */,
 				BC853073172E623500E35A0C /* CustomClassess */,
 				BC139A8117265C2200FAB313 /* ResourceData */,
@@ -1775,6 +1792,7 @@
 		BC89FF941740EE4700CE00E7 /* ShareViewImage */ = {
 			isa = PBXGroup;
 			children = (
+				BC3C8644174CCDD5005CC52A /* FbLikeBg.png */,
 				BC89FF9D1740EFE300CE00E7 /* btn_back.png */,
 				BC89FF951740EE4700CE00E7 /* icon_email.png */,
 				BC89FF961740EE4700CE00E7 /* icon_facebook.png */,
@@ -1787,6 +1805,7 @@
 		BC89FF9F1740F06100CE00E7 /* ShareViewImage */ = {
 			isa = PBXGroup;
 			children = (
+				BC3C8642174CCDB0005CC52A /* FbLikeBg@2x.png */,
 				BC89FFA01740F06100CE00E7 /* btn_back@2x.png */,
 				BC89FFA11740F06100CE00E7 /* icon_email@2x.png */,
 				BC89FFA21740F06100CE00E7 /* icon_facebook@2x.png */,
@@ -2469,6 +2488,8 @@
 				BC8160F7174B789C00120FEE /* Page_003.htm in Resources */,
 				BC8160F8174B789C00120FEE /* page_003.jpg in Resources */,
 				BC8160F9174B789C00120FEE /* style3.css in Resources */,
+				BC3C8643174CCDB0005CC52A /* FbLikeBg@2x.png in Resources */,
+				BC3C8645174CCDD5005CC52A /* FbLikeBg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2540,6 +2561,7 @@
 				BC83882B174A286E004DDA66 /* StoriesPageViewController.m in Sources */,
 				BC8160E7174B37F600120FEE /* ShareViewCommanClass.m in Sources */,
 				BC8160F6174B789C00120FEE /* jquery.min.js in Sources */,
+				BC3C8641174CCC28005CC52A /* FbLikeViewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

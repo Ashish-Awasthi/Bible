@@ -27,6 +27,7 @@
 }
 @property(nonatomic,retain) NSMutableArray     *preLoadViewArr;
 @property(nonatomic,retain) NSMutableArray     *pageIndexArr;
+@property(nonatomic,retain) NSMutableArray     *htmlPageArr;
 @property(nonatomic,assign)BOOL                m_isFBLogin;
 @property(nonatomic,assign)BOOL                firstGetTouchMenuSliderView;
 @property(nonatomic,assign)BOOL                 isFirstTime;

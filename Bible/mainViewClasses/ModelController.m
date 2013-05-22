@@ -71,7 +71,7 @@
         switch (pageViewController.view.tag) {
                 
             case ExtremLeftView:
-                pageViewController.view.tag = ExtremRightView;
+                 pageViewController.view.tag = ExtremRightView;
                 [pageViewController loadHtml:htmlNameStr];
                 [pageViewController.dataLabel setText:changeTitleStr];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
@@ -121,8 +121,9 @@
         switch (pageViewController.view.tag) {
                 
             case ExtremLeftView:
-                pageViewController.view.tag = LeftView;
+                 pageViewController.view.tag = LeftView;
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
+                
                 break;
             case LeftView:
                 pageViewController.view.tag = CurrentView;
@@ -141,9 +142,9 @@
                 break;
                 
             case ExtremRightView:
-                [pageViewController loadHtml:htmlNameStr];
-                pageViewController.view.tag = ExtremLeftView;
-                [pageViewController.dataLabel setText:changeTitleStr];
+                 [pageViewController loadHtml:htmlNameStr];
+                  pageViewController.view.tag = ExtremLeftView;
+                 [pageViewController.dataLabel setText:changeTitleStr];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
                 
@@ -175,8 +176,10 @@
         NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
         
          for (int i = 0; i<[pageData count]; i++) {
-            NSString    *htmlName = ((PageData *)[pageData objectAtIndex:i])._pageHtmlNameStr;
+             NSString    *htmlName = ((PageData *)[pageData objectAtIndex:i])._pageHtmlNameStr;
              [self.webViewpageData addObject:htmlName];
+             [[BibleSingletonManager sharedManager].htmlPageArr addObject:htmlName];
+             
          }
         
        // NSLog(@"self.htmlPageIndexArr  count %d\n  self.webViewpageData %d",[self.htmlPageIndexArr count],[self.webViewpageData count]);

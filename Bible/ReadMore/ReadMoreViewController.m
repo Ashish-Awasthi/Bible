@@ -7,7 +7,6 @@
 //
 
 #import "ReadMoreViewController.h"
-#import "CommanPageViewController.h"
 #define   ReadMoreWebViewTag  200001
 @interface ReadMoreViewController ()
 -(void)loadHtml:(NSString *)htmlName;
@@ -122,6 +121,13 @@
 }
 -(void)openSelectedPage:(NSString *)selectedPageHtmlNameStr{
     
+    [[BibleSingletonManager sharedManager]._rootViewController reLoadAllFiveViewDataWhenYouComeFromMenuOption:selectedPageHtmlNameStr];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"Go back On last Page");
+    }];
+
+    /*
     CommanPageViewController    *commanPageViewController = [[CommanPageViewController alloc] initWithNibName:nil bundle:nil withHtml:selectedPageHtmlNameStr];
     [commanPageViewController loadHtml:selectedPageHtmlNameStr];
     commanPageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -129,7 +135,7 @@
         NSLog(@"Now Show commanPageViewController");
         
     }];
-    RELEASE(commanPageViewController);
+    RELEASE(commanPageViewController);*/
 }
 
 #pragma marks

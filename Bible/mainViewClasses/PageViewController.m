@@ -7,6 +7,7 @@
 //
 
 #import "PageViewController.h"
+#import "CommanPageViewController.h"
 
 @interface PageViewController ()
 -(PageViewController *)getViewControllerFormArr:(PreLoadView )viewNumber;
@@ -26,6 +27,8 @@
 -(void)removeHightLightWithId:(NSString  *)spanIdStr
                 withTextColor:(NSString *)lastSentenceTextColor;
 -(void)getCurrentSpanInfo:(NSString  *)queryStr;
+-(void)openSelectedPage:(NSString *)selectedPageHtmlNameStr;
+-(void)loadUrlOffNextPage:(NSString *)urlStr;
 
 @end
 
@@ -130,6 +133,8 @@
     [self.webView stringByEvaluatingJavaScriptFromString:@"processNextMove()"];
 }
 -(void)loadHtml:(NSString *)htmlName{
+   
+    NSLog(@"Next Hml Name %@",htmlName);
     
     if (self.webView) {
         [self.webView removeFromSuperview];
@@ -174,7 +179,7 @@
      //Remove Spalsh screen when loading complete of first page
     [BibleSingletonManager sharedManager].isFirstTime = NO;
     if (imageView) {
-    [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplashView) withDuration:.8 withDelegate:self];
+    [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplashView) withDuration:1.0 withDelegate:self];
     }
 
     //  not show copy paste option in webview
@@ -363,7 +368,7 @@
 
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
-    
+  
     if (hieghLightNumber<[audioInfoPageArr count]) {
     NSString  *lastSentenceTextColor = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._lastTextColor;
     NSString  *spanIDStr = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._spanIdStr;
@@ -376,6 +381,21 @@
     
     if(navigationType == UIWebViewNavigationTypeLinkClicked)
 	{
+        NSLog(@"Request Url%@",[request.URL absoluteString]);
+        NSString  *requestUrlStr = [request.URL absoluteString];
+        NSString  *chapterNameStr = [[requestUrlStr componentsSeparatedByString:@"/"] lastObject];
+        NSString *pageNumberStr = [[chapterNameStr componentsSeparatedByString:@"Page_0"] lastObject];
+        pageNumberStr = [[pageNumberStr componentsSeparatedByString:@"."] objectAtIndex:0];
+        
+        // NSLog(@" Request Type %@, Chapter Name is:- %@",requestUrlStr,chapterNameStr);
+        if ([pageNumberStr integerValue]>0) {
+            [self openSelectedPage:chapterNameStr];
+             return NO;
+        }else{
+            [self loadUrlOffNextPage:requestUrlStr];
+             return NO;
+        }
+
         NSString *selectedId   = [NSString stringWithFormat:@"selectedId"];
         NSString  *spanIdStr = [webView stringByEvaluatingJavaScriptFromString:selectedId];
         NSString     *chapeterIdStr     = [[spanIdStr componentsSeparatedByString:@"Audio_#"] lastObject];
@@ -439,9 +459,7 @@
          hieghLightNumber = [hightNumberIdStr integerValue]-1;
          [self audioPlay];
          [self performSelector:@selector(removeLastHieghtLightStartNext) withObject:nil afterDelay:removeHightTime];
-        
-       
-       }else{
+               }else{
         [self performSelector:@selector(removeHightLightTabOnSentenceWithId:) withObject:nil afterDelay:removeHightTime];
     }
 
@@ -516,10 +534,28 @@
 -(void)audioPause{
     [audioPlayer pause];
 }
+
+-(void)openSelectedPage:(NSString *)selectedPageHtmlNameStr
+{
+    [[BibleSingletonManager sharedManager]._rootViewController reLoadAllFiveViewDataWhenYouComeFromMenuOption:selectedPageHtmlNameStr];
+}
+
+-(void)loadUrlOffNextPage:(NSString *)urlStr{
+    
+    CommanPageViewController    *commanPageViewController = [[CommanPageViewController alloc] initWithNibName:nil bundle:nil withHtml:urlStr];
+    [commanPageViewController loadUrl:urlStr];
+    
+    commanPageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:commanPageViewController animated:YES completion:^{
+        NSLog(@"Now Show commanPageViewController");
+    }];
+
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

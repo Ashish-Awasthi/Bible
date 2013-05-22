@@ -8,7 +8,7 @@
 
 #import "ShareViewController.h"
 #import "PersistenceDataStore.h"
-
+#import "FbLikeViewViewController.h"
 #define ShareOptionArr \
 @"icon_email.png",\
 @"icon_facebook.png",\
@@ -23,6 +23,7 @@ nil
 -(void)shareMessageViaEmail;
 -(void)shareMessageViaFaceBook;
 -(void)shareMessageViaTwitter;
+-(void)likeOnFaceBook;
 @end
 
 @implementation ShareViewController
@@ -83,17 +84,7 @@ nil
         [shareOptionBtn setImage:image forState:UIControlStateNormal];
         [shareOptionBtn addTarget:self action:@selector(tabOnShareOption:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:shareOptionBtn];
-        if (i == 2) {
-            m_FBLikeView = [[FacebookLikeView alloc] initWithFrame:CGRectMake((image.size.width-50)/2,(image.size.height-30)/2,50, 30)];
-            [m_FBLikeView setBackgroundColor:[UIColor clearColor]];
-            m_FBLikeView.href = [NSURL URLWithString:kBibleFacebookPageURL];
-            m_FBLikeView.layout  = @"standard";
-            m_FBLikeView.showFaces = NO;
-            m_FBLikeView.alpha = 1;
-            m_FBLikeView.delegate  = (id) self;
-            [m_FBLikeView load];
-            [shareOptionBtn addSubview:m_FBLikeView];
-        }
+      
        
         yoffSet = yoffSet+image.size.height+50;
     }
@@ -137,7 +128,6 @@ nil
 #pragma mark <FBShareManagerDelegate>:
 -(void)facebookLoginSuccess
 {
-      NSLog(@"=======FacBook login success");
     if (_faceBooKGetAndPostOption == FB_WallPost) {
         [BibleSingletonManager sharedManager].m_isFBLogin = YES;
         [self postWallOnFacebook:nil];
@@ -145,7 +135,6 @@ nil
         
     }
 }
-
 
 #pragma marks-
 #pragma FaceResponce Delegate Message
@@ -160,51 +149,6 @@ nil
     
 }
 
-#pragma mark - FacebookLikeViewDelegate methods
-
-- (void)facebookLikeViewRequiresLogin:(FacebookLikeView *)aFacebookLikeView
-{
-    if(![BibleSingletonManager sharedManager].m_isFBLogin){
-        [[FBShareManager sharedManager] loginFacebook];
-    }
-    
-    
-}
-
-- (void)facebookLikeViewDidRender:(FacebookLikeView *)aFacebookLikeView
-{
-    
-}
-
-- (void)facebookLikeViewDidLike:(FacebookLikeView *)aFacebookLikeView
-{
-    
-    [m_FBLikeView._webView.scrollView scrollRectToVisible:CGRectZero animated:NO];
-    
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Liked"
-                                                     message:KFaceBookLikeMsgKey
-                                                    delegate:self
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil] autorelease];
-    [alert show];
-    
-}
-
-- (void)facebookLikeViewDidUnlike:(FacebookLikeView *)aFacebookLikeView
-{
-    
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Unliked"
-                                                     message:KFaceBookUnLikeMsgKey
-                                                    delegate:self
-                                           cancelButtonTitle:@"OK"
-                                           otherButtonTitles:nil] autorelease];
-    [alert show];
-    
-}
-
-- (void)facebookLikeView:(FacebookLikeView *)aFacebookLikeView didFailLoadWithError:(NSError *)error{
-    NSLog(@"webView Erros %@",error);
-}
 -(void)twitterLogin:(id)sender{
     
     NSString    *isItAlreadyLogin =  [[PersistenceDataStore sharedManager] getDatawithKey:KTwitterLoginKey];
@@ -261,7 +205,7 @@ nil
             [self shareMessageViaFaceBook];
             break;
         case LikeOnFaceBook:
-            //[self likeOnFaceBook];
+            [self likeOnFaceBook];
             break;
         case ShareViaTwitter:
             [self shareMessageViaTwitter];
@@ -424,4 +368,14 @@ nil
 }
 
 
+-(void)likeOnFaceBook{
+    
+    FbLikeViewViewController    *fbLikeViewViewController = [[FbLikeViewViewController alloc] init];
+    fbLikeViewViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:fbLikeViewViewController animated:YES completion:^{
+        NSLog(@"Now Show FbLikeViewViewController");
+        
+    }];
+    RELEASE(fbLikeViewViewController);
+ }
 @end

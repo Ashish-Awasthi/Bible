@@ -9,6 +9,7 @@
 //  Copyright (c) 2013 Tech Soft LABS. All rights reserved.
 //
 
+#define kBibleFacebookPageURL             @"https://www.facebook.com/pages/The-Bible-Beautiful-Series/496298287061110?fref=ts"
 
 #define MenuOptionAnimationDuration  0.7
 #define  ShowMenuOptionNumberPage  2

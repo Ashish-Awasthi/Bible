@@ -326,6 +326,12 @@ font-weight: bold;
 	display: inline-block;
 }
 										/*END GLOW EFFECT*/
+                                        
+#tree{
+ height:337px;
+  width:314px;
+ display: inline-block;
+}
 .page_3aaaa {
 	text-align: left;
 	position: relative;

@@ -16,6 +16,7 @@
 
 @synthesize preLoadViewArr;
 @synthesize  pageIndexArr;
+@synthesize  htmlPageArr;
 @synthesize isFirstTime;
 @synthesize delegate;
 @synthesize m_isFBLogin;
@@ -61,6 +62,8 @@ static BibleSingletonManager* _sharedManager; // self
         preLoadViewArr = [[NSMutableArray alloc] init];
        
         pageIndexArr = [[NSMutableArray alloc] init];
+        
+        htmlPageArr = [[NSMutableArray alloc] init];
         
        // _parseDataController = [[Controller alloc] init];
         //m_signedInFromMSO = NO;
