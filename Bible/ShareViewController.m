@@ -354,7 +354,7 @@ nil
     {
         mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [mySLComposerSheet setInitialText:TwitterShareMsg];
-        [mySLComposerSheet addImage:[UIImage imageNamed:@"image_1.png"]];
+        [mySLComposerSheet addImage:[UIImage imageNamed:@"Icon-72.png"]];
         [mySLComposerSheet addURL:[NSURL URLWithString:@"http://orsonandco.com/"]];
         [self presentViewController:mySLComposerSheet animated:YES completion:nil];
         
@@ -416,7 +416,7 @@ nil
     
     FbLikeViewViewController    *fbLikeViewViewController = [[FbLikeViewViewController alloc] init];
     fbLikeViewViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:fbLikeViewViewController animated:YES completion:^{
+    [self presentViewController:fbLikeViewViewController animated:YES completion:^{
         NSLog(@"Now Show FbLikeViewViewController");
     }];
     RELEASE(fbLikeViewViewController);

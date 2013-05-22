@@ -186,7 +186,7 @@
     {
         mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [mySLComposerSheet setInitialText:TwitterShareMsg];
-        [mySLComposerSheet addImage:[UIImage imageNamed:@"image_1.png"]];
+        [mySLComposerSheet addImage:[UIImage imageNamed:@"Icon-72.png"]];
         [mySLComposerSheet addURL:[NSURL URLWithString:@"http://orsonandco.com/"]];
         [[BibleSingletonManager sharedManager]._rootViewController presentViewController:mySLComposerSheet animated:YES completion:nil];
         
