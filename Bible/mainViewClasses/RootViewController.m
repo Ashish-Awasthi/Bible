@@ -98,6 +98,8 @@
     
     [BibleSingletonManager sharedManager]._rootViewController = self;
     
+    [[BibleSingletonManager sharedManager].shareViewCommanClass callSocialMediaClasses];
+    
     [BibleSingletonManager sharedManager].firstGetTouchMenuSliderView = NO;
     NSArray    *pageData =  [[DBConnectionManager getDataFromDataBase:KPageDataQuery] retain];
     
@@ -232,6 +234,7 @@
                 // enable here it page option.............
                 [menuViewController enableHearitPageOption];
               NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFormArr:RightView]];
+              [self setMenuSliderViewHidden:YES];
               [self nextPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
               return YES;
             }
@@ -241,6 +244,7 @@
                    // NSLog(@"No swape remaing left");// Here check this is first page>>>>>>>>>>
                    return NO;
                }else{
+                [self setMenuSliderViewHidden:YES];
                 isitTabAnimationComplete = NO;
                 // enable here it page option.............
                 [menuViewController enableHearitPageOption];
@@ -258,6 +262,7 @@
     
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
     {
+        isitTabAnimationComplete  = YES;
         UIPanGestureRecognizer * panGes = (UIPanGestureRecognizer *)gestureRecognizer;
         CGPoint distance = [panGes translationInView:self.view];
         
@@ -482,7 +487,7 @@
                    htmlFileNameStr = @"Empty.htm";
                   }else{
                    htmlFileNameStr = [[BibleSingletonManager sharedManager].htmlPageArr objectAtIndex: pageNumber-3];
-                   [pageViewController loadHtml:htmlFileNameStr];
+                   [pageViewController  loadHtml:htmlFileNameStr withIdenticator:NO];
                    }
                  [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",pageNumber - 2]];
                 
@@ -493,7 +498,7 @@
                     htmlFileNameStr = @"Empty.htm";
                  }else{
                    htmlFileNameStr = [[BibleSingletonManager sharedManager].htmlPageArr objectAtIndex:pageNumber -2];
-                   [pageViewController loadHtml:htmlFileNameStr];
+                   [pageViewController  loadHtml:htmlFileNameStr withIdenticator:NO];
                  }
                  [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",pageNumber-1]];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
@@ -501,9 +506,9 @@
                 
             case CurrentView:
                  htmlFileNameStr = [[BibleSingletonManager sharedManager].htmlPageArr objectAtIndex:pageNumber-1];
-                 [pageViewController loadHtml:htmlFileNameStr];
+                  [pageViewController  loadHtml:htmlFileNameStr withIdenticator:YES];
                  [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",pageNumber]];
-                 NSLog(@"pageViewController.dataLabel %@",pageViewController.dataLabel.text);
+                // NSLog(@"pageViewController.dataLabel %@",pageViewController.dataLabel.text);
                  [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
                 break;
             case RightView:
@@ -511,7 +516,7 @@
                     htmlFileNameStr = @"Empty.htm";
                 }else{
                  htmlFileNameStr = [[BibleSingletonManager sharedManager].htmlPageArr objectAtIndex:pageNumber];
-                [pageViewController loadHtml:htmlFileNameStr];
+                [pageViewController  loadHtml:htmlFileNameStr withIdenticator:NO];
                 }
                 [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",pageNumber+1]];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];
@@ -523,7 +528,7 @@
                     htmlFileNameStr = @"Empty.htm";
                 }else{
                  htmlFileNameStr = [[BibleSingletonManager sharedManager].htmlPageArr objectAtIndex:pageNumber+1];
-                [pageViewController loadHtml:htmlFileNameStr];
+                 [pageViewController  loadHtml:htmlFileNameStr withIdenticator:NO];
                 }
                 [pageViewController.dataLabel setText:[NSString stringWithFormat:@"%d",pageNumber+2]];
                 [[BibleSingletonManager sharedManager].preLoadViewArr addObject:pageViewController];

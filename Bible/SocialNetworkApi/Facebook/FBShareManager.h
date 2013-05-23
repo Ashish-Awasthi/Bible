@@ -94,6 +94,7 @@
    
     /********************************************************************************************************/
 }
+@property(nonatomic,assign)BOOL   isFBDialog;
 @property(nonatomic,assign)FaceBooKGetAndPostOption  m_getPostOption;
 /**
  @required In case of publish.
@@ -142,6 +143,8 @@
 @property(nonatomic,retain) NSString *m_feedId;
 @property(nonatomic,retain) NSString *m_userId;
 
+@property(nonatomic,retain) NSString *devName;
+@property(nonatomic,retain) NSString * devUrl;
 + (FBShareManager*)sharedManager;
 
 
@@ -177,6 +180,6 @@
 -(void)postVideo:(NSMutableDictionary *)dataDict;
 -(void)likesFacebookPage:(NSDictionary *)dataDict;
 
-
+-(void)publishFBPostWithDialog;
 
 @end

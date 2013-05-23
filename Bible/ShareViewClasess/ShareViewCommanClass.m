@@ -11,13 +11,14 @@
 
 @implementation ShareViewCommanClass
 
+@synthesize viewController;
+
 #pragma Social Media Login
+
 
 -(void)callSocialMediaClasses{
     
     m_twtManger = [[TWSharedManager alloc] init];
-    m_twtManger.delegate        = self;
-    m_twtManger.m_controller    = self;
     [FBShareManager sharedManager].delegate = self;
 }
 
@@ -27,7 +28,7 @@
 
 -(void)postWallOnFacebook:(id)sender{
     [FBShareManager sharedManager].m_getPostOption = FB_PostProfileWall;
-    [FBShareManager sharedManager].m_titleName  = @"";
+    [FBShareManager sharedManager].m_titleName  = @"The Oldest Bedtime Story Ever";
     [FBShareManager sharedManager].m_caption = @"";
     [FBShareManager sharedManager].m_description = FaceBookMsg;
     [FBShareManager sharedManager].m_iconUrl = @"";
@@ -41,7 +42,18 @@
 -(void)facebookLoginSuccess
 {
     [BibleSingletonManager sharedManager].m_isFBLogin = YES;
-    [self postWallOnFacebook:nil];
+    [FBShareManager sharedManager].m_getPostOption = FB_PostProfileWall;
+    
+    [FBShareManager sharedManager].delegate = self;
+    [FBShareManager sharedManager].m_titleName = @"The Oldest Bedtime Story Ever";
+    [FBShareManager sharedManager].m_description = FaceBookMsg;
+    //[FBShareManager sharedManager].caption = @"Caption";
+    [FBShareManager sharedManager].m_linkUrl = @"http://www.biblebeautiful.com"; // to be change to itunes link page
+    [FBShareManager sharedManager].m_iconUrl = KBibleLogoUrl;
+    [FBShareManager sharedManager].devName = @"Orson & Co";
+    [FBShareManager sharedManager].devUrl = @"http://orsonandco.com/";
+    [[FBShareManager sharedManager] publishFBPostWithDialog];
+   
 }
 
 
@@ -49,18 +61,22 @@
 #pragma FaceResponce Delegate Message
 -(void)facebookPostFeedSuccess{
     
+    [[BibleSingletonManager sharedManager] showAlert:@"Facebook Message" message:@"Thanks for sharing." withTag:-1 withDelegate:nil];
     NSLog(@"face post now Success.....");
     
 }
 -(void)facebookPostFeedFail{
     NSLog(@"face post now fail.....");
     
+    [[BibleSingletonManager sharedManager] showAlert:@"Failed" message:@"failed your post." withTag:-1 withDelegate:nil]; 
 }
 
 
 -(void)twitterLogin:(id)sender{
     
     NSString    *isItAlreadyLogin =  [[PersistenceDataStore sharedManager] getDatawithKey:KTwitterLoginKey];
+    m_twtManger.delegate        = self;
+    m_twtManger.m_controller    = viewController;
     
     if ([isItAlreadyLogin isEqualToString:@"YES"]) {
         [self postTweetButton:nil];
@@ -94,15 +110,21 @@
 
 -(void)twitterPostDidSuccess:(NSString *) identifire;{
     
-    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Info" message:@"Thanks for sharing this post...." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Tweet post" message:@"Thanks for sharing." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alert show];
     [alert release];
     
 }
 -(void)shareMessageViaEmail{
-    [self postMessageViaEmail];
+    
+    if ([[BibleSingletonManager sharedManager]checkNetworkReachabilityWithAlert]) {
+         [self postMessageViaEmail];
+     }
 }
 -(void)shareMessageViaFaceBook{
+    
+if ([[BibleSingletonManager sharedManager]checkNetworkReachabilityWithAlert]) {
+         
     float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
     if (sysVer >= 6.0) {
         [self postMessageViaSocilaFrameWorkInFaceBook];
@@ -112,9 +134,12 @@
         [self faceBookLogin:nil];
         // prior iOS versions
     }
-    
+    }
 }
 -(void)shareMessageViaTwitter{
+    
+if ([[BibleSingletonManager sharedManager]checkNetworkReachabilityWithAlert]) {
+        
     float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
     if (sysVer >= 6.0) {
         [self postMessageViaSocilaFrameWorkInTwitter];
@@ -124,7 +149,7 @@
         [self twitterLogin:nil];
         // prior iOS versions
     }
-    
+    }
 }
 
 -(void)postMessageViaEmail{
@@ -136,7 +161,7 @@
         [controller setSubject:@"History of a Bible, illustrated by Benjamin Morse"];
         [controller setMessageBody:EmailShareMsg isHTML:NO];
         if (controller)
-            [[BibleSingletonManager sharedManager]._rootViewController presentModalViewController:controller animated:YES];
+            [viewController presentModalViewController:controller animated:YES];
         [controller release];
         
     } else {
@@ -154,7 +179,7 @@
         [mySLComposerSheet setInitialText:FaceBookMsg];
         [mySLComposerSheet addImage:[UIImage imageNamed:@"Icon-72.png"]];
         [mySLComposerSheet addURL:[NSURL URLWithString:@"www.biblebeautiful.com"]];
-        [[BibleSingletonManager sharedManager]._rootViewController presentViewController:mySLComposerSheet animated:YES completion:nil];
+        [viewController presentViewController:mySLComposerSheet animated:YES completion:nil];
         
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
             
@@ -187,8 +212,8 @@
         mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [mySLComposerSheet setInitialText:TwitterShareMsg];
         [mySLComposerSheet addImage:[UIImage imageNamed:@"Icon-72.png"]];
-        [mySLComposerSheet addURL:[NSURL URLWithString:@"http://orsonandco.com/"]];
-        [[BibleSingletonManager sharedManager]._rootViewController presentViewController:mySLComposerSheet animated:YES completion:nil];
+        [mySLComposerSheet addURL:[NSURL URLWithString:@"www.biblebeautiful.com"]];
+        [viewController presentViewController:mySLComposerSheet animated:YES completion:nil];
         
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
             
@@ -224,16 +249,16 @@
     
     switch (result) {
         case MFMailComposeResultSent:
-            messageStr = @"Your mail send successfully.";
+            messageStr = @"Mail sent successfully.";
             break;
         case MFMailComposeResultSaved:
-            messageStr = @"Your mail saved successfully.";
+            messageStr = @"Mail saved successfully.";
             break;
         case MFMailComposeResultCancelled:
-            messageStr = @"Your mail send cancel.";
+            messageStr = @"Mail is cancelled.";
             break;
         case MFMailComposeResultFailed:
-            messageStr = @"Your mail sending failed.";
+            messageStr = @"Mail sending failed.";
             break;
             
         default:
@@ -241,15 +266,19 @@
     }
     
     [[BibleSingletonManager sharedManager] showAlert:@"Mail" message:messageStr withTag:-1 withDelegate:nil];
-    [[BibleSingletonManager sharedManager]._rootViewController dismissModalViewControllerAnimated:YES];
+    [viewController dismissModalViewControllerAnimated:YES];
 }
 -(void)openfaceLikeView{
     
-    FbLikeViewViewController    *fbLikeViewViewController = [[FbLikeViewViewController alloc] init];
-    fbLikeViewViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [[BibleSingletonManager sharedManager]._rootViewController presentViewController:fbLikeViewViewController animated:YES completion:^{
-        NSLog(@"Now Show FbLikeViewViewController");
-    }];
-    RELEASE(fbLikeViewViewController);
+    if ([[BibleSingletonManager sharedManager] checkNetworkReachabilityWithAlert]) {
+        FbLikeViewViewController    *fbLikeViewViewController = [[FbLikeViewViewController alloc] init];
+        fbLikeViewViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [viewController presentViewController:fbLikeViewViewController animated:YES completion:^{
+            //NSLog(@"Now Show FbLikeViewViewController");
+        }];
+        RELEASE(fbLikeViewViewController);
+  
+    }
 }
+
 @end

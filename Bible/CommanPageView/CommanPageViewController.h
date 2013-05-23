@@ -10,8 +10,8 @@
 
 @interface CommanPageViewController : UIViewController<UIWebViewDelegate,
 UIScrollViewDelegate>{
-    UIActivityIndicatorView*   identicaterView;
-    BOOL                 isItHaveIdenticatior;
+    
+    UIActivityIndicatorView   *identicaterView;
 }
 
 -(void)loadUrl:(NSString *)urlPathStr;

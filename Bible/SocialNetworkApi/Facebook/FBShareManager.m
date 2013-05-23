@@ -50,7 +50,9 @@
 @synthesize m_imgData;
 @synthesize m_feedId;
 @synthesize m_userId;
-
+@synthesize devName;
+@synthesize devUrl;
+@synthesize isFBDialog;
 
 
 static FBShareManager* _sharedManager; // self
@@ -210,6 +212,38 @@ static FBShareManager* _sharedManager; // self
         }
     }
     
+}
+
+-(void)publishFBPostWithDialog{
+	
+	NSMutableDictionary *fbArguments = [[[NSMutableDictionary alloc] init] autorelease];
+	
+	[fbArguments setObject:self.m_titleName forKey:@"name"];
+	[fbArguments setObject:self.m_caption forKey:@"caption"];
+	[fbArguments setObject:self.m_description forKey:@"description"];
+	[fbArguments setObject:self.m_linkUrl forKey:@"link"];
+	[fbArguments setObject:KBibleLogoUrl forKey:@"picture"];
+	[fbArguments setObject:m_msg forKey:@"message"];
+	
+	if(![self.devName isEqualToString:@""] && ![self.devUrl isEqualToString:@""]){
+		
+		[fbArguments setObject:[NSString stringWithFormat:@"{\"Developed by\":{\"text\":\"%@\",\"href\":\"%@\"}}",
+								self.devName,self.devUrl] forKey:@"properties"];
+	}
+	
+	if(isFBDialog == TRUE){
+		
+		[m_facebook dialog:@"feed"
+			   andParams:fbArguments
+			 andDelegate:self];
+		
+	} else {
+		
+		[m_facebook requestWithGraphPath:@"me/feed"
+                             andParams:fbArguments
+                         andHttpMethod:@"POST"
+                           andDelegate:self];
+	}
 }
 
 /**

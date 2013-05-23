@@ -17,8 +17,10 @@ TWSharedManagerDelegate,FBShareManagerDelegate>{
     SLComposeViewController    *mySLComposerSheet;
     TWSharedManager           *m_twtManger;
 }
+@property(nonatomic,retain)id viewController;
 -(void)shareMessageViaEmail;
 -(void)shareMessageViaFaceBook;
 -(void)shareMessageViaTwitter;
 -(void)openfaceLikeView;
+-(void)callSocialMediaClasses;
 @end

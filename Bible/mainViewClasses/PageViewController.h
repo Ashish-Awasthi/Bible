@@ -28,7 +28,7 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
     
     NSTimer*              progessTimer;
     AVAudioPlayer     *audioPlayer;
-    
+
 }
 @property(nonatomic,assign)id delegate;
 @property(nonatomic,retain)AVAudioPlayer     *lastAudioPlayerObj;
@@ -37,7 +37,9 @@ AVAudioPlayerDelegate,UIScrollViewDelegate>{
 @property(nonatomic,retain)UILabel     *dataLabel;
 @property(nonatomic,copy) NSString         *lastSpanIdStr;
 @property(nonatomic,copy)NSString          *lastSentenceTextColorStr;
--(void)loadHtml:(NSString *)htmlName;
+
+-(void)loadHtml:(NSString *)htmlName
+withIdenticator:(BOOL)showIdentication;
 - (id)initWithNibName:(NSString *)nibNameOrNil
                bundle:(NSBundle *)nibBundleOrNil
             withTitle:(NSString *)titleStr

@@ -108,7 +108,7 @@
     if(navigationType == UIWebViewNavigationTypeLinkClicked){
         NSString  *requestUrlStr = [request.URL absoluteString];
         NSString  *chapterNameStr = [[requestUrlStr componentsSeparatedByString:@"/"] lastObject];
-        NSLog(@" Request Type %@, Chapter Name is:- %@",requestUrlStr,chapterNameStr);
+        //NSLog(@" Request Type %@, Chapter Name is:- %@",requestUrlStr,chapterNameStr);
         if ([chapterNameStr length]>0) {
             [self openSelectedPage:chapterNameStr];
         }

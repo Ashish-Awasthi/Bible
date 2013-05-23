@@ -4,7 +4,7 @@
 
 @font-face{
 	font-family: "american_typewriter";
-	/*src: url(fonts/american_typewriter.ttf);*/
+	src: url(american_typewriter.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
@@ -16,19 +16,19 @@
 }
 @font-face{
 	font-family: "Gotham-Black";
-	src: url(fonts/Gotham-Black.ttf);
+	src: url(Gotham-Black.ttf);
 	font-style: black;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-BlackItalic";
-	src: url(fonts/Gotham-BlackItalic.ttf);
+	src: url(Gotham-BlackItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-Bold";
-	src: url(fonts/Gotham-Bold.ttf);
+	src: url(Gotham-Bold.ttf);
 	font-style: normal;
 	font-weight:bold;
 }
@@ -40,7 +40,7 @@
 }
 @font-face{
 	font-family: "Gotham-Book";
-	src: url(fonts/Gotham-Book.ttf);
+	src: url(Gotham-Book.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
@@ -265,7 +265,7 @@ font-weight: bold;
 .page_3aa {
 	text-align: left;
 	position: relative;
-    font-size: 18pt;
+    font-size: 17pt;
 	line-height: 26px;
 	margin-left: 13.5%;
 	margin-top: 2.0%;
@@ -274,7 +274,7 @@ font-weight: bold;
 .page_3aaa {
 	text-align: left;
 	position: relative;
-    font-size: 18pt;
+    font-size: 17pt;
 	line-height: 28px;
 	margin-left:20.5%;
 	margin-top: 1.5%;
@@ -328,14 +328,14 @@ font-weight: bold;
 										/*END GLOW EFFECT*/
                                         
 #tree{
- height:337px;
-  width:314px;
+ height:314px;
+  width:337px;
  display: inline-block;
 }
 .page_3aaaa {
 	text-align: left;
 	position: relative;
-    font-size: 18pt;
+    font-size: 17pt;
 	line-height: 27px;
   	margin-left: 20.0%;
 	margin-top: 260px;
@@ -344,7 +344,7 @@ font-weight: bold;
 .page_3aaaaa {
 	text-align: left;
 	position: relative;
-    font-size: 18pt;
+    font-size: 17pt;
 	line-height: 27px;
   	margin-left: 24.0%;
 	margin-top: 1.6%;
@@ -353,7 +353,7 @@ font-weight: bold;
 .page_3aaaaaa {
 	text-align: left;
 	position: relative;
-    font-size: 18pt;
+    font-size: 17pt;
 	line-height: 27px;
   	margin-left: 10.2%;
 	margin-top: 1.6%;

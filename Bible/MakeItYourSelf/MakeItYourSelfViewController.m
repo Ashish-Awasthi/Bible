@@ -76,15 +76,8 @@ frameSize = CGRectMake(0, 0, 768, 1024);
   NSString *path = [[NSBundle mainBundle] bundlePath];
    NSURL *baseURL = [NSURL fileURLWithPath:path];
   [webView loadHTMLString:text baseURL:baseURL];
-
-   frameSize = CGRectMake((webView.frame.size.width - 36)/2, (webView.frame.size.height -36)/2, 36, 36);
-   identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-   [identicaterView setBackgroundColor:[UIColor blackColor]];
-   [identicaterView.layer setCornerRadius:4.0];
-   [identicaterView setFrame:frameSize];
-   [webView addSubview:identicaterView];
-    [identicaterView startAnimating];
-     RELEASE(webView);
+   RELEASE(webView);
+  [[BibleSingletonManager sharedManager] showIdenticationView:YES withView:webView];
 }
 
 #pragma marks
@@ -100,12 +93,8 @@ frameSize = CGRectMake(0, 0, 768, 1024);
     
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    if (identicaterView) {
-        [identicaterView stopAnimating];
-        [identicaterView removeFromSuperview];
-        RELEASE(identicaterView);
-    }
-
+    
+    [[BibleSingletonManager sharedManager] removeIdenticationFromView];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -124,20 +113,23 @@ frameSize = CGRectMake(0, 0, 768, 1024);
 
 -(void)openSelectedPage:(NSString *)selectedPageHtmlNameStr{
     
-    CommanPageViewController    *commanPageViewController = [[CommanPageViewController alloc] initWithNibName:nil bundle:nil withHtml:selectedPageHtmlNameStr];
-    [commanPageViewController loadUrl:selectedPageHtmlNameStr];
-    
-    commanPageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentViewController:commanPageViewController animated:YES completion:^{
-       // NSLog(@"Now Show commanPageViewController");
+    if ([[BibleSingletonManager sharedManager]checkNetworkReachabilityWithAlert]) {
+        CommanPageViewController    *commanPageViewController = [[CommanPageViewController alloc] initWithNibName:nil bundle:nil withHtml:selectedPageHtmlNameStr];
+        [commanPageViewController loadUrl:selectedPageHtmlNameStr];
         
-    }];
-    RELEASE(commanPageViewController);
+        commanPageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentViewController:commanPageViewController animated:YES completion:^{
+            // NSLog(@"Now Show commanPageViewController");
+            
+        }];
+        RELEASE(commanPageViewController);
+    }
 }
 
 #pragma marks
 #pragma Button Eevent
 -(void)goBackOnLastView:(id)sender{
+    [[BibleSingletonManager sharedManager] removeIdenticationFromView];
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"Go back On last Page");
     }];
@@ -147,5 +139,9 @@ frameSize = CGRectMake(0, 0, 768, 1024);
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)dealloc{
+    
+    [super dealloc];
+    NSLog(@"Make your self Dealloc call");
+}
 @end

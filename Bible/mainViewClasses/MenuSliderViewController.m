@@ -270,7 +270,11 @@
 
 -(void)move:(id)sender
 {
+    UIPanGestureRecognizer   *gesture =  (UIPanGestureRecognizer*)sender;
+     CGPoint point = [gesture locationInView:self.view];
     
+    if (point.x>185) {
+        
     if ([self.delegate respondsToSelector:@selector(setPageFlip:)]) {
         [self.delegate setPageFlip:YES];
     }
@@ -285,12 +289,7 @@
 	}
 
     CGFloat finalY = firstY+translatedPoint.y;
-    // in case of Hide audio button to from menu bar
-    if (finalY>=-640) {
-      [self setAudioIconHiddenCondition:YES];
-    }else{
-       [self setAudioIconHiddenCondition:NO];
-    }
+
     translatedPoint = CGPointMake(self.view.frame.origin.x, firstY+translatedPoint.y);
     
 	if (translatedPoint.y<0)
@@ -321,6 +320,7 @@
         [self pageSwiped];
     }
   
+    }
 }// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -349,13 +349,13 @@
 }
 
 -(void)enableHearitPageOption{
+    
     [BibleSingletonManager sharedManager].isItLetItRead = NO;
     UIImage   *imageName;
     imageName = [UIImage imageNamed:@"Hear-page_sel.png"];
     [hereItPageBtn setImage:imageName forState:UIControlStateNormal];
     imageName = [UIImage imageNamed:@"let-it-read_unsel.png"];
     [letItReadBtn setImage:imageName forState:UIControlStateNormal];
-
 }
 #pragma marks
 #pragma Button Eevets....

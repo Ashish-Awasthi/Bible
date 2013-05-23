@@ -7,20 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TWSharedManager.h"
-#import "FBShareManager.h"
 
-#import <Social/Social.h>
-#import <MessageUI/MessageUI.h>
-#import"FacebookLikeView.h"
 
-@interface ShareViewController : UIViewController<MFMailComposeViewControllerDelegate,
-TWSharedManagerDelegate,FBShareManagerDelegate,FacebookLikeViewDelegate>{
-   SLComposeViewController    *mySLComposerSheet;
-     TWSharedManager           *m_twtManger;
-    FaceBooKGetAndPostOption   _faceBooKGetAndPostOption;
-    FacebookLikeView        *m_FBLikeView;
+@interface ShareViewController : UIViewController{
+   
 }
-
 
 @end

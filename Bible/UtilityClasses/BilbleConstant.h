@@ -11,6 +11,8 @@
 
 #define kBibleFacebookPageURL             @"https://www.facebook.com/pages/The-Bible-Beautiful-Series/496298287061110?fref=ts"
 
+#define  KBibleLogoUrl  @"http://208.109.209.216/secrets/share/Icon-72.png"
+
 #define MenuOptionAnimationDuration  0.7
 #define  ShowMenuOptionNumberPage  2
 
@@ -77,9 +79,9 @@ typedef enum{
  ExtremRightView,
 }PreLoadView;
 
-#define FaceBookMsg  @"I am reading The Bible Beautiful: The Oldest Bedtime Story Ever, written and illustrated by Benjamin Morse.  It is available in hardback and as an eLuminated app.  To learn more or to buy it, visit www.biblebeautiful.com \n  Developed by: Orson & Co \n via The Oldest Bedtime Story Ever "
+#define FaceBookMsg  @"I am reading The Oldest Bedtime Story Ever, written and illustrated by Benjamin Morse.  Now available in hardback and as an eLuminated app.  Preview pages at www.biblebeautiful.com."
 
-#define TwitterShareMsg  @"I am loving The Oldest Bedtime Story Ever by Benjamin Morse.  To learn more visit www.biblebeautiful.com."
+#define TwitterShareMsg  @"I am loving The Oldest Bedtime Story Ever by Benjamin Morse. Preview the hardback and eLuminated app at www.biblebeautiful.com."
 
 #define EmailShareMsg @"I am reading The Bible Beautiful: The Oldest Bedtime Story Ever, written and illustrated by Benjamin Morse.  It is available in hardback and as an eLuminated app.  To learn more or to buy it, visit www.biblebeautiful.com."
 

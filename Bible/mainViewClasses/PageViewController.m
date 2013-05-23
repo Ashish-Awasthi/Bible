@@ -77,7 +77,7 @@
         [self.dataLabel setFrame:frameSize];
         [self.view addSubview:self.dataLabel];
         
-        [self loadHtml:htmlName];
+        [self loadHtml:htmlName withIdenticator:NO];
         if ([BibleSingletonManager sharedManager].isFirstTime) {
             frameSize = CGRectMake(0, 0, 768, 1024);
             imageView = [[UIImageView alloc] init];
@@ -133,10 +133,10 @@
 -(void)startPageThirdAnimation{
     [self.webView stringByEvaluatingJavaScriptFromString:@"processNextMove()"];
 }
--(void)loadHtml:(NSString *)htmlName{
-   
-    NSLog(@"Next Hml Name %@",htmlName);
-    
+-(void)loadHtml:(NSString *)htmlName
+   withIdenticator:(BOOL)showIdentication
+  {
+   // NSLog(@"Next Hml Name %@",htmlName);
     if (self.webView) {
         [self.webView removeFromSuperview];
         RELEASE(self.webView);
@@ -170,7 +170,10 @@
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     [self.webView loadHTMLString:text baseURL:baseURL];
-
+      if (showIdentication) {
+          // Show Indicator when current page load
+          [[BibleSingletonManager sharedManager]showIdenticationView:YES withView:self.webView];
+      }
 }
 
 #pragma marks
@@ -180,7 +183,7 @@
      //Remove Spalsh screen when loading complete of first page
     [BibleSingletonManager sharedManager].isFirstTime = NO;
     if (imageView) {
-    [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplashView) withDuration:1.0 withDelegate:self];
+    [[BibleSingletonManager sharedManager] hideWithAlphaAnimation:YES withView:imageView withSelector:@selector(removeSplashView) withDuration:1.4 withDelegate:self];
     }
 
     //  not show copy paste option in webview
@@ -211,6 +214,8 @@
     NSString *jsString      = [[NSMutableString alloc] initWithData:fileData
                                                            encoding:NSUTF8StringEncoding];
     [webView stringByEvaluatingJavaScriptFromString:jsString];
+    // Remove indecation from currentView
+    [[BibleSingletonManager sharedManager] removeIdenticationFromView];
     //*****************************close**************************************************************************
     
 }
@@ -367,7 +372,6 @@
     [self.webView stringByEvaluatingJavaScriptFromString:fuctionStr];
 }
 
-
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
   
     if (hieghLightNumber<[audioInfoPageArr count]) {
@@ -382,7 +386,7 @@
     
     if(navigationType == UIWebViewNavigationTypeLinkClicked)
 	{
-        NSLog(@"Request Url%@",[request.URL absoluteString]);
+       // NSLog(@"Request Url%@",[request.URL absoluteString]);
         NSString  *requestUrlStr = [request.URL absoluteString];
         NSString  *chapterNameStr = [[requestUrlStr componentsSeparatedByString:@"/"] lastObject];
         NSString *pageNumberStr = [[chapterNameStr componentsSeparatedByString:@"Page_0"] lastObject];
@@ -393,6 +397,7 @@
             [self openSelectedPage:chapterNameStr];
             return NO;
            }else if([requestUrlStr hasPrefix:@"http:"]){
+                [BibleSingletonManager sharedManager].shareViewCommanClass.viewController = self;
                NSString  *shareOptionStr = [[requestUrlStr componentsSeparatedByString:@"/"] lastObject];
                if ([shareOptionStr caseInsensitiveCompare:@"Email"] == NSOrderedSame) {
                    [[BibleSingletonManager sharedManager].shareViewCommanClass  shareMessageViaEmail];
@@ -562,7 +567,7 @@
     
     commanPageViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:commanPageViewController animated:YES completion:^{
-        NSLog(@"Now Show commanPageViewController");
+       // NSLog(@"Now Show commanPageViewController");
     }];
 
 }

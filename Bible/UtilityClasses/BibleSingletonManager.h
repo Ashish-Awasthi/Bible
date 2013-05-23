@@ -25,7 +25,8 @@
 @end
 
 @interface BibleSingletonManager : NSObject<UIPopoverControllerDelegate>{
-    
+    BOOL    isidenticationShow;
+    UIActivityIndicatorView*  identicaterView;
 }
 @property(nonatomic,retain)ShareViewCommanClass*     shareViewCommanClass;
 
@@ -138,6 +139,8 @@
         imageExtension:(NSString *)imageExtension;
 
 -(UIView*) wrapSiblingViews:(NSArray*)theSiblings ofSuperview:(UIView*)theSuperview;
-
+-(void)showIdenticationView:(BOOL)showIdentication
+                   withView:(id )view;
+-(void)removeIdenticationFromView;
 
 @end

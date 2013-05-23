@@ -838,4 +838,30 @@ return YES;
     
     return wrapper;
 }
+-(void)showIdenticationView:(BOOL)showIdentication
+                   withView:(UIWebView *)view{
+    isidenticationShow = YES;
+    
+    CGRect frameSize;
+    frameSize = CGRectMake((view.frame.size.width - 36)/2, (view.frame.size.height -36)/2, 36, 36);
+    identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [identicaterView setBackgroundColor:[UIColor blackColor]];
+    [identicaterView.layer setCornerRadius:4.0];
+    [identicaterView setFrame:frameSize];
+    [view addSubview:identicaterView];
+    [identicaterView startAnimating];
+
+   // NSLog(@"identicaterView  %@",identicaterView);
+    
+}
+
+-(void)removeIdenticationFromView{
+    
+    if (isidenticationShow) {
+        isidenticationShow = NO;
+        [identicaterView stopAnimating];
+        [identicaterView removeFromSuperview];
+        [identicaterView release];
+    }
+}
 @end
