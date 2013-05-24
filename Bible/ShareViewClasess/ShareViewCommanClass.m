@@ -203,9 +203,10 @@ if ([[BibleSingletonManager sharedManager]checkNetworkReachabilityWithAlert]) {
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
         mySLComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [mySLComposerSheet setInitialText:FaceBookMsg];
+        [mySLComposerSheet setInitialText:IOS6FaceBookMsg];
         [mySLComposerSheet addImage:[UIImage imageNamed:@"Icon-72.png"]];
-        [mySLComposerSheet addURL:[NSURL URLWithString:@"www.biblebeautiful.com"]];
+        [mySLComposerSheet addURL:nil];
+        
         [viewController presentViewController:mySLComposerSheet animated:YES completion:nil];
         
         [mySLComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
