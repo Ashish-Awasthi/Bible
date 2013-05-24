@@ -99,7 +99,11 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
    if(navigationType == UIWebViewNavigationTypeLinkClicked){
-      //NSLog(@" Url Of %@",[request.URL  absoluteString]);
+       NSString   *requestUrlStr = [request.URL  absoluteString];
+        NSString   *feedStr  = [[requestUrlStr componentsSeparatedByString:@"="] objectAtIndex:1];
+       if ([feedStr caseInsensitiveCompare:@"feed&id"] == NSOrderedSame) {
+           return NO;
+       }
     return YES;
     }
    return YES;

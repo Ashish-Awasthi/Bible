@@ -478,9 +478,9 @@
 		BC89FFA91740F06100CE00E7 /* Share_Bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BC89FFA41740F06100CE00E7 /* Share_Bg@2x.png */; };
 		BC89FFAB174100B500CE00E7 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC89FFAA174100B500CE00E7 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BC89FFAD174100BB00CE00E7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC89FFAC174100BB00CE00E7 /* MessageUI.framework */; };
-		BCCA380A174F7A4600FE6B72 /* Bible.Sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BCCA3809174F7A4600FE6B72 /* Bible.Sqlite */; };
 		BCCA380C174F809800FE6B72 /* jquery.min.js in Sources */ = {isa = PBXBuildFile; fileRef = BCCA380B174F809800FE6B72 /* jquery.min.js */; };
 		BCCA380D174F80A000FE6B72 /* jquery.min.js in Resources */ = {isa = PBXBuildFile; fileRef = BCCA380B174F809800FE6B72 /* jquery.min.js */; };
+		BCCA3813174FA78D00FE6B72 /* Bible.Sqlite in Resources */ = {isa = PBXBuildFile; fileRef = BCCA3812174FA78C00FE6B72 /* Bible.Sqlite */; };
 		BCD05A451726A8BC00C23A36 /* Ribbon.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD05A421726A8BC00C23A36 /* Ribbon.png */; };
 		BCD05B8F1726B98D00C23A36 /* audio_btn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD05B861726B98D00C23A36 /* audio_btn@2x.png */; };
 		BCD05B901726B98D00C23A36 /* fineprint_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCD05B871726B98D00C23A36 /* fineprint_text@2x.png */; };
@@ -1051,8 +1051,8 @@
 		BC89FFFD174103AB00CE00E7 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		BC89FFFE174103AB00CE00E7 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		BC89FFFF174103AB00CE00E7 /* NSString+UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+UUID.h"; sourceTree = "<group>"; };
-		BCCA3809174F7A4600FE6B72 /* Bible.Sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bible.Sqlite; sourceTree = "<group>"; };
 		BCCA380B174F809800FE6B72 /* jquery.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.min.js; sourceTree = "<group>"; };
+		BCCA3812174FA78C00FE6B72 /* Bible.Sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bible.Sqlite; sourceTree = "<group>"; };
 		BCD05A421726A8BC00C23A36 /* Ribbon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ribbon.png; sourceTree = "<group>"; };
 		BCD05B861726B98D00C23A36 /* audio_btn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio_btn@2x.png"; sourceTree = "<group>"; };
 		BCD05B871726B98D00C23A36 /* fineprint_text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fineprint_text@2x.png"; sourceTree = "<group>"; };
@@ -1135,7 +1135,7 @@
 		BC139A8117265C2200FAB313 /* ResourceData */ = {
 			isa = PBXGroup;
 			children = (
-				BCCA3809174F7A4600FE6B72 /* Bible.Sqlite */,
+				BCCA3812174FA78C00FE6B72 /* Bible.Sqlite */,
 				BC862C5D174F428300CB8D8B /* HtmlFile */,
 				BC83882C174A32A8004DDA66 /* Page3HtmlFile */,
 				BC7E7AF31744E52600BD3971 /* AudioFile */,
@@ -2486,7 +2486,7 @@
 				BC862E45174F428400CB8D8B /* Page_091.htm in Resources */,
 				BC862E46174F428400CB8D8B /* Page_092.htm in Resources */,
 				BC862E47174F428400CB8D8B /* style.css in Resources */,
-				BCCA380A174F7A4600FE6B72 /* Bible.Sqlite in Resources */,
+				BCCA3813174FA78D00FE6B72 /* Bible.Sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
