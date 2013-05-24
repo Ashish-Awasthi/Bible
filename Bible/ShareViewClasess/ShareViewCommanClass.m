@@ -79,7 +79,11 @@
     m_twtManger.m_controller    = viewController;
     
     if ([isItAlreadyLogin isEqualToString:@"YES"]) {
-        [self postTweetButton:nil];
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Info" message:@"You already posted this Message, please post different Message." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [alert release];
+        
+       // [self postTweetButton:nil];
         // NSLog(@"Twitter already login is True....");
     }else{
         m_twtManger.requestType = LoginOnTwitter;
@@ -120,6 +124,29 @@
     if ([[BibleSingletonManager sharedManager]checkNetworkReachabilityWithAlert]) {
          [self postMessageViaEmail];
      }
+}
+
+-(void)shareMessageViaEmailwithMailId:(NSString *)mailIdStr{
+    
+    if ([[BibleSingletonManager sharedManager]checkNetworkReachabilityWithAlert]) {
+        if ([MFMailComposeViewController canSendMail]) {
+            
+            MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+            [controller setToRecipients:[NSArray arrayWithObjects:mailIdStr, nil]];
+            controller.mailComposeDelegate = self;
+            [controller setSubject:@"History of a Bible, illustrated by Benjamin Morse"];
+            [controller setMessageBody:EmailShareMsg isHTML:NO];
+            if (controller)
+                [viewController presentModalViewController:controller animated:YES];
+            [controller release];
+            
+        } else {
+            // Handle the error
+            [[BibleSingletonManager sharedManager] showAlert:@"No Mail Accounts" message:@"There are no Mail account configured. You can add or create a Mail account in Settings." withTag:-1 withDelegate:nil];
+        }
+
+       
+    }
 }
 -(void)shareMessageViaFaceBook{
     

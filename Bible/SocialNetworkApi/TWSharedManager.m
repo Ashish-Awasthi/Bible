@@ -122,7 +122,7 @@
 - (void) OAuthTwitterController: (SA_OAuthTwitterController *) controller 
 	  authenticatedWithUsername: (NSString *) username{
 
-        [m_controller dismissModalViewControllerAnimated:YES];
+      //  [m_controller dismissModalViewControllerAnimated:YES];
         
         if ([delegate respondsToSelector: @selector(twitterLoginSuccess:)]){
             
@@ -135,7 +135,7 @@
 
 - (void) OAuthTwitterControllerFailed: (SA_OAuthTwitterController *) controller{
 	    
-    [m_controller dismissModalViewControllerAnimated:YES];
+   // [m_controller dismissModalViewControllerAnimated:YES];
     
     if ([delegate respondsToSelector: @selector(twitterLoginFail)]){
         
@@ -147,7 +147,7 @@
 - (void) OAuthTwitterControllerCanceled: (SA_OAuthTwitterController *) controller
 {
        
-    [m_controller dismissModalViewControllerAnimated:YES];
+   // [m_controller dismissModalViewControllerAnimated:YES];
 	
     if ([delegate respondsToSelector: @selector(twitterLoginCancel)]){
         

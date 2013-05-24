@@ -222,6 +222,7 @@
 
 
 -(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId{
+  
     [BibleSingletonManager sharedManager].currentPageId = pageId;
     
     if ( [BibleSingletonManager sharedManager].isAudioEnable  == NO) {
@@ -244,6 +245,7 @@
     [self releaseAudioObjcet];
     
     NSString    *queryStr = [NSString stringWithFormat:KAudioDataQueryWherePageId,pageId];
+    
     [self getCurrentSpanInfo:queryStr];
     
     float    startTime = ((AudioData *)[audioInfoPageArr objectAtIndex:hieghLightNumber])._audioStartTime;
@@ -396,7 +398,7 @@
         if ([pageNumberStr integerValue]>0) {
             [self openSelectedPage:chapterNameStr];
             return NO;
-           }else if([requestUrlStr hasPrefix:@"http:"]){
+           }else if([requestUrlStr hasPrefix:@"http:"]){  // this condition check any type of link in pages.
                 [BibleSingletonManager sharedManager].shareViewCommanClass.viewController = self;
                NSString  *shareOptionStr = [[requestUrlStr componentsSeparatedByString:@"/"] lastObject];
                if ([shareOptionStr caseInsensitiveCompare:@"Email"] == NSOrderedSame) {
@@ -410,12 +412,20 @@
                }
                else if ([shareOptionStr caseInsensitiveCompare:@"Twitter"] == NSOrderedSame) {
                    [[BibleSingletonManager sharedManager].shareViewCommanClass  shareMessageViaTwitter];
-               }else{
+                }
+               else{
                 [self loadUrlOffNextPage:requestUrlStr];
                 }
              return NO;
            }
-
+           
+          if([requestUrlStr hasPrefix:@"mailto:"]){ // this condition check any type email id present in pages
+              NSString   *mailIdStr = [[requestUrlStr componentsSeparatedByString:@"//"] lastObject];
+               [BibleSingletonManager sharedManager].shareViewCommanClass.viewController = self;
+              [[BibleSingletonManager sharedManager].shareViewCommanClass  shareMessageViaEmailwithMailId:mailIdStr];
+               return NO;
+           }
+        
         NSString *selectedId   = [NSString stringWithFormat:@"selectedId"];
         NSString  *spanIdStr = [webView stringByEvaluatingJavaScriptFromString:selectedId];
         NSString     *chapeterIdStr     = [[spanIdStr componentsSeparatedByString:@"Audio_#"] lastObject];

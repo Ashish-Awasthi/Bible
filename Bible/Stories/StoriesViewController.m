@@ -83,13 +83,6 @@
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     [webView loadHTMLString:text baseURL:baseURL];
     
-    frameSize = CGRectMake((webView.frame.size.width - 36)/2, (webView.frame.size.height -36)/2, 36, 36);
-    identicaterView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    [identicaterView setBackgroundColor:[UIColor blackColor]];
-    [identicaterView.layer setCornerRadius:4.0];
-    [identicaterView setFrame:frameSize];
-    [webView addSubview:identicaterView];
-    
     RELEASE(webView);
 
 }
@@ -102,17 +95,12 @@
 #pragma marks
 #pragma UIwebViewDelegate Method-
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-     if (identicaterView) {
-      [identicaterView startAnimating];
-      }
+    [[BibleSingletonManager sharedManager] showIdenticationView:YES withView:webView];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    
-    if (identicaterView) {
-        [identicaterView stopAnimating];
-        [identicaterView removeFromSuperview];
-        RELEASE(identicaterView);
-    }
+    // not show copy paste option in webview
+    [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
+    [[BibleSingletonManager sharedManager] removeIdenticationFromView];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{

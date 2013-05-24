@@ -89,23 +89,32 @@
 #pragma marks
 #pragma UIwebViewDelegate Method-
 - (void)webViewDidStartLoad:(UIWebView *)webView{
-    
-    if (isItHaveIdenticatior) {
-        [identicaterView startAnimating];
-    }
+   [identicaterView startAnimating];
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    if (isItHaveIdenticatior) {
-        [identicaterView stopAnimating];
-        [identicaterView removeFromSuperview];
+    [identicaterView stopAnimating];
+    // not show copy paste option in webview
+    [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+   if(navigationType == UIWebViewNavigationTypeLinkClicked){
+      //NSLog(@" Url Of %@",[request.URL  absoluteString]);
+    return YES;
     }
+   return YES;
 }
 
 #pragma marks
 #pragma Button Eevent
 -(void)goBackOnLastView:(id)sender{
+    
+    if (isItHaveIdenticatior) {
+        [identicaterView stopAnimating];
+        [identicaterView removeFromSuperview];
+    }
     [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"Go back On last Page");
+       // NSLog(@"Go back On last Page");
     }];
 }
 - (void)didReceiveMemoryWarning

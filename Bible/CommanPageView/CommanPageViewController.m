@@ -143,7 +143,8 @@
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
      [identicaterView stopAnimating];
-    
+    // not show copy paste option in webview
+    [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
@@ -151,8 +152,7 @@
     if(navigationType == UIWebViewNavigationTypeLinkClicked){
        
     }
-   
-    return YES;
+   return YES;
 }
 
 #pragma marks

@@ -93,8 +93,9 @@ frameSize = CGRectMake(0, 0, 768, 1024);
     
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    
     [[BibleSingletonManager sharedManager] removeIdenticationFromView];
+    // not show copy paste option in webview
+    [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{

@@ -10,6 +10,5 @@
 
 @interface ReadMoreViewController : UIViewController<UIScrollViewDelegate,
 UIWebViewDelegate>{
-    UIActivityIndicatorView*   identicaterView;
 }
 @end

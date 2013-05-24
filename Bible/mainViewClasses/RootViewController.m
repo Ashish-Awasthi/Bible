@@ -145,13 +145,13 @@
         else if ([gesRecog isKindOfClass:[UIPanGestureRecognizer class]]){
             gesRecog.enabled = NO;
             gesRecog.delegate = self;
-            [self  performSelector:@selector(enablePanGesture) withObject:nil afterDelay:1.6];
+            [self  performSelector:@selector(enablePanGesture) withObject:nil afterDelay:2.0];
            }
         
     }
     
     menuViewController = [[MenuSliderViewController alloc]initWithNibName:@"MenuSliderViewController" bundle:nil];
-   // [menuViewController.view setBackgroundColor:[UIColor redColor]];
+    //[menuViewController.view setBackgroundColor:[UIColor redColor]];
     [menuViewController setDelegate:self];
     [self.view addSubview:menuViewController.view];
     [self setMenuSliderViewHidden:YES];
@@ -391,7 +391,10 @@
             if ([BibleSingletonManager sharedManager].isItLetItRead) {
                 PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
                 NSInteger    currentPageId = [BibleSingletonManager sharedManager].currentPageId;
-                [currentViewController hieghtTextWhenSwipeUpperCorner:currentPageId+1];
+                //audio not be play,when user go after page 72
+                if (currentPageId<=72) {
+                  [currentViewController hieghtTextWhenSwipeUpperCorner:currentPageId+1];   
+                }
              }
          [self performSelector:@selector(tapPageAnimationIsComplete) withObject:nil afterDelay:.2];
         }

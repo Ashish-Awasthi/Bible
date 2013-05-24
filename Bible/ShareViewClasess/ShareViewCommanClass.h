@@ -19,6 +19,7 @@ TWSharedManagerDelegate,FBShareManagerDelegate>{
 }
 @property(nonatomic,retain)id viewController;
 -(void)shareMessageViaEmail;
+-(void)shareMessageViaEmailwithMailId:(NSString *)mailIdStr;
 -(void)shareMessageViaFaceBook;
 -(void)shareMessageViaTwitter;
 -(void)openfaceLikeView;

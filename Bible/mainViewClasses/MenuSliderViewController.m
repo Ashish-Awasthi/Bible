@@ -99,20 +99,19 @@
     // this condition use for not get touch if user tab on Menu View or only get touch if tab on ribbon...
     if (point.y<800) {
         return NO;
-    }
+     }
    //  NSLog(@"x.postion is:- %f and ypostion is %f:- ",point.x,point.y);
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
         // This condition use for if u tab Upper right corner.....
         PageViewController    *currentpageViewController = (PageViewController *)[BibleSingletonManager sharedManager].pageViewController;
-                                                                                
         int  pageId =  [currentpageViewController.dataLabel.text integerValue];
         
         if (point.x<187) {
-            // not take touch complete page
-//            NSLog(@"isitExpandHideAudioIcon%d",isitExpandHideAudioIcon);
-//            if (isitExpandHideAudioIcon) {
-//                return NO;
-//            }
+            NSLog(@"Menu View yPosition %f",self.view.frame.origin.y);
+            if (self.view.frame.origin.y>-710) {
+                return NO;
+            }
+            
             switch (pageId) {
                 case 4:
                 [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:4];
@@ -144,9 +143,8 @@
                 case 72:
                     [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:72];
                     break;
-                    
                 case 75:
-                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:4];
+                    [[BibleSingletonManager sharedManager].pageViewController hieghtTextWhenSwipeUpperCorner:75];
                 break;
                 default:
                     break;

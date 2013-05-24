@@ -16,25 +16,25 @@
 }
 @font-face{
 	font-family: "Gotham-Black";
-	src: url(Gotham-Black.ttf);
+	src: url(fonts/Gotham-Black.ttf);
 	font-style: black;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-BlackItalic";
-	src: url(Gotham-BlackItalic.ttf);
+	src: url(fonts/Gotham-BlackItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-Bold";
-	src: url(Gotham-Bold.ttf);
+	src: url(fonts/Gotham-Bold.ttf);
 	font-style: normal;
 	font-weight:bold;
 }
 @font-face{
 	font-family: "Gotham-BoldItalic";
-	src: url(Gotham-BoldItalic.ttf);
+	src: url(fonts/Gotham-BoldItalic.ttf);
 	font-style: italic;
 	font-weight:bold;
 }
@@ -58,19 +58,19 @@
 }
 @font-face{
 	font-family: "Gotham-LightItalic";
-	src: url(Gotham-LightItalic.ttf);
+	src: url(fonts/Gotham-LightItalic.ttf);
 	font-style: italic;
 	font-weight:light;
 }
 @font-face{
 	font-family: "Gotham-Medium";
-	src: url(Gotham-Medium.ttf);
+	src: url(fonts/Gotham-Medium.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-MediumItalic";
-	src: url(Gotham-MediumItalic.ttf);
+	src: url(fonts/Gotham-MediumItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
@@ -82,13 +82,13 @@
 }
 @font-face{
 	font-family: "Gotham-ThinItalic";
-	src: url(Gotham-ThinItalic.ttf);
+	src: url(fonts/Gotham-ThinItalic.ttf);
 	font-style: italic;
 	font-weight:normal;
 }
 @font-face{
 	font-family: "Gotham-Ultra";
-	src: url(Gotham-Ultra.ttf);
+	src: url(fonts/Gotham-Ultra.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
@@ -100,7 +100,7 @@
 }
 @font-face{
 	font-family: "Gotham-XLight";
-	src: url(fonts/Gotham-XLight.ttf);
+	src: url(Gotham-XLight.ttf);
 	font-style: normal;
 	font-weight:normal;
 }
@@ -265,7 +265,7 @@ font-weight: bold;
 .page_3aa {
 	text-align: left;
 	position: relative;
-    font-size: 18pt;
+    font-size: 15pt;
 	line-height: 26px;
 	margin-left: 13.5%;
 	margin-top: 2.0%;
@@ -274,7 +274,7 @@ font-weight: bold;
 .page_3aaa {
 	text-align: left;
 	position: relative;
-    font-size: 18pt;
+    font-size: 15pt;
 	line-height: 28px;
 	margin-left:20.5%;
 	margin-top: 1.5%;
@@ -283,7 +283,7 @@ font-weight: bold;
 .page_3aaaa {
 	text-align: left;
 	position: relative;
-    font-size: 18pt;
+    font-size: 15pt;
 	line-height: 27px;
   	margin-left: 20.0%;
 	margin-top: 78.3%;
@@ -292,7 +292,7 @@ font-weight: bold;
 .page_3aaaaa {
 	text-align: left;
 	position: relative;
-    font-size: 18pt;
+    font-size: 15pt;
 	line-height: 27px;
   	margin-left: 24.0%;
 	margin-top: 1.6%;
@@ -301,7 +301,7 @@ font-weight: bold;
 .page_3aaaaaa {
 	text-align: left;
 	position: relative;
-    font-size: 18pt;
+    font-size: 15pt;
 	line-height: 27px;
   	margin-left: 10.2%;
 	margin-top: 1.6%;
@@ -513,7 +513,7 @@ color:#abe757;
     font-size: 16pt;
 	line-height: 24px;
 	margin-left: 20%;
-	margin-top: 25.6%;
+	margin-top: 13.6%;
 	color:white;
 }
 .page_6aaaaaa {
@@ -560,6 +560,10 @@ color:#abe757;
 .images7{
     margin-left: 24%;
 	margin-top: 24%;
+}
+.images9{
+    margin-left: 42%;
+	margin-top: 9.3%;
 }
 .page7 {
 	text-align: left;
@@ -836,9 +840,19 @@ height: 102px;
 position:relavtive;
 repeat:no-repeat;
 }
+#book06{ 
+width: 72px;
+height: 68px;
+position:relavtive;
+repeat:no-repeat;
+}
 .book09_1{ 
 margin-top:68px;
 margin-left:42%;
+}
+.book06_1{ 
+margin-top:20px;
+margin-left:69%;
 }
 .images10{
     margin-left: 79%;

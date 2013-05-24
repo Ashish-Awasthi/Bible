@@ -120,8 +120,6 @@ nil
     }
 }
 
-
-
 -(void)shareMessageViaEmail{
     [BibleSingletonManager sharedManager].shareViewCommanClass.viewController = self;
     [[BibleSingletonManager sharedManager].shareViewCommanClass shareMessageViaEmail];
@@ -135,7 +133,12 @@ nil
  [BibleSingletonManager sharedManager].shareViewCommanClass.viewController = self;
  [[BibleSingletonManager sharedManager].shareViewCommanClass shareMessageViaTwitter];
 }
-         
+
+
+-(void)disableTwitterButton:(BOOL) userintection{
+    UIButton  *twitterBtn = (UIButton *)[self.view viewWithTag:3];
+    [twitterBtn setUserInteractionEnabled:userintection];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

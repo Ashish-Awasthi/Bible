@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface StoriesViewController : UIViewController<UIWebViewDelegate,UIScrollViewDelegate>{
-    UIActivityIndicatorView*   identicaterView;
 }
 
 @end

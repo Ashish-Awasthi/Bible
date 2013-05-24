@@ -10,6 +10,5 @@
 
 @interface FinePrintViewController : UIViewController<UIScrollViewDelegate,
 UIWebViewDelegate>{
- UIActivityIndicatorView*   identicaterView;
 }
 @end

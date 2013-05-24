@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "NSData+Extras.h"
 @interface FbLikeViewViewController : UIViewController<UIWebViewDelegate>{
     UIActivityIndicatorView*     identicaterView;
     BOOL                         isItHaveIdenticatior;

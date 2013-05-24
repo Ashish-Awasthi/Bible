@@ -12,5 +12,6 @@
 @interface ShareViewController : UIViewController{
    
 }
+-(void)disableTwitterButton:(BOOL) userintection;
 
 @end
