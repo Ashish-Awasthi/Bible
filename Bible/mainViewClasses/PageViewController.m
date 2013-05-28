@@ -148,9 +148,6 @@
     
     
     self.webView = [[UIWebView alloc] init];
-    [self.webView setOpaque:YES];
-    [self.webView setBackgroundColor:[UIColor blackColor]];
-    
     for (UIView   *subViews in [self.webView subviews]) {
         if ([subViews isKindOfClass:[UIScrollView class]]) {
             UIScrollView    *scrollView = (UIScrollView *)subViews;
@@ -161,7 +158,8 @@
     
     [self.webView setDelegate:self];
     [self.webView setScalesPageToFit:YES];
-    [self.webView setBackgroundColor:[UIColor clearColor]];
+    [self.webView setBackgroundColor:[UIColor blackColor]];
+    [self.webView setOpaque:NO];
     [self.webView setFrame:frameSize];
     [self.view  addSubview:self.webView];
     

@@ -90,7 +90,6 @@
     UIWebView           *webView = [[UIWebView alloc] init];
     [webView setTag:KCommanWebViewTag];
     [webView setOpaque:YES];
-    [webView setBackgroundColor:[UIColor blackColor]];
     
     for (UIView   *subViews in [webView subviews]) {
         if ([subViews isKindOfClass:[UIScrollView class]]) {
@@ -102,10 +101,10 @@
     
     [webView setDelegate:self];
     [webView setScalesPageToFit:YES];
-    [webView setBackgroundColor:[UIColor clearColor]];
+    [webView setBackgroundColor:[UIColor blackColor]];
+    [webView setOpaque:NO];
     [webView setFrame:frameSize];
     [self.view  addSubview:webView];
-    
     NSURL *baseURL = [NSURL URLWithString:urlPathStr];
     
     [webView loadRequest:[NSURLRequest requestWithURL:baseURL]];

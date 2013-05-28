@@ -85,6 +85,25 @@ nil
         yoffSet = yoffSet+image.size.height+50;
     }
     
+    
+    NSArray *arr1 = [[NSArray alloc] initWithObjects:@"{{437,393},{89,51}}",@"{{349,532},{323,51}}",@"{{338,671},{323,51}}",@"{{433,825},{89,51}}",nil];
+	
+    
+    
+    for (int i = 0; i<[optionArr count]; i++) {
+        
+        image = [UIImage imageNamed:[optionArr objectAtIndex:i]];
+        frameSize = CGRectFromString((NSString *)[arr1 objectAtIndex:i]);
+        
+        UIButton *shareOptionBtn = [[UIButton alloc] initWithFrame:frameSize];
+        [shareOptionBtn setTag:i];
+        [shareOptionBtn setFrame:frameSize];
+        [shareOptionBtn setBackgroundColor:[UIColor clearColor]];
+        [shareOptionBtn addTarget:self action:@selector(tabOnShareOption:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:shareOptionBtn];
+        [shareOptionBtn release];
+        yoffSet = yoffSet+image.size.height+50;
+    }
 }
 
 #pragma marks

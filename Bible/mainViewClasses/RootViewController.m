@@ -150,10 +150,7 @@
         
     }
     
-    menuViewController = [[MenuSliderViewController alloc]initWithNibName:@"MenuSliderViewController" bundle:nil];
-    //[menuViewController.view setBackgroundColor:[UIColor redColor]];
-    [menuViewController setDelegate:self];
-    [self.view addSubview:menuViewController.view];
+    [self reAddMenuViewController];
     [self setMenuSliderViewHidden:YES];
 }
 
@@ -215,7 +212,8 @@
    
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]] && ([gestureRecognizer.view isEqual:self.view] || [gestureRecognizer.view isEqual:self.pageViewController.view]))
     {
-        if (isitTabAnimationComplete == NO) {
+         
+        if (isitTabAnimationComplete == NO || self.pageAnimationFinished == NO) {
             return NO;
          }
         UIPanGestureRecognizer * tapRecognizer = (UIPanGestureRecognizer *)gestureRecognizer;
@@ -232,7 +230,7 @@
             }else{
               isitTabAnimationComplete = NO;
                 // enable here it page option.............
-                [menuViewController enableHearitPageOption];
+              [menuViewController enableHearitPageOption];
               NSArray  *viewControllerArr = [NSArray arrayWithObject:[self getViewControllerFormArr:RightView]];
               [self setMenuSliderViewHidden:YES];
               [self nextPageFlipAutomaticallyWhenAudioFinsh:viewControllerArr];
@@ -319,6 +317,7 @@
     self.pageAnimationFinished = YES;
     
     if (completed) {
+        [self reAddMenuViewController];
         // enable here it page option.............
          [menuViewController enableHearitPageOption];
         // NSLog(@"flip complete page");
@@ -345,7 +344,7 @@
             }
         }
         
-    }else{
+     }else{
         if ([BibleSingletonManager sharedManager].rightToLeft) {
             if (currentPosition >ShowMenuOptionNumberPage) {
                 [self setMenuSliderViewHidden:NO];
@@ -378,7 +377,8 @@
 #pragma PageViewControllerDelegate method-
 -(void)nextPageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr{
     
-     [self stopAudioWhenUserSwitchPage];
+    [self stopAudioWhenUserSwitchPage];
+     [self reAddMenuViewController];
     [self.pageViewController setViewControllers:viewControllersArr direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
         if (finished) {
             [[BibleSingletonManager sharedManager].modelViewController loadNextView];
@@ -389,20 +389,26 @@
             }
             // start read and highlight next page, if letitread option enable..........
             if ([BibleSingletonManager sharedManager].isItLetItRead) {
-                PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
-                NSInteger    currentPageId = [BibleSingletonManager sharedManager].currentPageId;
-                //audio not be play,when user go after page 72
-                if (currentPageId<=72) {
-                  [currentViewController hieghtTextWhenSwipeUpperCorner:currentPageId+1];   
-                }
+              [self performSelector:@selector(readNextPageDataWhenLetItReadEnable) withObject:nil afterDelay:0.6];
              }
-         [self performSelector:@selector(tapPageAnimationIsComplete) withObject:nil afterDelay:.2];
+            [self performSelector:@selector(tapPageAnimationIsComplete) withObject:nil afterDelay:0.2];
         }
     }];
 }
 
+-(void)readNextPageDataWhenLetItReadEnable{
+    
+    PageViewController    *currentViewController = [self getViewControllerFormArr:CurrentView];
+    NSInteger    currentPageId = [BibleSingletonManager sharedManager].currentPageId;
+    //audio not be play,when user go after page 72
+    if (currentPageId<=72) {
+        [currentViewController hieghtTextWhenSwipeUpperCorner:currentPageId+1];
+    }
+}
+
 -(void)prevPageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr{
      [self stopAudioWhenUserSwitchPage];
+     [self reAddMenuViewController];
     [self.pageViewController setViewControllers:viewControllersArr direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
         if (finished) {
             [[BibleSingletonManager sharedManager].modelViewController loadPrevView];
@@ -442,6 +448,15 @@
     [menuViewController.view setHidden:isHidden];
 }
 
+-(void)reAddMenuViewController{
+    if (menuViewController) {
+        [menuViewController.view removeFromSuperview];
+        [menuViewController release];
+     }
+     menuViewController = [[MenuSliderViewController alloc]initWithNibName:@"MenuSliderViewController" bundle:nil];
+    [menuViewController setDelegate:self];
+    [self.view addSubview:menuViewController.view];
+}
 -(void)stopAudioWhenUserSwitchPage{
     // Stop Audio When you flip page
     [BibleSingletonManager sharedManager].isAudioEnable = NO;
@@ -460,11 +475,12 @@
 
 -(void)reLoadAllFiveViewDataWhenYouComeFromMenuOption:(NSString *)htmlNameStr{
     
-    NSLog(@"htmlNameStr%@",htmlNameStr);
+     [self reAddMenuViewController];
+   // NSLog(@"htmlNameStr%@",htmlNameStr);
     NSString *pageNumberStr = [[htmlNameStr componentsSeparatedByString:@"Page_0"] lastObject];
     pageNumberStr = [[pageNumberStr componentsSeparatedByString:@"."] objectAtIndex:0];
    
-    NSLog(@"htmlNameStr%@, Page Number is:- %d",htmlNameStr,[pageNumberStr integerValue]);
+   // NSLog(@"htmlNameStr%@, Page Number is:- %d",htmlNameStr,[pageNumberStr integerValue]);
     
     NSArray   *objectArr = [[BibleSingletonManager sharedManager].preLoadViewArr copy];
     [[BibleSingletonManager sharedManager].preLoadViewArr removeAllObjects];
@@ -543,7 +559,8 @@
         
     }
     
-    [objectArr release]; 
+    [objectArr release];
+   
 }
 
 

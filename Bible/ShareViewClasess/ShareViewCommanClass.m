@@ -134,7 +134,7 @@
             MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
             [controller setToRecipients:[NSArray arrayWithObjects:mailIdStr, nil]];
             controller.mailComposeDelegate = self;
-            [controller setSubject:@"History of a Bible, illustrated by Benjamin Morse"];
+            [controller setSubject:KEmailSubjectMsgKey];
             [controller setMessageBody:EmailShareMsg isHTML:NO];
             if (controller)
                 [viewController presentModalViewController:controller animated:YES];
@@ -185,7 +185,7 @@ if ([[BibleSingletonManager sharedManager]checkNetworkReachabilityWithAlert]) {
         
         MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
         controller.mailComposeDelegate = self;
-        [controller setSubject:@"History of a Bible, illustrated by Benjamin Morse"];
+        [controller setSubject:KEmailSubjectMsgKey];
         [controller setMessageBody:EmailShareMsg isHTML:NO];
         if (controller)
             [viewController presentModalViewController:controller animated:YES];

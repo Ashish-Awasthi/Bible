@@ -70,4 +70,5 @@
 //PageViewController delegate Method
 -(void)hieghtTextWhenSwipeUpperCorner:(NSInteger)pageId;
 -(void)enableHearitPageOption;
+-(void)setLastPositionOfMenuOptionView;
 @end

@@ -79,13 +79,15 @@ typedef enum{
  ExtremRightView,
 }PreLoadView;
 
-#define FaceBookMsg  @"I am reading The Oldest Bedtime Story Ever, written and illustrated by Benjamin Morse.  Now available in hardback and as an eLuminated app. Preview pages at www.biblebeautiful.com."
+#define FaceBookMsg  @"I am reading The Oldest Bedtime Story Ever, written and illustrated by Benjamin Morse. Now available in hardback and as an eLuminated app. Preview pages at www.biblebeautiful.com."
 
 #define IOS6FaceBookMsg @"I am reading The Oldest Bedtime Story Ever, written and illustrated by Benjamin Morse.  Now available in hardback and as an eLuminated app. Preview pages at www.biblebeautiful.com \nDeveloped by: Orson & Co"
 
 #define TwitterShareMsg  @"I am loving The Oldest Bedtime Story Ever by Benjamin Morse. Preview the hardback and eLuminated app at www.biblebeautiful.com."
 
 #define EmailShareMsg @"I am reading The Oldest Bedtime Story Ever, written and illustrated by Benjamin Morse.  Now available in hardback and as an eLuminated app. Preview it at www.biblebeautiful.com"
+
+#define KEmailSubjectMsgKey                      @"The Oldest Bedtime Story Ever"
 
 #define KFaceBookLikeMsgKey                     @"You liked Yardsellr. Thanks!"
 

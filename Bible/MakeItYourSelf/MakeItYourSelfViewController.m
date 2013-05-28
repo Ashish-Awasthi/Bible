@@ -29,6 +29,8 @@
 {
     [super viewDidLoad];
     
+    [self.view setBackgroundColor:[UIColor blackColor]];
+    
     [self loadHtml:MakeItYourPageName];
     UIImage     *image;
     CGRect    frameSize;
@@ -56,8 +58,6 @@ frameSize = CGRectMake(0, 0, 768, 1024);
  UIWebView           *webView = [[UIWebView alloc] init];
  [webView setTag:MakeItReadWebViewTag];
  [webView setOpaque:YES];
- [webView setBackgroundColor:[UIColor blackColor]];
-
   for (UIView   *subViews in [webView subviews]) {
     if ([subViews isKindOfClass:[UIScrollView class]]) {
         UIScrollView    *scrollView = (UIScrollView *)subViews;
@@ -67,7 +67,8 @@ frameSize = CGRectMake(0, 0, 768, 1024);
     }
   [webView setDelegate:self];
   [webView setScalesPageToFit:YES];
-  [webView setBackgroundColor:[UIColor clearColor]];
+  [webView setBackgroundColor:[UIColor blackColor]];
+  [webView setOpaque:NO];
   [webView setFrame:frameSize];
   [self.view  addSubview:webView];
 
@@ -93,11 +94,14 @@ frameSize = CGRectMake(0, 0, 768, 1024);
     
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-    [[BibleSingletonManager sharedManager] removeIdenticationFromView];
     // not show copy paste option in webview
     [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
+     [self performSelector:@selector(showWebViewAfterLoadingComplete) withObject:nil afterDelay:0.8];
 }
 
+-(void)showWebViewAfterLoadingComplete{
+     [[BibleSingletonManager sharedManager] removeIdenticationFromView];
+}
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
     
     if(navigationType == UIWebViewNavigationTypeLinkClicked){

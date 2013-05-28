@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor blackColor]];
     UIImage     *image;
     CGRect    frameSize;
     
@@ -61,8 +62,6 @@
     UIWebView           *webView = [[UIWebView alloc] init];
     [webView setTag:StoriesWebViewTag];
     [webView setOpaque:YES];
-    [webView setBackgroundColor:[UIColor blackColor]];
-    
     for (UIView   *subViews in [webView subviews]) {
         if ([subViews isKindOfClass:[UIScrollView class]]) {
             UIScrollView    *scrollView = (UIScrollView *)subViews;
@@ -73,10 +72,10 @@
     
     [webView setDelegate:self];
     [webView setScalesPageToFit:YES];
-    [webView setBackgroundColor:[UIColor clearColor]];
+    [webView setBackgroundColor:[UIColor blackColor]];
+    [webView setOpaque:NO];
     [webView setFrame:frameSize];
     [self.view  addSubview:webView];
-    
     NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
                                                                                pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
     NSString *path = [[NSBundle mainBundle] bundlePath];

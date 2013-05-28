@@ -661,7 +661,7 @@
 		BC848C6B171C26A2008F14E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC848C6D171C26A2008F14E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BC848C6F171C26A2008F14E6 /* Bible-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bible-Prefix.pch"; sourceTree = "<group>"; };
-		BC848C70171C26A2008F14E6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BC848C70171C26A2008F14E6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Bible/AppDelegate.h; sourceTree = "<group>"; };
 		BC848C71171C26A2008F14E6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BC848C77171C26A2008F14E6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BC85143E1737B8E0008021B0 /* loaderBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loaderBg.png; sourceTree = "<group>"; };
@@ -1343,6 +1343,7 @@
 				BC848C67171C26A2008F14E6 /* Bible */,
 				BC848C60171C26A2008F14E6 /* Frameworks */,
 				BC848C5F171C26A2008F14E6 /* Products */,
+				BC848C70171C26A2008F14E6 /* AppDelegate.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1388,7 +1389,6 @@
 				BC838825174A0583004DDA66 /* CommanPageView */,
 				BC80766E1746195000828193 /* ReadMore */,
 				BC1941D0171EB5FD002FF0E0 /* mainViewClasses */,
-				BC848C70171C26A2008F14E6 /* AppDelegate.h */,
 				BC848C71171C26A2008F14E6 /* AppDelegate.m */,
 				BC848C68171C26A2008F14E6 /* Supporting Files */,
 			);

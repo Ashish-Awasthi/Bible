@@ -25,5 +25,5 @@
 -(void)setMenuSliderViewHidden:(BOOL) isHidden;
 -(void)nextPageFlipAutomaticallyWhenAudioFinsh:(NSArray *)viewControllersArr;
 -(void)reLoadAllFiveViewDataWhenYouComeFromMenuOption:(NSString *)htmlNameStr;
-
+-(void)reAddMenuViewController;
 @end

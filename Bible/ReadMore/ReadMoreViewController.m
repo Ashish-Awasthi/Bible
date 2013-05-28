@@ -52,8 +52,6 @@
     UIWebView           *webView = [[UIWebView alloc] init];
     [webView setTag:ReadMoreWebViewTag];
     [webView setOpaque:YES];
-    [webView setBackgroundColor:[UIColor blackColor]];
-    
     for (UIView   *subViews in [webView subviews]) {
         if ([subViews isKindOfClass:[UIScrollView class]]) {
             UIScrollView    *scrollView = (UIScrollView *)subViews;
@@ -64,6 +62,8 @@
     
     [webView setDelegate:self];
     [webView setScalesPageToFit:YES];
+    [webView setBackgroundColor:[UIColor blackColor]];
+    [webView setOpaque:NO];
     [webView setBackgroundColor:[UIColor clearColor]];
     [webView setFrame:frameSize];
     [self.view  addSubview:webView];
@@ -90,6 +90,7 @@
     // not show copy paste option in webview
     [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';  document.body.style.KhtmlUserSelect='none'"];
      [[BibleSingletonManager sharedManager] removeIdenticationFromView];
+    [webView setHidden:NO];
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{

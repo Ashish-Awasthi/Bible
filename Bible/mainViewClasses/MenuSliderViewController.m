@@ -233,9 +233,9 @@
 	[self pageSwiped];
 	 isExpanded = !isExpanded;
      } else{
-        if ([self.delegate respondsToSelector:@selector(setMenuSliderViewHidden:)]) {
-            [self.delegate setMenuSliderViewHidden:NO];
-        }
+//        if ([self.delegate respondsToSelector:@selector(setMenuSliderViewHidden:)]) {
+//            [self.delegate setMenuSliderViewHidden:NO];
+//        }
     }
 }
 
@@ -249,6 +249,8 @@
 								  self.view.frame.origin.y-sliderImage.frame.size.height+kCollapseMargin,
 								  self.view.frame.size.width,
 								  self.view.frame.size.height);
+    
+    
 	[UIView commitAnimations];
 }
 
@@ -319,7 +321,9 @@
     }
   
     }
-}// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+}
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
@@ -347,7 +351,7 @@
 }
 
 -(void)enableHearitPageOption{
-    
+    [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     [BibleSingletonManager sharedManager].isItLetItRead = NO;
     UIImage   *imageName;
     imageName = [UIImage imageNamed:@"Hear-page_sel.png"];
@@ -366,6 +370,7 @@
 }
 
 -(IBAction)tabOnLetItReadButton:(id)sender{
+    [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
     [BibleSingletonManager sharedManager].isItLetItRead = YES;
     UIImage   *imageName;
     imageName = [UIImage imageNamed:@"Hear_page_unsel.png"];
@@ -413,8 +418,7 @@
    RELEASE(fineViewController);
 }
 -(IBAction)tabOnMakeItYourSelfButton:(id)sender{
-    NSLog(@"tabOnMakeItYourSelfButton");
-    //Stop audio When user flip page>>>>>>>>>>>>>>
+      //Stop audio When user flip page>>>>>>>>>>>>>>
     
     [[BibleSingletonManager sharedManager].modelViewController stopAudioWhenUserSwitchPage];
     MakeItYourSelfViewController     *makeItMoreViewController = [[MakeItYourSelfViewController alloc] init];
@@ -437,6 +441,15 @@
 }
 
 
+-(void)setLastPositionOfMenuOptionView{
+   
+//   self.view.frame  = CGRectMake(self.view.frame.origin.x,
+//                                  -824,
+//								  self.view.frame.size.width,
+//								  self.view.frame.size.height);
+//   // isExpanded = !isExpanded;
+
+}
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];

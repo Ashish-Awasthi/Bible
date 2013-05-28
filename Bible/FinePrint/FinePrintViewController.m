@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
     
+    [self.view setBackgroundColor:[UIColor blackColor]];
     [self loadHtml:@"Page_084.htm"];
 
     UIImage     *image;
@@ -70,7 +71,8 @@
     [webView setBackgroundColor:[UIColor clearColor]];
     [webView setFrame:frameSize];
     [self.view  addSubview:webView];
-    
+    [webView setBackgroundColor:[UIColor blackColor]];
+    [webView setOpaque:NO];
     NSString* text = [NSString stringWithContentsOfURL:[NSURL fileURLWithPath:[[NSBundle mainBundle]
                                                                                pathForAuxiliaryExecutable:htmlName]] encoding:NSASCIIStringEncoding error:nil];
     NSString *path = [[NSBundle mainBundle] bundlePath];
